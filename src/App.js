@@ -1,10 +1,20 @@
 import "./App.css";
+import NavPane from "./mvc_Components/Nav_pane";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Routes,
+} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <h1>My Virtual Classroom</h1>
-    </div>
+    <Router>
+      <NavPane />
+      <Routes>
+        <Route path="/" exact />
+      </Routes>
+    </Router>
   );
 }
 
