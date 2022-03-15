@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import $ from "jquery";
 
 import "./Nav_pane.css";
+import MVC_Home from "./mvc_pages/MVC_Home";
 
 function NavPane() {
   const [click, setClick] = useState(false);
@@ -34,7 +35,7 @@ function NavPane() {
       <div className="drop-down-menu">
         <ul className={click ? "menu active" : "menu"}>
           <li className="menu-items">
-            <Link to="Projects" className="menu-links" onClick={closeMenu}>
+            <Link to="/Projects" className="menu-links" onClick={closeMenu}>
               Projects
             </Link>
           </li>
