@@ -1,0 +1,30 @@
+.platform_Container {
+  margin: 0 20px;
+  display: flex;
+  flex-direction: row;
+}
+.platform_Text {
+  color: rgb(255, 255, 255);
+  padding: 30px;
+  font-size: 30px;
+  background-color: transparent;
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 1600px) {
+  .platform_Text {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .platform_Text {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .platform_Text {
+    font-size: 15px;
+  }
+}

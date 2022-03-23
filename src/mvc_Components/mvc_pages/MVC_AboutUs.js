@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 function MVC_AboutUs() {
   return (
     <>
-      <NavPane />
       <h1>About us</h1>
       <li className="menu-items">
         <Link to="/">Home</Link>

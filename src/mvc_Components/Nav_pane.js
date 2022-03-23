@@ -22,7 +22,7 @@ function NavPane() {
       <nav className="nav_Pane">
         <div className="navbar-container">
           <Link to="/" className="MVC-Logo" onClick={closeMenu}>
-            MVC Logo
+            MVC
           </Link>
           <div></div>
           <div></div>
