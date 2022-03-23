@@ -27,7 +27,9 @@ function MVC_Hero() {
           </p>
 
           <p>{/** Other staffs if needed here */}</p>
-          <button className="hero_Btn">Contact us</button>
+          <Link to="/Contacts">
+            <button className="hero_Btn">Contact us</button>
+          </Link>
         </div>
 
         {/** TODO: Add a direct link to contact page or some other important links  */}
