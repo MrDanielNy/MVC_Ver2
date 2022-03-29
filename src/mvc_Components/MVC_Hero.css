@@ -7,7 +7,7 @@
   /* A video is needed here */
   background: url("../images/speed-internet-technology-background-5.jpg") center
     center/cover no-repeat fixed;
-  height: 1200px;
+  height: 1000px; /* check if it works with a large size tv*/
   display: grid;
   grid-template-rows: 20% 40% 20% 20%;
   justify-content: center;
@@ -17,6 +17,8 @@
   position: relative;
   margin-bottom: 0px;
   min-width: 300px;
+  max-height: 1080px;
+  max-width: 1920px;
 }
 
 .title {

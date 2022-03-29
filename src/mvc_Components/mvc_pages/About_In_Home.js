@@ -11,8 +11,6 @@ function AboutUs_Link() {
               src={require("../../images/Kopia-av-My_Virtual_Classroom_-Daniel2020-11-06_12-51-03.png")}
               alt="Two men! Daniel Johansson and Daniel Ny."
               className="about_Img "
-              width="350"
-              height="300"
             />
           </div>
           <div className="about_Text">

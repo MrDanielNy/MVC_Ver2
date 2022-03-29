@@ -2,9 +2,10 @@
 .Boxes {
   padding: 5px;
   background: rgb(255, 255, 255);
+  max-height: 1080px;
+  max-width: 1920px;
 }
 .Boxes_Container {
-  max-width: 1920px;
   width: 90%;
   margin: 0 auto;
 }

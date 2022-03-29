@@ -1,0 +1,107 @@
+.contact_Container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(255, 219, 166);
+  padding: 20px;
+  height: 100vh;
+  max-height: 1080px;
+  max-width: 1920px;
+  top: -90px;
+}
+.name_email_Container {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+}
+.form_Container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: cornflowerblue;
+  padding: 20px;
+  border-radius: 10px;
+  height: 450px;
+  width: 600px;
+}
+label {
+  margin: 10px;
+}
+.name {
+  margin: 5px;
+}
+.email {
+  margin: 5px;
+}
+input {
+  border-radius: 5px;
+  height: 30px;
+  width: 100%;
+  margin: 5px;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.message {
+  margin: 20px;
+  width: 90%;
+  height: 200px;
+  border-radius: 5px;
+  resize: none;
+  scroll-behavior: auto;
+}
+.btnSend {
+  width: 90%;
+  height: 40px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: 430px) {
+  .form_Container {
+    height: 500px;
+  }
+}
+@media screen and (max-height: 450px) {
+  .form_Container {
+    height: 350px;
+  }
+  .message {
+    height: 60px;
+  }
+
+  .name {
+    margin: 2px;
+  }
+  .email {
+    margin: 2px;
+  }
+  input {
+    margin: 2px;
+  }
+  .text {
+    margin-top: 5px;
+  }
+
+  .message {
+    margin: 10px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .form_Container {
+    width: 80%;
+  }
+}
