@@ -58,8 +58,6 @@ function MVC_Contacts() {
   return (
     <>
       <div className="contact_Container">
-        {/* <h1 className="first_text">Let's get in touch!</h1>
-        <h1 className="seconds_text">Let's get in touch!</h1>*/}
         <div className="containerAni">
           <span class="first_text">Lets get in toch!</span>
         </div>

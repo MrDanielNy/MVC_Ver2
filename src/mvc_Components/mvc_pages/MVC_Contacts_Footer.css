@@ -1,24 +1,67 @@
 .container {
   position: relative;
-
-  align-items: center;
+  min-width: 270px;
   height: 100px;
-  background-color: brown;
 }
 .contacts {
   position: absolute;
   top: -60px;
-  display: grid;
-  grid-template-columns: 10% 40% 40% 10%;
-  gap: 20px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
+  text-align: center;
+  width: 100%;
+  min-width: 270px;
 }
 ul {
   list-style: none;
 }
 h3 {
   color: dimgray;
+  font-size: 20px;
 }
 p {
-  color: darkcyan;
+  color: rgb(21, 124, 0);
+  font-size: 15px;
+}
+.DJ_Mail {
+  width: 33%;
+}
+.DN_Mail {
+  width: 33%;
+}
+.address {
+  width: 33%;
+}
+
+@media (max-width: 850px) {
+  .contacts {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px;
+  }
+  h3 {
+    font-size: 15px;
+  }
+  p {
+    font-size: 12px;
+  }
+  .first_text {
+    font-size: 30px;
+  }
+  .DJ_Mail {
+    margin: 10px;
+  }
+  .DN_Mail {
+    width: 33%;
+    margin: 10px;
+  }
+  .address {
+    width: 33%;
+    margin: 10px;
+  }
 }
