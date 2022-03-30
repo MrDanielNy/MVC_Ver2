@@ -1,0 +1,121 @@
+* {
+  padding: 0;
+  margin-top: 0px;
+  box-sizing: border-box;
+}
+.nav_Pane {
+  position: sticky;
+  z-index: 999;
+  top: 0px;
+}
+
+.navbar-container {
+  background-color: transparent;
+  display: grid;
+  /* Logo Gap Gap HamMenu*/
+  grid-template-columns: 10% 40% 40% 10%;
+  align-items: center;
+  height: 80px;
+  max-width: 1920px;
+  height: 80px;
+  font-size: 1.2rem;
+  min-width: 200px;
+}
+
+.background-img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block; /* remove extra space below image */
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Or 100vh*/
+  height: 100%;
+  position: absolute;
+  font-size: large;
+  top: -1000px;
+  left: 0;
+  opacity: 0;
+  transition: all 1s ease-out;
+  align-items: center;
+  /* list-style-type: none;*/
+  z-index: 900;
+}
+.menu.active {
+  background: rgba(0, 0, 0, 0.822);
+  left: 0;
+  top: 0px;
+  opacity: 10;
+  font-size: x-large;
+  transition: all 0.8s ease;
+  align-items: center;
+  list-style-type: none;
+  justify-content: center;
+  z-index: 1;
+  position: fixed;
+}
+
+/*TODO  find an icon or a designed logo*/
+.MVC-Logo {
+  color: rgb(0, 0, 0);
+  justify-self: start;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-left: 20px;
+  transition: all 0.8s ease;
+}
+.MVC-Logo:hover {
+  transition: all 0.8s ease;
+  color: lightskyblue;
+  text-shadow: -2px 0px 10px #fbff00;
+}
+
+.ham_Menu {
+  color: rgb(43, 0, 0);
+  margin-right: 20px;
+  font-size: 1.8rem;
+  justify-self: end; /*To keep at the corner of the page*/
+  cursor: pointer;
+  transition: all 0.8s ease;
+}
+.ham_Menu:hover {
+  transition: all 0.8s ease-out;
+  color: lightskyblue;
+}
+/* Ham menu icons*/
+.fa-times {
+  font-size: 2rem;
+  z-index: 1000;
+}
+.fa-times:active {
+  transform: rotate(30deg) translate(-2px, -1px);
+  z-index: 1000;
+}
+.fa-bars:active {
+  opacity: 0.5;
+  z-index: 1000;
+}
+
+.fa-typo3 {
+  margin-left: 0.5rem;
+  font-size: 1.8rem;
+}
+
+.menu-links {
+  color: rgb(255, 255, 255);
+  width: auto;
+  display: table;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 50px;
+}
+
+.menu-links:hover {
+  color: #f7aa04;
+  transition: all 0.8s ease-out;
+  opacity: 1;
+  font-size: 55px;
+}
