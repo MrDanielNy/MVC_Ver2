@@ -4,7 +4,6 @@ import { FaBeer } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
-import $ from "jquery";
 
 import "./Nav_pane.css";
 import MVC_Home from "./mvc_pages/MVC_Home";

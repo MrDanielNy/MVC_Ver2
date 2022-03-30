@@ -1,13 +1,14 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 
 .mvc-hero-container {
   /* A video is needed here */
   background: url("../images/speed-internet-technology-background-5.jpg") center
     center/cover no-repeat fixed;
-  height: 1200px;
+  height: 1000px; /* check if it works with a large size tv*/
   display: grid;
   grid-template-rows: 20% 40% 20% 20%;
   justify-content: center;
@@ -17,29 +18,33 @@
   position: relative;
   margin-bottom: 0px;
   min-width: 300px;
+  max-height: 1080px;
+  max-width: 1920px;
 }
 
 .title {
-  text-shadow: 2px 2px 20px #fbff00;
+  /*text-shadow: 2px 2px 20px #fbff00;*/
   color: white;
   font-size: 100px;
   margin-top: -100px;
 }
 .subTitle {
-  text-shadow: 2px 2px 10px #fbff00;
-  color: white;
+  /* text-shadow: 2px 2px 10px #fbff00;*/
+  color: rgb(255, 255, 255);
+  font-weight: bold;
   font-size: 35px;
 }
 .hero_Btn {
   width: 200px;
-  height: 50px;
+  height: 70px;
   background: transparent;
-  font-size: 1rem;
+  font-size: 25px;
   font-weight: bold;
+
   color: rgb(255, 255, 255);
   cursor: pointer;
   margin: 30px;
-  border-color: white;
+  border: 2px white double;
 }
 /* TODO  Change the size of the button using media screen to have accessibility for mobile users */
 .hero_Btn:hover {
@@ -53,7 +58,6 @@
     margin-top: -50px;
   }
   .subTitle {
-    text-shadow: 2px 2px 10px #fbff00;
     color: white;
     font-size: 25px;
   }
@@ -64,7 +68,6 @@
     margin-top: -20px;
   }
   .subTitle {
-    text-shadow: 2px 2px 10px #fbff00;
     color: white;
     font-size: 20px;
   }
