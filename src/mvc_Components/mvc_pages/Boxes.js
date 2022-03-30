@@ -11,7 +11,7 @@ function Boxes() {
           {/** TODO change the content of each card. Fetching from database */}
           <MVC_Home_Boxes
             src={require("../../images/alex-scaled.jpg")}
-            text="Vi ökar elevernas förutsättningar igt."
+            text="This is where we dfgdfgdfgdfgneed to improve the educations."
             label="Självständighet"
             path="/Projects"
           />
@@ -25,7 +25,7 @@ function Boxes() {
 
           <MVC_Home_Boxes
             src={require("../../images/alex-scaled.jpg")}
-            text="This is wheresdfsdf we nesdfsded to ifgdfgdfgdfgdfgsdfsdmprove the educations"
+            text="This is where we dfgdfgdfgdfgneed to improve the educations"
             label="Robots"
             path="/Projects"
           />

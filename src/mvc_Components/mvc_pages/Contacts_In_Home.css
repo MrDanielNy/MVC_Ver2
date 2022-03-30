@@ -5,6 +5,7 @@
 }
 .main_Container {
   background-color: darkslategrey;
+  max-width: 1920px;
 }
 .contacts_Container {
   display: flex;
