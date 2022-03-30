@@ -8,17 +8,22 @@
   margin: 0 auto;
 }
 .about_Container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 40% 40%;
+  gap: 20px;
+}
+
+/*  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
+  */
 .about_Img {
-  margin-top: 30px;
+  margin: 20px;
   border-radius: 10px;
-  width: 50%;
-  height: 50%;
+  width: 350px;
+  height: 250px;
 }
 
 .about_Text {
@@ -61,6 +66,14 @@
   color: black;
   transition: all 0.5s ease;
 }
+@media only screen and (max-width: 850px) {
+  .about_Img {
+    width: 250px;
+    height: 150px;
+    margin: 20px;
+  }
+}
+
 @media only screen and (max-width: 400px) {
   .about_Img {
     width: 250px;
