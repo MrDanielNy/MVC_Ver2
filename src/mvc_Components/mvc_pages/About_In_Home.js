@@ -14,6 +14,7 @@ function AboutUs_Link() {
             />
           </div>
           <div className="about_Text">
+            <h2>My Virtual Classroom</h2>
             <p>
               sadasdasdasd asd asd asda sadasdasdasd asd asd asdasdasd as ad
               asdasd asd asd asdasd
