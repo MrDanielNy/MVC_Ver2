@@ -48,27 +48,27 @@ end of the first animation */
     transition: all ease;
   }
   10% {
-    font-size: 42px;
+    letter-spacing: 1px;
     transition: all ease-out;
   }
   20% {
-    font-size: 45px;
+    letter-spacing: 2px;
     transition: all ease-in;
   }
-  20% {
-    font-size: 50px;
+  30% {
+    letter-spacing: 3px;
     transition: all ease-in;
   }
-  20% {
-    font-size: 55px;
+  40% {
+    letter-spacing: 4px;
     transition: all ease-in;
   }
-  20% {
-    font-size: 65px;
+  50% {
+    letter-spacing: 5px;
     transition: all ease-in;
   }
-  20% {
-    font-size: 70px;
+  60% {
+    letter-spacing: 6px;
     transition: all ease-in;
   }
 }
@@ -86,17 +86,48 @@ end of the first animation */
   justify-content: center;
   text-align: left;
   align-items: center;
-  background-color: cornflowerblue;
+  background-color: rgb(210, 228, 252);
   padding: 20px;
-  border-radius: 10px;
-  border: white 1px double;
+  border-radius: 5px;
+  border: rgb(85, 85, 85) 2px solid;
   height: 500px;
   width: 400px;
   min-width: 200px;
+  animation: form_Animation 1s 1;
   opacity: 0.9;
 }
+@keyframes form_Animation {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.1;
+  }
+  20% {
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  70% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.8;
+  }
+}
+
 .label {
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -134,8 +165,8 @@ input {
   border-radius: 5px;
   margin-top: 30px;
   font-size: 20px;
-  background-color: transparent;
-  border: 2px white solid;
+  background-color: rgb(171, 171, 255);
+  border: 1px white solid;
   cursor: pointer;
 }
 .btnSend:hover {
