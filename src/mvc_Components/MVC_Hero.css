@@ -27,7 +27,36 @@
   color: white;
   font-size: 100px;
   margin-top: -100px;
+  animation: title_Animation 2s 1;
 }
+@keyframes title_Animation {
+  0% {
+    opacity: 0;
+    letter-spacing: 1px;
+    transition: all ease-in;
+  }
+  10% {
+    opacity: 0.1;
+    letter-spacing: 3px;
+    transition: all ease-in;
+  }
+  20% {
+    opacity: 0.2;
+    letter-spacing: 5px;
+    transition: all ease-in;
+  }
+  30% {
+    opacity: 0.3;
+    letter-spacing: 7px;
+    transition: all ease-in;
+  }
+  40% {
+    opacity: 0.4;
+    letter-spacing: 9px;
+    transition: all ease-in;
+  }
+}
+
 .subTitle {
   /* text-shadow: 2px 2px 10px #fbff00;*/
   color: rgb(255, 255, 255);
