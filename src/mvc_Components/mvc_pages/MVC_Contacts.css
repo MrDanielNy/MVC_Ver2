@@ -89,7 +89,8 @@ end of the first animation */
   background-color: rgb(210, 228, 252);
   padding: 20px;
   border-radius: 5px;
-  border: rgb(85, 85, 85) 2px solid;
+  border: rgb(250, 247, 247) 2px solid;
+  box-shadow: 5px 5px 10px 1px rgb(217, 225, 255);
   height: 500px;
   width: 400px;
   min-width: 200px;
@@ -162,15 +163,17 @@ input {
 .btnSend {
   width: 100%;
   height: 40px;
-  border-radius: 5px;
+
   margin-top: 30px;
   font-size: 20px;
-  background-color: rgb(171, 171, 255);
+  background-color: #191351;
+  border-radius: 5px;
+  color: white;
   border: 1px white solid;
   cursor: pointer;
 }
 .btnSend:hover {
-  background-color: rgb(57, 57, 216);
+  background-color: rgb(124, 124, 243);
   color: white;
   transition: all 1s ease-out;
 }
