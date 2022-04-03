@@ -167,7 +167,6 @@ function MVC_Contacts() {
           }, 1000);
           setTimeout(() => {
             console.log("Your email is sent successfully");
-
             setButtonText("Send");
             buttonSend.current.disabled = false;
             buttonSend.current.style.color = "black";
@@ -182,52 +181,55 @@ function MVC_Contacts() {
     <>
       <div className="contact_Container">
         <div className="containerAni">
-          <span class="first_text">Lets get in toch!</span>
+          <h3 class="first_text">
+            Do you want to be involved and create tomorrow's teaching?
+          </h3>
         </div>
+        <div>
+          <div className="form_Container">
+            <form onSubmit={send} id="email-form" ref={email_form}>
+              <label className="label" ref={labelName}>
+                Name
+              </label>
+              <div>
+                <input
+                  type="text"
+                  name="user_name"
+                  placeholder="Your name"
+                  ref={inputName}
+                  onChange={validName}
+                />
+              </div>
 
-        <div className="form_Container">
-          <form onSubmit={send} id="email-form" ref={email_form}>
-            <label className="label" ref={labelName}>
-              Name
-            </label>
-            <div>
+              <label className="label" ref={labelEmail}>
+                Email
+              </label>
               <input
-                type="text"
-                name="user_name"
-                placeholder="Your name"
-                ref={inputName}
-                onChange={validName}
+                type="email"
+                name="user_email"
+                placeholder="Your e-mail address "
+                ref={inputEmail}
+                onChange={emailValidation}
+                title="This field should not be left blank."
               />
-            </div>
 
-            <label className="label" ref={labelEmail}>
-              Email
-            </label>
-            <input
-              type="email"
-              name="user_email"
-              placeholder="Your e-mail address "
-              ref={inputEmail}
-              onChange={emailValidation}
-              title="This field should not be left blank."
-            />
+              <label className="label" ref={labelText}>
+                Message
+              </label>
+              <textarea
+                className="message"
+                name="message"
+                placeholder="Write your message"
+                ref={inputText}
+                autoComplete="off"
+                onChange={messageValidation}
+              />
 
-            <label className="label" ref={labelText}>
-              Message
-            </label>
-            <textarea
-              className="message"
-              name="message"
-              placeholder="Write your message"
-              ref={inputText}
-              autoComplete="off"
-              onChange={messageValidation}
-            />
-
-            <button className="btnSend" id="btnSend" ref={buttonSend}>
-              {buttonText}
-            </button>
-          </form>
+              <button className="btnSend" id="btnSend" ref={buttonSend}>
+                {buttonText}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
       <MVC_Contacts_Footer />

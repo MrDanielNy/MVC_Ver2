@@ -10,6 +10,7 @@ import MVC_Home from "./mvc_Components/mvc_pages/MVC_Home";
 import MVC_Projects from "./mvc_Components/mvc_pages/MVC_Projects";
 import MVC_AboutUs from "./mvc_Components/mvc_pages/MVC_AboutUs";
 import MVC_Contacts from "./mvc_Components/mvc_pages/MVC_Contacts";
+
 function App() {
   return (
     <Router>

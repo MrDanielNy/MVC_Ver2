@@ -3,18 +3,18 @@
     center center/cover no-repeat fixed;
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   text-align: center;
-
   padding: 20px;
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   max-height: 1080px;
   max-width: 1920px;
   top: -90px;
+  background-color: rgb(12, 12, 158);
 }
 
 @media screen and (max-height: 600px) {
@@ -23,26 +23,58 @@
     height: 700px;
   }
 }
-
+.containerAni {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  margin-right: 100px;
+}
 .containerAni span {
   text-transform: uppercase;
-  display: block;
 }
 .first_text {
-  color: white;
-  font-size: 40px;
-  font-weight: 700;
-  letter-spacing: 3px;
+  color: rgb(247, 248, 191);
+  font-size: 35px;
+  font-weight: bold;
+  letter-spacing: 2px;
   margin-bottom: 30px;
   background: transparent;
   position: relative;
   animation: first_text_anim 1s 1;
 }
 
+@media screen and (max-width: 745px) {
+  .contact_Container {
+    flex-direction: column;
+  }
+  .first_text {
+    font-size: 15px;
+    margin-bottom: 30px;
+  }
+  .containerAni {
+    margin-right: 0;
+    width: 100%;
+  }
+  @keyframes first_text_anim {
+  }
+}
+@media screen and (max-width: 450px) {
+  .form_Container {
+    height: 500px;
+  }
+  .first_text {
+    font-weight: bold;
+    font-size: 1px;
+    margin-bottom: 30px;
+    color: rgb(238, 130, 130);
+  }
+}
+
 /* The second text should be displayed at the
 end of the first animation */
 
-@keyframes first_text_anim {
+/*@keyframes first_text_anim {
   0% {
     color: rgb(255, 174, 0);
     transition: all ease;
@@ -68,18 +100,11 @@ end of the first animation */
     transition: all ease-in;
   }
   60% {
-    letter-spacing: 6px;
+    letter-spacing: 4px;
     transition: all ease-in;
   }
 }
-
-.header {
-  font-size: 50px;
-  margin: 50px;
-  transition: all 1s ease-out;
-  color: white;
-}
-
+*/
 .form_Container {
   display: flex;
   flex-direction: row;
@@ -142,6 +167,7 @@ input {
   margin: 5px;
   font-size: large;
   min-width: 100px;
+  padding: 5px;
 }
 .text {
   display: flex;
@@ -163,7 +189,6 @@ input {
 .btnSend {
   width: 100%;
   height: 40px;
-
   margin-top: 30px;
   font-size: 20px;
   background-color: #191351;
@@ -178,106 +203,68 @@ input {
   transition: all 1s ease-out;
 }
 
-@media screen and (max-width: 430px) {
-  .form_Container {
-    height: 500px;
-  }
-}
 @media screen and (max-height: 450px) {
-  @keyframes first_text_anim {
+  /*@keyframes first_text_anim {
     0% {
       color: rgb(255, 174, 0);
       transition: all ease;
     }
     10% {
-      font-size: 20px;
+      font-size: 15px;
       transition: all ease-out;
     }
     20% {
-      font-size: 22px;
+      font-size: 17px;
       transition: all ease-in;
     }
     30% {
-      font-size: 24px;
+      font-size: 19px;
       transition: all ease-in;
     }
     40% {
-      font-size: 26px;
+      font-size: 21px;
       transition: all ease-in;
     }
     50% {
-      font-size: 28px;
+      font-size: 23px;
       transition: all ease-in;
     }
     60% {
-      font-size: 30px;
+      font-size: 25px;
       transition: all ease-in;
-    }
-  }
+    }*/
+}
 
-  .form_Container {
-    height: 350px;
-  }
-  .message {
-    height: 60px;
-  }
+.form_Container {
+  height: 350px;
+}
+.message {
+  height: 60px;
+}
 
-  .name {
-    margin: 2px;
-  }
-  .email {
-    margin: 2px;
-  }
-  input {
-    margin: 2px;
-  }
-  .text {
-    margin-top: 5px;
-  }
+.name {
+  margin: 2px;
+}
+.email {
+  margin: 2px;
+}
+input {
+  margin: 2px;
+}
+.text {
+  margin-top: 5px;
+}
 
-  .message {
-    margin: 10px;
-  }
+.message {
+  margin: 10px;
 }
 
 @media screen and (max-width: 650px) {
   .form_Container {
-    width: 80%;
+    width: 100%;
   }
 }
 
-@media screen and (max-width: 850px) {
-  @keyframes first_text_anim {
-    0% {
-      color: rgb(255, 174, 0);
-      transition: all ease;
-    }
-    10% {
-      font-size: 30px;
-      transition: all ease-out;
-    }
-    20% {
-      font-size: 32px;
-      transition: all ease-in;
-    }
-    30% {
-      font-size: 34px;
-      transition: all ease-in;
-    }
-    40% {
-      font-size: 36px;
-      transition: all ease-in;
-    }
-    50% {
-      font-size: 38px;
-      transition: all ease-in;
-    }
-    60% {
-      font-size: 40px;
-      transition: all ease-in;
-    }
-  }
-}
 .footer {
   transition: all 2s ease-in-out;
 }
