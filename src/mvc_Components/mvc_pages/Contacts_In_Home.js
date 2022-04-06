@@ -8,14 +8,14 @@ function Contacts_Link() {
       <div className="contacts_Container">
         <div></div>
         <div className="contacts_Title">
-          <h1>Contact us</h1>
+          <h1>Lets get in touch!</h1>
+          <h6 className="subTitle">
+            Vi söker hela tiden efter nya utmaningar, samarbeten och dialoger.
+          </h6>
         </div>
 
-        <div className="contact_Information">
-          <p className="DJ">
-            <Link to="/Contacts"> Daniel Jahansson </Link>
-          </p>
-          <p className="DN">Daniel Ny</p>
+        <div>
+          <button className="btn_Contact">Contact us</button>
         </div>
       </div>
     </div>

@@ -2,10 +2,11 @@
 .Boxes {
   padding: 5px;
   background: rgb(255, 255, 255);
-  max-height: 1080px;
+  max-height: 3000px;
   max-width: 1920px;
-
   height: 700px;
+  width: 100%;
+
 }
 .Boxes_Container {
   width: 90%;
@@ -13,10 +14,11 @@
 }
 /* Positioning and the number of boxes(Cards) in screens */
 .Items {
-  display: grid;
-  /* Normal state*/
-  grid-template-columns: 30% 30% 30%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
 }
 /* Each single card*/
 .Item {
@@ -30,7 +32,7 @@
   display: flex;
   flex-flow: column;
   width: 350px;
-  box-shadow: 0 6px 20px rgba(14, 11, 11, 0.17);
+  box-shadow: 0 6px 20px rgba(1, 111, 255, 0.17);
   border-radius: 20px;
   overflow: hidden;
   text-decoration: none;
@@ -85,27 +87,31 @@
   font-size: 18px;
   line-height: 24px;
 }
-
-@media only screen and (max-width: 1200px) {
-  .Items {
-    grid-template-columns: 40% 40%;
-    gap: 10px;
+@media only screen and (max-width: 4000px) {
+  .Boxes {
+    height: 700px;
   }
+}
+
+@media only screen and (max-width: 1250px) {
   .Boxes {
     height: 1000px;
   }
 }
 
-@media only screen and (max-width: 800px) {
-  .Boxes {
-    height: 2000px;
+@media only screen and (max-width: 850px) {
+  .Item_Link {
+    width: 300px;
   }
-  .Items {
-    grid-template-columns: 40% 40%;
-    gap: 10px;
-    overflow: hidden;
+  .Item_Text {
+    font-size: 10px;
   }
+}
 
+@media only screen and (max-width: 722px) {
+  .Boxes {
+    height: 1800px;
+  }
   .Item_Link {
     width: 300px;
   }
@@ -116,16 +122,16 @@
 
 @media only screen and (max-width: 450px) {
   .Items {
-    grid-template-rows: 90%;
-    gap: 10px;
-    overflow: hidden;
   }
   .Item_Img {
   }
   .Item_Link {
-    width: 150px;
+    width: 250px;
   }
   .Item_Text {
     font-size: 10px;
+  }
+  .Boxes {
+    height: 1590px;
   }
 }

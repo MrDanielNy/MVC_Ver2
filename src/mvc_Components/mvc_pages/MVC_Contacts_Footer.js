@@ -33,16 +33,40 @@ function MVC_Contacts_Footer() {
 
         <div className="DN_Mail">
           <h3>Utv.chef och Vice VD Daniel Ny</h3>
-
-          <Mailto email="daniel.ny@myvirtualclassroom.se" subject="" body="">
+          <Mailto
+            email="daniel.ny@myvirtualclassroom.se"
+            style="text-decoration:none"
+            subject=""
+            body=""
+          >
             <p> daniel.ny@myvirtualclassroom.se</p>
           </Mailto>
         </div>
         <div className="address">
           <h4>Address</h4>
-          <p>Tanneförs gamlagatan 24 </p>
+          <h4>Find us on Google Map</h4>
+          <a
+            href="http://maps.google.com/?q=Wahlbecksgatan 25
+582 13 Linköping"
+          >
+            <p>Wahlbecksgatan 25 582 13 Linköping </p>
+          </a>
           {/**TODO: Add google map API to show MVC's address */}
-          <p>Find us on Google Map</p>
+        </div>
+      </div>
+      {/** TODO: Make a link to MVC's social medias */}
+      <div className="social_Links_Container">
+        <div className="facebook">
+          <img
+            src={require("../../images/facebook.png")}
+            alt="Face book link"
+          />
+        </div>
+        <div className="linkedIn">
+          <img
+            src={require("../../images/linkedIn.png")}
+            alt="Face book link"
+          />
         </div>
       </div>
     </div>

@@ -1,7 +1,14 @@
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   position: relative;
   min-width: 270px;
   height: 100px;
+  background-color: bisque;
+ 
 }
 .contacts {
   position: absolute;
@@ -14,6 +21,7 @@
   text-align: center;
   width: 100%;
   min-width: 270px;
+  background-color: bisque;
 }
 ul {
   list-style: none;
@@ -28,21 +36,43 @@ p {
 }
 .DJ_Mail {
   width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .DN_Mail {
   width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .address {
   width: 33%;
 }
-
-@media (max-width: 850px) {
+.social_Links_Container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.facebook {
+  margin: 1rem ;
+}
+.linkedIn {
+  margin: 1rem;
+}
+@media (max-width: 900px) {
   .contacts {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 30px;
+    margin-bottom: 50px;
   }
   h3 {
     font-size: 15px;
@@ -63,5 +93,27 @@ p {
   .address {
     width: 33%;
     margin: 10px;
+  }
+  .container {
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+  }
+  .facebook {
+    margin-top: 50px;
+  }
+  .linkedIn {
+    margin-top: 50px;
+  }
+  .social_Links_Container {
+    margin-top: 200px;
+  }
+}
+@media (max-width: 400px) {
+  .container {
+    height: 500px;
+  }
+  .social_Links_Container {
+    margin-top: 300px;
   }
 }

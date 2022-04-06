@@ -6,6 +6,7 @@ import "./Nav_pane.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Platform from "./mvc_pages/Platform";
+import video from "../images/video-1.mp4";
 
 function MVC_Hero() {
   const [click, setClick] = useState(false);
@@ -18,7 +19,12 @@ function MVC_Hero() {
     <>
       <div className="mvc-hero-container">
         {/* A video link to have the live backgrond*/}
-        <div></div>
+        <div className="background_Container">
+          <video className=".background-video" loop autoPlay muted>
+            <source src={video} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <div>
           <h1 className="title">My Virtual Classroom</h1>
           <p className="subTitle">
@@ -34,7 +40,6 @@ function MVC_Hero() {
 
         {/** TODO: Add a direct link to contact page or some other important links  */}
         <div></div>
-        <Platform />
       </div>
     </>
   );
