@@ -6,19 +6,20 @@ function AboutUs_Link() {
     <>
       <div className="about">
         <div className="about_Container">
+          <div className="about_Text">
+            <h2>My Virtual Classroom</h2>
+            <h5 className="about_SubText">
+              sadasdasdasd asd asd asda sadasdasdasd asd asd asdasdasd as ad
+              asdasd asd asd asdasd
+            </h5>
+          </div>
+
           <div className="about_Img">
             <img
               src={require("../../images/Kopia-av-My_Virtual_Classroom_-Daniel2020-11-06_12-51-03.png")}
               alt="Two men! Daniel Johansson and Daniel Ny."
               className="about_Img "
             />
-          </div>
-          <div className="about_Text">
-            <h2>My Virtual Classroom</h2>
-            <p>
-              sadasdasdasd asd asd asda sadasdasdasd asd asd asdasdasd as ad
-              asdasd asd asd asdasd
-            </p>
           </div>
         </div>
         <div className="btn_Container">

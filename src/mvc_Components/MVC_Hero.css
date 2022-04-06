@@ -6,20 +6,36 @@
 
 .mvc-hero-container {
   /* A video is needed here */
-  background: url("../images/speed-internet-technology-background-5.jpg") center
-    center/cover no-repeat fixed;
-  height: 1000px; /* check if it works with a large size tv*/
+  /* background: url("../images/speed-internet-technology-background-5.jpg") center*/
+  /*center/cover no-repeat fixed;*/
+  height: 100vh; /* check if it works with a large size tv*/
+  width: 100%;
   display: grid;
-  grid-template-rows: 20% 40% 20% 20%;
+  grid-template-rows: 80% 5% 5% 10%;
   justify-content: center;
   align-items: center;
   text-align: center;
-  top: -90px; /* To have the background all over the page (under navbar)*/
+
+  /* To have the background all over the page (under navbar)*/
+
   position: relative;
   margin-bottom: 0px;
-  min-width: 300px;
-  max-height: 1080px;
-  max-width: 1920px;
+  min-width: 250px;
+  max-height: 2160px;
+  max-width: 3840px;
+
+}
+.background_Container{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
 }
 
 .title {
@@ -65,9 +81,9 @@
 }
 .hero_Btn {
   width: 200px;
-  height: 70px;
+  height: 50px;
   background: transparent;
-  font-size: 25px;
+  font-size: 1rem;
   font-weight: bold;
 
   color: rgb(255, 255, 255);
@@ -99,5 +115,10 @@
   .subTitle {
     color: white;
     font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .mvc-hero-container {
   }
 }

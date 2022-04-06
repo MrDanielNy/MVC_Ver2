@@ -9,6 +9,7 @@ import MVC_Contacts_Footer from "./MVC_Contacts_Footer";
 import "./MVC_Contacts_Footer.css";
 import { FaBeer, BiMessageDetail, FaRegEnvelope } from "react-icons/fa";
 import { type } from "@testing-library/user-event/dist/type";
+import video from "../../images/video-2.mp4";
 
 function MVC_Contacts() {
   const labelName = useRef();
@@ -179,6 +180,12 @@ function MVC_Contacts() {
 
   return (
     <>
+      <div className="background_Container">
+        <video className=".background-video" loop autoPlay muted>
+          <source src={video} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div className="contact_Container">
         <div className="containerAni">
           <h3 class="first_text">

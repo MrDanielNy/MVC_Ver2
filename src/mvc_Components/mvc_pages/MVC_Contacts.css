@@ -1,6 +1,6 @@
 .contact_Container {
-  background: url("../../images/speed-internet-technology-background-5.jpg")
-    center center/cover no-repeat fixed;
+  /*background: url("../../images/speed-internet-technology-background-5.jpg")
+    center center/cover no-repeat fixed;*/
   position: relative;
   display: flex;
   flex-direction: row;
@@ -14,7 +14,7 @@
   max-height: 1080px;
   max-width: 1920px;
   top: -90px;
-  background-color: rgb(12, 12, 158);
+
 }
 
 @media screen and (max-height: 600px) {
@@ -116,7 +116,7 @@ end of the first animation */
   border-radius: 5px;
   border: rgb(250, 247, 247) 2px solid;
   box-shadow: 5px 5px 10px 1px rgb(217, 225, 255);
-  height: 500px;
+  height: 400px;
   width: 400px;
   min-width: 200px;
   animation: form_Animation 1s 1;
@@ -179,12 +179,12 @@ input {
 
 .message {
   width: 100%;
-  height: 150px;
   border-radius: 5px;
   resize: none;
   scroll-behavior: smooth;
-  font-size: large;
+  font-size: larger;
   margin-top: 10px;
+  height: 100px;
 }
 .btnSend {
   width: 100%;
@@ -203,7 +203,26 @@ input {
   transition: all 1s ease-out;
 }
 
-@media screen and (max-height: 450px) {
+@media screen and (max-width: 650px) {
+  .form_Container {
+    width: 350px;
+  }
+  .label {
+    font-size: 15px;
+  }
+  input {
+    font-size: 15px;
+  }
+  .message {
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .form_Container {
+    width: 250px;
+  }
+
   /*@keyframes first_text_anim {
     0% {
       color: rgb(255, 174, 0);
@@ -235,13 +254,6 @@ input {
     }*/
 }
 
-.form_Container {
-  height: 350px;
-}
-.message {
-  height: 60px;
-}
-
 .name {
   margin: 2px;
 }
@@ -253,16 +265,6 @@ input {
 }
 .text {
   margin-top: 5px;
-}
-
-.message {
-  margin: 10px;
-}
-
-@media screen and (max-width: 650px) {
-  .form_Container {
-    width: 100%;
-  }
 }
 
 .footer {

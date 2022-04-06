@@ -5,8 +5,8 @@ function Platform() {
   return (
     <>
       <div className="platform_Container">
-        <div className="platform_Text">
-          <p>
+        <div className="platform_Text_Container">
+          <p className="platform_Text">
             My Virtual Classroom är ett initiativ med fokus på att skapa och
             utveckla nya innovativa verktyg med hjälp av virtuell verklighet.
             Det är även namnet på den plattform som i framtiden kommer utvecklas
@@ -15,7 +15,6 @@ function Platform() {
             in skolorna till “Utbildning-2.0”.
           </p>
         </div>
-        <div className="b"></div>
       </div>
     </>
   );

@@ -7,6 +7,8 @@
   position: relative;
   min-width: 270px;
   height: 100px;
+  background-color: bisque;
+ 
 }
 .contacts {
   position: absolute;
@@ -19,6 +21,7 @@
   text-align: center;
   width: 100%;
   min-width: 270px;
+  background-color: bisque;
 }
 ul {
   list-style: none;
@@ -57,7 +60,7 @@ p {
   padding: 10px;
 }
 .facebook {
-  margin: 1rem;
+  margin: 1rem ;
 }
 .linkedIn {
   margin: 1rem;

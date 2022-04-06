@@ -14,6 +14,7 @@ import MVC_Contacts from "./mvc_Components/mvc_pages/MVC_Contacts";
 function App() {
   return (
     <Router>
+      {/** Navbar is placed here because it shoud be always on top of all elements in the page */}
       <NavPane />
       <Routes>
         <Route path="/" element={<MVC_Home />} />

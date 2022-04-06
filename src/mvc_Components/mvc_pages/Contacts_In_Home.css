@@ -4,20 +4,25 @@
   box-sizing: border-box;
 }
 .main_Container {
-  background-color: darkslategrey;
   max-width: 1920px;
 }
 .contacts_Container {
   display: flex;
   flex-direction: column;
-  background-color: rgb(203, 255, 255);
+  background-color: rgb(0, 13, 73);
   align-items: center;
   justify-content: center;
-  height: 300px;
+  height: 400px;
 }
 .contacts_Title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   margin: 30px;
   font-size: 40px;
+  color: white;
 }
 .contact_Information {
   display: flex;
@@ -26,11 +31,18 @@
   justify-content: center;
   align-items: center;
 }
-.DN {
-  margin: 20px;
+.btn_Contact {
+  color: white;
+  background-color: transparent;
+  border: 1px white solid;
+  width: 200px;
+  height: 50px;
+  font-size: 1rem;
+  transition: all 0.5s ease;
+  margin-top: 20px;
 }
-.DJ {
-  margin: 20px;
+.btn_Contact:hover {
+  background-color: rgb(230, 173, 153);
 }
 @media only screen and (max-width: 600px) {
   .contacts_Title {
