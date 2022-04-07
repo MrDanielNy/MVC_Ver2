@@ -1,7 +1,7 @@
 .contact_Container {
-  /*background: url("../../images/speed-internet-technology-background-5.jpg")
-    center center/cover no-repeat fixed;*/
-  position: relative;
+ background: url("../../images/digital-circle-circuit-blue-background-futuristic-technology.jpg")
+    center center/cover no-repeat fixed;
+    position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

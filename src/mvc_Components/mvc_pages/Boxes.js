@@ -5,8 +5,9 @@ import "./Boxes.css";
 function Boxes() {
   return (
     <div className="Boxes">
-      {/* <h1>My Virtual Classroom!</h1>*/}
+     
       <div className="Boxes_Container">
+      <h1>My Virtual Classroom!</h1>
         <div className="Items">
           {/** TODO change the content of each card. Fetching from database */}
           <MVC_Home_Boxes

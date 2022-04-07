@@ -6,11 +6,18 @@
   max-width: 1920px;
   height: 700px;
   width: 100%;
+  min-width: 300px;
 
 }
 .Boxes_Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 90%;
-  margin: 0 auto;
+  height: 600px;
+  margin: 50px auto;
+
 }
 /* Positioning and the number of boxes(Cards) in screens */
 .Items {
@@ -89,13 +96,13 @@
 }
 @media only screen and (max-width: 4000px) {
   .Boxes {
-    height: 700px;
+    height: 1000px;
   }
 }
 
 @media only screen and (max-width: 1250px) {
   .Boxes {
-    height: 1000px;
+    height: 1100px;
   }
 }
 
