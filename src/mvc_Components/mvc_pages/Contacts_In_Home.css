@@ -22,8 +22,14 @@
   align-items: center;
 
   margin: 30px;
-  font-size: 40px;
-  color: white;
+  font-size: 30px;
+  color: rgb(217, 221, 0);
+}
+.subTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 .contact_Information {
   display: flex;
@@ -53,10 +59,24 @@
   .contacts_Container {
     height: 250px;
   }
-  .DN {
-    margin: 5px 10px;
-  }
-  .DJ {
-    margin: 5px 10px;
-  }
+ 
 }
+
+@media only screen and (max-width: 400px) {
+  .contacts_Title {
+    margin: 20px;
+    font-size: 15px;
+  }
+  .subTitle{
+    margin-top: 10px;
+    font-size: 12px;
+  }
+  .contact_Information{
+    font-size: 10px;
+  }
+  .contacts_Container {
+    height: 300px;
+  }
+ 
+}
+

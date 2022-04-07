@@ -20,9 +20,10 @@
 
   position: relative;
   margin-bottom: 0px;
-  min-width: 250px;
+  min-width: 300px;
   max-height: 2160px;
   max-width: 3840px;
+ 
 
 }
 .background_Container{
@@ -31,14 +32,19 @@
   object-fit: cover;
   position: fixed;
 
+
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   z-index: -1;
+  background-color: rgb(255, 226, 189);
 }
 
 .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   /*text-shadow: 2px 2px 20px #fbff00;*/
   color: white;
   font-size: 100px;
@@ -78,6 +84,7 @@
   color: rgb(255, 255, 255);
   font-weight: bold;
   font-size: 35px;
+  margin: 0 10px;
 }
 .hero_Btn {
   width: 200px;
@@ -118,7 +125,10 @@
   }
 }
 
-@media screen and (max-width: 470px) {
-  .mvc-hero-container {
+@media screen and (max-width: 400px) {
+  .hero_Btn {
+    width: 150px;
+    height: 40px;
+    font-size: 13px;
   }
 }

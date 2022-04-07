@@ -102,11 +102,44 @@
 
 @media only screen and (max-width: 1250px) {
   .Boxes {
-    height: 1100px;
+    height: 800px;
+  }
+  .Item_Link {
+    width: 300px;
+  }
+  .Item_Text {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 1080px) {
+  .Boxes {
+    height: 800px;
+  }
+  .Item_Link {
+    width: 250px;
+  }
+  .Item_Text {
+    font-size: 13px;
   }
 }
 
-@media only screen and (max-width: 850px) {
+
+@media only screen and (max-width: 900px) {
+  .Boxes{
+    height: 900px;
+  }
+  .Boxes_Container {
+    height: 800px;
+  }
+  
+  .Item_Link {
+    width: 250px;
+  }
+  .Item_Text {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 750px) {
   .Item_Link {
     width: 300px;
   }
@@ -116,14 +149,34 @@
 }
 
 @media only screen and (max-width: 722px) {
-  .Boxes {
-    height: 1800px;
+  .Boxes{
+    height: 1000px;
   }
+  .Boxes_Container {
+    height: 900px;
+  }
+  
   .Item_Link {
-    width: 300px;
+    width: 250px;
   }
   .Item_Text {
-    font-size: 10px;
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 610px) {
+  .Boxes{
+    height: 1700px;
+  }
+  .Boxes_Container {
+    height: 1600px;
+  }
+  
+  .Item_Link {
+    width: 250px;
+  }
+  .Item_Text {
+    font-size: 13px;
   }
 }
 
@@ -139,6 +192,10 @@
     font-size: 10px;
   }
   .Boxes {
-    height: 1590px;
+    height: 1800px;
   }
+  .Boxes_Container {
+    height: 1600px;
+  }
+  
 }

@@ -60,7 +60,7 @@
 
 /*TODO  find an icon or a designed logo*/
 .MVC-Logo {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   justify-self: start;
   cursor: pointer;
   text-decoration: none;
@@ -75,7 +75,7 @@
 }
 
 .ham_Menu {
-  color: rgb(43, 0, 0);
+  color: rgb(255, 255, 255);
   margin-right: 20px;
   font-size: 1.8rem;
   justify-self: end; /*To keep at the corner of the page*/
@@ -119,4 +119,26 @@
   transition: all 0.8s ease-out;
   opacity: 1;
   font-size: 55px;
+}
+button{
+  background-color: transparent;
+  font-size: 30px;
+  color: white;
+  border: 0ch;
+}
+button:hover{
+  color: #f7aa04;
+  font-size: 35;
+  transition: all 0.8s ease-out;
+  opacity: 1;
+}
+
+@media screen and (max-width: 360px) {
+.menu-links{
+  font-size: 30px;
+}
+.menu-links:hover{
+  font-size: 35px;
+}
+
 }
