@@ -8,7 +8,7 @@
   /* A video is needed here */
   /* background: url("../images/speed-internet-technology-background-5.jpg") center*/
   /*center/cover no-repeat fixed;*/
-  height: 100vh; /* check if it works with a large size tv*/
+  height: 80vh; /* check if it works with a large size tv*/
   width: 100%;
   display: grid;
   grid-template-rows: 80% 5% 5% 10%;
@@ -122,6 +122,13 @@
   .subTitle {
     color: white;
     font-size: 20px;
+  }
+  /* If we have small sizes of screens*/
+  .mvc-hero-container{
+    top: -90px;
+   background-color: rgb(255, 226, 189);
+    background: url("../images/speed-internet-technology-background-5.jpg") center
+  center/cover no-repeat fixed;
   }
 }
 
