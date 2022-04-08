@@ -7,9 +7,10 @@
 
 .dream_Logo {
     position: fixed;
-    left: -30px;
+    left: -10px;
     bottom: 15px;
-    opacity: .5;
+    opacity: .7;
+    z-index: 999;
 }
 
 .container_AboutUs {
@@ -22,43 +23,56 @@
     align-items: center;
     height: 100vh;
     width: 100%;
+    min-width: 300px;
     background: url("../../images/1_u9E_tiaCY980rEJVePum_Q.jpeg") center center/cover no-repeat fixed;
 }
 
 .title_About {
-
     display: flex;
-    /*text-shadow: 2px 2px 20px #fbff00;*/
     justify-content: center;
     align-items: center;
+    text-align: center;
     color: white;
     font-size: 20px;
     animation: title_Animation 1s 1;
-    width: 40%;
-    margin: 30px;
+    width: 50%;
+    margin-left: 30 px;
+
 }
 
 .our_Story {
     text-align: justify;
     text-justify: inter-word;
-    width: 40%;
     padding: 20px;
-    margin: 20px;
+    margin-right: 30px;
+    border-radius: 10px;
+    width: 700px;
+    height: 400px;
 }
 
+
+
 .our_Story_Title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     color: rgb(255, 187, 0);
-    margin-bottom: 15px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+
 }
 
 .our_Story_Text {
     font-size: 20px;
     line-height: 1.2;
-    background-color: rgba(247, 247, 247, 0.1);
     color: white;
     font-family: 'Times New Roman', Times, serif;
     border-radius: 10px;
     padding: 50px;
+    margin-top: 20px;
+    background-color: rgba(247, 247, 247, 0.1);
 }
 
 @keyframes title_Animation {
@@ -92,6 +106,94 @@
     position: relative;
 
     height: 500px;
+}
+
+@media only screen and (max-width:1500px) {
+    .container_AboutUs {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .our_Story {
+        height: 350px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .title_About {
+        margin-bottom: 50px;
+    }
+}
+
+@media only screen and (max-width:1200px) {
 
 
+    .title_About {
+        font-size: 15px;
+    }
+
+    .our_Story_Title {
+        font-size: 30px;
+    }
+
+    .our_Story_Text {
+        font-size: 15px;
+    }
+
+
+
+    .our_Story {
+        height: 300px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+}
+
+@media only screen and (max-width:1000px) {
+    .dream_Logo img {
+        width: 125px;
+        height: 219px;
+    }
+}
+
+
+@media only screen and (max-width:750px) {
+    .dream_Logo img {
+        width: 85px;
+        height: 181px;
+    }
+
+    .our_Story {
+
+        width: 300px;
+        height: 300px;
+    }
+
+    .title_About {
+        font-size: 10px;
+    }
+
+    .our_Story_Title {
+        font-size: 20px;
+    }
+
+    .our_Story_Text {
+        font-size: 15px;
+    }
+
+
+
+    .our_Story {
+        height: 350px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+}
+
+
+@media only screen and (max-width:400px) {
+    .dream_Logo img {
+        width: 65px;
+        height: 156px;
+    }
 }

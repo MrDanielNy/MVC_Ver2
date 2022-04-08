@@ -15,7 +15,9 @@ function Contacts_Link() {
         </div>
 
         <div>
-          <button className="btn_Contact">Contact us</button>
+          <Link to="/Contacts">
+            <button className="btn_Contact">Contact us</button>
+          </Link>
         </div>
       </div>
     </div>

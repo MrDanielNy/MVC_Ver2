@@ -23,6 +23,13 @@
   max-width: 3840px;
 }
 
+.dream_Logo_ {
+  position: fixed;
+  left: -10px;
+  bottom: 15px;
+  opacity: .7;
+}
+
 .background_Container {
   width: 100vw;
   height: 100vh;
@@ -41,7 +48,7 @@
   justify-content: center;
   align-items: center;
   /*text-shadow: 2px 2px 20px #fbff00;*/
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 100px;
   margin-top: -100px;
   animation: title_Animation 2s 1;
@@ -79,11 +86,11 @@
   }
 }
 
-.subTitle {
+.subTitle_ {
   /* text-shadow: 2px 2px 10px #fbff00;*/
   color: rgb(255, 255, 255);
   font-weight: bold;
-  font-size: 35px;
+  font-size: 30px;
   margin: 0 10px;
 }
 

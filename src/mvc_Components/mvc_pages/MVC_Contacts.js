@@ -181,14 +181,14 @@ function MVC_Contacts() {
   return (
     <>
       <div className="background_Container">
-       {/*} <video className=".background-video" loop autoPlay muted>
+        {/*} <video className=".background-video" loop autoPlay muted>
           <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
   </video>*/}
       </div>
       <div className="contact_Container">
         <div className="containerAni">
-          <h3 class="first_text">
+          <h3 className="first_text_">
             Do you want to be involved and create tomorrow's teaching?
           </h3>
         </div>

@@ -11,7 +11,7 @@ function MVC_AboutUs() {
             <div className="container_AboutUs">
                 {/** The logo at the bottom of the page */}
                 <div className="dream_Logo">
-                    <img src={require("../../images/kisspng-oculus-rift-htc-vive-playstation-vr-virtual-realit-virtual-reality-5b209e8d5bd2c6.9641947015288643973761(1).png")}></img>
+                    <img src={require("../../images/Robotic.png")}></img>
                 </div>
                 <div className="title_About">
                     <h1>
@@ -25,9 +25,13 @@ function MVC_AboutUs() {
                         <h1 className="our_Story_Title" >
                             Hur allt började
                         </h1>
-                        Daniel Johansson som efter 10 år fortfarande jobbar inom skolan och dagligen ser hur ett stort antal elever behöver hjälp för att lösa olika uppgifter ville se om det finns lösningar inom dagens teknik. I det praktiska ämnet träslöjd blir svårigheterna för vissa elever så pass att en elevassistent/elevresurs gör större delen av arbetet istället för eleven. Eleverna vill lyckas, vill klara av saker och ting själva men kan ibland inte på grund av någon form av funktionsnedsättning.
+                        {/** TODO: Find a nice font here */}
+                        {/** TODO: Link Daniel to a LinkedIn page */}
+                        Daniel Johansson som efter 10 år fortfarande jobbar inom skolan och dagligen ser hur ett
+                        stort antal elever behöver hjälp för att lösa olika uppgifter ville se om det finns lösningar inom dagens teknik. I det praktiska ämnet träslöjd blir svårigheterna för vissa elever så pass att en elevassistent/elevresurs gör större delen av arbetet istället för eleven. Eleverna vill lyckas, vill klara av saker och ting själva men kan ibland inte på grund av någon form av funktionsnedsättning.
 
-                        My Virtual Classroom skapades när Daniel Ny, med bakgrund som spel- och apputvecklare kom in och delade med sig av sina erfarenheter. My Virtual Classrooms mål just nu är att skapa en digital lösning i en virtuell värld som ett verktyg och hjälpmedel för att lyckas på mer egen hand. Samma läroplan, samma lektion, samma uppgift men i en virtuell träslöjd!
+                        <br /> My Virtual Classroom skapades när Daniel Ny, med bakgrund som spel- och apputvecklare kom in
+                        och delade med sig av sina erfarenheter. My Virtual Classrooms mål just nu är att skapa en digital lösning i en virtuell värld som ett verktyg och hjälpmedel för att lyckas på mer egen hand. Samma läroplan, samma lektion, samma uppgift men i en virtuell träslöjd!
                     </p>
                 </div>
 

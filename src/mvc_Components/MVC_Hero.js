@@ -18,6 +18,7 @@ function MVC_Hero() {
   return (
     <>
       <div className="mvc-hero-container">
+
         {/* A video link to have the live backgrond*/}
         <div className="background_Container">
           <video className=".background-video" loop autoPlay muted>
@@ -27,7 +28,7 @@ function MVC_Hero() {
         </div>
         <div>
           <h1 className="title">My Virtual Classroom</h1>
-          <p className="subTitle">
+          <p className="subTitle_">
             Vi vill förändra dagens utbildning och bjuder in Sveriges skolor
             till “Utbildning-2.0”.
           </p>
