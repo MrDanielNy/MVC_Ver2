@@ -16,10 +16,13 @@
     position: relative;
     top: -100px;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     height: 100vh;
     width: 100%;
-    background: url("../../images/3d-robot-hand-background-ai-technology-side-view.jpg") center center/cover no-repeat fixed;
+    background: url("../../images/1_u9E_tiaCY980rEJVePum_Q.jpeg") center center/cover no-repeat fixed;
 }
 
 .title_About {
@@ -33,6 +36,29 @@
     animation: title_Animation 1s 1;
     width: 40%;
     margin: 30px;
+}
+
+.our_Story {
+    text-align: justify;
+    text-justify: inter-word;
+    width: 40%;
+    padding: 20px;
+    margin: 20px;
+}
+
+.our_Story_Title {
+    color: rgb(255, 187, 0);
+    margin-bottom: 15px;
+}
+
+.our_Story_Text {
+    font-size: 20px;
+    line-height: 1.2;
+    background-color: rgba(247, 247, 247, 0.1);
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 10px;
+    padding: 50px;
 }
 
 @keyframes title_Animation {
