@@ -1,6 +1,7 @@
 import React from "react";
 import "./MVC_Contacts_Footer.css";
 import "./MVC_Contacts";
+
 /** Email link  */
 const Mailto = ({ email, subject, body, children }) => {
   return (

@@ -8,31 +8,26 @@
   /* A video is needed here */
   /* background: url("../images/speed-internet-technology-background-5.jpg") center*/
   /*center/cover no-repeat fixed;*/
-  height: 80vh; /* check if it works with a large size tv*/
+  height: 90vh;
+  /* check if it works with a large size tv*/
   width: 100%;
   display: grid;
   grid-template-rows: 80% 5% 5% 10%;
   justify-content: center;
   align-items: center;
   text-align: center;
-
-  /* To have the background all over the page (under navbar)*/
-
   position: relative;
   margin-bottom: 0px;
   min-width: 300px;
   max-height: 2160px;
   max-width: 3840px;
- 
-
 }
-.background_Container{
+
+.background_Container {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
   position: fixed;
-
-
   left: 0;
   right: 0;
   top: 0;
@@ -51,27 +46,32 @@
   margin-top: -100px;
   animation: title_Animation 2s 1;
 }
+
 @keyframes title_Animation {
   0% {
     opacity: 0;
     letter-spacing: 1px;
     transition: all ease-in;
   }
+
   10% {
     opacity: 0.1;
     letter-spacing: 3px;
     transition: all ease-in;
   }
+
   20% {
     opacity: 0.2;
     letter-spacing: 5px;
     transition: all ease-in;
   }
+
   30% {
     opacity: 0.3;
     letter-spacing: 7px;
     transition: all ease-in;
   }
+
   40% {
     opacity: 0.4;
     letter-spacing: 9px;
@@ -86,6 +86,7 @@
   font-size: 35px;
   margin: 0 10px;
 }
+
 .hero_Btn {
   width: 200px;
   height: 50px;
@@ -98,37 +99,42 @@
   margin: 30px;
   border: 2px white double;
 }
+
 /* TODO  Change the size of the button using media screen to have accessibility for mobile users */
 .hero_Btn:hover {
   background-color: white;
   color: black;
   transition: all 0.5s ease;
 }
+
 @media screen and (max-width: 960px) {
   .title {
     font-size: 60px;
     margin-top: -50px;
   }
+
   .subTitle {
     color: white;
     font-size: 25px;
   }
 }
+
 @media screen and (max-width: 768px) {
   .title {
     font-size: 40px;
     margin-top: -20px;
   }
+
   .subTitle {
     color: white;
     font-size: 20px;
   }
+
   /* If we have small sizes of screens*/
-  .mvc-hero-container{
+  .mvc-hero-container {
     top: -90px;
-   background-color: rgb(255, 226, 189);
-    background: url("../images/speed-internet-technology-background-5.jpg") center
-  center/cover no-repeat fixed;
+    background-color: rgb(255, 226, 189);
+    background: url("../images/speed-internet-technology-background-5.jpg") center center/cover no-repeat fixed;
   }
 }
 

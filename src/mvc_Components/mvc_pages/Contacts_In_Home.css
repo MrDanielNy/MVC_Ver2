@@ -3,18 +3,21 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .main_Container {
   max-width: 1920px;
   min-width: 300px;
 }
+
 .contacts_Container {
   display: flex;
   flex-direction: column;
-  background-color: rgb(0, 13, 73);
+
   align-items: center;
   justify-content: center;
   height: 400px;
 }
+
 .contacts_Title {
   display: flex;
   flex-direction: column;
@@ -25,12 +28,14 @@
   font-size: 30px;
   color: rgb(217, 221, 0);
 }
-.subTitle{
+
+.subTitle {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
+
 .contact_Information {
   display: flex;
   flex-direction: row;
@@ -38,6 +43,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .btn_Contact {
   color: white;
   background-color: transparent;
@@ -48,18 +54,21 @@
   transition: all 0.5s ease;
   margin-top: 20px;
 }
+
 .btn_Contact:hover {
   background-color: rgb(230, 173, 153);
 }
+
 @media only screen and (max-width: 600px) {
   .contacts_Title {
     margin: 20px;
     font-size: 20px;
   }
+
   .contacts_Container {
     height: 250px;
   }
- 
+
 }
 
 @media only screen and (max-width: 400px) {
@@ -67,16 +76,18 @@
     margin: 20px;
     font-size: 15px;
   }
-  .subTitle{
+
+  .subTitle {
     margin-top: 10px;
     font-size: 12px;
   }
-  .contact_Information{
+
+  .contact_Information {
     font-size: 10px;
   }
+
   .contacts_Container {
     height: 300px;
   }
- 
-}
 
+}
