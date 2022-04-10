@@ -15,7 +15,7 @@
 
 .container_AboutUs {
     position: relative;
-    top: -100px;
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -23,6 +23,7 @@
     align-items: center;
     height: 100vh;
     width: 100%;
+
     min-width: 300px;
     background: url("../../images/1_u9E_tiaCY980rEJVePum_Q.jpeg") center center/cover no-repeat fixed;
 }
@@ -47,7 +48,8 @@
     margin-right: 30px;
     border-radius: 10px;
     width: 700px;
-    height: 400px;
+    height: 500px;
+    background-color: rgba(247, 247, 247, 0.1);
 }
 
 
@@ -72,7 +74,6 @@
     border-radius: 10px;
     padding: 50px;
     margin-top: 20px;
-    background-color: rgba(247, 247, 247, 0.1);
 }
 
 @keyframes title_Animation {
@@ -127,6 +128,10 @@
 
 @media only screen and (max-width:1200px) {
 
+    .container_AboutUs {
+        background-image: url("");
+        background-color: rgb(0, 40, 73);
+    }
 
     .title_About {
         font-size: 15px;
@@ -191,9 +196,25 @@
 }
 
 
-@media only screen and (max-width:400px) {
+@media only screen and (max-width:412px) {
     .dream_Logo img {
         width: 65px;
         height: 156px;
     }
+
+    /* .container_AboutUs {
+        background-image: url("");
+        background-color: rgb(0, 40, 73);
+    }*/
 }
+
+/*@media only screen and (max-height:450px) {
+    .contacts_AboutUs {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 60%;
+        background-image: url("");
+        background-color: brown;
+    }
+}*/

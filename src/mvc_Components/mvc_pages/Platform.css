@@ -1,7 +1,7 @@
 .platform_Container {
   margin: 0;
   position: relative;
-  /*top: -300px;*/
+
   display: flex;
   justify-content: center;
   align-items: center;

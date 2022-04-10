@@ -3,15 +3,17 @@
   margin-top: 0px;
   box-sizing: border-box;
 }
+
 .nav_Pane {
   position: sticky;
   z-index: 999;
   top: 0px;
   max-width: 100%;
+  min-width: 300px;
 }
 
 .navbar-container {
-  background-color: transparent;
+  background-color: rgba(14, 0, 78, 0.144);
   display: grid;
   /* Logo Gap Gap HamMenu*/
   grid-template-columns: 10% 40% 40% 10%;
@@ -26,13 +28,14 @@
 .background-img {
   max-width: 100%;
   max-height: 100%;
-  display: block; /* remove extra space below image */
+  display: block;
+  /* remove extra space below image */
 }
 
 .menu {
   display: flex;
   flex-direction: column;
-  width: 100%; /* Or 100vh*/
+  width: 100%;
   height: 100%;
   position: absolute;
   font-size: large;
@@ -44,8 +47,9 @@
   /* list-style-type: none;*/
   z-index: 900;
 }
+
 .menu.active {
-  background: rgba(0, 0, 0, 0.822);
+  background: rgba(155, 155, 155, 0.822);
   left: 0;
   top: 0px;
   opacity: 10;
@@ -68,33 +72,39 @@
   margin-left: 20px;
   transition: all 0.8s ease;
 }
+
 .MVC-Logo:hover {
   transition: all 0.8s ease;
-  color: lightskyblue;
-  text-shadow: -2px 0px 10px #fbff00;
+  color: rgb(0, 0, 0);
+
 }
 
 .ham_Menu {
   color: rgb(255, 255, 255);
   margin-right: 20px;
   font-size: 1.8rem;
-  justify-self: end; /*To keep at the corner of the page*/
+  justify-self: end;
+  /*To keep at the corner of the page*/
   cursor: pointer;
   transition: all 0.8s ease;
 }
+
 .ham_Menu:hover {
   transition: all 0.8s ease-out;
-  color: lightskyblue;
+  color: rgb(0, 0, 0);
 }
+
 /* Ham menu icons*/
 .fa-times {
   font-size: 2rem;
   z-index: 1000;
 }
+
 .fa-times:active {
   transform: rotate(30deg) translate(-2px, -1px);
   z-index: 1000;
 }
+
 .fa-bars:active {
   opacity: 0.5;
   z-index: 1000;
@@ -120,25 +130,36 @@
   opacity: 1;
   font-size: 55px;
 }
-button{
+
+.project_Btn {
   background-color: transparent;
-  font-size: 30px;
+  font-size: 50px;
   color: white;
   border: 0ch;
 }
-button:hover{
+
+.project_Btn:hover {
   color: #f7aa04;
-  font-size: 35;
+  font-size: 55px;
   transition: all 0.8s ease-out;
   opacity: 1;
 }
 
 @media screen and (max-width: 360px) {
-.menu-links{
-  font-size: 30px;
-}
-.menu-links:hover{
-  font-size: 35px;
-}
+  .menu-links {
+    font-size: 30px;
+  }
+
+  button {
+    font-size: 30px;
+  }
+
+  button:hover {
+    font-size: 35px;
+  }
+
+  .menu-links:hover {
+    font-size: 35px;
+  }
 
 }

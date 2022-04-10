@@ -8,11 +8,12 @@
   align-items: center;
   text-align: center;
   padding: 20px;
-  height: 100vh;
+  height: 90vh;
   width: 100%;
+  min-width: 300px;
   max-height: 1080px;
   max-width: 1920px;
-  top: -90px;
+
 
 }
 
@@ -72,10 +73,11 @@
 
   .first_text_ {
     text-align: center;
-
+    font-weight: bold;
     font-size: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin-bottom: 30px;
+    margin-top: 50px;
     color: rgb(255, 255, 255);
   }
 }
@@ -220,7 +222,7 @@ input {
 
 .btnSend:hover {
   background-color: rgb(124, 124, 243);
-  color: white;
+  color: rgb(255, 255, 255);
   transition: all 1s ease-out;
 }
 
@@ -240,11 +242,19 @@ input {
   .message {
     font-size: 15px;
   }
+
+  .btnSend:hover {
+    background-color: rgb(124, 124, 243);
+    color: rgb(255, 255, 255);
+    transition: none;
+    font-size: 20px;
+  }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 490px) {
   .form_Container {
-    width: 250px;
+    width: 200px;
+    height: 350px;
   }
 
   /*@keyframes first_text_anim {

@@ -6,9 +6,8 @@ import "./MVC_Contacts";
 const Mailto = ({ email, subject, body, children }) => {
   return (
     <a
-      href={`mailto:${email}?subject=${
-        encodeURIComponent(subject) || ""
-      }&body=${encodeURIComponent(body) || ""}`}
+      href={`mailto:${email}?subject=${encodeURIComponent(subject) || ""
+        }&body=${encodeURIComponent(body) || ""}`}
     >
       {children}
     </a>
@@ -55,7 +54,7 @@ function MVC_Contacts_Footer() {
           {/**TODO: Add google map API to show MVC's address */}
         </div>
       </div>
-      {/** TODO: Make a link to MVC's social medias */}
+      {/** TODO: Make a link to MVC's social media */}
       <div className="social_Links_Container">
         <div className="facebook">
           <img

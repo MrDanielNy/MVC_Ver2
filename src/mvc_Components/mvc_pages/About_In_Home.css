@@ -4,6 +4,8 @@
 }
 
 .about {
+  position: relative;
+
   max-width: 1920px;
   min-width: 300px;
   margin: 0 auto;
@@ -53,7 +55,8 @@
   font-weight: bold;
   color: rgb(0, 0, 0);
   cursor: pointer;
-  border-color: rgba(1, 47, 53, 0.24);
+  border: 1px black solid;
+
   text-align: center;
   margin: 20px;
 }
@@ -64,6 +67,7 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+
 }
 
 /* TODO  Change the size of the button using media screen to have accessibility for mobile users */

@@ -1,11 +1,13 @@
 /* TODO  Divide the file into two files, based on the js files */
 
 .Boxes {
+    position: relative;
+
     padding: 5px;
     background: rgb(255, 255, 255);
     max-height: 3000px;
     max-width: 1920px;
-    height: 700px;
+
     width: 100%;
     min-width: 300px;
 }
@@ -16,7 +18,7 @@
     align-items: center;
     justify-content: center;
     width: 90%;
-    height: 600px;
+    height: 900px;
     margin: 50px auto;
 }
 
@@ -55,6 +57,11 @@
     position: relative;
     width: 100%;
     padding-top: 50%;
+}
+
+.boxes_Title {
+
+    text-align: center;
 }
 
 .Item_Picture::after {
@@ -109,9 +116,11 @@
     .Boxes {
         height: 800px;
     }
+
     .Item_Link {
         width: 300px;
     }
+
     .Item_Text {
         font-size: 13px;
     }
@@ -121,9 +130,11 @@
     .Boxes {
         height: 800px;
     }
+
     .Item_Link {
         width: 250px;
     }
+
     .Item_Text {
         font-size: 13px;
     }
@@ -133,12 +144,15 @@
     .Boxes {
         height: 900px;
     }
+
     .Boxes_Container {
         height: 800px;
     }
+
     .Item_Link {
         width: 250px;
     }
+
     .Item_Text {
         font-size: 13px;
     }
@@ -148,6 +162,7 @@
     .Item_Link {
         width: 300px;
     }
+
     .Item_Text {
         font-size: 10px;
     }
@@ -157,12 +172,13 @@
     .Boxes {
         height: 1000px;
     }
-    .Boxes_Container {
-        height: 900px;
-    }
+
+    .Boxes_Container {}
+
     .Item_Link {
         width: 250px;
     }
+
     .Item_Text {
         font-size: 13px;
     }
@@ -170,14 +186,17 @@
 
 @media only screen and (max-width: 610px) {
     .Boxes {
-        height: 1700px;
+        height: 1800px;
     }
+
     .Boxes_Container {
         height: 1600px;
     }
+
     .Item_Link {
         width: 250px;
     }
+
     .Item_Text {
         font-size: 13px;
     }
@@ -187,13 +206,14 @@
     .Item_Link {
         width: 250px;
     }
+
     .Item_Text {
         font-size: 10px;
     }
+
     .Boxes {
         height: 1800px;
     }
-    .Boxes_Container {
-        height: 1600px;
-    }
+
+    .Boxes_Container {}
 }

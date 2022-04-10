@@ -8,15 +8,16 @@
   /* A video is needed here */
   /* background: url("../images/speed-internet-technology-background-5.jpg") center*/
   /*center/cover no-repeat fixed;*/
-  height: 90vh;
+  height: 100vh;
   /* check if it works with a large size tv*/
   width: 100%;
   display: grid;
-  grid-template-rows: 80% 5% 5% 10%;
+  grid-template-rows: 90% 0% 0% 10%;
   justify-content: center;
   align-items: center;
   text-align: center;
   position: relative;
+  top: 50px;
   margin-bottom: 0px;
   min-width: 300px;
   max-height: 2160px;
@@ -30,8 +31,9 @@
   opacity: .7;
 }
 
-.background_Container {
+.background_Container_ {
   width: 100vw;
+  min-width: 300px;
   height: 100vh;
   object-fit: cover;
   position: fixed;
@@ -40,17 +42,17 @@
   top: 0;
   bottom: 0;
   z-index: -1;
-  background-color: rgb(255, 226, 189);
+  background: url("../images/speed-internet-technology-background-5.jpg") center center/cover no-repeat fixed;
 }
 
 .title {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   /*text-shadow: 2px 2px 20px #fbff00;*/
   color: rgb(255, 255, 255);
   font-size: 100px;
-  margin-top: -100px;
   animation: title_Animation 2s 1;
 }
 
@@ -88,6 +90,10 @@
 
 .subTitle_ {
   /* text-shadow: 2px 2px 10px #fbff00;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   color: rgb(255, 255, 255);
   font-weight: bold;
   font-size: 30px;
@@ -139,10 +145,20 @@
 
   /* If we have small sizes of screens*/
   .mvc-hero-container {
-    top: -90px;
-    background-color: rgb(255, 226, 189);
-    background: url("../images/speed-internet-technology-background-5.jpg") center center/cover no-repeat fixed;
+
+    /* background: url("../images/speed-internet-technology-background-5.jpg") center center/cover no-repeat fixed;*/
   }
+}
+
+@media screen and (max-width: 550px) {
+  .title {
+    font-size: 30px;
+  }
+
+  .subTitle_ {
+    font-size: 15px;
+  }
+
 }
 
 @media screen and (max-width: 400px) {
@@ -151,4 +167,5 @@
     height: 40px;
     font-size: 13px;
   }
+
 }
