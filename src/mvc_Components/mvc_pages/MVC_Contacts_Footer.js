@@ -17,7 +17,7 @@ const Mailto = ({ email, subject, body, children }) => {
 function MVC_Contacts_Footer() {
   return (
     <div className="container">
-      <div className="contacts">
+      <div className="contacts_">
         <div className="DJ_Mail">
           <h3>Grundare och VD Daniel Johansson</h3>
 
@@ -42,18 +42,20 @@ function MVC_Contacts_Footer() {
             <p> daniel.ny@myvirtualclassroom.se</p>
           </Mailto>
         </div>
-        <div className="address">
+      </div>
+      {/** Address, Google map  */}
+      {/* <div className="address">
           <h4>Address</h4>
           <h4>Find us on Google Map</h4>
           <a
             href="http://maps.google.com/?q=Wahlbecksgatan 25
-582 13 Linköping"
+            582 13 Linköping"
           >
             <p>Wahlbecksgatan 25 582 13 Linköping </p>
           </a>
-          {/**TODO: Add google map API to show MVC's address */}
-        </div>
-      </div>
+          {/**TODO: Add google map API to show MVC's address 
+        </div>*/}
+
       {/** TODO: Make a link to MVC's social media */}
       <div className="social_Links_Container">
         <div className="facebook">

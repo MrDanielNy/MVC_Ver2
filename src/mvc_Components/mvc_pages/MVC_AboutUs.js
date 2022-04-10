@@ -10,9 +10,7 @@ function MVC_AboutUs() {
 
             <div className="container_AboutUs">
                 {/** The logo at the bottom of the page */}
-                <div className="dream_Logo">
-                    <img src={require("../../images/Robotic.png")} />
-                </div>
+
                 <div className="title_About">
                     <h1>
                         We want to change today's education and invite Sweden's schools to "Education-2.0".
@@ -20,8 +18,6 @@ function MVC_AboutUs() {
                 </div>
 
                 <div className="our_Story">
-
-
                     <h1 className="our_Story_Title" >
                         Hur allt började
                     </h1>

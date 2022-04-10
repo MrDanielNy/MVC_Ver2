@@ -14,7 +14,7 @@
 
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: rgb(175, 175, 175);
   align-items: center;
   justify-content: center;
   height: 500px;
@@ -26,7 +26,7 @@
   justify-content: center;
   align-items: center;
 
-  margin: 30px;
+  margin-top: 200px;
   font-size: 30px;
   color: rgb(47, 0, 75);
 }
@@ -39,13 +39,6 @@
   color: black;
 }
 
-.contact_Information {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
 
 .btn_Contact {
   color: rgba(0, 1, 68, 0.788);
@@ -63,6 +56,19 @@
   color: rgb(255, 255, 255);
 }
 
+.social_Links_Container_ {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  height: 300px;
+
+
+}
+
 @media only screen and (max-width: 600px) {
   .contacts_Title {
     margin: 20px;
@@ -70,7 +76,7 @@
   }
 
   .contacts_Container {
-    height: 250px;
+    height: 350px;
   }
 
 }
