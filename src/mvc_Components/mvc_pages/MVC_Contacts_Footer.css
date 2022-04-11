@@ -42,6 +42,12 @@ p {
   font-size: 15px;
 }
 
+.icon_ {
+  color: rgb(0, 0, 0);
+  margin-right: 10px;
+
+}
+
 .DJ_Mail {
   width: 33%;
   display: flex;

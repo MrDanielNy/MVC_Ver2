@@ -1,6 +1,7 @@
 import React from "react";
 import "./MVC_Contacts_Footer.css";
 import "./MVC_Contacts";
+import { RiMailLine } from "react-icons/ri";
 
 /** Email link  */
 const Mailto = ({ email, subject, body, children }) => {
@@ -19,7 +20,7 @@ function MVC_Contacts_Footer() {
     <div className="container">
       <div className="contacts_">
         <div className="DJ_Mail">
-          <h3>Grundare och VD Daniel Johansson</h3>
+          <h3> <div className="icon_"><RiMailLine /> </div>Grundare och VD Daniel Johansson</h3>
 
           <Mailto
             style={{ textDecoration: "none" }}
@@ -32,7 +33,7 @@ function MVC_Contacts_Footer() {
         </div>
 
         <div className="DN_Mail">
-          <h3>Utv.chef och Vice VD Daniel Ny</h3>
+          <h3><div className="icon_"><RiMailLine /> </div>  Utv.chef och Vice VD Daniel Ny</h3>
           <Mailto
             email="daniel.ny@myvirtualclassroom.se"
             style="text-decoration:none"
