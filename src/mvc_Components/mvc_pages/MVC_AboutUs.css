@@ -3,6 +3,11 @@
     margin: 0;
     padding: 0;
 
+
+}
+
+body {
+    background: url("../../images/fullSize.png") center center/cover no-repeat fixed;
 }
 
 .icon {
@@ -15,14 +20,15 @@
 .container_AboutUs {
     position: relative;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    top: -90px;
     height: 100%;
     width: 100%;
     min-width: 300px;
-    background: url("../../images/1_u9E_tiaCY980rEJVePum_Q.jpeg") center center/cover no-repeat fixed;
+    background: url("../../images/fullSize.png") center center/cover no-repeat fixed;
+
 }
 
 .about_DJ_Container {
@@ -30,7 +36,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    margin: 4rem 0;
+    margin: 7rem 0;
+    min-width: 300px;
 }
 
 .about_DJ {
@@ -40,17 +47,16 @@
     align-items: center;
     text-align: justify;
     text-justify: inter-word;
-    padding: 20px;
-    margin-right: 30px;
+    padding: 10px;
+    margin-right: 10px;
     width: 700px;
-    height: 470px;
+    height: 490px;
     /* A tip to use for accessibility for those who can not read easily*/
     word-spacing: 5px;
-    background-color: rgba(22, 15, 15, 0.466);
+    background-color: rgba(11, 59, 63, 0.9);
 }
 
 .DJ_Email {
-
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -59,7 +65,50 @@
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
+    margin-bottom: 50px;
+}
 
+.DJ_Email:hover {
+    color: rgb(255, 255, 255);
+
+
+    transition: all .5S ease-in;
+}
+
+.DJ_Title_Image {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    text-align: left;
+    width: 40%;
+}
+
+.DJ_Image {
+    height: 250px;
+    width: 220px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 1px white solid;
+}
+
+.DN_Title_Image {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    text-align: left;
+    width: 40%;
+}
+
+.DN_Image {
+    height: 250px;
+    width: 220px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 1px white solid;
 }
 
 .DN_Email {
@@ -73,18 +122,9 @@
     cursor: pointer;
 }
 
-.DJ_Email:hover {
-    color: rgb(255, 255, 255);
-
-    ;
-    transition: all .5S ease-in;
-}
-
 .DN_Email:hover {
     color: rgb(255, 255, 255);
-
     transition: all .5S ease-in;
-
 }
 
 .about_DN_Container {
@@ -93,6 +133,7 @@
     /* Good tip for accessibility when we talk about priority of our objects*/
     justify-content: center;
     align-items: center;
+    min-width: 300px;
 }
 
 .about_DN {
@@ -101,17 +142,14 @@
     text-align: justify;
     align-items: center;
     text-justify: inter-word;
-    padding: 20px;
-    margin-right: 30px;
-
+    margin-right: 10px;
+    padding: 10px;
     width: 700px;
     height: 430px;
     /* A tip to use for accessibility for those who can not read easily*/
     word-spacing: 5px;
-    background-color: rgba(22, 15, 15, 0.466);
+    background-color: rgba(11, 59, 63, 0.9);
 }
-
-
 
 .title_About_DJ {
     display: flex;
@@ -122,8 +160,8 @@
     font-size: 40px;
     animation: title_Animation 2s 1;
     width: 80%;
-
-
+    margin-bottom: 30px;
+    margin-left: 20px;
 }
 
 .title_About_DN {
@@ -136,23 +174,25 @@
     animation: title_Animation 2s 1;
     width: 80%;
     margin-left: 30px;
+    margin-bottom: 30px;
 
 }
 
-
-
-
-
-
-
 .our_Story_Text {
-    font-size: 20px;
+    font-size: 25px;
     line-height: 1.2;
-    color: white;
+    color: rgb(255, 255, 255);
     font-family: 'Times New Roman', Times, serif;
     border-radius: 10px;
     padding: 50px;
     margin-top: 20px;
+    min-width: 300px;
+}
+
+.our_Story_Text:hover {
+    transform: scale(1.2);
+    transition: all .5s ease-in;
+
 }
 
 @keyframes title_Animation {
@@ -189,10 +229,22 @@
     background-color: blue;
 }
 
-@media only screen and (max-width:1500px) {
+@media only screen and (max-width:1400px) {
     .container_AboutUs {
+        background: url("../../images/bigSizeScreen.png") center center/cover no-repeat fixed;
+    }
+
+    .about_DJ_Container {
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
+
+    }
+
+    .about_DN_Container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
     }
 
     .our_Story {
@@ -209,8 +261,7 @@
 @media only screen and (max-width:1200px) {
 
     .container_AboutUs {
-        background-image: url("");
-        background-color: rgb(0, 40, 73);
+        /* background-image: url("../../images/VR_Man_400.png") center center/cover no-repeat fixed;*/
     }
 
     .title_About {
@@ -234,24 +285,128 @@
     }
 }
 
-@media only screen and (max-width:1000px) {}
+@media only screen and (max-width:980px) {
+    .container_AboutUs {
+        background: url("../../images/ipad.png") center center/cover no-repeat fixed;
+    }
+}
 
 
 @media only screen and (max-width:750px) {
 
-    .our_Story {
 
-        width: 300px;
-        height: 300px;
+    .title_About_DJ {
+        font-size: 30px;
     }
 
-    .title_About {
-        font-size: 10px;
+    .title_About_DN {
+        font-size: 30px;
+
     }
 
-    .our_Story_Title {
+    .about_DN {
+        width: 500px;
+        height: 430px;
+    }
+
+    .about_DJ {
+        width: 500px;
+        height: 470px;
+    }
+
+    .our_Story_Text {
         font-size: 20px;
     }
+
+    .our_Story {
+        height: 350px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+}
+
+
+@media only screen and (max-width:550px) {
+
+    .container_AboutUs {
+        background: url("../../images/mobileSize_VRman.png") center center/cover no-repeat fixed;
+    }
+
+    .title_About_DJ {
+        font-size: 25px;
+    }
+
+    .title_About_DN {
+        font-size: 25px;
+
+    }
+
+    .about_DN {
+        width: 400px;
+        height: 430px;
+    }
+
+    .about_DJ {
+        width: 400px;
+        height: 600px;
+    }
+
+    .our_Story_Text {
+        font-size: 20px;
+    }
+
+    .our_Story {
+        height: 350px;
+        overflow-y: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .DJ_Email {
+
+        font-size: 15px;
+
+    }
+
+    .DN_Email {
+        font-size: 15px;
+    }
+}
+
+@media only screen and (max-width:440px) {
+
+    .container_AboutUs {
+        background: url("../../images/SmallSize.png") center center/cover no-repeat fixed;
+    }
+
+    .title_About_DJ {
+        font-size: 25px;
+    }
+
+    .title_About_DN {
+        font-size: 25px;
+
+    }
+
+    .about_DN {
+        width: 280px;
+        height: 300px;
+        overflow: scroll;
+        scroll-behavior: smooth;
+    }
+
+    .about_DJ {
+        width: 280px;
+        height: 550px;
+        overflow: scroll;
+        scroll-behavior: smooth;
+    }
+
+
+
+
+
+
+
 
     .our_Story_Text {
         font-size: 15px;
@@ -264,7 +419,26 @@
         overflow-y: scroll;
         scroll-behavior: smooth;
     }
+
+    .DJ_Email {
+
+
+        font-size: 12px;
+
+
+    }
+
+    .DN_Email {
+
+        font-size: 12px;
+
+    }
+
+    .icon {
+        font-size: 20px;
+    }
 }
+
 
 
 @media only screen and (max-width:412px) {

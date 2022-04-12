@@ -13,7 +13,7 @@
 }
 
 .navbar-container {
-  background-color: rgba(4, 8, 255, 0.2);
+  background-color: rgba(82, 82, 82, 0.1);
   display: grid;
   /* Logo Gap Gap HamMenu*/
   grid-template-columns: 10% 40% 40% 10%;

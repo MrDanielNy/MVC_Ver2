@@ -26,16 +26,20 @@ function MVC_AboutUs() {
             <div className="container_AboutUs">
 
                 <div className="about_DJ_Container">
-                    <div>
+                    <div className="DJ_Title_Image">
                         <h1 className="title_About_DJ">
                             Grundare och VD Daniel Johansson
                         </h1>
+                        <img className="DJ_Image" src={require("../../images/DJ.jpg")} alt="En bild av Daneil Johansson" />
                     </div>
 
                     <div className="about_DJ">
                         <div>
-                            <p className="our_Story_Text">Daniel Johansson som efter 10 år fortfarande jobbar inom skolan och dagligen ser hur ett
-                                stort antal elever behöver hjälp för att lösa olika uppgifter ville se om det finns lösningar inom dagens teknik. I det praktiska ämnet träslöjd blir svårigheterna för vissa elever så pass att en elevassistent/elevresurs gör större delen av arbetet istället för eleven. Eleverna vill lyckas, vill klara av saker och ting själva men kan ibland inte på grund av någon form av funktionsnedsättning.
+                            <p className="our_Story_Text">
+                                “Mina projektidéer utgår från mina erfarenheter som pedagog där jag dagligen jobbar nära elever med och utan olika sorters funktionsvariationer. Jag har alltid försökt att hitta ett sätt att arbeta individanpassat och funderat på hur man med dagens teknik kan öppna nya dörrar för elever som vissa aldrig skulle fått en chans att öppnas.<br /><br />
+                                Alla barn vill lyckas, och jag vill se till att så många som möjligt får möjligheter på sina egna villkor och förutsättningar.”
+
+
                             </p>
                         </div>
                         <div>
@@ -58,10 +62,11 @@ function MVC_AboutUs() {
 
                 <div className="about_DN_Container">
 
-                    <div>
+                    <div className="DN_Title_Image">
                         <h1 className="title_About_DN">
                             Utv.chef och Vice VD Daniel Ny
                         </h1>
+                        <img className="DN_Image" src={require("../../images/DJ.jpg")} />
                     </div>
 
                     <div className="about_DN">
