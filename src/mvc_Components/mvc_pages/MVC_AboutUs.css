@@ -6,10 +6,6 @@
 
 }
 
-body {
-    background: url("../../images/fullSize.png") center center/cover no-repeat fixed;
-}
-
 .icon {
     color: white;
     margin-right: 10px;
@@ -23,7 +19,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    top: -90px;
+    /* top: -90px;*/
     height: 100%;
     width: 100%;
     min-width: 300px;

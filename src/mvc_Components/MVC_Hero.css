@@ -6,8 +6,7 @@
 
 .mvc-hero-container {
   /* A video is needed here */
-  /* background: url("../images/speed-internet-technology-background-5.jpg") center*/
-  /*center/cover no-repeat fixed;*/
+
   height: 100vh;
   /* check if it works with a large size tv*/
   width: 100%;
@@ -17,7 +16,7 @@
   align-items: center;
   text-align: center;
   position: relative;
-  top: 50px;
+
   margin-bottom: 0px;
   min-width: 300px;
   max-height: 2160px;
@@ -42,7 +41,7 @@
   top: 0;
   bottom: 0;
   z-index: -1;
-  background: url("../images/speed-internet-technology-background-5.jpg") center center/cover no-repeat fixed;
+  background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;
 }
 
 .title {
@@ -120,6 +119,13 @@
   transition: all 0.5s ease;
 }
 
+@media screen and (max-height: 450px) {
+  .mvc-hero-container {
+
+    background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;
+  }
+}
+
 @media screen and (max-width: 960px) {
   .title {
     font-size: 60px;
@@ -146,7 +152,7 @@
   /* If we have small sizes of screens*/
   .mvc-hero-container {
 
-    /* background: url("../images/speed-internet-technology-background-5.jpg") center center/cover no-repeat fixed;*/
+    background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;
   }
 }
 

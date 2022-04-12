@@ -23,12 +23,12 @@ function MVC_Hero() {
    */
   const screen_Checker = () => {
     console.log("Hello")
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 768 && window.innerHeight > 450) {
       console.log("Not a mobile screen")
       return video;
     }
-    else {
-      console.log("Mobile Screen")
+    else if (window.innerHeight < 450) {
+      console.log(window.innerHeight + " Mobile Screen")
       return "";
     }
 
