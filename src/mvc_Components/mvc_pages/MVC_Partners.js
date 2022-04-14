@@ -6,14 +6,8 @@ function MVC_Partners() {
   return (
     <div className="logo_Container">
       <div className="linkoping">
-        <Link
-          to={{
-            pathname: "https://www.linkoping.se/",
-          }}
-          target="_blank"
-        >
-          <img src={require("../../images/linkoping.png")} alt="" />
-        </Link>
+        <img src={require("../../images/linkoping.png")} alt="" />
+
       </div>
       <div className="liu">
         <img src={require("../../images/Liu.png")} alt="" />

@@ -7,12 +7,13 @@
   position: relative;
   min-width: 270px;
   height: 100px;
-  background-color: bisque;
- 
+  background-color: rgb(255, 255, 255);
+
 }
-.contacts {
+
+.contacts_ {
   position: absolute;
-  top: -60px;
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -20,20 +21,33 @@
   justify-content: center;
   text-align: center;
   width: 100%;
-  min-width: 270px;
-  background-color: bisque;
+  height: 300px;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  min-width: 300px;
+
 }
+
 ul {
   list-style: none;
 }
+
 h3 {
   color: dimgray;
   font-size: 20px;
 }
+
 p {
   color: rgb(21, 124, 0);
   font-size: 15px;
 }
+
+.icon_ {
+  color: rgb(0, 0, 0);
+  margin-right: 10px;
+
+}
+
 .DJ_Mail {
   width: 33%;
   display: flex;
@@ -41,6 +55,7 @@ p {
   justify-content: center;
   align-items: center;
 }
+
 .DN_Mail {
   width: 33%;
   display: flex;
@@ -48,9 +63,12 @@ p {
   justify-content: center;
   align-items: center;
 }
+
 .address {
+  color: dimgray;
   width: 33%;
 }
+
 .social_Links_Container {
   display: flex;
   flex-direction: row;
@@ -58,62 +76,92 @@ p {
   justify-content: center;
   align-items: center;
   padding: 10px;
+  margin-top: 200px;
+  height: 200px;
+
 }
+
 .facebook {
-  margin: 1rem ;
+  margin: 1rem;
 }
+
 .linkedIn {
   margin: 1rem;
 }
-@media (max-width: 900px) {
-  .contacts {
+
+@media screen and (max-width: 900px) {
+  .contacts_ {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 30px;
     margin-bottom: 50px;
+    height: 300px
   }
+
   h3 {
     font-size: 15px;
   }
+
   p {
     font-size: 12px;
   }
+
   .first_text {
     font-size: 30px;
   }
+
   .DJ_Mail {
     margin: 10px;
   }
+
   .DN_Mail {
     width: 33%;
     margin: 10px;
   }
+
   .address {
     width: 33%;
     margin: 10px;
   }
+
   .container {
     display: flex;
     flex-direction: row;
     height: 400px;
   }
+
   .facebook {
     margin-top: 50px;
   }
+
   .linkedIn {
     margin-top: 50px;
   }
+
   .social_Links_Container {
-    margin-top: 200px;
+    margin-top: 300px;
+    height: 200px
   }
 }
-@media (max-width: 400px) {
+
+@media screen and (max-width: 400px) {
   .container {
     height: 500px;
   }
+
   .social_Links_Container {
-    margin-top: 300px;
+    margin-top: 400px;
+
   }
+}
+
+@media screen and (max-width: 600px) {
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
 }

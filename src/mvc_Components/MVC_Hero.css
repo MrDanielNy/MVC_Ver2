@@ -6,66 +6,80 @@
 
 .mvc-hero-container {
   /* A video is needed here */
-  /* background: url("../images/speed-internet-technology-background-5.jpg") center*/
-  /*center/cover no-repeat fixed;*/
-  height: 100vh; /* check if it works with a large size tv*/
+
+  height: 100vh;
+  /* check if it works with a large size tv*/
   width: 100%;
   display: grid;
-  grid-template-rows: 80% 5% 5% 10%;
+  grid-template-rows: 90% 0% 0% 10%;
   justify-content: center;
   align-items: center;
   text-align: center;
-
-  /* To have the background all over the page (under navbar)*/
-
   position: relative;
+
   margin-bottom: 0px;
-  min-width: 250px;
+  min-width: 300px;
   max-height: 2160px;
   max-width: 3840px;
-
 }
-.background_Container{
+
+.dream_Logo_ {
+  position: fixed;
+  left: -10px;
+  bottom: 15px;
+  opacity: .7;
+}
+
+.background_Container_ {
   width: 100vw;
+  min-width: 300px;
   height: 100vh;
   object-fit: cover;
   position: fixed;
-
   left: 0;
   right: 0;
   top: 0;
   bottom: 0;
   z-index: -1;
+  background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;
 }
 
 .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   /*text-shadow: 2px 2px 20px #fbff00;*/
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 100px;
-  margin-top: -100px;
   animation: title_Animation 2s 1;
 }
+
 @keyframes title_Animation {
   0% {
     opacity: 0;
     letter-spacing: 1px;
     transition: all ease-in;
   }
+
   10% {
     opacity: 0.1;
     letter-spacing: 3px;
     transition: all ease-in;
   }
+
   20% {
     opacity: 0.2;
     letter-spacing: 5px;
     transition: all ease-in;
   }
+
   30% {
     opacity: 0.3;
     letter-spacing: 7px;
     transition: all ease-in;
   }
+
   40% {
     opacity: 0.4;
     letter-spacing: 9px;
@@ -73,12 +87,18 @@
   }
 }
 
-.subTitle {
+.subTitle_ {
   /* text-shadow: 2px 2px 10px #fbff00;*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   color: rgb(255, 255, 255);
   font-weight: bold;
-  font-size: 35px;
+  font-size: 30px;
+  margin: 0 10px;
 }
+
 .hero_Btn {
   width: 200px;
   height: 50px;
@@ -91,34 +111,67 @@
   margin: 30px;
   border: 2px white double;
 }
+
 /* TODO  Change the size of the button using media screen to have accessibility for mobile users */
 .hero_Btn:hover {
   background-color: white;
   color: black;
   transition: all 0.5s ease;
 }
+
+@media screen and (max-height: 450px) {
+  .mvc-hero-container {
+
+    background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;
+  }
+}
+
 @media screen and (max-width: 960px) {
   .title {
     font-size: 60px;
     margin-top: -50px;
   }
+
   .subTitle {
     color: white;
     font-size: 25px;
   }
 }
+
 @media screen and (max-width: 768px) {
   .title {
     font-size: 40px;
     margin-top: -20px;
   }
+
   .subTitle {
     color: white;
     font-size: 20px;
   }
+
+  /* If we have small sizes of screens*/
+  .mvc-hero-container {
+
+    background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;
+  }
 }
 
-@media screen and (max-width: 470px) {
-  .mvc-hero-container {
+@media screen and (max-width: 550px) {
+  .title {
+    font-size: 30px;
   }
+
+  .subTitle_ {
+    font-size: 15px;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .hero_Btn {
+    width: 150px;
+    height: 40px;
+    font-size: 13px;
+  }
+
 }

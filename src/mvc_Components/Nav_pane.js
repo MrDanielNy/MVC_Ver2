@@ -35,7 +35,7 @@ function NavPane() {
         <ul className={click ? "menu active" : "menu"}>
           <li className="menu-items">
             <Link to="/Projects" className="menu-links" onClick={closeMenu}>
-              Projects
+              <button className="project_Btn">Projects</button>
             </Link>
           </li>
           <li className="menu-items">

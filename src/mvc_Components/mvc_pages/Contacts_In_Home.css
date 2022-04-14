@@ -3,59 +3,100 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .main_Container {
   max-width: 1920px;
+  min-width: 300px;
 }
+
 .contacts_Container {
+  position: relative;
+
   display: flex;
   flex-direction: column;
-  background-color: rgb(0, 13, 73);
+  background-color: rgb(175, 175, 175);
   align-items: center;
   justify-content: center;
-  height: 400px;
+  height: 500px;
 }
+
 .contacts_Title {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  margin: 30px;
-  font-size: 40px;
-  color: white;
+  margin-top: 200px;
+  font-size: 30px;
+  color: rgb(47, 0, 75);
 }
-.contact_Information {
+
+.subTitle {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  color: black;
 }
+
+
 .btn_Contact {
-  color: white;
+  color: rgba(0, 1, 68, 0.788);
   background-color: transparent;
-  border: 1px white solid;
+  border: 1px rgb(5, 40, 238) solid;
   width: 200px;
   height: 50px;
   font-size: 1rem;
   transition: all 0.5s ease;
   margin-top: 20px;
 }
+
 .btn_Contact:hover {
-  background-color: rgb(230, 173, 153);
+  background-color: rgb(55, 0, 253);
+  color: rgb(255, 255, 255);
 }
+
+.social_Links_Container_ {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+
+  height: 300px;
+
+
+}
+
 @media only screen and (max-width: 600px) {
   .contacts_Title {
     margin: 20px;
     font-size: 20px;
   }
+
   .contacts_Container {
-    height: 250px;
+    height: 350px;
   }
-  .DN {
-    margin: 5px 10px;
+
+}
+
+@media only screen and (max-width: 400px) {
+  .contacts_Title {
+    margin: 20px;
+    font-size: 15px;
   }
-  .DJ {
-    margin: 5px 10px;
+
+  .subTitle {
+    margin-top: 10px;
+    font-size: 12px;
   }
+
+  .contact_Information {
+    font-size: 10px;
+  }
+
+  .contacts_Container {
+    height: 300px;
+  }
+
 }

@@ -6,28 +6,46 @@ import "./Nav_pane.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Platform from "./mvc_pages/Platform";
-import video from "../images/video-1.mp4";
+import video from "../images/video-2.mp4";
+import video2 from "../images/video-1.mp4"
+import img_Background from "../images/ATC.png"
 
 function MVC_Hero() {
   const [click, setClick] = useState(false);
   const closeMenu = () => setClick(false);
   const handleClick = () => {
     console.log("Testing...");
+
     setClick(!click);
   };
+  /** It checks the screen size. If the screen is small, it sends an empty 
+   * string to Video as source and the background image in CSS shows.
+   */
+  const screen_Checker = () => {
+    if (window.innerWidth > 768 && window.innerHeight > 450) {
+      console.log("Not a mobile screen")
+      return video;
+    }
+    else if (window.innerHeight < 450) {
+      console.log(window.innerHeight + " Mobile Screen")
+      return "";
+    }
+
+  }
   return (
     <>
       <div className="mvc-hero-container">
+
         {/* A video link to have the live backgrond*/}
-        <div className="background_Container">
+        <div className="background_Container_">
           <video className=".background-video" loop autoPlay muted>
-            <source src={video} type="video/mp4" />
+            <source src={screen_Checker()} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
         <div>
           <h1 className="title">My Virtual Classroom</h1>
-          <p className="subTitle">
+          <p className="subTitle_">
             Vi vill förändra dagens utbildning och bjuder in Sveriges skolor
             till “Utbildning-2.0”.
           </p>

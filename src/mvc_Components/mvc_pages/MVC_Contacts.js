@@ -101,7 +101,7 @@ function MVC_Contacts() {
     labelEmail.current.style.color = "black";
     labelText.current.style.color = "black";
     inputName.current.focus();
-    console.log("Done");
+    console.log("Form reset")
   };
 
   const formValidation = () => {
@@ -125,7 +125,6 @@ function MVC_Contacts() {
     } else return true;
   };
 
-  /*const form = useRef();*/
   function send(e) {
     e.preventDefault();
 
@@ -137,21 +136,22 @@ function MVC_Contacts() {
         "W564JHf9PctY9HRA0"
       )
       .then((res) => {
+        console.log("Limited service!")
         //  console.log("Your email is sent successfully");
-        setButtonText("Sent");
-
-        setTimeout(() => {
-          /* document.getElementById("btnsend").disabled = false;
-          btn.textContent = "";*/
-          console.log("Your email is sent successfully");
-          setButtonText("Sent");
-        }, 1000);
+        /* setButtonText("Sent");
+ 
+         setTimeout(() => {
+           /* document.getElementById("btnsend").disabled = false;
+           btn.textContent = "";*/
+        /* console.log("Your email is sent successfully");
+         setButtonText("Sent");
+       }, 1000);*/
         formReset();
       })
       .catch((err) => {
         if (formValidation()) {
           console.log("Error " + err);
-          console.log("Your email is sent successfully");
+          console.log("Your email is sent successfully dfgdfgd");
           buttonSend.current.style.color = "white";
           buttonSend.current.style.backgroundColor = "green";
           setButtonText("Sending...");
@@ -181,14 +181,14 @@ function MVC_Contacts() {
   return (
     <>
       <div className="background_Container">
-        <video className=".background-video" loop autoPlay muted>
+        {/*} <video className=".background-video" loop autoPlay muted>
           <source src={video} type="video/mp4" />
           Your browser does not support the video tag.
-        </video>
+  </video>*/}
       </div>
       <div className="contact_Container">
         <div className="containerAni">
-          <h3 class="first_text">
+          <h3 className="first_text_">
             Do you want to be involved and create tomorrow's teaching?
           </h3>
         </div>
@@ -245,40 +245,3 @@ function MVC_Contacts() {
 }
 
 export default MVC_Contacts;
-/*
-
-
- <div className="contact_Container">
-      <div className="form_Container">
-        <form onSubmit={send} id="email-form">
-          <h3>Contact us</h3>
-          <div className="name_email_Container">
-            <div className="name">
-              <label>Name</label>
-              <input type="text" name="user_name" />
-            </div>
-            <div className="email">
-              <label>Email</label>
-              <input type="email" name="user_email" />
-            </div>
-          </div>
-          <div className="text">
-            <label>Message</label>
-            <textarea
-              className="message"
-              name="message"
-              placeholder="Write your message"
-            />
-          </div>
-          <div className="send_Btn">
-            <button className="btnSend" id="btnsend">
-              {" "}
-              Send
-            </button>
-            <span id="status"></span>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    */
