@@ -19,8 +19,6 @@
   grid-template-columns: 10% 40% 40% 10%;
   align-items: center;
   height: 80px;
-  max-width: 1920px;
-  height: 80px;
   font-size: 1.2rem;
   min-width: 200px;
 }

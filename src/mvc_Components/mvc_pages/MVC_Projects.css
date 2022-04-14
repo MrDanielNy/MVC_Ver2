@@ -1,3 +1,9 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 .project_Container {
     display: flex;
     flex-direction: column;
@@ -6,19 +12,27 @@
     align-items: center;
     height: 100%;
     width: 100%;
+
     background: url("../../images/InternetofThings.jpg") center center/cover no-repeat fixed;
 }
 
 .project_Title {
+
+
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     margin-top: 30px;
     font-size: 60px;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+
 
 }
+
+
 
 .magical_Man {
     height: 300px;
@@ -30,7 +44,8 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 80%;
+
 }
 
 .project_One_Image {
@@ -51,15 +66,12 @@
     justify-content: center;
     align-items: center;
     height: 400px;
-    width: 90%;
+    width: 900px;
     background-color: rgba(255, 237, 72, 0.933);
     margin-bottom: 40px;
     margin: 3rem 0;
     border-radius: 5px;
     animation: magical 3s 1;
-    transform: scale(1, 1);
-
-
 }
 
 @keyframes magical {
@@ -119,7 +131,8 @@
 
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 80%;
+
 }
 
 .project_Two {
@@ -129,13 +142,14 @@
     justify-content: center;
     align-items: center;
     height: 400px;
-    width: 90%;
+    width: 900px;
     background-color: rgba(255, 237, 72, 0.933);
     margin-bottom: 40px;
     margin: 3rem 0;
     border-radius: 5px;
 
     margin-bottom: 30px;
+    animation: magical 3s 1;
 
 }
 
@@ -162,4 +176,39 @@
     min-height: 30%;
     min-width: 30%;
     margin: 0 4rem;
+}
+
+@media screen and (max-width: 1150px) {
+
+    .project_One_Container,
+    .project_Two_Container {
+        flex-direction: column-reverse;
+
+    }
+
+    .project_One,
+    .project_Two {
+        width: 500px;
+
+    }
+}
+
+@media screen and (max-width: 520px) {
+
+    .project_One,
+    .project_Two {
+        width: 300px;
+
+    }
+
+    .project_One {
+        height: 550px;
+    }
+}
+
+@media screen and (max-width:400px) {
+
+    .project_Title {
+        font-size: 40px;
+    }
 }
