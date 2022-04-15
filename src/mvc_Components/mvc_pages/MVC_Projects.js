@@ -2,9 +2,39 @@ import React from "react";
 import Contacts_Link from "./Contacts_In_Home";
 import "./MVC_Projects.css"
 import ProjectMagicalMan from "./Project_Magical_Man";
+import MVC_Contacts from "../mvc_pages/MVC_Contacts"
+
+const MVC_Projects = (props) => {
+
+  const handleKeyDown = (event) => {
+
+    console.log('A key was pressed', event.keyCode);
+    if (event.keyCode == 27) {
+      this.MVC_Contacts();
+      console.log("------------------");
+    }
+
+  };
 
 
-const MVC_Projects = () => {
+  React.useEffect(() => {
+
+    window.addEventListener('keydown', handleKeyDown);
+
+
+    // cleanup this component
+
+    return () => {
+
+      window.removeEventListener('keydown', handleKeyDown);
+
+    };
+
+  }, []);
+
+
+
+
   return (
     <>
       <div className="project_Container">

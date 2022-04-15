@@ -8,6 +8,9 @@ import { useEffect } from "react";
 import "./Nav_pane.css";
 import MVC_Home from "./mvc_pages/MVC_Home";
 
+
+
+
 function NavPane() {
   const [click, setClick] = useState(false);
   const closeMenu = () => setClick(false);
