@@ -9,8 +9,10 @@ import Platform from "./mvc_pages/Platform";
 import video from "../images/video-2.mp4";
 import video2 from "../images/video-1.mp4"
 import img_Background from "../images/ATC.png"
+import { useSpeechSynthesis } from 'react-speech-kit';
 
 function MVC_Hero() {
+  const { speak } = useSpeechSynthesis();
   const [click, setClick] = useState(false);
   const closeMenu = () => setClick(false);
   const handleClick = () => {
@@ -44,8 +46,22 @@ function MVC_Hero() {
           </video>
         </div>
         <div>
-          <h1 className="title">My Virtual Classroom</h1>
-          <p className="subTitle_">
+          <h1 onMouseLeave={(e) => {
+            console.log("Hello dude!");
+            e.target.style.border = 'none';
+          }}
+            onClick={(e) => {
+              console.log("Hello dude!");
+              e.target.style.border = '2px solid rgba(147, 250, 165)';
+              speak({
+                text: "My virtual Classroom", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+              }
+              )
+
+            }} className="title">My Virtual Classroom</h1>
+          <p onMouseEnter={() => speak({
+            text: ' Vi vill förändra dagens utbildning och bjuder in Sveriges skolor till Utbildning-2.0.'
+          })} className="subTitle_">
             Vi vill förändra dagens utbildning och bjuder in Sveriges skolor
             till “Utbildning-2.0”.
           </p>
