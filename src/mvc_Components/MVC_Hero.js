@@ -59,9 +59,15 @@ function MVC_Hero() {
               )
 
             }} className="title">My Virtual Classroom</h1>
-          <p onMouseEnter={() => speak({
-            text: ' Vi vill förändra dagens utbildning och bjuder in Sveriges skolor till Utbildning-2.0.'
-          })} className="subTitle_">
+          <p onMouseLeave={(e) => {
+            console.log("Hello dude!");
+            e.target.style.border = 'none';
+          }} onClick={(e) => {
+            e.target.style.border = '2px solid rgba(147, 250, 165)';
+            speak({
+              text: ' Vi vill förändra dagens utbildning och bjuder in Sveriges skolor till Utbildning-2.0.'
+            })
+          }} className="subTitle_">
             Vi vill förändra dagens utbildning och bjuder in Sveriges skolor
             till “Utbildning-2.0”.
           </p>
@@ -73,7 +79,9 @@ function MVC_Hero() {
         </div>
 
         {/** TODO: Add a direct link to contact page or some other important links  */}
-        <div></div>
+        <div>
+
+        </div>
       </div>
     </>
   );

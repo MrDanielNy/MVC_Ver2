@@ -16,7 +16,7 @@
   background-color: rgba(0, 41, 94, 0.7);
   display: grid;
   /* Logo Gap Gap HamMenu*/
-  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-columns: 10% 10% 70% 10%;
   align-items: center;
   height: 80px;
   font-size: 1.2rem;
@@ -56,7 +56,7 @@
   align-items: center;
   list-style-type: none;
   justify-content: center;
-  z-index: 1;
+  z-index: 900;
   position: fixed;
 }
 
@@ -71,9 +71,11 @@
   transition: all 0.8s ease;
 }
 
+
 .MVC-Logo:hover {
   transition: all 0.8s ease;
   color: rgb(0, 0, 0);
+
 
 }
 
@@ -95,12 +97,12 @@
 /* Ham menu icons*/
 .fa-times {
   font-size: 2rem;
-  z-index: 1000;
+  z-index: 900;
 }
 
 .fa-times:active {
   transform: rotate(30deg) translate(-2px, -1px);
-  z-index: 1000;
+  z-index: 900;
 }
 
 .fa-bars:active {
