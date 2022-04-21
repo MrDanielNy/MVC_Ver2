@@ -1,27 +1,22 @@
-import React, { Component } from "react";
-import "./ToggleKey.scss"
+import "./ToggleKey.css"
 
-class ToggleSwitch extends Component {
+const Switch = ({ label }) => {
+    return (
+        <>
 
-
-    render() {
-        return (
+            {" "}
             <div className="toggle-switch">
-                <input
-                    type="checkbox"
-                    className="toggle-switch-checkbox"
-
-                    id="toggleSwitch"
-
-
-                />
-                <label className="toggle-switch-label" htmlFor="toggleSwitch">
-                    <span className="toggle-switch-inner" />
-                    <span className="toggle-switch-switch" />
+                <input type="checkbox" className="checkbox"
+                    name={label} id={label} />
+                <label className="label" htmlFor={label}>
+                    <span className="inner" />
+                    <span className="switch" />
                 </label>
             </div>
-        );
-    }
-}
 
-export default ToggleSwitch;
+
+        </>
+    );
+};
+
+export default Switch;

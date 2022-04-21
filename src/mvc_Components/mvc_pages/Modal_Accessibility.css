@@ -1,4 +1,5 @@
 .modal_Header {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,6 +9,7 @@
     width: 450px;
     border-radius: 5px;
     color: white;
+
 
 }
 
@@ -45,10 +47,46 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-left: 10px;
+    scroll-behavior: smooth;
+    height: 300px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    padding: 20px;
+}
+
+.accessibility_Setting_Btn_Container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+}
 
+.accessibility_Setting_Btn {
 
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    padding: 2px;
+    border: 0;
+    background-color: rgb(240, 240, 240);
+    border-radius: 10px;
+}
 
+.accessibility_Setting_Btn:hover {
+    border: 2px rgb(21, 0, 112) solid;
+
+}
+
+.accessibility_Setting_Btn:active {
+    background-color: rgb(0, 65, 119);
+    color: white;
+
+}
+
+.options {
+    margin: 10px
 }
 
 h5 {
@@ -87,4 +125,46 @@ h5 {
 .accessibility_Icon:hover {
     box-shadow: 0px 0px 5px 2px rgb(255, 230, 0, .9);
     transition: all 1s ease;
+}
+
+
+.react-switch-checkbox {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.react-switch-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+    background: grey;
+    border-radius: 100px;
+    position: relative;
+    transition: background-color .2s;
+}
+
+.react-switch-label .react-switch-button {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    transition: 0.2s;
+    background: #fff;
+    box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+}
+
+.react-switch-checkbox:checked+.react-switch-label .react-switch-button {
+    left: calc(100% - 2px);
+    transform: translateX(-100%);
+}
+
+.react-switch-label:active .react-switch-button {
+    width: 60px;
 }

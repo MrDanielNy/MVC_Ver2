@@ -3,7 +3,7 @@ import "../mvc_pages/Modal_Accessibility.css"
 import styled from "styled-components"
 import { MdClose } from "react-icons/md"
 import { useSpring, animated } from 'react-spring';
-import ToggleSwitch from './ToggleKey';
+import Switch from './ToggleKey';
 import MultiSwitch from 'react-multi-switch-toggle'
 
 const Background = styled.div`
@@ -14,10 +14,10 @@ const Background = styled.div`
     width:100%;
     left:10px
   
-z-index:2000;
+    z-index:2000;
 
     border-radius: 10px;
-    top:200px;
+    top:150px;
     
     
 `
@@ -34,7 +34,7 @@ justify-content:center;
 z-index:1000;
 border-radius:20px;
 margin-bottom:50px;
-bottom:30px;
+bottom:70px;
 left:10px;
 border-radius:2px green solid;
 
@@ -65,7 +65,8 @@ border-radius:100px
 
 
 const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
-
+    const gentleColors = useRef();
+    const [value, setValue] = useState(false);
     const accessibilitySetting = useRef();
     const closeAccessibilitySetting = e => {
         if (accessibilitySetting.current === e.target) {
@@ -111,9 +112,34 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
                                 <div className='settings_Container'>
 
 
+                                    <div className='options'><Switch label="gentle colors" />  <label> Blida färger</label>
+                                        <p>Reducerar färg</p>
+                                    </div>
 
-                                    <h5>Mörkt kontrast <ToggleSwitch name="Kon" /></h5>
-                                    <h5>Mörkt kontrast <ToggleSwitch name="Kiiiiir" onClick={() => { console.log("Kirr") }} /></h5>
+                                    <div className='options'>  <Switch label="visually impaired" /><label> Synskadad </label>
+                                        <p>För de flesta synnedsättningar</p></div>
+                                    <div className='options'>  <Switch label="Cognitive" /><label> Kognitiv funktionshinder</label>
+                                        <p>Funktionsnedsätningar som autism, dyslexi och ... </p></div>
+
+                                    <div className='options'>  <Switch label="keyboard" /><label> Tangetbordnavigering</label>
+                                        <p>Använd tangetbord att surfa i webbsidan </p></div>
+
+                                    <div className='options'>  <Switch label="readingTitles" /><label> Läser titlar och texter</label>
+                                        <p>Hör en titel eller en text genom att klicka på den</p></div>
+
+                                    <div className='accessibility_Setting_Btn_Container' >
+                                        <button className='accessibility_Setting_Btn'>Svartvit</button>
+                                        <button className='accessibility_Setting_Btn'>Hög Kontrast</button>
+                                        <button className='accessibility_Setting_Btn'>Mörk Kontrast</button>
+                                        <button className='accessibility_Setting_Btn'>Stor svart markör</button>
+                                        <button className='accessibility_Setting_Btn'>Stor vit markör</button>
+                                        <button className='accessibility_Setting_Btn'>Läsguide</button>
+
+                                    </div>
+
+
+
+
                                 </div>
                             </div>
 
