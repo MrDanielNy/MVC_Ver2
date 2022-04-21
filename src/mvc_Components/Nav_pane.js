@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { FaBeer } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
@@ -23,6 +23,38 @@ function NavPane() {
     console.log("Testing...");
     setClick(!click);
   };
+
+  const closeMenu_ = useCallback(e => {
+    if (e.key === "Escape" && click) {
+      console.log("Escape is pressed")
+      setClick(false)
+    }
+    else
+      if (e.key === "Escape" && !click) {
+        setClick(false)
+      }
+
+  }, [setClick], [click])
+  useEffect(() => {
+    document.addEventListener("keydown", closeMenu_);
+    return () => document.removeEventListener("keydown", closeMenu_)
+  })
+
+
+
+  const menu = useCallback(e => {
+    if (e.keyCode === 77) {
+      console.log("Escape is pressed")
+      click(true)
+    }
+
+
+  }, [setClick], [click])
+  useEffect(() => {
+    document.addEventListener("keydown", menu);
+    return () => document.removeEventListener("keydown", menu)
+  })
+
 
   return (
     <>
