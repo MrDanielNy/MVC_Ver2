@@ -40,28 +40,30 @@ function MVC_Home() {
       }
     });
   });
-
+  const [newTheme, setNewTheme] = useState();
 
 
   return (
-    <>{
-      themeLoaded && <ThemeProvider theme={selectedTheme}>
-        <GlobalStyles />
-        <Container style={{ fontFamily: selectedTheme.font }}>
+    <>
+      {
+        themeLoaded && <ThemeProvider theme={selectedTheme}>
+          <GlobalStyles />
+          <Container style={{ fontFamily: selectedTheme.font }}>
+
+            <MVC_Hero setter={setSelectedTheme} newTheme={newTheme} />
+
+            <Platform />
 
 
-          <MVC_Hero />
-          <Platform />
+            <Boxes />
+            {/* Platform is placed in Hero */}
+            <AboutUs_Link />
 
-          <Boxes />
-          {/* Platform is placed in Hero */}
-          <AboutUs_Link />
-
-          <Contacts_Link />
-          <MVC_Partners />
-        </Container>
-      </ThemeProvider>
-    }
+            <Contacts_Link />
+            <MVC_Partners />
+          </Container>
+        </ThemeProvider>
+      }
     </>
 
   );

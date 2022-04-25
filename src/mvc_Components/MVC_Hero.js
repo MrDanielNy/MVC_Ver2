@@ -15,16 +15,13 @@ import styled, { ThemeProvider } from "styled-components";
 import WebFont from 'webfontloader';
 import { GlobalStyles } from '../theme/GlobalStyles';
 import { useTheme } from '../theme/useTheme';
+import { getFromLS } from '../utils/storage';
 
 
-function MVC_Hero() {
+function MVC_Hero(props) {
 
 
 
-  // 2: Create a cotainer
-  const Container = styled.div`
-  margin: 5px auto 5px auto;
-`;
 
 
   /** The main page */
@@ -72,18 +69,32 @@ function MVC_Hero() {
     }
 
   }
+
+  const Container = styled.div`
+  margin: 5px auto 5px auto;
+`;
+
+
+
+  const themesFromStore = getFromLS('all-themes');
+  const [data, setData] = useState(themesFromStore.data);
+  const [themes, setThemes] = useState([]);
+  const { setMode } = useTheme();
+
+  const themeSwitcher = selectedTheme => {
+    console.log(selectedTheme);
+    setMode(selectedTheme);
+    props.setter(selectedTheme);
+  };
+
+
   return (
     <>
       {
         themeLoaded && <ThemeProvider theme={selectedTheme}>
           <GlobalStyles />
           <Container style={{ fontFamily: selectedTheme.font }}>
-            <h1>Theming System</h1>
-            <p>
-              This is a theming system with a Theme Switcher and Theme Builder.
-              Do you want to see the source code? <a href="https://github.com/atapas/theme-builder" target="_blank">Click here.</a>
-            </p>
-            <button>Click me</button>
+
             <div className="mvc-hero-container">
 
               {/* A video link to have the live backgrond*/}
@@ -131,6 +142,8 @@ function MVC_Hero() {
 
               </div>
             </div>
+
+
           </Container>
         </ThemeProvider>
       }
