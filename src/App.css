@@ -1,0 +1,14 @@
+.accessibility_Container {
+    position: sticky;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: darkorchid;
+    height: 300px;
+    width: 30%;
+    left: -500px;
+    bottom: 300px;
+    transition: all 2s ease-out;
+    z-index: 1000;
+}
