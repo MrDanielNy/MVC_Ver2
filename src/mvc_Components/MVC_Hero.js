@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../mvc_Components/MVC_Hero.css";
 import "../App.css";
 import NavPane from "./Nav_pane";
@@ -11,7 +11,45 @@ import video2 from "../images/video-1.mp4"
 import img_Background from "../images/ATC.png"
 import { useSpeechSynthesis } from 'react-speech-kit';
 
+import styled, { ThemeProvider } from "styled-components";
+import WebFont from 'webfontloader';
+import { GlobalStyles } from '../theme/GlobalStyles';
+import { useTheme } from '../theme/useTheme';
+
+
 function MVC_Hero() {
+
+
+
+  // 2: Create a cotainer
+  const Container = styled.div`
+  margin: 5px auto 5px auto;
+`;
+
+
+  /** The main page */
+
+
+
+  const { theme, themeLoaded, getFonts } = useTheme();
+  const [selectedTheme, setSelectedTheme] = useState(theme);
+
+  useEffect(() => {
+    setSelectedTheme(theme);
+  }, [themeLoaded]);
+
+  // 4: Load all the fonts
+  useEffect(() => {
+    WebFont.load({
+      google: {
+        families: getFonts()
+      }
+    });
+  });
+
+
+
+
   const { speak } = useSpeechSynthesis();
   const [click, setClick] = useState(false);
   const closeMenu = () => setClick(false);
@@ -36,53 +74,66 @@ function MVC_Hero() {
   }
   return (
     <>
-      <div className="mvc-hero-container">
+      {
+        themeLoaded && <ThemeProvider theme={selectedTheme}>
+          <GlobalStyles />
+          <Container style={{ fontFamily: selectedTheme.font }}>
+            <h1>Theming System</h1>
+            <p>
+              This is a theming system with a Theme Switcher and Theme Builder.
+              Do you want to see the source code? <a href="https://github.com/atapas/theme-builder" target="_blank">Click here.</a>
+            </p>
+            <button>Click me</button>
+            <div className="mvc-hero-container">
 
-        {/* A video link to have the live backgrond*/}
-        <div className="background_Container_">
-          <video className=".background-video" loop autoPlay muted>
-            <source src={screen_Checker()} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div>
-          <h1 onMouseLeave={(e) => {
-            console.log("Hello dude!");
-            e.target.style.border = 'none';
-          }}
-            onClick={(e) => {
-              console.log("Hello dude!");
-              e.target.style.border = '2px solid rgba(147, 250, 165)';
-              speak({
-                text: "My virtual Classroom", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
-              }
-              )
+              {/* A video link to have the live backgrond*/}
+              <div className="background_Container_">
+                {/*  <video className=".background-video" loop autoPlay muted>
+                  <source src={screen_Checker()} type="video/mp4" />
+                  Your browser does not support the video tag.
+      </video>*/}
+              </div>
+              <div>
+                <h1 onMouseLeave={(e) => {
+                  console.log("Hello dude!");
+                  e.target.style.border = 'none';
+                }}
+                  onClick={(e) => {
+                    console.log("Hello dude!");
+                    e.target.style.border = '2px solid rgba(147, 250, 165)';
+                    speak({
+                      text: "My virtual Classroom", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+                    }
+                    )
 
-            }} className="title">My Virtual Classroom</h1>
-          <p onMouseLeave={(e) => {
-            console.log("Hello dude!");
-            e.target.style.border = 'none';
-          }} onClick={(e) => {
-            e.target.style.border = '2px solid rgba(147, 250, 165)';
-            speak({
-              text: ' Vi vill förändra dagens utbildning och bjuder in Sveriges skolor till Utbildning-2.0.'
-            })
-          }} className="subTitle_">
-            Vi vill förändra dagens utbildning och bjuder in Sveriges skolor
-            till “Utbildning-2.0”.
-          </p>
+                  }} className="title">My Virtual Classroom</h1>
+                <p onMouseLeave={(e) => {
+                  console.log("Hello dude!");
+                  e.target.style.border = 'none';
+                }} onClick={(e) => {
+                  e.target.style.border = '2px solid rgba(147, 250, 165)';
+                  speak({
+                    text: ' Vi vill förändra dagens utbildning och bjuder in Sveriges skolor till Utbildning-2.0.'
+                  })
+                }} className="subTitle_">
+                  Vi vill förändra dagens utbildning och bjuder in Sveriges skolor
+                  till “Utbildning-2.0”.
+                </p>
 
-          <p>{/** Other staffs if needed here */}</p>
-          <Link to="/Contacts">
-            <button className="hero_Btn">Contact us</button>
-          </Link>
-        </div>
+                <p>{/** Other staffs if needed here */}</p>
+                <Link to="/Contacts">
+                  <button className="hero_Btn">Contact us</button>
+                </Link>
+              </div>
 
-        {/** TODO: Add a direct link to contact page or some other important links  */}
-        <div>
+              {/** TODO: Add a direct link to contact page or some other important links  */}
+              <div>
 
-        </div>
-      </div>
+              </div>
+            </div>
+          </Container>
+        </ThemeProvider>
+      }
     </>
   );
 }

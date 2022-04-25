@@ -37,6 +37,7 @@
     box-sizing: border-box;
 }
 
+
 .inner:before {
     content: "På";
     padding-left: 10px;
