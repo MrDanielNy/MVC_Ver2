@@ -5,6 +5,13 @@ import { MdClose } from "react-icons/md"
 import { useSpring, animated } from 'react-spring';
 import Switch from './ToggleKey';
 import MultiSwitch from 'react-multi-switch-toggle'
+import { ThemeProvider } from 'styled-components';
+import { DivHeader, Button, greenTheme, redTheme, DarkTheme, LightTheme, GeneralTheme_AccessibilityWindow } from './styles';
+import ThemeToggler from './ThemeToggler';
+import { ThemeContext } from 'styled-components';
+import BlindToggler from './Blind';
+import NavPane from '../Nav_pane';
+
 
 const Background = styled.div`
    position: fixed;
@@ -13,14 +20,11 @@ const Background = styled.div`
     height:100%;
     width:100%;
     left:10px
-  
     z-index:2000;
-
     border-radius: 10px;
-    top:150px;
-    
-    
+     top:150px;
 `
+
 const Accessibility_Wrapper = styled.div`
 position:relative;
 width:450px;
@@ -90,9 +94,9 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
         return () => document.removeEventListener("keydown", escKey)
     })
 
+    const [theme, toggleTheme] = useState("light");
     return (
         <>
-
             {showAccessibility ? (
                 <Background ref={accessibilitySetting} onClick={closeAccessibilitySetting}>
 
@@ -101,11 +105,14 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
                         <Accessibility_Window_Content>
 
                             <div className='header'>
-                                <div className='modal_Header'>
-                                    <h2  >Tillgänglighetsjusteringar </h2>
-                                    <button className='reset_Settings_Btn'>Återställ inställningar</button>
+                                <ThemeProvider theme={theme === "light" ? LightTheme : DarkTheme}>
+                                    <DivHeader className='modal_Header'>
+                                        <h2  >Tillgänglighetsjusteringar </h2>
+                                        <button className='reset_Settings_Btn'>Återställ inställningar</button>
 
-                                </div>
+                                    </DivHeader>
+                                </ThemeProvider>
+
                                 <div >
                                     <h3 className='accessibility-Settings_Header'>Välj tillgänglighetsprofil</h3>
                                 </div>
@@ -128,7 +135,14 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
                                         <p>Hör en titel eller en text genom att klicka på den</p></div>
 
                                     <div className='accessibility_Setting_Btn_Container' >
-                                        <button className='accessibility_Setting_Btn'>Svartvit</button>
+                                        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+                                            <ThemeProvider theme={theme === "light" ? LightTheme : DarkTheme}>
+                                                <ThemeToggler />
+
+                                            </ThemeProvider>
+                                        </ThemeContext.Provider>
+
+
                                         <button className='accessibility_Setting_Btn'>Hög Kontrast</button>
                                         <button className='accessibility_Setting_Btn'>Mörk Kontrast</button>
                                         <button className='accessibility_Setting_Btn'>Stor svart markör</button>
@@ -136,12 +150,10 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
                                         <button className='accessibility_Setting_Btn'>Läsguide</button>
 
                                     </div>
-
-
-
-
                                 </div>
+
                             </div>
+
 
                         </Accessibility_Window_Content>
                         <CloseAccessibilitySettings aria-label='stäng tillgänglighetsinställningarna' onClick={() => setShowAccessibility(prev => !prev)} />
@@ -150,9 +162,11 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
 
                 </Background >
 
-            ) : null}
+            ) : null
+            }
 
         </>
+
     );
 }
 
