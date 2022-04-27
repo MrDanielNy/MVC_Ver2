@@ -10,10 +10,11 @@ import ModalAccessibility from "./mvc_pages/Modal_Accessibility";
 import "../mvc_Components/mvc_pages/Modal_Accessibility.css"
 import { GlobalStyle } from "./mvc_pages/GlobalStyle";
 import { ThemeProvider } from 'styled-components';
-import { DivHeader, Button, greenTheme, redTheme, DarkTheme, LightTheme, GeneralTheme_AccessibilityWindow } from '../mvc_Components/mvc_pages/styles/index';
+import { DivHeader, Button, greenTheme, redTheme, DarkTheme, GeneralTheme_AccessibilityWindow, LightThemeNavbar } from '../mvc_Components/mvc_pages/styles/index';
 import ThemeToggler from '../mvc_Components/mvc_pages/ThemeToggler';
 import { ThemeContext } from 'styled-components';
 import sendToNav from "../mvc_Components/mvc_pages/Modal_Accessibility"
+import { useContext } from "react"
 function NavPane(props) {
   const [showAccessibility, setShowAccessibility] = useState(false);
   const openAccessibilitySettings = () => {
@@ -58,25 +59,32 @@ function NavPane(props) {
     return () => document.removeEventListener("keydown", menu)
   })
 
-  const theme = "light"
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  // Add local storage
+  localStorage.setItem("theme", theme);
+  console.log("Here we goooooo  " + localStorage.getItem("theme"))
   return (
     <>
       <nav className="nav_Pane">
-        <ThemeProvider theme={theme === "light" ? LightTheme : DarkTheme}>
-          <DivHeader className="navbar-container">
-            <Link to="/" className="MVC-Logo" onClick={closeMenu}>
-              MVC
-            </Link>
-            <div></div>
-            <div></div>
-            <div className="ham_Menu" onClick={handleClick}>
-              <i className={click ? "fas fa-times" : "fas fa-bars"} />
-            </div>
-          </DivHeader>
-        </ThemeProvider>
-        <div className="accessibility_Icon"> <img onClick={openAccessibilitySettings} src={require("../images/accessibility_Icon.png")} /></div>
-        <ModalAccessibility showAccessibility={showAccessibility} setShowAccessibility={setShowAccessibility} />
-        <GlobalStyle />
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+          <ThemeProvider theme={theme === "light" ? LightThemeNavbar : DarkTheme}>
+            <DivHeader className="navbar-container">
+              <Link to="/" className="MVC-Logo" onClick={closeMenu}>
+                MVC
+              </Link>
+              <div></div>
+              <div></div>
+              <div className="ham_Menu" onClick={handleClick}>
+                <i className={click ? "fas fa-times" : "fas fa-bars"} />
+              </div>
+            </DivHeader>
+          </ThemeProvider>
+
+
+          <div className="accessibility_Icon"> <img onClick={openAccessibilitySettings} src={require("../images/accessibility_Icon.png")} /></div>
+          <ModalAccessibility showAccessibility={showAccessibility} setShowAccessibility={setShowAccessibility} />
+          <GlobalStyle />
+        </ThemeContext.Provider>
 
 
       </nav>

@@ -6,12 +6,10 @@ import { useSpring, animated } from 'react-spring';
 import Switch from './ToggleKey';
 import MultiSwitch from 'react-multi-switch-toggle'
 import { ThemeProvider } from 'styled-components';
-import { DivHeader, Button, greenTheme, redTheme, DarkTheme, LightTheme, GeneralTheme_AccessibilityWindow } from './styles';
+import { DivHeader, Button, greenTheme, redTheme, DarkTheme, LightThemeAccessibilitySettings, GeneralTheme_AccessibilityWindow } from './styles';
 import ThemeToggler from './ThemeToggler';
 import { ThemeContext } from 'styled-components';
-import BlindToggler from './Blind';
-import NavPane from '../Nav_pane';
-
+import { useContext } from "react"
 
 const Background = styled.div`
    position: fixed;
@@ -93,8 +91,7 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
         document.addEventListener("keydown", escKey);
         return () => document.removeEventListener("keydown", escKey)
     })
-
-    const [theme, toggleTheme] = useState("light");
+    const { theme, toggleTheme } = useContext(ThemeContext);
     return (
         <>
             {showAccessibility ? (
@@ -105,7 +102,7 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
                         <Accessibility_Window_Content>
 
                             <div className='header'>
-                                <ThemeProvider theme={theme === "light" ? LightTheme : DarkTheme}>
+                                <ThemeProvider theme={theme === "light" ? greenTheme : DarkTheme}>
                                     <DivHeader className='modal_Header'>
                                         <h2  >Tillgänglighetsjusteringar </h2>
                                         <button className='reset_Settings_Btn'>Återställ inställningar</button>
@@ -136,11 +133,12 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
 
                                     <div className='accessibility_Setting_Btn_Container' >
                                         <ThemeContext.Provider value={{ theme, toggleTheme }}>
-                                            <ThemeProvider theme={theme === "light" ? LightTheme : DarkTheme}>
+                                            <ThemeProvider theme={theme === "light" ? LightThemeAccessibilitySettings : DarkTheme}>
                                                 <ThemeToggler />
 
                                             </ThemeProvider>
                                         </ThemeContext.Provider>
+
 
 
                                         <button className='accessibility_Setting_Btn'>Hög Kontrast</button>

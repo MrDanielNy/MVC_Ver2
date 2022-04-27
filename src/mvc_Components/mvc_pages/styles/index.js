@@ -7,8 +7,12 @@ export const DarkTheme = {
     color: 'white',
 };
 
-export const LightTheme = {
+export const LightThemeNavbar = {
     backgroundColor: 'blue',
+    color: 'white',
+};
+export const LightThemeAccessibilitySettings = {
+    backgroundColor: 'darkblue',
     color: 'white',
 };
 export const greenTheme = {
