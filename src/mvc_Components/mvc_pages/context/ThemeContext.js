@@ -6,5 +6,15 @@ export const ThemeContext = createContext({
     },
 })
 export const Blind = createContext({
+    BlindTheme: "",
+    toggleBlindTheme: () => {
 
+    },
+});
+
+export const Cognitive = createContext({
+    cognitiveTheme: "",
+    toggleCognitiveTheme: () => {
+
+    },
 });

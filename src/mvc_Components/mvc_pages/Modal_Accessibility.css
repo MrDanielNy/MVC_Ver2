@@ -1,3 +1,7 @@
+.header {
+    background-color: white;
+}
+
 .modal_Header {
     position: relative;
     display: flex;

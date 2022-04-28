@@ -10,6 +10,7 @@ import { DivHeader, Button, greenTheme, redTheme, DarkTheme, LightThemeAccessibi
 import ThemeToggler from './ThemeToggler';
 import { ThemeContext } from 'styled-components';
 import { useContext } from "react"
+import "./ToggleKey.css"
 
 const Background = styled.div`
    position: fixed;
@@ -66,11 +67,11 @@ border-radius:100px
 `;
 
 
-const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
-    const gentleColors = useRef();
-    const [value, setValue] = useState(false);
+const ModalAccessibility = ({ showAccessibility, setShowAccessibility, setChecked }) => {
+    const themeStatus = useRef();
     const accessibilitySetting = useRef();
     const closeAccessibilitySetting = e => {
+
         if (accessibilitySetting.current === e.target) {
             setShowAccessibility(false)
         }
@@ -92,6 +93,9 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
         return () => document.removeEventListener("keydown", escKey)
     })
     const { theme, toggleTheme } = useContext(ThemeContext);
+    const { blindTheme, toggleBlindTheme } = useContext(ThemeContext);
+    const { cognitiveTheme, toggleCognitiveTheme } = useContext(ThemeContext);
+
     return (
         <>
             {showAccessibility ? (
@@ -116,24 +120,75 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
                                 <div className='settings_Container'>
 
 
-                                    <div className='options'><Switch label="gentle colors" />  <label> Blida färger</label>
-                                        <p>Reducerar färg</p>
+                                    {/* <div className='options'>
+                                        {" "}
+                                        <div className="toggle-switch">
+                                            <input ref={themeStatus} type="checkbox" className="checkbox"
+                                                name={"gentle colors"} id={"gentle colors"} onClick={() => {
+
+
+                                                    toggleTheme(
+                                                        theme === "light" ? "dark" : "light")
+                                                    localStorage.setItem("theme", theme)
+                                                    // console.log(themeStatus.current.checked + " ()()()()")
+                                                    localStorage.setItem("status", themeStatus.current.checked)
+                                                    // console.log("Saved to local storage " + localStorage.getItem("status"))
+
+
+                                                }} />
+                                            <label className="label" htmlFor={"gentle colors"}>
+                                                <span className="inner" />
+                                                <span className="switch" />
+                                            </label>
+                                        </div>
+                                        <label> Mörkt lägge </label>
+                                        <p>Mörk eller ljus lägge</p>
                                     </div>
 
-                                    <div className='options'>  <Switch label="visually impaired" /><label> Synskadad </label>
-                                        <p>För de flesta synnedsättningar</p></div>
-                                    <div className='options'>  <Switch label="Cognitive" /><label> Kognitiv funktionshinder</label>
-                                        <p>Funktionsnedsätningar som autism, dyslexi och ... </p></div>
 
-                                    <div className='options'>  <Switch label="keyboard" /><label> Tangetbordnavigering</label>
-                                        <p>Använd tangetbord att surfa i webbsidan </p></div>
+                                    <div className='options'>
 
-                                    <div className='options'>  <Switch label="readingTitles" /><label> Läser titlar och texter</label>
-                                        <p>Hör en titel eller en text genom att klicka på den</p></div>
+                                        {" "}
+
+                                        <div className="toggle-switch">
+                                            <input type="checkbox" className="checkbox"
+                                                name={"visually impaired"} id={"visually impaired"} onClick={() => {
+                                                    toggleBlindTheme(
+                                                        blindTheme === "light" ? "dark" : "light")
+                                                }} />
+                                            <label className="label" htmlFor={"visually impaired"}>
+                                                <span className="inner" />
+                                                <span className="switch" />
+                                            </label>
+                                        </div>
+                                        <label> Synskadad </label>
+                                        <p>För de flesta synnedsättningar</p>
+
+                                    </div>
+
+                                    <div className='options'>
+
+                                        {" "}
+
+                                        <div className="toggle-switch">
+                                            <input type="checkbox" className="checkbox"
+                                                name={"Cognitive"} id={"Cognitive"} onClick={() => {
+                                                    toggleCognitiveTheme(
+                                                        cognitiveTheme === "light" ? "dark" : "light")
+                                                }} />
+                                            <label className="label" htmlFor={"Cognitive"}>
+                                                <span className="inner" />
+                                                <span className="switch" />
+                                            </label>
+                                        </div>
+                                        <label> Kognitiv funktionshinder</label>
+                                        <p>Funktionsnedsätningar som autism, dyslexi och ...</p>
+
+                                            </div>*/}
 
                                     <div className='accessibility_Setting_Btn_Container' >
                                         <ThemeContext.Provider value={{ theme, toggleTheme }}>
-                                            <ThemeProvider theme={theme === "light" ? LightThemeAccessibilitySettings : DarkTheme}>
+                                            <ThemeProvider theme={theme === "light" ? DarkTheme : LightThemeAccessibilitySettings}>
                                                 <ThemeToggler />
 
                                             </ThemeProvider>

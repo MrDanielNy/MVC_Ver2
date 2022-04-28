@@ -14,7 +14,8 @@ import { ThemeContext } from 'styled-components';
 
 /** The main page */
 function MVC_Home() {
-  const [theme, toggleTheme] = useState("light");
+
+  const [theme, toggleTheme] = useState(localStorage.getItem("theme"));
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
 

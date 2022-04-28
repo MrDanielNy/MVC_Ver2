@@ -15,7 +15,7 @@ import ThemeToggler from '../mvc_Components/mvc_pages/ThemeToggler';
 import { ThemeContext } from 'styled-components';
 import sendToNav from "../mvc_Components/mvc_pages/Modal_Accessibility"
 import { useContext } from "react"
-function NavPane(props) {
+function NavPane() {
   const [showAccessibility, setShowAccessibility] = useState(false);
   const openAccessibilitySettings = () => {
     setShowAccessibility(prev => !prev) // If it is true, change it to false

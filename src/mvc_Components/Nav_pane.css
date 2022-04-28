@@ -12,8 +12,10 @@
   min-width: 300px;
 }
 
+/*#00295eb3;*/
 .navbar-container {
-  background-color: rgba(0, 41, 94, 0.7);
+  background-color: #00295eb3;
+  ;
   display: grid;
   /* Logo Gap Gap HamMenu*/
   grid-template-columns: 10% 10% 70% 10%;
@@ -75,8 +77,6 @@
 .MVC-Logo:hover {
   transition: all 0.8s ease;
   color: rgb(0, 0, 0);
-
-
 }
 
 .ham_Menu {

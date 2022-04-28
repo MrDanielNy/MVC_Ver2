@@ -9,9 +9,15 @@ const Switch = ({ label }) => {
         <>
 
             {" "}
+
             <div className="toggle-switch">
                 <input type="checkbox" className="checkbox"
+
                     name={label} id={label} onClick={() => {
+
+
+
+
                         toggleTheme(
                             theme === "light" ? "dark" : "light")
                     }} />

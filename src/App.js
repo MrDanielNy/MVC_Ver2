@@ -15,8 +15,8 @@ import { ThemeContext } from 'styled-components';
 
 function App() {
   // Fetch from local storage
-  localStorage.getItem("theme");
-  console.log(localStorage.getItem("theme"))
+
+  console.log("///////////" + localStorage.getItem("theme"))
   const [theme, toggleTheme] = useState(localStorage.getItem("theme"));
   return (
     <Router>
