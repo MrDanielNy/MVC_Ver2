@@ -3,8 +3,23 @@ import "../mvc_pages/Modal_Accessibility.css"
 import styled from "styled-components"
 import { MdClose } from "react-icons/md"
 import { useSpring, animated } from 'react-spring';
-import Switch from './ToggleKey';
+//import Switch from './ToggleKey';
 import MultiSwitch from 'react-multi-switch-toggle'
+
+import Switch from "@mui/material/Switch"
+import { theme1, theme2 } from "../mvc_pages/theme/AccessibilityThemes"
+import baseTheme from "../mvc_pages/BaseTheme/Styles";
+import { deepmerge } from "@mui/utils";
+
+import {
+    Button,
+    Paper,
+    Typography,
+    Box,
+    ThemeProvider,
+    createTheme
+} from "@mui/material";
+
 
 const Background = styled.div`
    position: fixed;
@@ -90,68 +105,71 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
         return () => document.removeEventListener("keydown", escKey)
     })
 
+
+    const [theme, setTheme] = useState(baseTheme);
+
+    const handleSwitch = (whichTheme) => {
+        const newTheme = deepmerge(theme, whichTheme);
+        setTheme(createTheme(newTheme));
+    };
+
+
     return (
         <>
+            <ThemeProvider theme={theme}>
+                {showAccessibility ? (
+                    <Background ref={accessibilitySetting} onClick={closeAccessibilitySetting}>
 
-            {showAccessibility ? (
-                <Background ref={accessibilitySetting} onClick={closeAccessibilitySetting}>
+                        <Accessibility_Wrapper showAccessibility={showAccessibility}>
 
-                    <Accessibility_Wrapper showAccessibility={showAccessibility}>
+                            <Accessibility_Window_Content>
 
-                        <Accessibility_Window_Content>
+                                <div color="primary" className='header'>
 
-                            <div className='header'>
-                                <div className='modal_Header'>
-                                    <h2  >Tillgänglighetsjusteringar </h2>
-                                    <button className='reset_Settings_Btn'>Återställ inställningar</button>
+                                    <Paper color="" className='modal_Header'>
+                                        <Typography color="secondary" variant='h5' >Tillgänglighetsjusteringar </Typography>
+                                        <Button onClick={() => handleSwitch((baseTheme))} className='reset_Settings_Btn'>Återställ inställningar</Button>
 
-                                </div>
-                                <div >
-                                    <h3 className='accessibility-Settings_Header'>Välj tillgänglighetsprofil</h3>
-                                </div>
-                                <div className='settings_Container'>
+                                    </Paper>
 
 
-                                    <div className='options'><Switch label="gentle colors" />  <label> Blida färger</label>
-                                        <p>Reducerar färg</p>
+                                    <div >
+                                        <Typography color="primary" variant='h6' className='accessibility-Settings_Header'>Välj tillgänglighetsprofil</Typography>
                                     </div>
+                                    <div className='settings_Container'>
 
-                                    <div className='options'>  <Switch label="visually impaired" /><label> Synskadad </label>
-                                        <p>För de flesta synnedsättningar</p></div>
-                                    <div className='options'>  <Switch label="Cognitive" /><label> Kognitiv funktionshinder</label>
-                                        <p>Funktionsnedsätningar som autism, dyslexi och ... </p></div>
 
-                                    <div className='options'>  <Switch label="keyboard" /><label> Tangetbordnavigering</label>
-                                        <p>Använd tangetbord att surfa i webbsidan </p></div>
 
-                                    <div className='options'>  <Switch label="readingTitles" /><label> Läser titlar och texter</label>
-                                        <p>Hör en titel eller en text genom att klicka på den</p></div>
 
-                                    <div className='accessibility_Setting_Btn_Container' >
-                                        <button className='accessibility_Setting_Btn'>Svartvit</button>
-                                        <button className='accessibility_Setting_Btn'>Hög Kontrast</button>
-                                        <button className='accessibility_Setting_Btn'>Mörk Kontrast</button>
-                                        <button className='accessibility_Setting_Btn'>Stor svart markör</button>
-                                        <button className='accessibility_Setting_Btn'>Stor vit markör</button>
-                                        <button className='accessibility_Setting_Btn'>Läsguide</button>
+                                        <div className='accessibility_Setting_Btn_Container' >
+
+                                            <Button onClick={() => handleSwitch(JSON.parse(theme1))} variant='contained' className='accessibility_Setting_Btn'>Dark</Button>
+                                            <Button onClick={() => handleSwitch(theme2)} variant='contained' className='accessibility_Setting_Btn'>Blind</Button>
+                                            <Button onClick={() => handleSwitch((baseTheme))} variant='contained' className='accessibility_Setting_Btn'>Blind</Button>
+
+                                            <button className='accessibility_Setting_Btn'>Hög Kontrast</button>
+                                            <button className='accessibility_Setting_Btn'>Mörk Kontrast</button>
+                                            <button className='accessibility_Setting_Btn'>Stor svart markör</button>
+                                            <button className='accessibility_Setting_Btn'>Stor vit markör</button>
+                                            <button className='accessibility_Setting_Btn'>Läsguide</button>
+
+                                        </div>
+
+
+
 
                                     </div>
-
-
-
-
                                 </div>
-                            </div>
 
-                        </Accessibility_Window_Content>
-                        <CloseAccessibilitySettings aria-label='stäng tillgänglighetsinställningarna' onClick={() => setShowAccessibility(prev => !prev)} />
+                            </Accessibility_Window_Content>
+                            <CloseAccessibilitySettings aria-label='stäng tillgänglighetsinställningarna' onClick={() => setShowAccessibility(prev => !prev)} />
 
-                    </Accessibility_Wrapper>
+                        </Accessibility_Wrapper>
 
-                </Background >
+                    </Background >
 
-            ) : null}
-
+                ) : null}
+            </ThemeProvider>
         </>
     );
 }

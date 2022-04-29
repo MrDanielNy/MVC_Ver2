@@ -60,7 +60,6 @@ function MVC_Hero() {
 
             }} className="title">My Virtual Classroom</h1>
           <p onMouseLeave={(e) => {
-            console.log("Hello dude!");
             e.target.style.border = 'none';
           }} onClick={(e) => {
             e.target.style.border = '2px solid rgba(147, 250, 165)';

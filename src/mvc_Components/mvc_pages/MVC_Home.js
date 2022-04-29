@@ -15,13 +15,15 @@ function MVC_Home() {
   return (
     <>
       <MVC_Hero />
+
       <Platform />
 
       <Boxes />
-      {/* Platform is placed in Hero */}
+
       <AboutUs_Link />
 
       <Contacts_Link />
+
       <MVC_Partners />
     </>
   );
