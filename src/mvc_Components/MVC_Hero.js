@@ -11,6 +11,15 @@ import video2 from "../images/video-1.mp4"
 import img_Background from "../images/ATC.png"
 import { useSpeechSynthesis } from 'react-speech-kit';
 
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
+
 function MVC_Hero() {
   const { speak } = useSpeechSynthesis();
   const [click, setClick] = useState(false);
@@ -46,7 +55,7 @@ function MVC_Hero() {
           </video>
         </div>
         <div>
-          <h1 onMouseLeave={(e) => {
+          <Typography color="secondary" variant="h1" onMouseLeave={(e) => {
             console.log("Hello dude!");
             e.target.style.border = 'none';
           }}
@@ -58,7 +67,7 @@ function MVC_Hero() {
               }
               )
 
-            }} className="title">My Virtual Classroom</h1>
+            }} className="title">My Virtual Classroom</Typography>
           <p onMouseLeave={(e) => {
             e.target.style.border = 'none';
           }} onClick={(e) => {

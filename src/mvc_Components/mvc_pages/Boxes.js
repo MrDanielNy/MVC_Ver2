@@ -2,9 +2,17 @@ import React from "react";
 import MVC_Home_Boxes from "./MVC_Home_Boxes";
 import "./Boxes.css";
 
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
 function Boxes() {
   return (
-    <div className="Boxes">
+    <div variant="contained" className="Boxes">
 
       <div className="Boxes_Container">
         <h1 className="boxes_Title">My Virtual Classroom!</h1>

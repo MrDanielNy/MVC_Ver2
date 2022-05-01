@@ -9,7 +9,14 @@ import styled from "styled-components";
 import ModalAccessibility from "./mvc_pages/Modal_Accessibility";
 import "../mvc_Components/mvc_pages/Modal_Accessibility.css"
 import { GlobalStyle } from "./mvc_pages/GlobalStyle";
-
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
 
 function NavPane() {
   const [showAccessibility, setShowAccessibility] = useState(false);
@@ -55,20 +62,35 @@ function NavPane() {
     return () => document.removeEventListener("keydown", menu)
   })
 
+  const hamStyle = {
 
+
+    backgroundColor: "#fafafa00", // rgba(250, 250, 250, 0)
+    textAlign: "center",
+    height: "50px",
+    width: "100px",
+    color: 'white',
+    borderRadius: "20px",
+    border: "none",
+    cursor: "pointer",
+    fontSize: "30px"
+  }
   return (
     <>
       <nav className="nav_Pane">
-        <div className="navbar-container">
-          <Link to="/" className="MVC-Logo" onClick={closeMenu}>
+        <Paper variant="contained" color="primary" className="navbar-container">
+          <div className="accessibility_Icon"> <img onClick={openAccessibilitySettings} src={require("../images/accessibility_Icon.png")} /></div>
+          <Button style={hamStyle} component={Link} to="/" onClick={closeMenu}>
             MVC
-          </Link>
+          </Button>
           <div></div>
           <div></div>
-          <div className="ham_Menu" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          <div className="ham_Menu" >
+            <Button style={hamStyle} onClick={handleClick} >
+              <span className={click ? "fas fa-times" : "fas fa-bars"} />
+            </Button>
           </div>
-        </div>
+        </Paper>
         <div className="accessibility_Icon"> <img onClick={openAccessibilitySettings} src={require("../images/accessibility_Icon.png")} /></div>
         <ModalAccessibility showAccessibility={showAccessibility} setShowAccessibility={setShowAccessibility} />
         <GlobalStyle />
@@ -77,23 +99,28 @@ function NavPane() {
       </nav>
       {/* Menu and links*/}
       <div className="drop-down-menu">
-        <ul className={click ? "menu active" : "menu"}>
-          <li className="menu-items">
-            <Link to="/Projects" className="menu-links" onClick={closeMenu}>
-              <button className="project_Btn">Projects</button>
-            </Link>
-          </li>
-          <li className="menu-items">
-            <Link to="/AboutUs" className="menu-links" onClick={closeMenu}>
-              About us
-            </Link>
-          </li>
-          <li className="menu-items">
-            <Link to="/Contacts" className="menu-links" onClick={closeMenu}>
-              Contacts
-            </Link>
-          </li>
-        </ul>
+        <div className={click ? "menu active" : "menu"}>
+
+          <Button component={Link} to="/Projects" onClick={closeMenu} className="menu-links">
+
+
+            <h1 className="menu-items"> Projekt </h1>
+          </Button>
+
+
+          <h5 className="menu-items">
+            <Button component={Link} to="/AboutUs" onClick={closeMenu} className="menu-links">
+              <h1 className="menu-items">Om oss </h1>
+            </Button>
+          </h5>
+
+          <h5 className="menu-items">
+            <Button component={Link} to="/Contacts" onClick={closeMenu} className="menu-links">
+              <h1 className="menu-items"> Kontakta </h1>
+            </Button>
+          </h5                  >
+
+        </div>
       </div>
     </>
   );

@@ -13,7 +13,7 @@
 }
 
 .navbar-container {
-  background-color: rgba(0, 41, 94, 0.7);
+  /*background-color: #00295eb3;*/
   display: grid;
   /* Logo Gap Gap HamMenu*/
   grid-template-columns: 10% 10% 70% 10%;
@@ -47,7 +47,7 @@
 }
 
 .menu.active {
-  background: rgba(48, 43, 67, 0.822);
+  background: rgba(48, 43, 67, 0.99);
   left: 0;
   top: 0px;
   opacity: 10;
@@ -116,19 +116,37 @@
 }
 
 .menu-links {
+  background-color: rgb(209, 181, 103);
+
+
+  text-align: center;
+  height: 50px;
+  width: 290px;
   color: rgb(255, 255, 255);
-  width: auto;
-  display: table;
-  text-decoration: none;
-  padding: 10px;
-  font-size: 50px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 45px;
 }
 
-.menu-links:hover {
+.menu-items {
+  font-size: 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: table;
+  text-decoration: none;
+  padding: 5px;
+  width: 200px;
+  color: white;
+
+
+}
+
+.menu-items:hover {
   color: #f7aa04;
+  text-shadow: #f7aa04;
   transition: all 0.8s ease-out;
   opacity: 1;
-  font-size: 55px;
+
 }
 
 .project_Btn {

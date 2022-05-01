@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../App.css";
 import MVC_Hero from "../MVC_Hero";
 import Boxes from "./Boxes";
@@ -10,13 +10,28 @@ import Contacts_Link from "./Contacts_In_Home";
 import MVC_Partners from "./MVC_Partners";
 import NavPane from "../Nav_pane";
 
+
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
+
+
 /** The main page */
 function MVC_Home() {
+
+
   return (
     <>
+
       <MVC_Hero />
 
       <Platform />
+
 
       <Boxes />
 
@@ -25,6 +40,7 @@ function MVC_Home() {
       <Contacts_Link />
 
       <MVC_Partners />
+
     </>
   );
 }

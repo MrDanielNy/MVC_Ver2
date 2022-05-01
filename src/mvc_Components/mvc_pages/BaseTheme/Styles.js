@@ -23,7 +23,7 @@ const baseTheme = createTheme({
         MuiPaper: {
             styleOverrides: {
                 root: {
-                    background: "#393e46"
+                    background: "#09094ec9"
                 }
             },
             defaultProps: {

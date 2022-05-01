@@ -2,6 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Boxes.css";
 
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
+
 function MVC_Home_Boxes(props) {
   return (
     <>
@@ -10,9 +19,9 @@ function MVC_Home_Boxes(props) {
           <figure className="Item_Picture" data-category={props.label}>
             <img src={props.src} alt="Coming soon" className="Item_Img" />
           </figure>
-          <div className="Item_Information">
-            <h5 className="Item_Text">{props.text}</h5>
-          </div>
+          <Paper variant="contained" className="Item_Information">
+            <Typography variant="h6  n n nnnnnnnnnnnnnnnnnnnn           " color="secondary" className="Item_Text">{props.text}</Typography>
+          </Paper>
         </Link>
       </li>
     </>

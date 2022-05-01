@@ -1,7 +1,7 @@
 export const theme1 = `{
   "palette": {
     "primary": {
-      "main": "#181414"
+      "main": "##32323694"
     },
     "secondary": {
       "main": "#ffffff"
@@ -23,7 +23,7 @@ export const theme1 = `{
       },
       "styleOverrides": {
         "root": {
-          "background": "#070505"
+          "background": "#323236e8"
         }
       }
     }
@@ -36,7 +36,7 @@ export const theme2 = {
       main: "#ffffff"
     },
     secondary: {
-      main: "#00b0ff"
+      main: "#ffffed"
     },
 
   },
