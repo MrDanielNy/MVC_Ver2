@@ -1,17 +1,26 @@
 import React from "react";
 import "../mvc_pages/About_In_Home.css";
 import { Link } from "react-router-dom";
+
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
 function AboutUs_Link() {
   return (
     <>
-      <div className="about">
+      <Paper color="primary" className="about">
         <div className="about_Container">
           <div className="about_Text">
-            <h2>My Virtual Classroom</h2>
-            <h5 className="about_SubText">
+            <Typography variant="h3" color="secondary">My Virtual Classroom</Typography>
+            <Typography variant="h6" color="secondary" className="about_SubText">
               sadasdasdasd asd asd asda sadasdasdasd asd asd asdasdasd as ad
               asdasd asd asd asdasd
-            </h5>
+            </Typography>
           </div>
 
           <div className="about_Img">
@@ -26,12 +35,12 @@ function AboutUs_Link() {
           <div></div>
           <div>
             <Link to="/AboutUs">
-              <button className="about_Btn_Page">About Us</button>
+              <Button variant="contained" className="about_Btn_Page">About Us</Button>
             </Link>
           </div>
           <div></div>
         </div>
-      </div>
+      </Paper>
     </>
   );
 }

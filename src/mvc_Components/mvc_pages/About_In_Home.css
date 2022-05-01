@@ -11,7 +11,7 @@
   margin: 0 auto;
   align-items: center;
   width: 100%;
-  background-color: aliceblue;
+  /* background-color: aliceblue;*/
 }
 
 .about_Container {
@@ -44,7 +44,7 @@
 }
 
 .about_SubText {
-  color: rgb(0, 82, 54);
+  /*color: rgb(0, 82, 54);*/
 }
 
 .about_Btn_Page {
@@ -53,9 +53,9 @@
   background: transparent;
   font-size: 1rem;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+  /*color: rgb(0, 0, 0);*/
   cursor: pointer;
-  border: 1px black solid;
+  border: 1px rgb(255, 251, 251) solid;
 
   text-align: center;
   margin: 20px;
