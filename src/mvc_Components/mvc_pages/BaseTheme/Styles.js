@@ -20,11 +20,19 @@ const baseTheme = createTheme({
                 }
             }
         },
+        MuiButton: {
+            root: {
+                textTransform: "none",
+
+                background: "#ffffff"
+            }
+        },
         MuiPaper: {
             styleOverrides: {
                 root: {
-                    background: "#09094ec9"
-                }
+                    background: "#060641f5"
+                },
+
             },
             defaultProps: {
                 elevation: 0

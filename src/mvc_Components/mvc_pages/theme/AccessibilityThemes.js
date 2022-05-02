@@ -1,7 +1,7 @@
 export const theme1 = `{
   "palette": {
     "primary": {
-      "main": "##32323694"
+      "main": "#32323694"
     },
     "secondary": {
       "main": "#ffffff"
@@ -10,7 +10,7 @@ export const theme1 = `{
   "components": {
     "MuiButton": {
       "defaultProps": {
-        "disableRipple": true,
+        "disableRipple": false,
         "size": "small",
         "sx": {
           "color": "#ffffff"
@@ -36,7 +36,7 @@ export const theme2 = {
       main: "#ffffff"
     },
     secondary: {
-      main: "#ffffed"
+      main: "#000000"
     },
 
   },

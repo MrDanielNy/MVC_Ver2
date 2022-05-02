@@ -3,21 +3,33 @@ import "./Contacts_In_Home.css";
 import "./MVC_Contacts_Footer"
 import { Link } from "react-router-dom";
 
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
+
 function Contacts_Link() {
   return (
     <div className="main_Container">
       <div className="contacts_Container">
 
         <div className="contacts_Title">
-          <h1>Lets get in touch!</h1>
+          <Typography sx={{ fontSize: 60 }} color="primary">Välkomna att kontakta oss! </Typography>
           <h6 className="subTitle">
             Vi söker hela tiden efter nya utmaningar, samarbeten och dialoger.
           </h6>
         </div>
 
         <div>
-          <Link to="/Contacts">
-            <button className="btn_Contact">Contact us</button>
+          <Link to="/Contacts" className="btn_Contact">
+            <Button color="secondary" variant="contained" className="btn_Contact">
+              <Typography color="primary" variant="h6">
+                Kontakta oss </Typography>
+            </Button>
           </Link>
         </div>
         {/** TODO: Make a link to MVC's social media */}

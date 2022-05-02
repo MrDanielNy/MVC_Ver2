@@ -8,8 +8,12 @@ import { useState } from "react";
 import Platform from "./mvc_pages/Platform";
 import video from "../images/video-2.mp4";
 import video2 from "../images/video-1.mp4"
+import backgrund from "../images/HeroSmallSize.png"
 import img_Background from "../images/ATC.png"
 import { useSpeechSynthesis } from 'react-speech-kit';
+
+import { PrismCode } from 'react-prism';
+import { Player, ControlBar } from 'video-react';
 
 import {
   Button,
@@ -20,7 +24,9 @@ import {
   createTheme
 } from "@mui/material";
 
-function MVC_Hero() {
+function MVC_Hero(props) {
+  console.log("Yohooooooo " + props.bkg)
+
   const { speak } = useSpeechSynthesis();
   const [click, setClick] = useState(false);
   const closeMenu = () => setClick(false);
@@ -33,6 +39,7 @@ function MVC_Hero() {
    * string to Video as source and the background image in CSS shows.
    */
   const screen_Checker = () => {
+
     if (window.innerWidth > 768 && window.innerHeight > 450) {
       console.log("Not a mobile screen")
       return video;
@@ -43,6 +50,18 @@ function MVC_Hero() {
     }
 
   }
+
+
+
+  /*
+  console.log("********************************************************")
+  console.log("Video before localS " + video);
+  console.log(localStorage.getItem("Background") + " <---------------")
+  console.log("Video is =======form address=========> " + video)
+  // video = localStorage.getItem("Background");
+  console.log("Video is =======from local Storage=========> " + video)
+  console.log("********************************************************")*/
+
   return (
     <>
       <div className="mvc-hero-container">
@@ -50,12 +69,12 @@ function MVC_Hero() {
         {/* A video link to have the live backgrond*/}
         <div className="background_Container_">
           <video className=".background-video" loop autoPlay muted>
-            <source src={screen_Checker()} type="video/mp4" />
+            <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
         <div>
-          <Typography color="secondary" variant="h1" onMouseLeave={(e) => {
+          <h1 color="secondary" variant="h2" onMouseLeave={(e) => {
             console.log("Hello dude!");
             e.target.style.border = 'none';
           }}
@@ -67,17 +86,16 @@ function MVC_Hero() {
               }
               )
 
-            }} className="title">My Virtual Classroom</Typography>
+            }} className="title">My Virtual Classroom</h1>
           <p onMouseLeave={(e) => {
             e.target.style.border = 'none';
           }} onClick={(e) => {
             e.target.style.border = '2px solid rgba(147, 250, 165)';
             speak({
-              text: ' Vi vill förändra dagens utbildning och bjuder in Sveriges skolor till Utbildning-2.0.'
+              text: ' - En framtid på lika villkor'
             })
           }} className="subTitle_">
-            Vi vill förändra dagens utbildning och bjuder in Sveriges skolor
-            till “Utbildning-2.0”.
+            - En framtid på lika villkor
           </p>
 
           <p>{/** Other staffs if needed here */}</p>
@@ -90,6 +108,7 @@ function MVC_Hero() {
         <div>
 
         </div>
+
       </div>
     </>
   );

@@ -22,13 +22,14 @@ import {
 
 
 /** The main page */
-function MVC_Home() {
-
+function MVC_Home(props) {
+  const background_Image = props.bkg;
+  console.log("Here is backgrond in Home " + props.background_Image)
 
   return (
     <>
 
-      <MVC_Hero />
+      <MVC_Hero bkg={props.bkg} />
 
       <Platform />
 

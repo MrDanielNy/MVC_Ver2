@@ -13,14 +13,17 @@ import {
 function AboutUs_Link() {
   return (
     <>
-      <Paper color="primary" className="about">
+      <Paper className="about">
         <div className="about_Container">
           <div className="about_Text">
-            <Typography variant="h3" color="secondary">My Virtual Classroom</Typography>
-            <Typography variant="h6" color="secondary" className="about_SubText">
-              sadasdasdasd asd asd asda sadasdasdasd asd asd asdasdasd as ad
-              asdasd asd asd asdasd
-            </Typography>
+            <div className="about_Header">
+              <Typography variant="h3" color="secondary" >My Virtual Classroom</Typography>
+            </div>
+            <div className="about_SubText">
+              <Typography sx={{ typography: { sm: 'body1', xs: 'body2' } }} variant="h6" color="secondary" >
+                Vi är ett företag med stor passion för teknisk utveckling och utbildning. Vi tycker att kombinationen är spännande och hoppas att ni vara med på vår resa.
+              </Typography>
+            </div>
           </div>
 
           <div className="about_Img">
@@ -34,8 +37,9 @@ function AboutUs_Link() {
         <div className="btn_Container">
           <div></div>
           <div>
-            <Link to="/AboutUs">
-              <Button variant="contained" className="about_Btn_Page">About Us</Button>
+            <Link to="/AboutUs" className="about_btn_Link">
+              <Button color="secondary" variant="contained" className="about_Btn_Page">
+                <Typography color="primary" variant="h6">Om oss</Typography> </Button>
             </Link>
           </div>
           <div></div>

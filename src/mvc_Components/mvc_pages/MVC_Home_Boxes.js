@@ -20,7 +20,7 @@ function MVC_Home_Boxes(props) {
             <img src={props.src} alt="Coming soon" className="Item_Img" />
           </figure>
           <Paper variant="contained" className="Item_Information">
-            <Typography variant="h6  n n nnnnnnnnnnnnnnnnnnnn           " color="secondary" className="Item_Text">{props.text}</Typography>
+            <Typography sx={{ typography: { sm: 'body1', xs: 'body2' } }} variant="h6" color="secondary" className="Item_Text">{props.text}</Typography>
           </Paper>
         </Link>
       </li>

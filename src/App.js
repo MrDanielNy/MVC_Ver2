@@ -34,6 +34,26 @@ function App() {
     console.log("The theme in app is .....>>" + theme)
   };
 
+  const [backgrond, setBackground] = useState("../images/video-1.mp4");
+
+  function Change_BackgroundState() {
+
+    if (backgrond === "../images/video-1.mp4") {
+      setBackground("")
+      localStorage.setItem("Background", backgrond)
+    }
+    else {
+      setBackground("../images/video-1.mp4")
+      localStorage.setItem("Background", backgrond)
+    }
+  }
+
+
+
+  console.log("Before saving in storage " + backgrond);
+  localStorage.setItem("Background", backgrond)
+
+
   return (
     <ThemeProvider theme={theme}>
       <Router>
@@ -43,9 +63,10 @@ function App() {
           <Button onClick={() => handleSwitch(JSON.parse(theme1))} variant='contained' className='accessibility_Setting_Btn'>Dark</Button>
           <Button onClick={() => handleSwitch(theme2)} variant='contained' className='accessibility_Setting_Btn'>Blind</Button>
           <Button onClick={() => handleSwitch((baseTheme))} variant='contained' className='accessibility_Setting_Btn'>Blind</Button>
+          <Button onClick={() => Change_BackgroundState()} variant='contained' className='accessibility_Setting_Btn'>Pausa video</Button>
         </div>
         <Routes>
-          <Route path="/" element={<MVC_Home />} />
+          <Route path="/" element={<MVC_Home bkg={backgrond} />} />
           <Route path="/Projects" element={<MVC_Projects />} />
           <Route path="/AboutUs" element={<MVC_AboutUs />} />
           <Route path="/Contacts" element={<MVC_Contacts />} />

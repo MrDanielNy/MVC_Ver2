@@ -59,13 +59,13 @@
 }
 
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1170px) {
   .platform_Text_ {
     font-size: 15px;
   }
 
   .platform_Container {
-    height: 400px;
+    height: 500px;
   }
 
   .platform_Text_Container_ {}
@@ -80,31 +80,32 @@
 
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 870px) {
   .platform_Container {
-    height: 500px;
+    height: 600px;
+
 
   }
 
   .platform_Text_Container_ {
-    padding-top: 100px;
+
     height: 430px;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
+
   }
 }
 
 @media screen and (max-width: 650px) {
   .platform_Text_Container_ {
-    padding-top: 50px;
-    height: 430px;
 
+    height: 500px;
+  }
 
-
+  .platform_Text_ {
+    font-size: 12px;
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 560px) {
   .platform_Container {
     height: 500px;
   }
@@ -114,7 +115,7 @@
   }
 
   .platform_Text_Container_ {
-    padding-top: 110px;
+
     height: 430px;
 
 
@@ -124,26 +125,21 @@
 
 @media screen and (max-width: 470px) {
   .platform_Container {
-    height: 600px;
-  }
-
-  .platform_Text_Container_ {
-    padding-top: 200px;
-    height: 500px;
-
-
+    height: 700px;
 
   }
+
+  .platform_Text_Container_ {}
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 415px) {
   .platform_Container {
-    height: 700px;
+    height: 800px;
   }
 
   .platform_Text_Container_ {
-    padding-top: 300px;
-    height: 650px;
+
+    height: 450px;
 
 
 
