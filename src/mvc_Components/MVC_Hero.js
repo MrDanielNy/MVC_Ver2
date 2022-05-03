@@ -6,7 +6,7 @@ import "./Nav_pane.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Platform from "./mvc_pages/Platform";
-import video from "../images/video-2.mp4";
+
 import video2 from "../images/video-1.mp4"
 import backgrund from "../images/HeroSmallSize.png"
 import img_Background from "../images/ATC.png"
@@ -42,7 +42,7 @@ function MVC_Hero(props) {
 
     if (window.innerWidth > 768 && window.innerHeight > 450) {
       console.log("Not a mobile screen")
-      return video;
+      return "";
     }
     else if (window.innerHeight < 450) {
       console.log(window.innerHeight + " Mobile Screen")
@@ -66,13 +66,13 @@ function MVC_Hero(props) {
     <>
       <div className="mvc-hero-container">
 
-        {/* A video link to have the live backgrond*/}
+        {/* A video link to have the live backgrond
         <div className="background_Container_">
           <video className=".background-video" loop autoPlay muted>
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        </div>
+      </div>*/}
         <div>
           <h1 color="secondary" variant="h2" onMouseLeave={(e) => {
             console.log("Hello dude!");

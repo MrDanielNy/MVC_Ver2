@@ -18,7 +18,7 @@
   /* Logo Gap Gap HamMenu*/
   grid-template-columns: 10% 10% 70% 10%;
   align-items: center;
-  height: 80px;
+  height: 70px;
   font-size: 1.2rem;
   min-width: 200px;
 }
