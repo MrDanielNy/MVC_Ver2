@@ -66,15 +66,8 @@ function MVC_Hero(props) {
     <>
       <div className="mvc-hero-container">
 
-        {/* A video link to have the live backgrond
-        <div className="background_Container_">
-          <video className=".background-video" loop autoPlay muted>
-            <source src={video} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-      </div>*/}
         <div>
-          <h1 color="secondary" variant="h2" onMouseLeave={(e) => {
+          <h1 onMouseLeave={(e) => {
             console.log("Hello dude!");
             e.target.style.border = 'none';
           }}

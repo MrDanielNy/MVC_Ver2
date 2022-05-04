@@ -113,58 +113,7 @@ const ModalAccessibility = ({ showAccessibility, setShowAccessibility }) => {
     return (
         <>
 
-            {showAccessibility ? (
-                <Background ref={accessibilitySetting} onClick={closeAccessibilitySetting}>
 
-                    <Accessibility_Wrapper showAccessibility={showAccessibility}>
-
-                        <Accessibility_Window_Content>
-
-                            <div color="primary" className='header'>
-
-                                <Paper color="" className='modal_Header'>
-                                    <Typography color="secondary" variant='h5' >Tillgänglighetsjusteringar </Typography>
-                                    <Button onClick={() => handleSwitch((baseTheme))} className='reset_Settings_Btn'>Återställ inställningar</Button>
-
-                                </Paper>
-
-
-                                <div >
-                                    <Typography color="primary" variant='h6' className='accessibility-Settings_Header'>Välj tillgänglighetsprofil</Typography>
-                                </div>
-                                <div className='settings_Container'>
-
-
-
-
-                                    <div className='accessibility_Setting_Btn_Container' >
-
-                                        <Button onClick={() => handleSwitch(JSON.parse(theme1))} variant='contained' className='accessibility_Setting_Btn'>Dark</Button>
-                                        <Button onClick={() => handleSwitch(theme2)} variant='contained' className='accessibility_Setting_Btn'>Blind</Button>
-                                        <Button onClick={() => handleSwitch((baseTheme))} variant='contained' className='accessibility_Setting_Btn'>Blind</Button>
-
-                                        <button className='accessibility_Setting_Btn'>Hög Kontrast</button>
-                                        <button className='accessibility_Setting_Btn'>Mörk Kontrast</button>
-                                        <button className='accessibility_Setting_Btn'>Stor svart markör</button>
-                                        <button className='accessibility_Setting_Btn'>Stor vit markör</button>
-                                        <button className='accessibility_Setting_Btn'>Läsguide</button>
-
-                                    </div>
-
-
-
-
-                                </div>
-                            </div>
-
-                        </Accessibility_Window_Content>
-                        <CloseAccessibilitySettings aria-label='stäng tillgänglighetsinställningarna' onClick={() => setShowAccessibility(prev => !prev)} />
-
-                    </Accessibility_Wrapper>
-
-                </Background >
-
-            ) : null}
 
         </>
     );

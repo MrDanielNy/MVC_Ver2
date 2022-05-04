@@ -67,11 +67,12 @@
     align-items: center;
     height: 400px;
     width: 900px;
-    background-color: rgba(255, 237, 72, 0.933);
+    padding: 20px;
+    /* background-color: rgba(255, 237, 72, 0.933);*/
     margin-bottom: 40px;
     margin: 3rem 0;
     border-radius: 5px;
-    animation: magical 3s 1;
+    animation: magical 1s 1;
 }
 
 @keyframes magical {
@@ -113,12 +114,13 @@
 }
 
 .project_One_Text {
-    color: rgb(14, 0, 51);
+    /*color: rgb(14, 0, 51);*/
     text-justify: inter-word;
-    margin: 0 2rem;
+    margin: 10px 3rem;
     line-height: 30px;
-    font-size: 20px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 30px;
 
 }
 
@@ -143,13 +145,13 @@
     align-items: center;
     height: 400px;
     width: 900px;
-    background-color: rgba(255, 237, 72, 0.933);
+    /* background-color: rgba(255, 237, 72, 0.933);*/
     margin-bottom: 40px;
     margin: 3rem 0;
     border-radius: 5px;
 
     margin-bottom: 30px;
-    animation: magical 3s 1;
+    animation: magical 1s 1;
 
 }
 
@@ -161,6 +163,7 @@
     color: rgb(14, 0, 51);
     text-justify: inter-word;
     margin: 0 2rem;
+    padding: 30px;
     line-height: 30px;
     font-size: 20px;
     font-family: 'Gill Sans',

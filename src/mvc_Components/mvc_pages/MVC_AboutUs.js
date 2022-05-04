@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import "../mvc_pages/MVC_AboutUs.css"
 import Contacts_Link from "./Contacts_In_Home";
 import { RiMailLine } from "react-icons/ri";
+import MVC_Contacts from "./MVC_Contacts";
+import Contacts_In_Home from "./Contacts_In_Home"
 
 
 const Mailto = ({ email, subject, body, children }) => {
@@ -103,6 +105,7 @@ function MVC_AboutUs() {
                   <Contacts_Link /> */}
                 </div>
             </div>
+            <Contacts_In_Home />
         </>
     );
 }

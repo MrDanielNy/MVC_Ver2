@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useRef } from "react";
 import { FaBeer } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
@@ -19,6 +19,14 @@ import {
 } from "@mui/material";
 
 function NavPane() {
+  const logoTab = useRef()
+  const menuItem = useRef();
+
+  const hamMenu = useRef()
+  React.useEffect(() => {
+    hamMenu.current.focus();
+  }, []);
+
   const [showAccessibility, setShowAccessibility] = useState(false);
   const openAccessibilitySettings = () => {
     setShowAccessibility(prev => !prev) // If it is true, change it to false
@@ -28,6 +36,11 @@ function NavPane() {
   const closeMenu = () => setClick(false);
   const handleClick = () => {
     console.log("Testing...");
+
+
+    menuItem.current.focus();
+
+
     setClick(!click);
   };
 
@@ -79,20 +92,19 @@ function NavPane() {
     <>
       <nav className="nav_Pane">
         <Paper variant="contained" color="primary" className="navbar-container">
-          <div className="accessibility_Icon"> <img onClick={openAccessibilitySettings} src={require("../images/accessibility_Icon.png")} /></div>
-          <Button style={hamStyle} component={Link} to="/" onClick={closeMenu}>
+
+          <Button ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
             MVC
           </Button>
           <div></div>
           <div></div>
           <div className="ham_Menu" >
-            <Button style={hamStyle} onClick={handleClick} >
+            <Button ref={hamMenu} style={hamStyle} onClick={handleClick} >
               <span className={click ? "fas fa-times" : "fas fa-bars"} />
             </Button>
           </div>
         </Paper>
-        <div className="accessibility_Icon"> <img onClick={openAccessibilitySettings} src={require("../images/accessibility_Icon.png")} /></div>
-        <ModalAccessibility showAccessibility={showAccessibility} setShowAccessibility={setShowAccessibility} />
+
         <GlobalStyle />
 
 
@@ -101,7 +113,7 @@ function NavPane() {
       <div className="drop-down-menu">
         <div className={click ? "menu active" : "menu"}>
 
-          <Button component={Link} to="/Projects" onClick={closeMenu} className="menu-links">
+          <Button ref={menuItem} component={Link} to="/Projects" onClick={closeMenu} className="menu-links">
 
 
             <h1 className="menu-items"> Projekt </h1>

@@ -5,11 +5,12 @@
 }
 
 .main_Container {
-  max-width: 1920px;
+  max-width: 100%;
   min-width: 300px;
   align-items: center;
   justify-content: center;
   text-align: center;
+  z-index: 100;
 }
 
 .contacts_Container {
@@ -22,6 +23,7 @@
   justify-content: center;
   height: 500px;
   border-top: 1px #060641f5 solid;
+  z-index: 1;
 }
 
 .contacts_Title {
@@ -54,11 +56,13 @@
   transition: all 0.5s ease;
   margin-top: 30px;
   text-decoration: none;
+  z-index: 100;
 }
 
 .btn_Contact:hover {
   background-color: rgb(55, 0, 253);
   color: rgb(255, 255, 255);
+
 }
 
 .social_Links_Container_ {
