@@ -38,18 +38,6 @@ function MVC_Hero(props) {
   /** It checks the screen size. If the screen is small, it sends an empty 
    * string to Video as source and the background image in CSS shows.
    */
-  const screen_Checker = () => {
-
-    if (window.innerWidth > 768 && window.innerHeight > 450) {
-      console.log("Not a mobile screen")
-      return "";
-    }
-    else if (window.innerHeight < 450) {
-      console.log(window.innerHeight + " Mobile Screen")
-      return "";
-    }
-
-  }
 
 
 

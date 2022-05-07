@@ -52,7 +52,7 @@ html {
   top: 0;
   bottom: 0;
   z-index: -1;
-  /* background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;*/
+  background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;
 }
 
 .title {

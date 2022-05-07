@@ -105,14 +105,6 @@ function App(props) {
     console.log("The theme in app is .....>>" + theme)
 
   };
-
-  console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
-
-
-
-  console.log("<><><><><><><><><><><><><><><><><><><><><><><><><><><><><>");
-
-
   // console.log("The theme from the hard disk is ...." + JSON.stringify(baseTheme));
   const [activeProfile, setActiveProfile] = useState(localStorage.getItem("ActiveProfile"));
   console.log(typeof activeProfile + " ><>< ><>< ><>< ><><")
@@ -149,13 +141,38 @@ function App(props) {
 
     }
   }
-
-
-
   const [checked, setChecked] = React.useState(true);
 
 
   const getVideo = useRef(null);
+  const [btnDisable, setBtnDisable] = useState(false)
+
+  let mobileSize = false;
+  const screen_Checker = () => {
+
+    if (window.innerWidth > 768 && window.innerHeight > 450) {
+      console.log("Not a mobile screen");
+
+      mobileSize = false;
+      console.log("/////BTN is " + btnDisable + "####");
+
+      return video;
+    }
+    else if (window.innerHeight < 450) {
+      console.log(window.innerHeight + " Mobile Screen")
+      mobileSize = true;
+
+      console.log("***BTN is*** " + btnDisable);
+      return "";
+    }
+
+
+  }
+  React.useEffect(() => {
+    setBtnDisable(mobileSize)
+  }, []);
+
+  console.log("vvvvvvvvvv+ " + mobileSize + "<<<<<>>>>> " + btnDisable)
   const [playerState, setPlayerState] = useState(
     true
   );
@@ -185,8 +202,6 @@ function App(props) {
     localStorage.setItem("PlayerMode", true)
 
   }
-
-
   console.log("Playermode is ::::::::> " + playerMode)
 
   const playVideo = () => {
@@ -217,135 +232,75 @@ function App(props) {
 
   };
 
-  //const myTheme = JSON.stringify(localStorage.getItem("Theme"));
-
-
-
-
-
-
-  // const [backgrond, setBackground] = useState("../images/video-1.mp4");
-
-  /*function Change_BackgroundState() {
-   
-    if (backgrond === "../images/video-1.mp4") {
-      setBackground("")
-      localStorage.setItem("Background", backgrond)
-    }
-    else {
-      setBackground("../images/video-1.mp4")
-      localStorage.setItem("Background", backgrond)
-    }
-  }
-   
-  ´´´´´´´´´´´´´´´´´´´´/mn
-   
-  console.log("Before saving in storage " + backgrond);
-  localStorage.setItem("Background", backgrond)*/
-
-
   return (
     <>
 
       <ThemeProvider theme={theme}>
         <Router>
+
           <div className="background_Container_Video" >
             <video className="video" ref={getVideo} loop muted autoPlay={autoPlayer}>
-              <source src={video} />
+              <source src={screen_Checker()} />
             </video>
-
           </div>
+
           {/** Navbar is placed here because it shoud be always on top of all elements in the page */}
           <NavPane />
-
-
           {showAccessibility ? (
-
             <Background ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
               <Accessibility_Wrapper className="Wrapper_Accessibility" showAccessibility={showAccessibility}>
-
                 <Accessibility_Window_Content>
-
                   <div color="primary" className='header'>
-
                     <Paper color="" className='modal_Header'>
                       <Typography color="secondary" variant='h5' >Tillgänglighetsjusteringar </Typography>
                       <button onClick={() => {
                         if (!playerMode) {
-
                           setPlayerMode_Text("AV");
                         } handleSwitch((baseTheme))
                       }} className='reset_Settings_Btn'>Återställ inställningar</button>
-
                     </Paper>
-
-
                     <div >
                       <h4 className='accessibility-Settings_Header'>Välj tillgänglighetsprofil</h4>
                     </div>
 
                     <label className='accessibility-active-profile'>aktiverad profil är<span className="accessibility-active-profile_text" >{localStorage.getItem("ActiveProfile")} </span></label>
-
                     <div className='accessibility_Setting_Btn_Container' >
-
                       <div className="btn-arrange">
-
                         <div className="btn">
                           <button onClick={() => {
                             setActiveProfile(" Ljus"); localStorage.setItem("ActiveProfile", " Ljus");
-
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch((baseTheme));
                             localStorage.setItem("Theme", baseTheme);
                           }} className='accessibility_Setting_Btn'>Ljus</button>
                           <label>allmänt tema</label>
-
-
-
                         </div>
                         <div className="btn">
                           <button onClick={() => {
                             setActiveProfile(" Mörkt"); localStorage.setItem("ActiveProfile", " Mörkt");
-
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme1);
                           }} className='accessibility_Setting_Btn'>Dark</button>
                           <label>mörk kontrast</label>
                         </div>
-
                         <div className="btn">
                           <button onClick={() => {
                             setActiveProfile(" Synskadad"); localStorage.setItem("ActiveProfile", " Synskadad");
-
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme2);
                           }} variant='contained' className='accessibility_Setting_Btn'>Blind</button>
                           <label>Synskadad</label>
                         </div>
-
                         <div className="btn">
-                          <button onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
+                          <button disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
                           <label>Animerad bakgrund</label>
                         </div>
-
-
-
-
-
                       </div>
                     </div>
-
                   </div>
-
                 </Accessibility_Window_Content>
                 <CloseAccessibilitySettings aria-label='stäng tillgänglighetsinställningarna' onClick={() => setShowAccessibility(prev => !prev)} />
-
               </Accessibility_Wrapper>
             </Background>
-
-
-
           ) : null}
-
           <div className="accessibility_Icon"> <img onClick={() => openAccessibilitySettings()} src={require("./images/accessibility_Icon.png")} /></div>
-
           <Routes>
             <Route path="/" element={<MVC_Home />} />
             <Route path="/Projects" element={<MVC_Projects />} />
