@@ -1,4 +1,4 @@
-export const theme1 = `{
+export const theme1 = {
   "palette": {
     "primary": {
       "main": "#32323694"
@@ -28,7 +28,7 @@ export const theme1 = `{
       }
     }
   }
-}`;
+};
 
 export const theme2 = {
   palette: {

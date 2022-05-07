@@ -21,7 +21,7 @@ html {
   align-items: center;
   text-align: center;
   position: relative;
-  z-index: 1;
+  z-index: -1;
   margin-bottom: 0px;
   min-width: 300px;
   max-height: 2160px;
