@@ -95,8 +95,12 @@ border-radius: 100px
 
 function App(props) {
 
+  const [bkColor, setBkcolor] = useState(true);
+  const [btnLight, setBtnLight] = useState("white");
+  const [btnDark, setBtnDark] = useState("white");
+  const [btnBlind, setBtnBlind] = useState("white");
+  const [btnBackGround, setBtnBackGround] = useState("white");
   const [theme, setTheme] = useState(baseTheme);
-
   const handleSwitch = (whichTheme) => {
     const newTheme = deepmerge(theme, whichTheme);
     setTheme(createTheme(newTheme));
@@ -105,9 +109,11 @@ function App(props) {
     console.log("The theme in app is .....>>" + theme)
 
   };
+  console.log("Saved");
+
   // console.log("The theme from the hard disk is ...." + JSON.stringify(baseTheme));
   const [activeProfile, setActiveProfile] = useState(localStorage.getItem("ActiveProfile"));
-  console.log(typeof activeProfile + " ><>< ><>< ><>< ><><")
+
   let fullTeme = theme;
   if (activeProfile === null || activeProfile === "") {
     setActiveProfile(" Ljus")
@@ -137,37 +143,30 @@ function App(props) {
 
     if (accessibilitySetting.current === e.target) {
       setShowAccessibility(false)
-      console.log("Closed XXXXXXXXXXXXXXXX")
-
     }
   }
-  const [checked, setChecked] = React.useState(true);
-
 
   const getVideo = useRef(null);
   const [btnDisable, setBtnDisable] = useState(false)
 
   let mobileSize = false;
   const screen_Checker = () => {
-
     if (window.innerWidth > 768 && window.innerHeight > 450) {
       console.log("Not a mobile screen");
-
       mobileSize = false;
       console.log("/////BTN is " + btnDisable + "####");
-
       return video;
     }
     else if (window.innerHeight < 450) {
       console.log(window.innerHeight + " Mobile Screen")
       mobileSize = true;
-
       console.log("***BTN is*** " + btnDisable);
       return "";
     }
 
 
   }
+  console.log(mobileSize)
   React.useEffect(() => {
     setBtnDisable(mobileSize)
   }, []);
@@ -186,24 +185,21 @@ function App(props) {
   const [autoPlayer, setAutoPlayer] = useState("");
   const [playerMode, setPlayerMode] = useState(localStorage.getItem("PlayerMode"));
   console.log("PlayerMode in localstorage is -------> " + playerMode)
+
   if (playerMode === "false") {
     auto_Player = false;
   }
   else {
     auto_Player = true;
   }
+
   React.useEffect(() => {
     setAutoPlayer(auto_Player)
   }, []);
-  console.log("000000000000 " + autoPlayer)
   if (playerMode === null || playerMode === "") {
     setPlayerMode(true);
-
     localStorage.setItem("PlayerMode", true)
-
   }
-  console.log("Playermode is ::::::::> " + playerMode)
-
   const playVideo = () => {
     getVideo.current.play()
     setPlayerMode(true);
@@ -222,19 +218,15 @@ function App(props) {
   };
 
   const togglePlay = () => {
-    setPlayerMode(!localStorage.getItem("PlayerMode"))
-
-    localStorage.setItem("PlayerMode", playerMode)
-
-
-    console.log("Playermode when toggling =======> " + playerMode)
-    playerMode ? pauseVideo() : playVideo()
-
+    setBkcolor(!bkColor);
+    // setPlayerMode(!localStorage.getItem("PlayerMode"))
+    localStorage.setItem("PlayerMode", !playerMode)
+    console.log("Playermode when toggling =======> " + !playerMode)
+    playerMode ? pauseVideo() : playVideo();
   };
 
   return (
     <>
-
       <ThemeProvider theme={theme}>
         <Router>
 
@@ -256,7 +248,8 @@ function App(props) {
                       <button onClick={() => {
                         if (!playerMode) {
                           setPlayerMode_Text("AV");
-                        } handleSwitch((baseTheme))
+                        } handleSwitch((baseTheme));
+
                       }} className='reset_Settings_Btn'>Återställ inställningar</button>
                     </Paper>
                     <div >
@@ -267,30 +260,56 @@ function App(props) {
                     <div className='accessibility_Setting_Btn_Container' >
                       <div className="btn-arrange">
                         <div className="btn">
-                          <button onClick={() => {
+
+                          <button style={{ backgroundColor: localStorage.getItem("btnLight") }} onClick={() => {
+
+                            {
+                              console.log(btnLight + "¤¤¤¤¤¤")
+                              btnLight ? setBtnLight("green") : setBtnLight("white");
+                              console.log(btnLight + "¤¤¤¤¤¤")
+                              localStorage.setItem("btnLight", btnLight);
+                              localStorage.setItem("btnDark", "white");
+                              localStorage.setItem("btnBlind", "white");
+
+                            } setBtnDark("white"); setBtnBlind("white");
                             setActiveProfile(" Ljus"); localStorage.setItem("ActiveProfile", " Ljus");
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch((baseTheme));
                             localStorage.setItem("Theme", baseTheme);
                           }} className='accessibility_Setting_Btn'>Ljus</button>
                           <label>allmänt tema</label>
                         </div>
+
                         <div className="btn">
-                          <button onClick={() => {
+                          <button style={{ backgroundColor: localStorage.getItem("btnDark") }} onClick={() => {
+                            {
+                              btnDark ? setBtnDark("green") : setBtnDark("white");
+                              localStorage.setItem("btnDark", btnDark);
+                              localStorage.setItem("btnLight", "white");
+                              localStorage.setItem("btnBlind", "white");
+                            } setBtnLight("white"); setBtnBlind("white");
                             setActiveProfile(" Mörkt"); localStorage.setItem("ActiveProfile", " Mörkt");
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme1);
                           }} className='accessibility_Setting_Btn'>Dark</button>
                           <label>mörk kontrast</label>
                         </div>
+
                         <div className="btn">
-                          <button onClick={() => {
+                          <button style={{ backgroundColor: localStorage.getItem("btnBlind") }} onClick={() => {
+                            {
+                              btnBlind ? setBtnBlind("green") : setBtnBlind("white");
+                              localStorage.setItem("btnBlind", btnBlind);
+                              localStorage.setItem("btnLight", "white");
+                              localStorage.setItem("btnDark", "white");
+                            } setBtnLight("white"); setBtnDark("white");
                             setActiveProfile(" Synskadad"); localStorage.setItem("ActiveProfile", " Synskadad");
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme2);
                           }} variant='contained' className='accessibility_Setting_Btn'>Blind</button>
                           <label>Synskadad</label>
                         </div>
+
                         <div className="btn">
-                          <button disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
-                          <label>Animerad bakgrund</label>
+                          <button style={{ backgroundColor: btnBackGround }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
+                          <label disabled={btnDisable} >Animerad bakgrund</label>
                         </div>
                       </div>
                     </div>
