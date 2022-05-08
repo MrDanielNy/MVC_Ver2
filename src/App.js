@@ -94,6 +94,9 @@ border-radius: 100px
 
 
 function App(props) {
+  const light = useRef();
+  const dark = useRef();
+  const blind = useRef();
 
   const [bkColor, setBkcolor] = useState(true);
   const [btnLight, setBtnLight] = useState("white");
@@ -225,6 +228,7 @@ function App(props) {
     playerMode ? pauseVideo() : playVideo();
   };
 
+
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -261,15 +265,18 @@ function App(props) {
                       <div className="btn-arrange">
                         <div className="btn">
 
-                          <button style={{ backgroundColor: localStorage.getItem("btnLight") }} onClick={() => {
+                          <button ref={light} style={{ backgroundColor: localStorage.getItem("btnLight") }} onClick={() => {
 
                             {
-                              console.log(btnLight + "¤¤¤¤¤¤")
-                              btnLight ? setBtnLight("green") : setBtnLight("white");
-                              console.log(btnLight + "¤¤¤¤¤¤")
-                              localStorage.setItem("btnLight", btnLight);
-                              localStorage.setItem("btnDark", "white");
+                              light.current.style.backgroundColor = 'lightgreen';
+                              dark.current.style.backgroundColor = 'white';
+                              blind.current.style.backgroundColor = 'white';
+
+                              // btnLight ? setBtnLight("green") : setBtnLight("white");
+                              localStorage.setItem("btnLight", "lightgreen");
                               localStorage.setItem("btnBlind", "white");
+                              localStorage.setItem("btnDark", "white");
+
 
                             } setBtnDark("white"); setBtnBlind("white");
                             setActiveProfile(" Ljus"); localStorage.setItem("ActiveProfile", " Ljus");
@@ -280,12 +287,16 @@ function App(props) {
                         </div>
 
                         <div className="btn">
-                          <button style={{ backgroundColor: localStorage.getItem("btnDark") }} onClick={() => {
+                          <button ref={dark} style={{ backgroundColor: localStorage.getItem("btnDark") }} onClick={() => {
                             {
-                              btnDark ? setBtnDark("green") : setBtnDark("white");
-                              localStorage.setItem("btnDark", btnDark);
+                              light.current.style.backgroundColor = 'white';
+                              dark.current.style.backgroundColor = 'lightgreen';
+                              blind.current.style.backgroundColor = 'white';
+
+                              localStorage.setItem("btnDark", "lightgreen");
                               localStorage.setItem("btnLight", "white");
                               localStorage.setItem("btnBlind", "white");
+
                             } setBtnLight("white"); setBtnBlind("white");
                             setActiveProfile(" Mörkt"); localStorage.setItem("ActiveProfile", " Mörkt");
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme1);
@@ -294,10 +305,13 @@ function App(props) {
                         </div>
 
                         <div className="btn">
-                          <button style={{ backgroundColor: localStorage.getItem("btnBlind") }} onClick={() => {
+                          <button ref={blind} style={{ backgroundColor: localStorage.getItem("btnBlind") }} onClick={() => {
                             {
-                              btnBlind ? setBtnBlind("green") : setBtnBlind("white");
-                              localStorage.setItem("btnBlind", btnBlind);
+                              light.current.style.backgroundColor = 'white';
+                              dark.current.style.backgroundColor = 'white';
+                              blind.current.style.backgroundColor = 'lightgreen';
+
+                              localStorage.setItem("btnBlind", "lightgreen");
                               localStorage.setItem("btnLight", "white");
                               localStorage.setItem("btnDark", "white");
                             } setBtnLight("white"); setBtnDark("white");

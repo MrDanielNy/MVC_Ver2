@@ -23,7 +23,7 @@ export const theme1 = {
       },
       "styleOverrides": {
         "root": {
-          "background": "#323236e8"
+          "background": "#0c0a0a"
         }
       }
     }
