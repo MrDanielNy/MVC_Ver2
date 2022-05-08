@@ -30,6 +30,7 @@ import {
 } from "@mui/material";
 import { Player } from "video-react";
 import { MdClose } from "react-icons/md"
+import { style } from "@mui/system";
 
 
 const Background = styled.div`
@@ -97,6 +98,7 @@ function App(props) {
   const light = useRef();
   const dark = useRef();
   const blind = useRef();
+  const backgroundAnimation = useRef();
 
   const [bkColor, setBkcolor] = useState(true);
   const [btnLight, setBtnLight] = useState("white");
@@ -138,6 +140,12 @@ function App(props) {
 
   const [showAccessibility, setShowAccessibility] = useState(false);
   const openAccessibilitySettings = () => {
+    console.log("!!!!!!!!!!!!!!!!!!" + typeof localStorage.getItem("playMode"))
+    if (localStorage.getItem("PlayerModeText") === "AV") {
+      console.log("Key is empty in local storage!")
+
+      localStorage.setItem("backgroundAnimation", "lightgreen")
+    }
     console.log("Clicked on the icon ")
     setShowAccessibility(prev => !prev) // If it is true, change it to false
   }
@@ -207,6 +215,8 @@ function App(props) {
     getVideo.current.play()
     setPlayerMode(true);
     setPlayerMode_Text("AV");
+    backgroundAnimation.current.style.backgroundColor = "lightgreen";
+    localStorage.setItem("backgroundAnimation", "lightgreen")
     localStorage.setItem("PlayerModeText", "AV");
     localStorage.setItem("PlayerMode", true);
   };
@@ -215,6 +225,8 @@ function App(props) {
     getVideo.current.pause();
     setPlayerMode(false)
     setPlayerMode_Text("PÅ")
+    backgroundAnimation.current.style.backgroundColor = "white";
+    localStorage.setItem("backgroundAnimation", "white")
     localStorage.setItem("PlayerModeText", "PÅ");
     localStorage.setItem("PlayerMode", false);
 
@@ -322,7 +334,7 @@ function App(props) {
                         </div>
 
                         <div className="btn">
-                          <button style={{ backgroundColor: btnBackGround }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
+                          <button ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
                           <label disabled={btnDisable} >Animerad bakgrund</label>
                         </div>
                       </div>
