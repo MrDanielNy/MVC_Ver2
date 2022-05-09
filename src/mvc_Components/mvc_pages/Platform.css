@@ -36,16 +36,29 @@
   align-items: center;
   text-justify: kashida;
   text-align: justify;
-  color: rgb(10, 10, 10);
-  padding: 30px;
-  font-size: 23px;
-  font-weight: bold;
+
+  padding: 10px;
+
+
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   line-height: 3rem;
   width: 90%;
   border-radius: 10px;
 }
 
+@media screen and (max-width:1700px) {
+  .platform_Title {
+    font-size: 35px;
+  }
+
+  .platform_Text_ {
+    font-size: 20px;
+  }
+
+  .platform_Container {
+    height: 500px;
+  }
+}
 
 @media screen and (max-width:1450px) {
   .platform_Title {
@@ -56,7 +69,9 @@
     font-size: 20px;
   }
 
-  .platform_Container {}
+  .platform_Container {
+    height: 550px;
+  }
 }
 
 
@@ -69,21 +84,23 @@
     height: 500px;
   }
 
-  .platform_Text_Container_ {}
+  .platform_Text_Container_ {
+    height: 600px;
+  }
 
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1090px) {
   .platform_Container {
-    height: 500px;
+    height: 700px;
   }
 }
 
 
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 750px) {
   .platform_Container {
-    height: 600px;
+    height: 750px;
 
 
   }
@@ -103,12 +120,13 @@
 
   .platform_Text_ {
     font-size: 12px;
+    line-height: 2rem;
   }
 }
 
 @media screen and (max-width: 560px) {
   .platform_Container {
-    height: 500px;
+    height: 800px;
   }
 
   .platform_Title {
@@ -118,24 +136,41 @@
   .platform_Text_Container_ {
 
     height: 430px;
+  }
 
-
+  .platform_Text_ {
+    font-size: 12px;
 
   }
+
 }
 
 @media screen and (max-width: 470px) {
   .platform_Container {
-    height: 700px;
+    height: 850px;
 
   }
 
   .platform_Text_Container_ {}
 }
 
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 420px) {
   .platform_Container {
-    height: 800px;
+    height: 900px;
+  }
+
+  .platform_Text_Container_ {
+
+    height: 450px;
+
+
+
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .platform_Container {
+    height: 1000px;
   }
 
   .platform_Text_Container_ {

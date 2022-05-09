@@ -55,7 +55,14 @@ function MVC_Hero(props) {
       <div className="mvc-hero-container">
 
         <div>
-          <h1 onMouseLeave={(e) => {
+          <Typography variant="h1" sx={{
+            fontSize: {
+              lg: 100,
+              md: 70,
+              sm: 50,
+              xs: 30,
+            }
+          }} onMouseLeave={(e) => {
             console.log("Hello dude!");
             e.target.style.border = 'none';
           }}
@@ -67,8 +74,8 @@ function MVC_Hero(props) {
               }
               )
 
-            }} className="title">My Virtual Classroom</h1>
-          <p onMouseLeave={(e) => {
+            }} className="title">My Virtual Classroom</Typography>
+          <Typography variant="h3" onMouseLeave={(e) => {
             e.target.style.border = 'none';
           }} onClick={(e) => {
             e.target.style.border = '2px solid rgba(147, 250, 165)';
@@ -77,12 +84,14 @@ function MVC_Hero(props) {
             })
           }} className="subTitle_">
             - En framtid på lika villkor
-          </p>
+          </Typography>
 
           <p>{/** Other staffs if needed here */}</p>
-          <Link to="/Contacts">
-            <button className="hero_Btn">Contact us</button>
-          </Link>
+          <div className="hero_Btn_container">
+            <Link to="/Contacts" className="hero_Btn_Link">
+              <Button variant="contained" color="secondary" className="hero_Btn">Kontakta oss</Button>
+            </Link>
+          </div>
         </div>
 
         {/** TODO: Add a direct link to contact page or some other important links  */}

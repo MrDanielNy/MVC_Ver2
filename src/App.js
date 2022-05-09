@@ -42,7 +42,7 @@ width:100%;
 left:10px
 border-radius: 10px;
 background-color:#c4c4c444;
-z-index:19999;
+z-index:4000;
 curser:pointer;
 
 
@@ -259,7 +259,7 @@ function App(props) {
               <Accessibility_Wrapper className="Wrapper_Accessibility" showAccessibility={showAccessibility}>
                 <Accessibility_Window_Content>
                   <div color="primary" className='header'>
-                    <Paper color="" className='modal_Header'>
+                    <Paper variant="stAccessibility" color="" className='modal_Header'>
                       <Typography color="secondary" variant='h5' >Tillgänglighetsjusteringar </Typography>
                       <button onClick={() => {
                         if (!playerMode) {
@@ -329,8 +329,25 @@ function App(props) {
                             } setBtnLight("white"); setBtnDark("white");
                             setActiveProfile(" Synskadad"); localStorage.setItem("ActiveProfile", " Synskadad");
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme2);
-                          }} variant='contained' className='accessibility_Setting_Btn'>Blind</button>
+                          }} variant='contained' className='accessibility_Setting_Btn'>SvartVit</button>
                           <label>Synskadad</label>
+                        </div>
+
+                        <div className="btn">
+                          <button ref={blind} style={{ backgroundColor: localStorage.getItem("btnBlind") }} onClick={() => {
+                            {
+                              light.current.style.backgroundColor = 'white';
+                              dark.current.style.backgroundColor = 'white';
+                              blind.current.style.backgroundColor = 'lightgreen';
+
+                              localStorage.setItem("btnBlind", "lightgreen");
+                              localStorage.setItem("btnLight", "white");
+                              localStorage.setItem("btnDark", "white");
+                            } setBtnLight("white"); setBtnDark("white");
+                            setActiveProfile(" Synskadad"); localStorage.setItem("ActiveProfile", " Synskadad");
+                            console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme2);
+                          }} variant='contained' className='accessibility_Setting_Btn'>Kognitiv</button>
+                          <label>Kognetive</label>
                         </div>
 
                         <div className="btn">

@@ -91,7 +91,7 @@ function NavPane() {
   return (
     <>
       <nav className="nav_Pane">
-        <Paper variant="contained" color="primary" className="navbar-container">
+        <Paper variant="st1" color="primary" className="navbar-container">
 
           <Button ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
             MVC

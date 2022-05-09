@@ -21,7 +21,7 @@ html {
   align-items: center;
   text-align: center;
   position: relative;
-  z-index: -1;
+  z-index: 100;
   margin-bottom: 0px;
   min-width: 300px;
   max-height: 2160px;
@@ -51,7 +51,7 @@ html {
   right: 0;
   top: 0;
   bottom: 0;
-  z-index: -1;
+  z-index: 10000;
   background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;
 }
 
@@ -107,7 +107,11 @@ html {
   color: rgb(255, 255, 255);
   font-weight: bold;
   font-size: 30px;
-  margin: 0 10px;
+  margin-bottom: 20px;
+}
+
+.hero_Btn_container {
+  margin-top: 40px;
 }
 
 .hero_Btn {
@@ -119,8 +123,14 @@ html {
 
   color: rgb(255, 255, 255);
   cursor: pointer;
-  margin: 30px;
+  margin-top: 20px;
   border: 2px white double;
+  z-index: 10000;
+}
+
+.hero_Btn_Link {
+  margin-top: 50px;
+  text-decoration: none;
 }
 
 /* TODO  Change the size of the button using media screen to have accessibility for mobile users */

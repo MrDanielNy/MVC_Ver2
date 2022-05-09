@@ -13,14 +13,28 @@ import {
 function AboutUs_Link() {
   return (
     <>
-      <Paper className="about">
+      <Paper variant="st1" className="about">
         <div className="about_Container">
           <div className="about_Text">
             <div className="about_Header">
-              <Typography variant="h3" color="secondary" >My Virtual Classroom</Typography>
+              <Typography sx={{
+                fontSize: {
+                  lg: 100,
+                  md: 70,
+                  sm: 50,
+                  xs: 30,
+                }
+              }} variant="h1" color="secondary" >Om oss</Typography>
             </div>
             <div className="about_SubText">
-              <Typography sx={{ typography: { sm: 'body1', xs: 'body2' } }} variant="h6" color="secondary" >
+              <Typography variant="h3" sx={{
+                fontSize: {
+                  lg: 23,
+                  md: 20,
+                  sm: 18,
+                  xs: 15,
+                }
+              }} color="secondary" >
                 Vi är ett företag med stor passion för teknisk utveckling och utbildning. Vi tycker att kombinationen är spännande och hoppas att ni vara med på vår resa.
               </Typography>
             </div>

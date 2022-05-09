@@ -19,8 +19,8 @@ function MVC_Home_Boxes(props) {
           <figure className="Item_Picture" data-category={props.label}>
             <img src={props.src} alt="Coming soon" className="Item_Img" />
           </figure>
-          <Paper variant="contained" className="Item_Information">
-            <Typography sx={{ typography: { sm: 'body1', xs: 'body2' } }} variant="h6" color="secondary" className="Item_Text">{props.text}</Typography>
+          <Paper variant="st3" className="Item_Information">
+            <Typography variant="h3" sx={{ typography: { sm: 'body1', xs: 'body2' } }} color="secondary" className="Item_Text">{props.text}</Typography>
           </Paper>
         </Link>
       </li>

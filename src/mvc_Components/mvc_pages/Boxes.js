@@ -15,7 +15,14 @@ function Boxes() {
     <div variant="contained" className="Boxes">
 
       <div className="Boxes_Container">
-        <Typography variant="h2" className="boxes_Title">My Virtual Classroom!</Typography>
+        <Typography sx={{
+          fontSize: {
+            lg: 100,
+            md: 70,
+            sm: 50,
+            xs: 30,
+          }
+        }} variant="h1" className="boxes_Title" > My Virtual Classroom!</Typography>
         <div className="Items">
           {/** TODO change the content of each card. Fetching from database */}
           <MVC_Home_Boxes
@@ -63,7 +70,7 @@ function Boxes() {
           />
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 export default Boxes;
