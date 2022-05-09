@@ -41,7 +41,7 @@ function Contacts_Link() {
         <div>
           <Link to="/Contacts" className="about_btn_Link">
             <Button color="secondary" variant="contained" className="btn_Contact">
-              <Typography color="primary" variant="contained">
+              <Typography variant="h6">
                 Kontakta oss </Typography>
             </Button>
           </Link>

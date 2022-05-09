@@ -89,7 +89,7 @@ function MVC_Hero(props) {
           <p>{/** Other staffs if needed here */}</p>
           <div className="hero_Btn_container">
             <Link to="/Contacts" className="hero_Btn_Link">
-              <Button variant="contained" color="secondary" className="hero_Btn">Kontakta oss</Button>
+              <Button variant="contained" color="secondary" className="hero_Btn"> <Typography variant="h6">Kontakta oss</Typography></Button>
             </Link>
           </div>
         </div>

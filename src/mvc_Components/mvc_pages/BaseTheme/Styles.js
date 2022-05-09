@@ -24,7 +24,13 @@ const baseTheme = createTheme({
             fontSize: 20,
             border: "none",
             background: "",
-            border: "",
+
+        },
+        h6: {
+            color: "black",
+            fontSize: 20,
+
+
         },
         underText: {
             fontSize: 20,
@@ -46,11 +52,15 @@ const baseTheme = createTheme({
     components: {
 
         MuiButton: {
-            border: "none",
+
             defaultProps: {
+
                 sx: {
-                    margin: 1
+                    borderRadius: "10px",
+                    border: "none",
+                    color: "black",
                 }
+
             }
         },
         MuiButton: {
@@ -58,7 +68,7 @@ const baseTheme = createTheme({
 
             root: {
 
-                fontSize: "20",
+                fontSize: "30",
                 textTransform: "none",
 
                 background: "#ffffff"

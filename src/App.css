@@ -40,6 +40,12 @@
     display: none;
 }
 
+.helpIcon {
+    color: rgb(255, 185, 9);
+
+    height: 95px;
+    width: 95px;
+}
 
 .button {
     display: inline-block;

@@ -16,7 +16,13 @@ export const theme1 = {
       background: "black",
       border: "none",
 
-    }
+    },
+    h6: {
+      color: "black",
+      fontSize: 20,
+
+
+    },
   },
   "palette": {
     "primary": {
@@ -31,8 +37,11 @@ export const theme1 = {
       "defaultProps": {
         "disableRipple": false,
         "size": "small",
-        "sx": {
-          "color": "black"
+        sx: {
+          borderRadius: "10px",
+          border: "none",
+          color: "black",
+          fontSize: "20",
         }
       }
     },
@@ -85,7 +94,13 @@ export const theme2 = {
       fontSize: 20,
 
       background: "black",
-    }
+    },
+    h6: {
+      color: "black",
+      fontSize: 20,
+
+
+    },
   },
   palette: {
 

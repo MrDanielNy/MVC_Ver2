@@ -53,7 +53,7 @@ function AboutUs_Link() {
           <div>
             <Link to="/AboutUs" className="about_btn_Link">
               <Button color="secondary" variant="contained" className="about_Btn_Page">
-                <Typography color="primary" variant="h6">Om oss</Typography> </Button>
+                <Typography variant="h6">Om oss</Typography> </Button>
             </Link>
           </div>
           <div></div>

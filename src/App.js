@@ -32,7 +32,19 @@ import { Player } from "video-react";
 import { MdClose } from "react-icons/md"
 import { style } from "@mui/system";
 
+import Brightness5Icon from '@mui/icons-material/Brightness5';
+import Brightness2Icon from '@mui/icons-material/Brightness2';
 
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import ContrastIcon from '@mui/icons-material/Contrast';
+import CropFreeIcon from '@mui/icons-material/CropFree';
+import RestartAltSharpIcon from '@mui/icons-material/RestartAltSharp';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
+import Zoom from '@mui/material/Zoom';
 const Background = styled.div`
 position:fixed;
 display:flex;
@@ -259,14 +271,16 @@ function App(props) {
               <Accessibility_Wrapper className="Wrapper_Accessibility" showAccessibility={showAccessibility}>
                 <Accessibility_Window_Content>
                   <div color="primary" className='header'>
+
                     <Paper variant="stAccessibility" color="" className='modal_Header'>
+
                       <Typography color="secondary" variant='h5' >Tillgänglighetsjusteringar </Typography>
                       <button onClick={() => {
                         if (!playerMode) {
                           setPlayerMode_Text("AV");
                         } handleSwitch((baseTheme));
 
-                      }} className='reset_Settings_Btn'>Återställ inställningar</button>
+                      }} className='reset_Settings_Btn'>Återställ inställningar </button>
                     </Paper>
                     <div >
                       <h4 className='accessibility-Settings_Header'>Välj tillgänglighetsprofil</h4>
@@ -294,9 +308,11 @@ function App(props) {
                             setActiveProfile(" Ljus"); localStorage.setItem("ActiveProfile", " Ljus");
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch((baseTheme));
                             localStorage.setItem("Theme", baseTheme);
-                          }} className='accessibility_Setting_Btn'>Ljus</button>
+                          }} className='accessibility_Setting_Btn'><LightModeIcon /></button>
                           <label>allmänt tema</label>
+
                         </div>
+
 
                         <div className="btn">
                           <button ref={dark} style={{ backgroundColor: localStorage.getItem("btnDark") }} onClick={() => {
@@ -312,7 +328,7 @@ function App(props) {
                             } setBtnLight("white"); setBtnBlind("white");
                             setActiveProfile(" Mörkt"); localStorage.setItem("ActiveProfile", " Mörkt");
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme1);
-                          }} className='accessibility_Setting_Btn'>Dark</button>
+                          }} className='accessibility_Setting_Btn'><DarkModeIcon /></button>
                           <label>mörk kontrast</label>
                         </div>
 
@@ -329,8 +345,8 @@ function App(props) {
                             } setBtnLight("white"); setBtnDark("white");
                             setActiveProfile(" Synskadad"); localStorage.setItem("ActiveProfile", " Synskadad");
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme2);
-                          }} variant='contained' className='accessibility_Setting_Btn'>SvartVit</button>
-                          <label>Synskadad</label>
+                          }} variant='contained' className='accessibility_Setting_Btn'><CropFreeIcon /></button>
+                          <label>kognitiva funktionshinder profil</label>
                         </div>
 
                         <div className="btn">
@@ -362,7 +378,8 @@ function App(props) {
               </Accessibility_Wrapper>
             </Background>
           ) : null}
-          <div className="accessibility_Icon"> <img onClick={() => openAccessibilitySettings()} src={require("./images/accessibility_Icon.png")} /></div>
+          <div className="accessibility_Icon"> <img onClick={() => openAccessibilitySettings()} src={require("./images/accessibility_Icon.png")} />   </div>
+          <HelpOutlineIcon className="helpIcon" />
           <Routes>
             <Route path="/" element={<MVC_Home />} />
             <Route path="/Projects" element={<MVC_Projects />} />

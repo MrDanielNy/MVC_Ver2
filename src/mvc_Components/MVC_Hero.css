@@ -120,12 +120,11 @@ html {
   background: transparent;
   font-size: 1rem;
   font-weight: bold;
-
-  color: rgb(255, 255, 255);
   cursor: pointer;
   margin-top: 20px;
   border: 2px white double;
   z-index: 10000;
+  color: black;
 }
 
 .hero_Btn_Link {
