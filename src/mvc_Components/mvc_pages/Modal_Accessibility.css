@@ -36,7 +36,7 @@
     background: transparent;
     border: 1px rgb(255, 255, 255) solid;
     border-radius: 10px;
-    background-color: #fd0000;
+    background-color: #00b1ab;
 
 }
 
@@ -57,7 +57,7 @@
     scroll-behavior: smooth;
     padding: 20px;
     border-radius: 10px;
-    background-color: #fd0000;
+    background-color: #ffffff;
 }
 
 .accessibility_Setting_Btn_Container {
@@ -72,7 +72,8 @@
     scroll-behavior: smooth;
     height: 250px;
     /* border-radius: 4px rgb(255, 255, 255) solid;*/
-    background-color: #fd0000;
+    background-color: #00525b;
+    color: white;
 
 }
 

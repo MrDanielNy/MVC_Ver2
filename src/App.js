@@ -275,10 +275,19 @@ function App(props) {
   })
 
 
+  const normalRight = useRef();
+  const normalLeft = useRef();
+  const bigLeft = useRef();
+  const bigRight = useRef();
+
+  localStorage.setItem("btnLight", "white");
+  const [mousePointer, setMousePointer] = useState("");
+
+
   return (
 
 
-    < div className="App" style={{ cursor: 'url(toRightMousePointer.png),auto' }} >
+    < div className="App" style={{ cursor: 'url(normalSizePointer_right.png),auto' }} >
       <ThemeProvider theme={theme}>
         <Router >
 
@@ -394,6 +403,78 @@ function App(props) {
                           }} variant='contained' className='accessibility_Setting_Btn'><CropFreeIcon /></button>
                           <label>kognitiva funktionshinder profil</label>
                         </div>
+
+                        {/** Cussor settings */}
+
+                        <div className="cursoricons">
+                          <label >Markörinställningar </label>
+                        </div>
+
+                        <div className="btn">
+                          <button ref={normalRight} style={{}} onClick={() => {
+                            {
+                              normalRight.current.style.backgroundColor = 'lightgreen';
+                              normalLeft.current.style.backgroundColor = 'white';
+                              bigLeft.current.style.backgroundColor = 'white';
+                              bigRight.current.style.backgroundColor = 'white';
+
+
+                            }
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="NormalPointer_ToLeft.png" /></button>
+                          <label>Normal storlek höger</label>
+                        </div>
+
+                        <div className="btn">
+                          <button ref={normalLeft} style={{}} onClick={() => {
+                            {
+                              normalRight.current.style.backgroundColor = 'white';
+                              normalLeft.current.style.backgroundColor = 'lightgreen';
+                              bigLeft.current.style.backgroundColor = 'white';
+                              bigRight.current.style.backgroundColor = 'white';
+
+
+                            }
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="normalSizePointer_right.png" /></button>
+                          <label>Normal storlek vänster</label>
+                        </div>
+
+
+
+                        <div className="btn">
+                          <button ref={bigRight} style={{}} onClick={() => {
+                            {
+
+                              normalRight.current.style.backgroundColor = 'white';
+                              normalLeft.current.style.backgroundColor = 'white';
+                              bigLeft.current.style.backgroundColor = 'white';
+                              bigRight.current.style.backgroundColor = 'lightgreen';
+
+
+                            }
+
+
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="toLeft_cursorIcon.png" /></button>
+                          <label>Höger hand</label>
+                        </div>
+
+                        <div className="btn">
+                          <button ref={bigLeft} style={{}} onClick={() => {
+                            {
+                              normalRight.current.style.backgroundColor = 'white';
+                              normalLeft.current.style.backgroundColor = 'white';
+                              bigLeft.current.style.backgroundColor = 'lightgreen';
+                              bigRight.current.style.backgroundColor = 'white';
+
+
+                            }
+
+
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="toRight_CursorIcon.png" /></button>
+                          <label>Vänster hand</label>
+                        </div>
+
+
+
 
 
 

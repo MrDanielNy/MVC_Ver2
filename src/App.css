@@ -1,5 +1,16 @@
 .App {}
 
+.cursoricons {
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    border-top: 1px rgb(122, 122, 122) dashed;
+    font-size: large;
+
+}
+
 .accessibility_Container {
     position: fixed;
     display: flex;
