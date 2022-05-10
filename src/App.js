@@ -12,7 +12,7 @@ import MVC_Projects from "./mvc_Components/mvc_pages/MVC_Projects";
 import MVC_AboutUs from "./mvc_Components/mvc_pages/MVC_AboutUs";
 import MVC_Contacts from "./mvc_Components/mvc_pages/MVC_Contacts";
 import baseTheme from "./mvc_Components/mvc_pages/BaseTheme/Styles";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { deepmerge } from "@mui/utils";
 import { theme1, theme2, theme3 } from "./mvc_Components/mvc_pages/theme/AccessibilityThemes"
 import video from "./images/video-2.mp4";
@@ -257,12 +257,30 @@ function App(props) {
   };
 
 
+  // To close the accessibility windows using ESC key
+  const escKey = useCallback(e => {
+    if (e.key === "Escape" && showAccessibility) {
+      console.log("Escape is pressed")
+      setShowAccessibility(false)
+    }
+    else
+      if (e.key === "Escape" && !showAccessibility) {
+        setShowAccessibility(false)
+      }
+
+  }, [setShowAccessibility], [showAccessibility])
+  useEffect(() => {
+    document.addEventListener("keydown", escKey);
+    return () => document.removeEventListener("keydown", escKey)
+  })
+
+
   return (
 
 
-    < div className="App" style={{ cursor: 'url(PngItem_4831776.png),auto' }} >
+    < div className="App" style={{ cursor: 'url(toRightMousePointer.png),auto' }} >
       <ThemeProvider theme={theme}>
-        <Router style={{ cursor: 'url(PngItem_4831776.png),auto' }}>
+        <Router >
 
           <div className="background_Container_Video">
             <video className="video" ref={getVideo} loop muted autoPlay={autoPlayer}>
@@ -271,9 +289,9 @@ function App(props) {
           </div>
 
           {/** Navbar is placed here because it shoud be always on top of all elements in the page */}
-          <NavPane />
+          <NavPane style={{ cursor: 'url(PngItem_4831776.png),auto' }} />
           {showAccessibility ? (
-            <Background style={{ cursor: 'url(PngItem_4831776.png),auto' }} ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
+            <Background ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
               <Accessibility_Wrapper className="Wrapper_Accessibility" showAccessibility={showAccessibility}>
                 <Accessibility_Window_Content>
                   <div color="primary" className='header'>

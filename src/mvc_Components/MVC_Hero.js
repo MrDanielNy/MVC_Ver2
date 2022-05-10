@@ -53,7 +53,7 @@ function MVC_Hero(props) {
 
   return (
     <>
-      <div className="mvc-hero-container" style={{ cursor: "url(../images/kisspng-computer-mouse-pointer-cursor-computer-icons-mouse-pointer-png-cursor-mouse-icon-5ab02c7c01d9c7.2133938515214951640076(1).png" }}>
+      <div className="mvc-hero-container" >
 
         <div>
           <Typography variant="h1" sx={{
