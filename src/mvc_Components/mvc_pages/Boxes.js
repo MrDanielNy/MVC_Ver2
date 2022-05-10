@@ -1,5 +1,6 @@
 import React from "react";
 import MVC_Home_Boxes from "./MVC_Home_Boxes";
+import { useTheme, withTheme } from "@mui/material";
 import "./Boxes.css";
 
 import {
@@ -11,6 +12,9 @@ import {
   createTheme
 } from "@mui/material";
 function Boxes() {
+  const theme = useTheme();
+  console.log(theme.Paper + " ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤sdfsdf¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
+
   return (
     <div variant="contained" className="Boxes">
 

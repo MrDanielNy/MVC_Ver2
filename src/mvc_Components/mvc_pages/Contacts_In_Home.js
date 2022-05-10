@@ -25,8 +25,8 @@ function Contacts_Link() {
               sm: 50,
               xs: 30,
             }
-          }} color="primary">Välkomna att kontakta oss! </Typography>
-          <Typography variant="h3" sx={{
+          }} >Välkomna att kontakta oss! </Typography>
+          <Typography variant="h3_Contacts" sx={{
             fontSize: {
               lg: 23,
               md: 20,

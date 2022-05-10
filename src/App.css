@@ -1,3 +1,5 @@
+.App {}
+
 .accessibility_Container {
     position: fixed;
     display: flex;
@@ -22,6 +24,7 @@
 }
 
 .background_Container_Video {
+
     max-width: 100%;
     width: 100%;
     min-width: 300px;
@@ -54,7 +57,7 @@
     background-color: #c4c4c444;
     border-radius: 20px;
     position: relative;
-    cursor: pointer;
+
 }
 
 

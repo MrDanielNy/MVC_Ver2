@@ -23,13 +23,12 @@ import {
 
 /** The main page */
 function MVC_Home(props) {
-  const background_Image = props.bkg;
-  console.log("Here is backgrond in Home " + props.background_Image)
 
+  console.log("║----> " + props.Theme + " ║  ")
   return (
     <>
 
-      <MVC_Hero bkg={props.bkg} />
+      <MVC_Hero Theme_={props.Theme} />
 
       <Platform />
 

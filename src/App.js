@@ -14,7 +14,7 @@ import MVC_Contacts from "./mvc_Components/mvc_pages/MVC_Contacts";
 import baseTheme from "./mvc_Components/mvc_pages/BaseTheme/Styles";
 import { useState, useEffect } from "react";
 import { deepmerge } from "@mui/utils";
-import { theme1, theme2 } from "./mvc_Components/mvc_pages/theme/AccessibilityThemes"
+import { theme1, theme2, theme3 } from "./mvc_Components/mvc_pages/theme/AccessibilityThemes"
 import video from "./images/video-2.mp4";
 //import VideoPlayer from "./mvc_Components/mvc_pages/videoBackground/VideoPlayer";
 
@@ -37,7 +37,6 @@ import Brightness2Icon from '@mui/icons-material/Brightness2';
 
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import ContrastIcon from '@mui/icons-material/Contrast';
 import CropFreeIcon from '@mui/icons-material/CropFree';
 import RestartAltSharpIcon from '@mui/icons-material/RestartAltSharp';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
@@ -45,6 +44,10 @@ import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import Zoom from '@mui/material/Zoom';
+import ContrastIcon from '@mui/icons-material/Contrast';
+
+
+
 const Background = styled.div`
 position:fixed;
 display:flex;
@@ -55,7 +58,7 @@ left:10px
 border-radius: 10px;
 background-color:#c4c4c444;
 z-index:4000;
-curser:pointer;
+
 
 
 `
@@ -92,7 +95,7 @@ border-radius: 20px;
 
 
 const CloseAccessibilitySettings = styled(MdClose)`
-cursor: pointer;
+
 position: absolute;
 top: 10px;
 left: 10px;
@@ -107,6 +110,7 @@ border-radius: 100px
 
 
 function App(props) {
+
   const light = useRef();
   const dark = useRef();
   const blind = useRef();
@@ -254,11 +258,13 @@ function App(props) {
 
 
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <Router>
 
-          <div className="background_Container_Video" >
+
+    < div className="App" style={{ cursor: 'url(PngItem_4831776.png),auto' }} >
+      <ThemeProvider theme={theme}>
+        <Router style={{ cursor: 'url(PngItem_4831776.png),auto' }}>
+
+          <div className="background_Container_Video">
             <video className="video" ref={getVideo} loop muted autoPlay={autoPlayer}>
               <source src={screen_Checker()} />
             </video>
@@ -267,7 +273,7 @@ function App(props) {
           {/** Navbar is placed here because it shoud be always on top of all elements in the page */}
           <NavPane />
           {showAccessibility ? (
-            <Background ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
+            <Background style={{ cursor: 'url(PngItem_4831776.png),auto' }} ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
               <Accessibility_Wrapper className="Wrapper_Accessibility" showAccessibility={showAccessibility}>
                 <Accessibility_Window_Content>
                   <div color="primary" className='header'>
@@ -292,8 +298,10 @@ function App(props) {
                         <div className="btn">
 
                           <button ref={light} style={{ backgroundColor: localStorage.getItem("btnLight") }} onClick={() => {
-
+                            window.appTheme = 1;
+                            console.log("════ " + window.appTheme)
                             {
+
                               light.current.style.backgroundColor = 'lightgreen';
                               dark.current.style.backgroundColor = 'white';
                               blind.current.style.backgroundColor = 'white';
@@ -316,6 +324,9 @@ function App(props) {
 
                         <div className="btn">
                           <button ref={dark} style={{ backgroundColor: localStorage.getItem("btnDark") }} onClick={() => {
+                            window.appTheme = 2;
+                            console.log("════ " + window.appTheme)
+
                             {
                               light.current.style.backgroundColor = 'white';
                               dark.current.style.backgroundColor = 'lightgreen';
@@ -344,9 +355,9 @@ function App(props) {
                               localStorage.setItem("btnDark", "white");
                             } setBtnLight("white"); setBtnDark("white");
                             setActiveProfile(" Synskadad"); localStorage.setItem("ActiveProfile", " Synskadad");
-                            console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme2);
-                          }} variant='contained' className='accessibility_Setting_Btn'><CropFreeIcon /></button>
-                          <label>kognitiva funktionshinder profil</label>
+                            console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme3);
+                          }} variant='contained' className='accessibility_Setting_Btn'><ContrastIcon /></button>
+                          <label>Svartvit rubriker och texter</label>
                         </div>
 
                         <div className="btn">
@@ -362,9 +373,11 @@ function App(props) {
                             } setBtnLight("white"); setBtnDark("white");
                             setActiveProfile(" Synskadad"); localStorage.setItem("ActiveProfile", " Synskadad");
                             console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme2);
-                          }} variant='contained' className='accessibility_Setting_Btn'>Kognitiv</button>
-                          <label>Kognetive</label>
+                          }} variant='contained' className='accessibility_Setting_Btn'><CropFreeIcon /></button>
+                          <label>kognitiva funktionshinder profil</label>
                         </div>
+
+
 
                         <div className="btn">
                           <button ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
@@ -379,16 +392,16 @@ function App(props) {
             </Background>
           ) : null}
           <div className="accessibility_Icon"> <img onClick={() => openAccessibilitySettings()} src={require("./images/accessibility_Icon.png")} />   </div>
-          <HelpOutlineIcon className="helpIcon" />
+
           <Routes>
-            <Route path="/" element={<MVC_Home />} />
+            <Route path="/" element={<MVC_Home Theme={window.appTheme} />} />
             <Route path="/Projects" element={<MVC_Projects />} />
             <Route path="/AboutUs" element={<MVC_AboutUs />} />
             <Route path="/Contacts" element={<MVC_Contacts />} />
           </Routes>
         </Router>
       </ThemeProvider >
-    </>
+    </div>
   );
 }
 

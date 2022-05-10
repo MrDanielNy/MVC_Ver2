@@ -10,12 +10,16 @@ export const theme1 = {
 
     },
     h3: {
-      fontSize: 20,
+      fontSize: 25,
       border: "none",
       color: "white",
       background: "black",
       border: "none",
 
+    },
+    h3_Contacts: {
+      color: "black",
+      border: "none",
     },
     h6: {
       color: "black",
@@ -25,6 +29,7 @@ export const theme1 = {
     },
   },
   "palette": {
+    curser: "pointer",
     "primary": {
       "main": "#353535"
     },
@@ -91,9 +96,46 @@ export const theme2 = {
     },
     h3: {
       border: "2px solid darkblue",
+      fontSize: 25,
+
+
+    },
+    h3_Contacts: {
+      color: "black",
+      border: "2px solid darkblue",
+    },
+    h6: {
+      color: "black",
       fontSize: 20,
 
-      background: "black",
+
+    },
+  }
+
+
+};
+
+
+export const theme3 = {
+  typography: {
+    h1: {
+
+      border: "none",
+      color: "white",
+      background: "#111111",
+
+    },
+    h3: {
+      fontSize: 25,
+      border: "none",
+      color: "white",
+      background: "#111111",
+      border: "none",
+
+    },
+    h3_Contacts: {
+      color: "black",
+      border: "none",
     },
     h6: {
       color: "black",
@@ -102,156 +144,58 @@ export const theme2 = {
 
     },
   },
-  palette: {
-
-    primary: {
-      main: "#ffffff",
-
+  "palette": {
+    "primary": {
+      "main": "#353535"
     },
-    secondary: {
-      main: "white",
-      contrastText: 'yellow',
-    },
-
+    "secondary": {
+      "main": "#ffffff"
+    }
   },
-  components: {
-    MuiContainer: {
-      styleOverrides: {
-        root: {
-
-          borderRadius: 8
-        }
-      }
-    },
-    MuiButton: {
-      defaultProps: {
-        disableRipple: false,
-        size: "large",
-
-
+  "components": {
+    "MuiButton": {
+      "defaultProps": {
+        "disableRipple": false,
+        "size": "small",
         sx: {
           borderRadius: "10px",
-          border: "1px solid yellow",
+          border: "none",
           color: "black",
+          fontSize: "20",
         }
       }
     },
-    MuiPaper: {
-      styleOverrides: {
+    "MuiPaper": {
+      "defaultProps": {
+        "elevation": 10
+      },
+      "styleOverrides": {
         st1: {
 
 
-          background: "#202020",
+          background: "#111111",
           border: "none",
+          color: "white"
 
         },
         st2: {
 
 
-          background: "#202020",
+          background: "#111111",
           border: "none",
 
         },
         st3: {
 
 
-          background: "#202020",
+          background: "#111111",
           border: "none",
 
         },
-        root: {
-
-          borderRadius: 1,
-          background: "#202020"
+        "root": {
+          "background": "#111111",
+          "border": "none",
         }
-      },
-      defaultProps: {
-        elevation: 20
-      }
-    }
-  }
-};
-
-
-export const theme3 = {
-  typography: {
-    h1: {
-
-      border: "2px solid blue",
-      color: "white",
-    },
-    h3: {
-      fontSize: 20,
-      border: "none",
-    }
-  },
-  palette: {
-
-    primary: {
-      main: "#ffffff",
-
-    },
-    secondary: {
-      main: "white",
-      contrastText: 'yellow',
-    },
-
-  },
-  components: {
-    MuiContainer: {
-      styleOverrides: {
-        root: {
-          border: "1px solid black",
-          width: 80,
-          height: 80,
-          borderRadius: 8
-        }
-      }
-    },
-    MuiButton: {
-      defaultProps: {
-        disableRipple: true,
-        size: "large",
-
-        sx: {
-          borderRadius: "10px",
-          border: "1px solid yellow",
-          color: "black",
-        }
-      }
-    },
-    MuiPaper: {
-      styleOverrides: {
-        st1: {
-
-
-          background: "#202020",
-          border: "none",
-
-        },
-        st2: {
-
-
-          background: "#202020",
-          border: "none",
-
-        },
-        st3: {
-
-
-          background: "#202020",
-          border: "none",
-
-        },
-        root: {
-          border: "1px solid lightblue",
-
-          borderRadius: 1,
-          background: "#202020"
-        }
-      },
-      defaultProps: {
-        elevation: 20
       }
     }
   }

@@ -5,7 +5,7 @@ const baseTheme = createTheme({
         h1: {
 
             border: "none",
-            color: "white",
+            color: "#001433",
             background: "",
 
 
@@ -21,10 +21,14 @@ const baseTheme = createTheme({
 
         },
         h3: {
-            fontSize: 20,
+            fontSize: 25,
             border: "none",
             background: "",
 
+        },
+        h3_Contacts: {
+            color: "darkblue",
+            border: "none",
         },
         h6: {
             color: "black",
@@ -67,7 +71,7 @@ const baseTheme = createTheme({
 
 
             root: {
-
+                border: "none",
                 fontSize: "30",
                 textTransform: "none",
 

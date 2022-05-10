@@ -49,10 +49,11 @@ function MVC_Hero(props) {
   // video = localStorage.getItem("Background");
   console.log("Video is =======from local Storage=========> " + video)
   console.log("********************************************************")*/
+  console.log("()()()---> " + props.Theme_)
 
   return (
     <>
-      <div className="mvc-hero-container">
+      <div className="mvc-hero-container" style={{ cursor: "url(../images/kisspng-computer-mouse-pointer-cursor-computer-icons-mouse-pointer-png-cursor-mouse-icon-5ab02c7c01d9c7.2133938515214951640076(1).png" }}>
 
         <div>
           <Typography variant="h1" sx={{
@@ -74,7 +75,7 @@ function MVC_Hero(props) {
               }
               )
 
-            }} className="title">My Virtual Classroom</Typography>
+            }} color="secondary" className="title">My Virtual Classroom</Typography>
           <Typography variant="h3" onMouseLeave={(e) => {
             e.target.style.border = 'none';
           }} onClick={(e) => {
@@ -93,13 +94,9 @@ function MVC_Hero(props) {
             </Link>
           </div>
         </div>
-
-        {/** TODO: Add a direct link to contact page or some other important links  */}
         <div>
-
         </div>
-
-      </div>
+      </div >
     </>
   );
 }

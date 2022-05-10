@@ -20,7 +20,7 @@
     bottom: 35px;
     border-radius: 100px;
     /*animation: float 1s ease-in-out infinite;*/
-    cursor: pointer;
+
     z-index: 4000;
 
 }
@@ -36,6 +36,7 @@
     background: transparent;
     border: 1px rgb(255, 255, 255) solid;
     border-radius: 10px;
+    background-color: #fd0000;
 
 }
 
@@ -56,6 +57,7 @@
     scroll-behavior: smooth;
     padding: 20px;
     border-radius: 10px;
+    background-color: #fd0000;
 }
 
 .accessibility_Setting_Btn_Container {
@@ -70,6 +72,7 @@
     scroll-behavior: smooth;
     height: 250px;
     /* border-radius: 4px rgb(255, 255, 255) solid;*/
+    background-color: #fd0000;
 
 }
 
@@ -165,7 +168,7 @@ h5 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
+
     width: 100px;
     height: 50px;
     background: grey;
