@@ -159,24 +159,43 @@ function App(props) {
   }, []);
   const accessibilitySetting = useRef();
 
-
+  const [mousePointer, setMousePointer] = useState(localStorage.getItem("cursor"));
+  console.log("Mouse pointer in localstorage is >>>>>>>>>>> " + mousePointer);
+  if (localStorage.getItem("cursor") === null || localStorage.getItem("cursor") === "") {
+    setMousePointer("url(NormalPointer_ToLeft.png), auto ");
+    console.log("Mouse pointer after setting  >>>>>>>>>>> " + mousePointer);
+    localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png), auto ");
+  }
   const [showAccessibility, setShowAccessibility] = useState(false);
   const openAccessibilitySettings = () => {
+    screen_Checker();
     console.log("!!!!!!!!!!!!!!!!!!" + typeof localStorage.getItem("playMode"))
     if (localStorage.getItem("PlayerModeText") === "AV") {
       console.log("Key is empty in local storage!")
-
       localStorage.setItem("backgroundAnimation", "lightgreen");
 
-      console.log("FArhad says ----> " + localStorage.getItem("bigLeft"));
-      if (localStorage.getItem("bigLeft") === null || localStorage.getItem("bigRight") === null ||
-        localStorage.getItem("normalLeft") === null || localStorage.getItem("normalRight") === null) {
-        console.log("The local storage is empty");
-        localStorage.setItem("normalRight", "lightgreen");
-      }
-
+    }
+    if (localStorage.getItem("bigLeft") === null || localStorage.getItem("bigRight") === null ||
+      localStorage.getItem("normalLeft") === null || localStorage.getItem("normalRight") === null) {
+      console.log("The local storage is empty");
+      localStorage.setItem("normalRight", "lightgreen");
+      //localStorage.setItem("cursor", "url(normalSizePointer_right.png),auto")
+    }
+    else if (localStorage.getItem("bigLeft") === "lightgreen") {
+      localStorage.setItem("cursor", "url(toLeftmousePointer.png),auto")
+      setMousePointer("url(toLeftmousePointer.png),auto");
+    }
+    else if (localStorage.getItem("bigRight") === "lightgreen") {
+      localStorage.setItem("cursor", "url({toRightMousePointer.png),auto")
+      setMousePointer("url({toRightMousePointer.png),auto");
+    }
+    else if (localStorage.getItem("normalLeft") === "lightgreen") {
+      localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png),auto")
+      setMousePointer("url(NormalPointer_ToLeft.png),auto");
 
     }
+
+
     console.log("Clicked on the icon ")
     setShowAccessibility(prev => !prev) // If it is true, change it to false
   }
@@ -196,13 +215,16 @@ function App(props) {
     if (window.innerWidth > 768 && window.innerHeight > 450) {
       console.log("Not a mobile screen");
       mobileSize = false;
+
       console.log("/////BTN is " + btnDisable + "####");
       return video;
     }
-    else if (window.innerHeight < 450) {
+    else if (window.innerHeight < 450 || window.innerWidth <= 768) {
       console.log(window.innerHeight + " Mobile Screen")
       mobileSize = true;
+
       console.log("***BTN is*** " + btnDisable);
+
       return "";
     }
 
@@ -290,17 +312,11 @@ function App(props) {
   })
 
 
-
-
-
-
-  const [mousePointer, setMousePointer] = useState("");
-
+  const a = localStorage.getItem("cursor");
+  console.log("The last local storage is .....> " + a)
 
   return (
-
-
-    < div className="App" style={{ cursor: 'url(normalSizePointer_right.png),auto' }} >
+    < div className="App" style={{ cursor: a }} >
       <ThemeProvider theme={theme}>
         <Router >
 
@@ -311,7 +327,7 @@ function App(props) {
           </div>
 
           {/** Navbar is placed here because it shoud be always on top of all elements in the page */}
-          <NavPane style={{ cursor: 'url(PngItem_4831776.png),auto' }} />
+          <NavPane style={{}} />
           {showAccessibility ? (
             <Background ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
               <Accessibility_Wrapper className="Wrapper_Accessibility" showAccessibility={showAccessibility}>
@@ -424,8 +440,12 @@ function App(props) {
                         </div>
 
                         <div className="btn">
-                          <button ref={normalRight} style={{ backgroundColor: localStorage.getItem("normalRight") }} onClick={() => {
+                          <button disabled={btnDisable} ref={normalRight} style={{ backgroundColor: localStorage.getItem("normalRight") }} onClick={() => {
                             {
+                              setMousePointer('url(NormalPointer_ToLeft.png),auto');
+                              localStorage.setItem("cursor", 'url(NormalPointer_ToLeft.png),auto');
+
+                              console.log("Mouse pointer is >>>>>>>>>>> " + mousePointer)
                               normalRight.current.style.backgroundColor = 'lightgreen';
                               normalLeft.current.style.backgroundColor = 'white';
                               bigLeft.current.style.backgroundColor = 'white';
@@ -441,8 +461,12 @@ function App(props) {
                         </div>
 
                         <div className="btn">
-                          <button ref={normalLeft} style={{ backgroundColor: localStorage.getItem("normalLeft") }} onClick={() => {
+                          <button disabled={btnDisable} ref={normalLeft} style={{ backgroundColor: localStorage.getItem("normalLeft") }} onClick={() => {
                             {
+                              setMousePointer('url(normalSizePointer_right.png),auto');
+                              localStorage.setItem("cursor", 'url(normalSizePointer_right.png),auto');
+
+                              console.log("Mouse pointer is >>>>>>>>>>> " + mousePointer + " " + typeof mousePointer)
                               normalRight.current.style.backgroundColor = 'white';
                               normalLeft.current.style.backgroundColor = 'lightgreen';
                               bigLeft.current.style.backgroundColor = 'white';
@@ -461,9 +485,11 @@ function App(props) {
 
 
                         <div className="btn">
-                          <button ref={bigRight} style={{ backgroundColor: localStorage.getItem("bigRight") }} onClick={() => {
+                          <button disabled={btnDisable} ref={bigRight} style={{ backgroundColor: localStorage.getItem("bigRight") }} onClick={() => {
                             {
 
+                              setMousePointer('url(toLeftmousePointer.png),auto');
+                              localStorage.setItem("cursor", 'url(toLeftmousePointer.png),auto');
                               normalRight.current.style.backgroundColor = 'white';
                               normalLeft.current.style.backgroundColor = 'white';
                               bigLeft.current.style.backgroundColor = 'white';
@@ -483,8 +509,12 @@ function App(props) {
                         </div>
 
                         <div className="btn">
-                          <button ref={bigLeft} style={{ backgroundColor: localStorage.getItem("bigLeft") }} onClick={() => {
+                          <button disabled={btnDisable} ref={bigLeft} style={{ backgroundColor: localStorage.getItem("bigLeft") }} onClick={() => {
                             {
+
+                              setMousePointer('url(toRightMousePointer.png),auto');
+                              localStorage.setItem("cursor", 'url(toRightMousePointer.png),auto');
+
                               normalRight.current.style.backgroundColor = 'white';
                               normalLeft.current.style.backgroundColor = 'white';
                               bigLeft.current.style.backgroundColor = 'lightgreen';
