@@ -114,6 +114,11 @@ function App(props) {
   const light = useRef();
   const dark = useRef();
   const blind = useRef();
+
+  const normalRight = useRef();
+  const normalLeft = useRef();
+  const bigLeft = useRef();
+  const bigRight = useRef();
   const backgroundAnimation = useRef();
 
   const [bkColor, setBkcolor] = useState(true);
@@ -137,7 +142,8 @@ function App(props) {
 
   let fullTeme = theme;
   if (activeProfile === null || activeProfile === "") {
-    setActiveProfile(" Ljus")
+    setActiveProfile(" Ljus");
+
     fullTeme = baseTheme;
     localStorage.setItem("ActiveProfile", " Ljus")
   } else
@@ -160,7 +166,16 @@ function App(props) {
     if (localStorage.getItem("PlayerModeText") === "AV") {
       console.log("Key is empty in local storage!")
 
-      localStorage.setItem("backgroundAnimation", "lightgreen")
+      localStorage.setItem("backgroundAnimation", "lightgreen");
+
+      console.log("FArhad says ----> " + localStorage.getItem("bigLeft"));
+      if (localStorage.getItem("bigLeft") === null || localStorage.getItem("bigRight") === null ||
+        localStorage.getItem("normalLeft") === null || localStorage.getItem("normalRight") === null) {
+        console.log("The local storage is empty");
+        localStorage.setItem("normalRight", "lightgreen");
+      }
+
+
     }
     console.log("Clicked on the icon ")
     setShowAccessibility(prev => !prev) // If it is true, change it to false
@@ -275,12 +290,10 @@ function App(props) {
   })
 
 
-  const normalRight = useRef();
-  const normalLeft = useRef();
-  const bigLeft = useRef();
-  const bigRight = useRef();
 
-  localStorage.setItem("btnLight", "white");
+
+
+
   const [mousePointer, setMousePointer] = useState("");
 
 
@@ -411,27 +424,34 @@ function App(props) {
                         </div>
 
                         <div className="btn">
-                          <button ref={normalRight} style={{}} onClick={() => {
+                          <button ref={normalRight} style={{ backgroundColor: localStorage.getItem("normalRight") }} onClick={() => {
                             {
                               normalRight.current.style.backgroundColor = 'lightgreen';
                               normalLeft.current.style.backgroundColor = 'white';
                               bigLeft.current.style.backgroundColor = 'white';
                               bigRight.current.style.backgroundColor = 'white';
 
-
+                              localStorage.setItem("normalRight", "lightgreen");
+                              localStorage.setItem("normalLeft", "white");
+                              localStorage.setItem("bigLeft", "white");
+                              localStorage.setItem("bigRight", "white");
                             }
                           }} variant='contained' className='accessibility_Setting_Btn'><img src="NormalPointer_ToLeft.png" /></button>
                           <label>Normal storlek höger</label>
                         </div>
 
                         <div className="btn">
-                          <button ref={normalLeft} style={{}} onClick={() => {
+                          <button ref={normalLeft} style={{ backgroundColor: localStorage.getItem("normalLeft") }} onClick={() => {
                             {
                               normalRight.current.style.backgroundColor = 'white';
                               normalLeft.current.style.backgroundColor = 'lightgreen';
                               bigLeft.current.style.backgroundColor = 'white';
                               bigRight.current.style.backgroundColor = 'white';
 
+                              localStorage.setItem("normalRight", "white");
+                              localStorage.setItem("normalLeft", "lightgreen");
+                              localStorage.setItem("bigLeft", "white");
+                              localStorage.setItem("bigRight", "white");
 
                             }
                           }} variant='contained' className='accessibility_Setting_Btn'><img src="normalSizePointer_right.png" /></button>
@@ -441,13 +461,18 @@ function App(props) {
 
 
                         <div className="btn">
-                          <button ref={bigRight} style={{}} onClick={() => {
+                          <button ref={bigRight} style={{ backgroundColor: localStorage.getItem("bigRight") }} onClick={() => {
                             {
 
                               normalRight.current.style.backgroundColor = 'white';
                               normalLeft.current.style.backgroundColor = 'white';
                               bigLeft.current.style.backgroundColor = 'white';
                               bigRight.current.style.backgroundColor = 'lightgreen';
+
+                              localStorage.setItem("normalRight", "white");
+                              localStorage.setItem("normalLeft", "white");
+                              localStorage.setItem("bigLeft", "white");
+                              localStorage.setItem("bigRight", "lightgreen");
 
 
                             }
@@ -458,12 +483,18 @@ function App(props) {
                         </div>
 
                         <div className="btn">
-                          <button ref={bigLeft} style={{}} onClick={() => {
+                          <button ref={bigLeft} style={{ backgroundColor: localStorage.getItem("bigLeft") }} onClick={() => {
                             {
                               normalRight.current.style.backgroundColor = 'white';
                               normalLeft.current.style.backgroundColor = 'white';
                               bigLeft.current.style.backgroundColor = 'lightgreen';
                               bigRight.current.style.backgroundColor = 'white';
+
+                              localStorage.setItem("normalRight", "white");
+                              localStorage.setItem("normalLeft", "white");
+                              localStorage.setItem("bigLeft", "lightgreen");
+                              localStorage.setItem("bigRight", "white");
+
 
 
                             }
@@ -490,7 +521,7 @@ function App(props) {
               </Accessibility_Wrapper>
             </Background>
           ) : null}
-          <div className="accessibility_Icon"> <img onClick={() => openAccessibilitySettings()} src={require("./images/accessibility_Icon.png")} />   </div>
+          <div className="accessibility_Icon"> <img onClick={() => { openAccessibilitySettings(); }} src={require("./images/accessibility_Icon.png")} />   </div>
 
           <Routes>
             <Route path="/" element={<MVC_Home Theme={window.appTheme} />} />
