@@ -161,12 +161,9 @@ function App(props) {
 
   const [mousePointer, setMousePointer] = useState(localStorage.getItem("cursor"));
   console.log("Mouse pointer in localstorage is >>>>>>>>>>> " + mousePointer);
-  if (localStorage.getItem("cursor") === null || localStorage.getItem("cursor") === "") {
-    setMousePointer("url(NormalPointer_ToLeft.png), auto ");
-    console.log("Mouse pointer after setting  >>>>>>>>>>> " + mousePointer);
-    localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png), auto ");
-  }
+
   const [showAccessibility, setShowAccessibility] = useState(false);
+
   const openAccessibilitySettings = () => {
     screen_Checker();
     console.log("!!!!!!!!!!!!!!!!!!" + typeof localStorage.getItem("playMode"))
@@ -175,24 +172,33 @@ function App(props) {
       localStorage.setItem("backgroundAnimation", "lightgreen");
 
     }
+
+    if (localStorage.getItem("cursor") === null || localStorage.getItem("cursor") === "") {
+      setMousePointer("url(NormalPointer_ToLeft.png), auto ");
+      console.log("Mouse pointer after setting  >>>>>>>>>>> " + mousePointer);
+      localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png), auto ");
+    }
+
     if (localStorage.getItem("bigLeft") === null || localStorage.getItem("bigRight") === null ||
       localStorage.getItem("normalLeft") === null || localStorage.getItem("normalRight") === null) {
       console.log("The local storage is empty");
       localStorage.setItem("normalRight", "lightgreen");
-      //localStorage.setItem("cursor", "url(normalSizePointer_right.png),auto")
+      localStorage.setItem("cursor", "url(normalSizePointer_right.png),auto")
     }
     else if (localStorage.getItem("bigLeft") === "lightgreen") {
+
+      // setMousePointer("url(toLeftmousePointer.png),auto");
       localStorage.setItem("cursor", "url(toLeftmousePointer.png),auto")
-      setMousePointer("url(toLeftmousePointer.png),auto");
     }
     else if (localStorage.getItem("bigRight") === "lightgreen") {
+
+      // setMousePointer("url({toRightMousePointer.png),auto");
       localStorage.setItem("cursor", "url({toRightMousePointer.png),auto")
-      setMousePointer("url({toRightMousePointer.png),auto");
     }
     else if (localStorage.getItem("normalLeft") === "lightgreen") {
-      localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png),auto")
-      setMousePointer("url(NormalPointer_ToLeft.png),auto");
 
+      //  setMousePointer("url(NormalPointer_ToLeft.png),auto");
+      localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png),auto")
     }
 
 
@@ -316,7 +322,7 @@ function App(props) {
   console.log("The last local storage is .....> " + a)
 
   return (
-    < div className="App" style={{ cursor: a }} >
+    < div className="App" style={{ cursor: mousePointer }} >
       <ThemeProvider theme={theme}>
         <Router >
 
