@@ -66,9 +66,14 @@
     width: 70px;
     height: 25px;
     background-color: #c4c4c444;
-    border-radius: 20px;
+    border-radius: 0px;
     position: relative;
 
+
+}
+
+.button:hover {
+    cursor: url(../public/HandCursor1.png), auto;
 }
 
 

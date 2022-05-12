@@ -93,13 +93,15 @@ function NavPane() {
       <nav className="nav_Pane">
         <Paper variant="st1" color="primary" className="navbar-container">
 
-          <Button ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
-            MVC
+          <Button className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
+            <div className="mvcLogo">
+              MVC
+            </div>
           </Button>
           <div></div>
           <div></div>
           <div className="ham_Menu" >
-            <Button ref={hamMenu} style={hamStyle} onClick={handleClick} >
+            <Button className="btn" ref={hamMenu} style={hamStyle} onClick={handleClick} >
               <span className={click ? "fas fa-times" : "fas fa-bars"} />
             </Button>
           </div>

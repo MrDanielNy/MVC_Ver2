@@ -110,10 +110,11 @@ border-radius: 100px
 
 
 function App(props) {
-
+  window.onbeforeunload = () => true; // Prevents refresh, user should know that some information won't be saved in local storage.
   const light = useRef();
   const dark = useRef();
   const blind = useRef();
+  const cognitive = useRef();
 
   const normalRight = useRef();
   const normalLeft = useRef();
@@ -125,25 +126,20 @@ function App(props) {
   const [btnLight, setBtnLight] = useState("white");
   const [btnDark, setBtnDark] = useState("white");
   const [btnBlind, setBtnBlind] = useState("white");
+  const [btnCognitive, setBtnCognitive] = useState("white");
   const [btnBackGround, setBtnBackGround] = useState("white");
   const [theme, setTheme] = useState(baseTheme);
+  const [activeProfile, setActiveProfile] = useState(localStorage.getItem("ActiveProfile"));
+
   const handleSwitch = (whichTheme) => {
     const newTheme = deepmerge(theme, whichTheme);
     setTheme(createTheme(newTheme));
-    console.log("Theme after setting .....> " + localStorage.getItem("Theme"))
-    // localStorage.setItem("MVC_Theme", theme)
-    console.log("The theme in app is .....>>" + theme)
-
+    // setActiveProfile(localStorage.getItem("ActiveProfile"));
   };
-  console.log("Saved");
-
-  // console.log("The theme from the hard disk is ...." + JSON.stringify(baseTheme));
-  const [activeProfile, setActiveProfile] = useState(localStorage.getItem("ActiveProfile"));
-
   let fullTeme = theme;
   if (activeProfile === null || activeProfile === "") {
     setActiveProfile(" Ljus");
-
+    localStorage.setItem("btnLight", "lightgreen");
     fullTeme = baseTheme;
     localStorage.setItem("ActiveProfile", " Ljus")
   } else
@@ -152,62 +148,50 @@ function App(props) {
     }
     else
       if (activeProfile === " Synskadad") {
-        fullTeme = theme2;
+        fullTeme = theme3;
       }
+
   React.useEffect(() => {
     handleSwitch(fullTeme);
   }, []);
+
   const accessibilitySetting = useRef();
-
   const [mousePointer, setMousePointer] = useState(localStorage.getItem("cursor"));
-  console.log("Mouse pointer in localstorage is >>>>>>>>>>> " + mousePointer);
-
   const [showAccessibility, setShowAccessibility] = useState(false);
-
+  console.log("[--- " + localStorage.getItem("cursor") + " ---]");
   const openAccessibilitySettings = () => {
+    setMousePointer(localStorage.getItem("cursor"));
     screen_Checker();
-    console.log("!!!!!!!!!!!!!!!!!!" + typeof localStorage.getItem("playMode"))
     if (localStorage.getItem("PlayerModeText") === "AV") {
-      console.log("Key is empty in local storage!")
       localStorage.setItem("backgroundAnimation", "lightgreen");
-
     }
-
+    console.log("[When you click on acc. --- " + localStorage.getItem("cursor") + " ---]");
     if (localStorage.getItem("cursor") === null || localStorage.getItem("cursor") === "") {
-      setMousePointer("url(NormalPointer_ToLeft.png), auto ");
-      console.log("Mouse pointer after setting  >>>>>>>>>>> " + mousePointer);
-      localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png), auto ");
+      setMousePointer("url(NormalPointer_ToLeft.png),auto");
+      //localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png),auto");
     }
 
     if (localStorage.getItem("bigLeft") === null || localStorage.getItem("bigRight") === null ||
       localStorage.getItem("normalLeft") === null || localStorage.getItem("normalRight") === null) {
-      console.log("The local storage is empty");
       localStorage.setItem("normalRight", "lightgreen");
-      localStorage.setItem("cursor", "url(normalSizePointer_right.png),auto")
+      // localStorage.setItem("cursor", "url(normalSizePointer_right.png),auto")
     }
-    else if (localStorage.getItem("bigLeft") === "lightgreen") {
-
-      // setMousePointer("url(toLeftmousePointer.png),auto");
-      localStorage.setItem("cursor", "url(toLeftmousePointer.png),auto")
-    }
-    else if (localStorage.getItem("bigRight") === "lightgreen") {
-
-      // setMousePointer("url({toRightMousePointer.png),auto");
-      localStorage.setItem("cursor", "url({toRightMousePointer.png),auto")
-    }
-    else if (localStorage.getItem("normalLeft") === "lightgreen") {
-
-      //  setMousePointer("url(NormalPointer_ToLeft.png),auto");
-      localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png),auto")
-    }
-
-
-    console.log("Clicked on the icon ")
+    /* else if (localStorage.getItem("bigLeft") === "lightgreen") {
+       // localStorage.setItem("cursor", "url(toLeftmousePointer.png),auto");
+       // setMousePointer("url(toLeftmousePointer.png),auto");
+     }
+     else if (localStorage.getItem("bigRight") === "lightgreen") {
+       //localStorage.setItem("cursor", "url({toRightMousePointer.png),auto")
+       // setMousePointer("url({toRightMousePointer.png),auto");
+     }
+     else if (localStorage.getItem("normalLeft") === "lightgreen") {
+       //s localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png),auto");
+       // setMousePointer("url(NormalPointer_ToLeft.png),auto");
+     }*/
     setShowAccessibility(prev => !prev) // If it is true, change it to false
   }
 
   const closeAccessibilitySetting = e => {
-
     if (accessibilitySetting.current === e.target) {
       setShowAccessibility(false)
     }
@@ -217,34 +201,23 @@ function App(props) {
   const [btnDisable, setBtnDisable] = useState(false)
 
   let mobileSize = false;
+
   const screen_Checker = () => {
     if (window.innerWidth > 768 && window.innerHeight > 450) {
       console.log("Not a mobile screen");
       mobileSize = false;
-
-      console.log("/////BTN is " + btnDisable + "####");
       return video;
     }
     else if (window.innerHeight < 450 || window.innerWidth <= 768) {
       console.log(window.innerHeight + " Mobile Screen")
       mobileSize = true;
-
-      console.log("***BTN is*** " + btnDisable);
-
       return "";
     }
-
-
   }
   console.log(mobileSize)
   React.useEffect(() => {
     setBtnDisable(mobileSize)
   }, []);
-
-  console.log("vvvvvvvvvv+ " + mobileSize + "<<<<<>>>>> " + btnDisable)
-  const [playerState, setPlayerState] = useState(
-    true
-  );
 
   const [playerMode_text, setPlayerMode_Text] = useState(localStorage.getItem("PlayerModeText"));
   if (playerMode_text === null || playerMode_text === "") {
@@ -254,7 +227,7 @@ function App(props) {
   let auto_Player = true;
   const [autoPlayer, setAutoPlayer] = useState("");
   const [playerMode, setPlayerMode] = useState(localStorage.getItem("PlayerMode"));
-  console.log("PlayerMode in localstorage is -------> " + playerMode)
+  // console.log("PlayerMode in localstorage is -------> " + playerMode)
 
   if (playerMode === "false") {
     auto_Player = false;
@@ -343,40 +316,39 @@ function App(props) {
                     <Paper variant="stAccessibility" color="" className='modal_Header'>
 
                       <Typography color="secondary" variant='h5' >Tillgänglighetsjusteringar </Typography>
-                      <button onClick={() => {
-                        if (!playerMode) {
-                          setPlayerMode_Text("AV");
-                        } handleSwitch((baseTheme));
-
-                      }} className='reset_Settings_Btn'>Återställ inställningar </button>
+                      <button
+                        onClick={() => {
+                          if (!playerMode) {
+                            setPlayerMode_Text("AV");
+                          } handleSwitch((baseTheme));
+                        }} className='reset_Settings_Btn'>Återställ inställningar </button>
                     </Paper>
+
                     <div >
                       <h4 className='accessibility-Settings_Header'>Välj tillgänglighetsprofil</h4>
                     </div>
-
                     <label className='accessibility-active-profile'>aktiverad profil är<span className="accessibility-active-profile_text" >{localStorage.getItem("ActiveProfile")} </span></label>
                     <div className='accessibility_Setting_Btn_Container' >
                       <div className="btn-arrange">
                         <div className="btn">
 
                           <button ref={light} style={{ backgroundColor: localStorage.getItem("btnLight") }} onClick={() => {
-                            window.appTheme = 1;
-                            console.log("════ " + window.appTheme)
                             {
-
                               light.current.style.backgroundColor = 'lightgreen';
                               dark.current.style.backgroundColor = 'white';
                               blind.current.style.backgroundColor = 'white';
 
-                              // btnLight ? setBtnLight("green") : setBtnLight("white");
+                              localStorage.setItem("btnCognitive", "white");
                               localStorage.setItem("btnLight", "lightgreen");
                               localStorage.setItem("btnBlind", "white");
                               localStorage.setItem("btnDark", "white");
-
-
-                            } setBtnDark("white"); setBtnBlind("white");
-                            setActiveProfile(" Ljus"); localStorage.setItem("ActiveProfile", " Ljus");
-                            console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch((baseTheme));
+                            }
+                            setBtnDark("white");
+                            setBtnBlind("white");
+                            setBtnCognitive("white");
+                            setActiveProfile(" Ljus");
+                            localStorage.setItem("ActiveProfile", " Ljus");
+                            handleSwitch((baseTheme));
                             localStorage.setItem("Theme", baseTheme);
                           }} className='accessibility_Setting_Btn'><LightModeIcon /></button>
                           <label>allmänt tema</label>
@@ -386,9 +358,6 @@ function App(props) {
 
                         <div className="btn">
                           <button ref={dark} style={{ backgroundColor: localStorage.getItem("btnDark") }} onClick={() => {
-                            window.appTheme = 2;
-                            console.log("════ " + window.appTheme)
-
                             {
                               light.current.style.backgroundColor = 'white';
                               dark.current.style.backgroundColor = 'lightgreen';
@@ -397,10 +366,15 @@ function App(props) {
                               localStorage.setItem("btnDark", "lightgreen");
                               localStorage.setItem("btnLight", "white");
                               localStorage.setItem("btnBlind", "white");
+                              localStorage.setItem("btnCognitive", "white");
 
-                            } setBtnLight("white"); setBtnBlind("white");
-                            setActiveProfile(" Mörkt"); localStorage.setItem("ActiveProfile", " Mörkt");
-                            console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme1);
+                            }
+                            setBtnLight("white");
+                            setBtnBlind("white");
+                            setBtnCognitive("white");
+                            setActiveProfile(" Mörkt");
+                            localStorage.setItem("ActiveProfile", " Mörkt");
+                            handleSwitch(theme1);
                           }} className='accessibility_Setting_Btn'><DarkModeIcon /></button>
                           <label>mörk kontrast</label>
                         </div>
@@ -413,28 +387,35 @@ function App(props) {
                               blind.current.style.backgroundColor = 'lightgreen';
 
                               localStorage.setItem("btnBlind", "lightgreen");
+                              localStorage.setItem("btnCognitive", "white");
                               localStorage.setItem("btnLight", "white");
                               localStorage.setItem("btnDark", "white");
-                            } setBtnLight("white"); setBtnDark("white");
-                            setActiveProfile(" Synskadad"); localStorage.setItem("ActiveProfile", " Synskadad");
-                            console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme3);
+                            }
+                            setBtnLight("white");
+                            setBtnDark("white");
+                            setBtnCognitive("white");
+                            setActiveProfile(" Synskadad");
+                            localStorage.setItem("ActiveProfile", " Synskadad");
+                            handleSwitch(theme3);
                           }} variant='contained' className='accessibility_Setting_Btn'><ContrastIcon /></button>
                           <label>Svartvit rubriker och texter</label>
                         </div>
 
                         <div className="btn">
-                          <button ref={blind} style={{ backgroundColor: localStorage.getItem("btnBlind") }} onClick={() => {
+                          <button ref={cognitive} style={{ backgroundColor: localStorage.getItem("btnCognitive") }} onClick={() => {
                             {
-                              light.current.style.backgroundColor = 'white';
-                              dark.current.style.backgroundColor = 'white';
-                              blind.current.style.backgroundColor = 'lightgreen';
+                              localStorage.setItem("btnCognitive", "lightgreen");
+                              //localStorage.setItem("ActiveProfile", " kognitive");
+                            }
+                            setBtnLight("white");
+                            setBtnDark("white");
+                            setBtnBlind("white");
+                            setBtnCognitive("lightgreen");
+                            setActiveProfile(" kognitive")
 
-                              localStorage.setItem("btnBlind", "lightgreen");
-                              localStorage.setItem("btnLight", "white");
-                              localStorage.setItem("btnDark", "white");
-                            } setBtnLight("white"); setBtnDark("white");
-                            setActiveProfile(" Synskadad"); localStorage.setItem("ActiveProfile", " Synskadad");
-                            console.log("Setted " + localStorage.getItem("ActiveProfile")); handleSwitch(theme2);
+                            //localStorage.setItem("ActiveProfile", " kognitive");
+                            handleSwitch(theme2);
+
                           }} variant='contained' className='accessibility_Setting_Btn'><CropFreeIcon /></button>
                           <label>kognitiva funktionshinder profil</label>
                         </div>

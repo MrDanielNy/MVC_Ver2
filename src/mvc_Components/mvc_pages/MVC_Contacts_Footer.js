@@ -28,7 +28,7 @@ function MVC_Contacts_Footer() {
             subject=""
             body=""
           >
-            <p> daniel.johansson@myvirtualclassroom.se</p>
+            <p className="Mail"> daniel.johansson@myvirtualclassroom.se</p>
           </Mailto>
         </div>
 
@@ -40,7 +40,7 @@ function MVC_Contacts_Footer() {
             subject=""
             body=""
           >
-            <p> daniel.ny@myvirtualclassroom.se</p>
+            <p className="Mail"> daniel.ny@myvirtualclassroom.se</p>
           </Mailto>
         </div>
       </div>

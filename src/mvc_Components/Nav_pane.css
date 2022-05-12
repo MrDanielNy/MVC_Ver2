@@ -12,6 +12,10 @@
   min-width: 300px;
 }
 
+.btn:hover {
+  cursor: url(../../public/HandCursor1.png), auto;
+}
+
 .navbar-container {
   /*background-color: #00295eb3;*/
   display: grid;
@@ -72,10 +76,11 @@
 }
 
 
-.MVC-Logo:hover {
-  transition: all 0.8s ease;
-  color: rgb(0, 0, 0);
 
+.mvcLogo:hover {
+  transition: all 0.8s ease;
+
+  cursor: url(../../public/HandCursor1.png), auto;
 
 }
 
@@ -92,12 +97,17 @@
 .ham_Menu:hover {
   transition: all 0.8s ease-out;
   color: rgb(0, 0, 0);
+  cursor: url(../../public/HandCursor1.png), auto;
 }
 
 /* Ham menu icons*/
 .fa-times {
   font-size: 2rem;
   z-index: 900;
+}
+
+.fa-times:hover {
+  cursor: url(../../public/HandCursor1.png), auto;
 }
 
 .fa-times:active {
@@ -108,6 +118,10 @@
 .fa-bars:active {
   opacity: 0.5;
   z-index: 1000;
+}
+
+.fa-bars:hover {
+  cursor: url(../../public/HandCursor1.png), auto;
 }
 
 .fa-typo3 {
@@ -146,6 +160,7 @@
   text-shadow: #f7aa04;
   transition: all 0.8s ease-out;
   opacity: 1;
+  cursor: url(../../public/HandCursor1.png), auto;
 
 }
 
