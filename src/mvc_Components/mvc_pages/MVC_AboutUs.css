@@ -68,9 +68,8 @@
 
 .DJ_Email:hover {
     color: rgb(255, 255, 255);
-
-
     transition: all .5S ease-in;
+    cursor: url(../../../public/HandCursor1.png), auto;
 }
 
 .DJ_Title_Image {
@@ -124,6 +123,7 @@
 .DN_Email:hover {
     color: rgb(255, 255, 255);
     transition: all .5S ease-in;
+    cursor: url(../../../public/HandCursor1.png), auto;
 }
 
 .about_DN_Container {
@@ -188,11 +188,7 @@
     min-width: 300px;
 }
 
-.our_Story_Text:hover {
-    transform: scale(1.2);
-    transition: all .5s ease-in;
 
-}
 
 @keyframes title_Animation {
     0% {

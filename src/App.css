@@ -76,6 +76,9 @@
     cursor: url(../public/HandCursor1.png), auto;
 }
 
+.closeIcon:hover {
+    cursor: url(../public/HandCursor1.png), auto;
+}
 
 .button:after {
     content: "*";

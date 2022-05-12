@@ -56,7 +56,7 @@ height:100%;
 width:100%;
 left:10px
 border-radius: 10px;
-background-color:#c4c4c444;
+background-color:#696969c7;
 z-index:4000;
 
 
@@ -105,12 +105,16 @@ padding: 0;
 z-index:2;
 color: black;
 background-color: white;
-border-radius: 100px
+border-radius: 100px;
+cursor: url(../public/HandCursor1.png), auto;
+
+
   `;
 
 
 function App(props) {
   window.onbeforeunload = () => true; // Prevents refresh, user should know that some information won't be saved in local storage.
+  const accessibilityIcon = useRef();
   const light = useRef();
   const dark = useRef();
   const blind = useRef();
@@ -160,6 +164,7 @@ function App(props) {
   const [showAccessibility, setShowAccessibility] = useState(false);
   console.log("[--- " + localStorage.getItem("cursor") + " ---]");
   const openAccessibilitySettings = () => {
+    accessibilityIcon.current.style.display = "none";
     setMousePointer(localStorage.getItem("cursor"));
     screen_Checker();
     if (localStorage.getItem("PlayerModeText") === "AV") {
@@ -174,28 +179,41 @@ function App(props) {
     if (localStorage.getItem("bigLeft") === null || localStorage.getItem("bigRight") === null ||
       localStorage.getItem("normalLeft") === null || localStorage.getItem("normalRight") === null) {
       localStorage.setItem("normalRight", "lightgreen");
-      // localStorage.setItem("cursor", "url(normalSizePointer_right.png),auto")
+
     }
-    /* else if (localStorage.getItem("bigLeft") === "lightgreen") {
-       // localStorage.setItem("cursor", "url(toLeftmousePointer.png),auto");
-       // setMousePointer("url(toLeftmousePointer.png),auto");
-     }
-     else if (localStorage.getItem("bigRight") === "lightgreen") {
-       //localStorage.setItem("cursor", "url({toRightMousePointer.png),auto")
-       // setMousePointer("url({toRightMousePointer.png),auto");
-     }
-     else if (localStorage.getItem("normalLeft") === "lightgreen") {
-       //s localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png),auto");
-       // setMousePointer("url(NormalPointer_ToLeft.png),auto");
-     }*/
+
     setShowAccessibility(prev => !prev) // If it is true, change it to false
   }
 
   const closeAccessibilitySetting = e => {
     if (accessibilitySetting.current === e.target) {
       setShowAccessibility(false)
+      accessibilityIcon.current.style.display = "block";
     }
   }
+  // To close the accessibility windows using ESC key
+  const escKey = useCallback(e => {
+    if (e.key === "Escape" && showAccessibility) {
+      accessibilityIcon.current.style.display = "block";
+      console.log("Escape is pressed")
+      setShowAccessibility(false);
+
+    }
+    else
+      if (e.key === "Escape" && !showAccessibility) {
+        setShowAccessibility(false)
+        accessibilityIcon.current.style.display = "block";
+      }
+
+  }, [setShowAccessibility], [showAccessibility])
+  useEffect(() => {
+
+    document.addEventListener("keydown", escKey);
+    return () => {
+      document.removeEventListener("keydown", escKey)
+      accessibilityIcon.current.style.display = "block";
+    }
+  })
 
   const getVideo = useRef(null);
   const [btnDisable, setBtnDisable] = useState(false)
@@ -272,41 +290,18 @@ function App(props) {
     playerMode ? pauseVideo() : playVideo();
   };
 
-
-  // To close the accessibility windows using ESC key
-  const escKey = useCallback(e => {
-    if (e.key === "Escape" && showAccessibility) {
-      console.log("Escape is pressed")
-      setShowAccessibility(false)
-    }
-    else
-      if (e.key === "Escape" && !showAccessibility) {
-        setShowAccessibility(false)
-      }
-
-  }, [setShowAccessibility], [showAccessibility])
-  useEffect(() => {
-    document.addEventListener("keydown", escKey);
-    return () => document.removeEventListener("keydown", escKey)
-  })
-
-
-  const a = localStorage.getItem("cursor");
-  console.log("The last local storage is .....> " + a)
-
   return (
     < div className="App" style={{ cursor: mousePointer }} >
       <ThemeProvider theme={theme}>
         <Router >
-
           <div className="background_Container_Video">
             <video className="video" ref={getVideo} loop muted autoPlay={autoPlayer}>
               <source src={screen_Checker()} />
             </video>
           </div>
 
-          {/** Navbar is placed here because it shoud be always on top of all elements in the page */}
-          <NavPane style={{}} />
+          {/** Navbar is placed here because it shoud be always on the top of all the elements in the page */}
+          <NavPane />
           {showAccessibility ? (
             <Background ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
               <Accessibility_Wrapper className="Wrapper_Accessibility" showAccessibility={showAccessibility}>
@@ -328,7 +323,7 @@ function App(props) {
                       <h4 className='accessibility-Settings_Header'>Välj tillgänglighetsprofil</h4>
                     </div>
                     <label className='accessibility-active-profile'>aktiverad profil är<span className="accessibility-active-profile_text" >{localStorage.getItem("ActiveProfile")} </span></label>
-                    <div className='accessibility_Setting_Btn_Container' >
+                    <Paper variant="btnContainer" className='accessibility_Setting_Btn_Container' >
                       <div className="btn-arrange">
                         <div className="btn">
 
@@ -520,25 +515,19 @@ function App(props) {
                           }} variant='contained' className='accessibility_Setting_Btn'><img src="toRight_CursorIcon.png" /></button>
                           <label>Vänster hand</label>
                         </div>
-
-
-
-
-
-
                         <div className="btn">
                           <button ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
                           <label disabled={btnDisable} >Animerad bakgrund</label>
                         </div>
                       </div>
-                    </div>
+                    </Paper>
                   </div>
                 </Accessibility_Window_Content>
-                <CloseAccessibilitySettings aria-label='stäng tillgänglighetsinställningarna' onClick={() => setShowAccessibility(prev => !prev)} />
+                <CloseAccessibilitySettings className="closeIcon" aria-label='stäng tillgänglighetsinställningarna' onClick={() => setShowAccessibility(prev => !prev)} />
               </Accessibility_Wrapper>
             </Background>
           ) : null}
-          <div className="accessibility_Icon"> <img onClick={() => { openAccessibilitySettings(); }} src={require("./images/accessibility_Icon.png")} />   </div>
+          <div ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => { openAccessibilitySettings(); }} src={require("./images/accessibility_Icon.png")} />   </div>
 
           <Routes>
             <Route path="/" element={<MVC_Home Theme={window.appTheme} />} />

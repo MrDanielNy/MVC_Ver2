@@ -17,7 +17,7 @@
 .accessibility_Icon {
     position: fixed;
     left: 30px;
-    bottom: 100px;
+    top: 100px;
     border-radius: 100px;
     /*animation: float 1s ease-in-out infinite;*/
 
@@ -74,7 +74,7 @@
     scroll-behavior: smooth;
     height: 250px;
     /* border-radius: 4px rgb(255, 255, 255) solid;*/
-    background-color: #00525b;
+    background-color: #0b6c7e;
     color: white;
 
 }
@@ -114,6 +114,7 @@
     background-color: rgb(240, 240, 240);
     border: 1px rgb(0, 1, 70) solid;
     border-radius: 10px;
+    cursor: url(../../../public/HandCursor1.png), auto;
 }
 
 .accessibility_Setting_Btn:hover {

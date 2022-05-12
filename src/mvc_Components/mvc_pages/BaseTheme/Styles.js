@@ -109,6 +109,10 @@ const baseTheme = createTheme({
                     border: "none",
 
                 },
+                btnContainer: {
+                    background: "#0b6c7e",
+                    border: "none",
+                },
                 root: {
                     background: "#060641f5",
                     border: "none",

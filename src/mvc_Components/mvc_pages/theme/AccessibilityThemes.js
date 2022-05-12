@@ -77,6 +77,11 @@ export const theme1 = {
           border: "none",
 
         },
+        btnContainer: {
+          background: "#000000",
+          border: "none",
+          color: "white",
+        },
         "root": {
           "background": "#353535",
           "border": "none",
@@ -191,6 +196,11 @@ export const theme3 = {
           background: "#111111",
           border: "none",
 
+        },
+        btnContainer: {
+          background: "#111111",
+          border: "none",
+          color: "white",
         },
         "root": {
           "background": "#111111",
