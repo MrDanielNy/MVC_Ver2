@@ -20,10 +20,12 @@ import {
 import { useSpeechSynthesis } from 'react-speech-kit';
 
 function NavPane() {
-  const logoTab = useRef()
-  const menuItem = useRef();
+  const logoTab = useRef();
+  const menuItem1 = useRef();
+  const menuItem2 = useRef();
+  const menuItem3 = useRef();
 
-  const hamMenu = useRef()
+  const hamMenu = useRef();
   React.useEffect(() => {
     hamMenu.current.focus();
   }, []);
@@ -34,21 +36,21 @@ function NavPane() {
   }
 
   const [click, setClick] = useState(false);
+
   const closeMenu = () => setClick(false);
   const handleClick = () => {
+    //menuItem1.current.focus();
+
+
     console.log("Testing...");
-
-
-    menuItem.current.focus();
-
-
     setClick(!click);
   };
 
   const closeMenu_ = useCallback(e => {
     if (e.key === "Escape" && click) {
       console.log("Escape is pressed")
-      setClick(false)
+      setClick(false);
+
     }
     else
       if (e.key === "Escape" && !click) {
@@ -77,8 +79,6 @@ function NavPane() {
   })
 
   const hamStyle = {
-
-
     backgroundColor: "#fafafa00", // rgba(250, 250, 250, 0)
     textAlign: "center",
     height: "50px",
@@ -92,14 +92,14 @@ function NavPane() {
   var synth = window.speechSynthesis;
   const { speak } = useSpeechSynthesis();
   if (localStorage.getItem("textReaderStatus") === "true") {
-    synth.resume();
+    synth.resume(); // It starts reading 
   }
   else {
-    synth.cancel();
+    synth.cancel(); // The text reader pauses.
   }
   function text_Reader(input_Text, e) {
     synth.resume();
-    e.target.style.border = '2px solid rgba(147, 250, 165)';
+    // e.target.style.border = '2px solid rgba(147, 250, 165)';
     speak({
       text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
     }
@@ -109,7 +109,7 @@ function NavPane() {
     <>
       <nav className="nav_Pane">
         <Paper variant="st1" color="primary" className="navbar-container">
-          <Button className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
+          <Button tabIndex={-1} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
             <div className="mvcLogo">
               MVC
             </div>
@@ -140,7 +140,7 @@ function NavPane() {
             e.target.style.border = 'none';
             // synth.pause();
             synth.cancel();
-          }} ref={menuItem} component={Link} to="/Projects" onClick={closeMenu} className="menu-links">
+          }} ref={menuItem1} component={Link} to="/Projects" onClick={closeMenu} className="menu-links">
             <h1 className="menu-items"> Projekt </h1>
           </Button>
 
@@ -152,7 +152,7 @@ function NavPane() {
               e.target.style.border = 'none';
               // synth.pause();
               synth.cancel();
-            }} component={Link} to="/AboutUs" onClick={closeMenu} className="menu-links">
+            }} ref={menuItem2} component={Link} to="/AboutUs" onClick={closeMenu} className="menu-links">
               <h1 className="menu-items">Om oss </h1>
             </Button>
           </h5>
@@ -164,7 +164,7 @@ function NavPane() {
               e.target.style.border = 'none';
               // synth.pause();
               synth.cancel();
-            }} component={Link} to="/Contacts" onClick={closeMenu} className="menu-links">
+            }} ref={menuItem3} component={Link} to="/Contacts" onClick={closeMenu} className="menu-links">
               <h1 className="menu-items"> Kontakta </h1>
             </Button>
           </h5                  >

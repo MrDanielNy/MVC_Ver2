@@ -17,7 +17,6 @@
 }
 
 .navbar-container {
-  /*background-color: #00295eb3;*/
   display: grid;
   /* Logo Gap Gap HamMenu*/
   grid-template-columns: 10% 10% 70% 10%;
@@ -42,6 +41,7 @@
   position: absolute;
   font-size: large;
   top: -1000px;
+  /* Top to down menu*/
   left: 0;
   opacity: 0;
   transition: all 1s ease-out;
@@ -66,6 +66,7 @@
 
 /*TODO  find an icon or a designed logo*/
 .MVC-Logo {
+  /* Linked to Home page*/
   color: rgb(255, 255, 255);
   justify-self: start;
   cursor: pointer;
@@ -73,15 +74,14 @@
   font-size: 2rem;
   margin-left: 20px;
   transition: all 0.8s ease;
+
 }
 
 
 
 .mvcLogo:hover {
   transition: all 0.8s ease;
-
   cursor: url(../../public/HandCursor1.png), auto;
-
 }
 
 .ham_Menu {
@@ -90,8 +90,8 @@
   font-size: 1.8rem;
   justify-self: end;
   /*To keep at the corner of the page*/
-  cursor: pointer;
   transition: all 0.8s ease;
+  cursor: url(../../public/HandCursor1.png), auto;
 }
 
 .ham_Menu:hover {
@@ -122,6 +122,8 @@
 
 .fa-bars:hover {
   cursor: url(../../public/HandCursor1.png), auto;
+  background-color: #d6d6d688;
+  transition: all 0.8s ease-out;
 }
 
 .fa-typo3 {
@@ -131,34 +133,30 @@
 
 .menu-links {
   background-color: rgb(209, 181, 103);
-
-
   text-align: center;
   height: 50px;
   width: 290px;
   color: rgb(255, 255, 255);
   border-radius: 20px;
   border: none;
-  cursor: pointer;
+  cursor: url(../../public/HandCursor1.png), auto;
   font-size: 45px;
 }
 
 .menu-items {
   font-size: 40px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: sans-serif;
   display: table;
   text-decoration: none;
   padding: 5px;
   width: 200px;
   color: white;
-
-
 }
 
 .menu-items:hover {
   color: #f7aa04;
   text-shadow: #f7aa04;
-  transition: all 0.8s ease-out;
+  transition: all 0.5s ease-out;
   opacity: 1;
   cursor: url(../../public/HandCursor1.png), auto;
 

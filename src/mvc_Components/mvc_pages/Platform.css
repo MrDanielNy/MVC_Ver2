@@ -12,6 +12,12 @@
   z-index: 1;
 }
 
+.notVisiblBtn {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+
+}
+
 .platform_Text_Container_ {
   position: absolute;
   display: flex;

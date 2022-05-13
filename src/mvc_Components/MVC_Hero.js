@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../mvc_Components/MVC_Hero.css";
 import "../App.css";
 import NavPane from "./Nav_pane";
@@ -24,6 +24,7 @@ import {
   createTheme
 } from "@mui/material";
 
+
 function MVC_Hero(props) {
   var synth = window.speechSynthesis;
   const { speak } = useSpeechSynthesis();
@@ -47,6 +48,7 @@ function MVC_Hero(props) {
     }
     )
   }
+  const projectBtn = useRef();
 
   return (
     <>
@@ -82,7 +84,7 @@ function MVC_Hero(props) {
 
           <p>{/** Other staffs if needed here */}</p>
           <div className="hero_Btn_container">
-            <Link to="/Contacts" className="hero_Btn_Link">
+            <Link tabIndex={-1} to="/Contacts" className="hero_Btn_Link">
               <Button onMouseEnter={(e) => {
                 text_Reader("Kontakta oss, klicka på knappen!", e);
               }}

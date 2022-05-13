@@ -11,9 +11,25 @@ import {
   ThemeProvider,
   createTheme
 } from "@mui/material";
+import { useSpeechSynthesis } from 'react-speech-kit';
 function Boxes() {
   const theme = useTheme();
-  console.log(theme.Paper + " ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤sdfsdf¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤");
+  var synth = window.speechSynthesis;
+  const { speak } = useSpeechSynthesis();
+  if (localStorage.getItem("textReaderStatus") === "true") {
+    synth.resume();
+  }
+  else {
+    synth.cancel();
+  }
+  function text_Reader(input_Text, e) {
+    synth.resume();
+    e.target.style.border = '2px solid rgba(147, 250, 165)';
+    speak({
+      text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+    }
+    )
+  }
 
   return (
     <div variant="contained" className="Boxes">
@@ -26,15 +42,26 @@ function Boxes() {
             sm: 50,
             xs: 30,
           }
-        }} variant="h1" className="boxes_Title" > My Virtual Classroom!</Typography>
+        }} onMouseLeave={(e) => {
+          e.target.style.border = 'none';
+          // synth.pause();
+          synth.cancel();
+        }}
+          onMouseEnter={(e) => {
+            text_Reader("My Virtual Classroom!", e);
+
+          }} variant="h1" className="boxes_Title" > My Virtual Classroom!</Typography>
         <div className="Items">
           {/** TODO change the content of each card. Fetching from database */}
+
+
           <MVC_Home_Boxes
             src={require("../../images/alex-scaled.jpg")}
             text="Skapa lådor, smörkniv, fågelholk eller fritt! Träslöjden låter dig göra momenten samtidigt som du lär dig teorin bakom. Den är anpassad så att så många som möjligt kan göra alla moment själva och när du är klar skriver du ut din skapelse i en 3D skrivare."
             label="Träslöjd"
             path="/Projects"
           />
+
 
           <MVC_Home_Boxes
             src={require("../../images/alex-scaled.jpg")}
