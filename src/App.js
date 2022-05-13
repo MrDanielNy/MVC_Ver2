@@ -45,7 +45,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import Zoom from '@mui/material/Zoom';
 import ContrastIcon from '@mui/icons-material/Contrast';
-
+import { useSpeechSynthesis } from 'react-speech-kit';
 
 
 const Background = styled.div`
@@ -125,6 +125,7 @@ function App(props) {
   const bigLeft = useRef();
   const bigRight = useRef();
   const backgroundAnimation = useRef();
+  const textReader = useRef();
 
   const [bkColor, setBkcolor] = useState(true);
   const [btnLight, setBtnLight] = useState("white");
@@ -289,6 +290,52 @@ function App(props) {
     console.log("Playermode when toggling =======> " + !playerMode)
     playerMode ? pauseVideo() : playVideo();
   };
+  const [readerMode, setReaderMode] = useState(localStorage.getItem("textReaderStatus"));
+  localStorage.setItem("textReaderStatus", readerMode);
+  //textReader.current.style.backgroundColor = localStorage.getItem("textReaderColor");
+  var synth = window.speechSynthesis;
+  const { speak } = useSpeechSynthesis();
+  let globalTextReader_Status = false;
+
+  //console.log(localStorage.getItem("textReaderStatus") + "<--------------------")
+  const toggleReaderStatus = () => {
+    setBkcolor(!bkColor);
+    console.log("Reader mode is ---> " + readerMode);
+    setReaderMode(!readerMode);
+    console.log("Reader mode is ---> " + readerMode);
+    localStorage.setItem("textReaderStatus", readerMode)
+    console.log(localStorage.getItem("textReaderStatus") + "<--------------------")
+    // console.log("Playermode when toggling =======> " + !readerMode)
+    readerMode ? pauseReader() : playReader();
+  };
+
+  const playReader = () => {
+    textReader.current.style.backgroundColor = "lightgreen";
+    localStorage.setItem("textReaderColor", "lightgreen");
+    synth.resume();
+    setReaderMode(true);
+
+  };
+
+  const pauseReader = () => {
+    synth.pause();
+    textReader.current.style.backgroundColor = "white";
+    localStorage.setItem("textReaderColor", "white");
+    globalTextReader_Status = false;
+    setReaderMode(false)
+
+  };
+
+  function text_Reader(input_Text, e) {
+    synth.resume();
+    e.target.style.border = '2px solid rgba(147, 250, 165)';
+    speak({
+      text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+    }
+    )
+  }
+
+
 
   return (
     < div className="App" style={{ cursor: mousePointer }} >
@@ -325,6 +372,11 @@ function App(props) {
                     <label className='accessibility-active-profile'>aktiverad profil är<span className="accessibility-active-profile_text" >{localStorage.getItem("ActiveProfile")} </span></label>
                     <Paper variant="btnContainer" className='accessibility_Setting_Btn_Container' >
                       <div className="btn-arrange">
+
+                        <div className="btn">
+                          <button ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
+                          <label disabled={btnDisable} >Animerad bakgrund</label>
+                        </div>
                         <div className="btn">
 
                           <button ref={light} style={{ backgroundColor: localStorage.getItem("btnLight") }} onClick={() => {
@@ -515,9 +567,16 @@ function App(props) {
                           }} variant='contained' className='accessibility_Setting_Btn'><img src="toRight_CursorIcon.png" /></button>
                           <label>Vänster hand</label>
                         </div>
+
+                        <div className="cursoricons">
+                          <label >Text lässare </label>
+                        </div>
                         <div className="btn">
-                          <button ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
-                          <label disabled={btnDisable} >Animerad bakgrund</label>
+                          <button ref={textReader} style={{ backgroundColor: localStorage.getItem("textReaderColor") }} onClick={() => { toggleReaderStatus() }}
+                            className='accessibility_Setting_Btn'>
+                            <img src="Txtreader1.png" />
+                          </button>
+                          <label >Text läsare PÅ/AV</label>
                         </div>
                       </div>
                     </Paper>
@@ -527,10 +586,18 @@ function App(props) {
               </Accessibility_Wrapper>
             </Background>
           ) : null}
-          <div ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => { openAccessibilitySettings(); }} src={require("./images/accessibility_Icon.png")} />   </div>
+          <div onMouseLeave={(e) => {
+            e.target.style.border = 'none';
+            // synth.pause();
+            synth.cancel();
+          }}
+            onMouseEnter={(e) => {
+              text_Reader("Tillgänglighets inställningar", e);
+
+            }} ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => { openAccessibilitySettings(); }} src={require("./images/accessibility_Icon.png")} />   </div>
 
           <Routes>
-            <Route path="/" element={<MVC_Home Theme={window.appTheme} />} />
+            <Route path="/" element={<MVC_Home textReaderStatus={globalTextReader_Status} />} />
             <Route path="/Projects" element={<MVC_Projects />} />
             <Route path="/AboutUs" element={<MVC_AboutUs />} />
             <Route path="/Contacts" element={<MVC_Contacts />} />

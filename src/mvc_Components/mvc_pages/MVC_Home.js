@@ -28,7 +28,7 @@ function MVC_Home(props) {
   return (
     < >
 
-      <MVC_Hero Theme_={props.Theme} />
+      <MVC_Hero textReaderStatus={props.textReaderStatus} />
 
       <Platform />
 

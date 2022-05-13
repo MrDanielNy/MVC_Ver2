@@ -17,6 +17,7 @@ import {
   ThemeProvider,
   createTheme
 } from "@mui/material";
+import { useSpeechSynthesis } from 'react-speech-kit';
 
 function NavPane() {
   const logoTab = useRef()
@@ -88,11 +89,26 @@ function NavPane() {
     cursor: "pointer",
     fontSize: "30px"
   }
+  var synth = window.speechSynthesis;
+  const { speak } = useSpeechSynthesis();
+  if (localStorage.getItem("textReaderStatus") === "true") {
+    synth.resume();
+  }
+  else {
+    synth.cancel();
+  }
+  function text_Reader(input_Text, e) {
+    synth.resume();
+    e.target.style.border = '2px solid rgba(147, 250, 165)';
+    speak({
+      text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+    }
+    )
+  }
   return (
     <>
       <nav className="nav_Pane">
         <Paper variant="st1" color="primary" className="navbar-container">
-
           <Button className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
             <div className="mvcLogo">
               MVC
@@ -101,35 +117,54 @@ function NavPane() {
           <div></div>
           <div></div>
           <div className="ham_Menu" >
-            <Button className="btn" ref={hamMenu} style={hamStyle} onClick={handleClick} >
+            <Button onMouseEnter={(e) => {
+              text_Reader("meny!", e);
+            }} onMouseLeave={(e) => {
+              e.target.style.border = 'none';
+              // synth.pause();
+              synth.cancel();
+            }} className="btn" ref={hamMenu} style={hamStyle} onClick={handleClick} >
               <span className={click ? "fas fa-times" : "fas fa-bars"} />
             </Button>
           </div>
         </Paper>
-
         <GlobalStyle />
-
-
       </nav>
       {/* Menu and links*/}
       <div className="drop-down-menu">
         <div className={click ? "menu active" : "menu"}>
 
-          <Button ref={menuItem} component={Link} to="/Projects" onClick={closeMenu} className="menu-links">
-
-
+          <Button onMouseEnter={(e) => {
+            text_Reader("Projekt! klicka för att läsa mer om våra projekt", e);
+          }} onMouseLeave={(e) => {
+            e.target.style.border = 'none';
+            // synth.pause();
+            synth.cancel();
+          }} ref={menuItem} component={Link} to="/Projects" onClick={closeMenu} className="menu-links">
             <h1 className="menu-items"> Projekt </h1>
           </Button>
 
 
           <h5 className="menu-items">
-            <Button component={Link} to="/AboutUs" onClick={closeMenu} className="menu-links">
+            <Button onMouseEnter={(e) => {
+              text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
+            }} onMouseLeave={(e) => {
+              e.target.style.border = 'none';
+              // synth.pause();
+              synth.cancel();
+            }} component={Link} to="/AboutUs" onClick={closeMenu} className="menu-links">
               <h1 className="menu-items">Om oss </h1>
             </Button>
           </h5>
 
           <h5 className="menu-items">
-            <Button component={Link} to="/Contacts" onClick={closeMenu} className="menu-links">
+            <Button onMouseEnter={(e) => {
+              text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
+            }} onMouseLeave={(e) => {
+              e.target.style.border = 'none';
+              // synth.pause();
+              synth.cancel();
+            }} component={Link} to="/Contacts" onClick={closeMenu} className="menu-links">
               <h1 className="menu-items"> Kontakta </h1>
             </Button>
           </h5                  >

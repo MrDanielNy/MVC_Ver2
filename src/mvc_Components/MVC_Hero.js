@@ -25,31 +25,28 @@ import {
 } from "@mui/material";
 
 function MVC_Hero(props) {
-  console.log("Yohooooooo " + props.bkg)
-
+  var synth = window.speechSynthesis;
   const { speak } = useSpeechSynthesis();
+  if (localStorage.getItem("textReaderStatus") === "true") {
+    synth.resume();
+  }
+  else {
+    synth.cancel();
+  }
+
   const [click, setClick] = useState(false);
   const closeMenu = () => setClick(false);
   const handleClick = () => {
-    console.log("Testing...");
-
     setClick(!click);
   };
-  /** It checks the screen size. If the screen is small, it sends an empty 
-   * string to Video as source and the background image in CSS shows.
-   */
-
-
-
-  /*
-  console.log("********************************************************")
-  console.log("Video before localS " + video);
-  console.log(localStorage.getItem("Background") + " <---------------")
-  console.log("Video is =======form address=========> " + video)
-  // video = localStorage.getItem("Background");
-  console.log("Video is =======from local Storage=========> " + video)
-  console.log("********************************************************")*/
-  console.log("()()()---> " + props.Theme_)
+  function text_Reader(input_Text, e) {
+    synth.resume();
+    e.target.style.border = '2px solid rgba(147, 250, 165)';
+    speak({
+      text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+    }
+    )
+  }
 
   return (
     <>
@@ -64,25 +61,21 @@ function MVC_Hero(props) {
               xs: 30,
             }
           }} onMouseLeave={(e) => {
-            console.log("Hello dude!");
             e.target.style.border = 'none';
+            // synth.pause();
+            synth.cancel();
           }}
-            onClick={(e) => {
-              console.log("Hello dude!");
-              e.target.style.border = '2px solid rgba(147, 250, 165)';
-              speak({
-                text: "My virtual Classroom", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
-              }
-              )
+            onMouseEnter={(e) => {
+              text_Reader("My virtal Classroom", e);
 
             }} color="secondary" className="title">My Virtual Classroom</Typography>
+
+
           <Typography variant="h3" onMouseLeave={(e) => {
             e.target.style.border = 'none';
-          }} onClick={(e) => {
-            e.target.style.border = '2px solid rgba(147, 250, 165)';
-            speak({
-              text: ' - En framtid på lika villkor'
-            })
+            synth.cancel();
+          }} onMouseEnter={(e) => {
+            text_Reader("En framtid på lika villkor", e);
           }} className="subTitle_">
             - En framtid på lika villkor
           </Typography>
@@ -90,7 +83,14 @@ function MVC_Hero(props) {
           <p>{/** Other staffs if needed here */}</p>
           <div className="hero_Btn_container">
             <Link to="/Contacts" className="hero_Btn_Link">
-              <Button variant="contained" color="secondary" className="hero_Btn"> <Typography variant="h6">Kontakta oss</Typography></Button>
+              <Button onMouseEnter={(e) => {
+                text_Reader("Kontakta oss, klicka på knappen!", e);
+              }}
+                onMouseLeave={(e) => {
+                  e.target.style.border = 'none';
+                  synth.cancel();
+                }}
+                variant="contained" color="secondary" className="hero_Btn"> <Typography variant="h6">Kontakta oss</Typography></Button>
             </Link>
           </div>
         </div>
