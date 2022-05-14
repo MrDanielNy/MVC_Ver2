@@ -1,21 +1,93 @@
 import React from "react";
 import "../mvc_pages/About_In_Home.css";
 import { Link } from "react-router-dom";
+
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
+import { useSpeechSynthesis } from 'react-speech-kit';
+
+
 function AboutUs_Link() {
+
+  var synth = window.speechSynthesis;
+  const { speak } = useSpeechSynthesis();
+  if (localStorage.getItem("textReaderStatus") === "true") {
+    synth.resume();
+  }
+  else {
+    synth.cancel();
+  }
+  function text_Reader(input_Text, e) {
+    synth.resume();
+    e.target.style.border = '2px solid #f8d744';
+    speak({
+      text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+    }
+    )
+  }
   return (
     <>
-      <div className="about">
+      <Paper variant="st1" className="about">
         <div className="about_Container">
           <div className="about_Text">
-            <h2>My Virtual Classroom</h2>
-            <h5 className="about_SubText">
-              sadasdasdasd asd asd asda sadasdasdasd asd asd asdasdasd as ad
-              asdasd asd asd asdasd
-            </h5>
+            <div className="about_Header">
+              <Typography
+                onMouseLeave={(e) => {
+                  e.target.style.border = 'none';
+                  // synth.pause();
+                  synth.cancel();
+                }}
+                onMouseEnter={(e) => {
+                  text_Reader("Om oss", e);
+
+                }} sx={{
+                  fontSize: {
+                    lg: 100,
+                    md: 70,
+                    sm: 50,
+                    xs: 30,
+                  }
+                }} variant="h1" color="secondary" >Om oss</Typography>
+            </div>
+            <div className="about_SubText">
+              <Typography onMouseLeave={(e) => {
+                e.target.style.border = 'none';
+                // synth.pause();
+                synth.cancel();
+              }}
+                onMouseEnter={(e) => {
+                  text_Reader(" Vi är ett företag med stor passion för teknisk utveckling och utbildning. Vi tycker att kombinationen är spännande och hoppas att ni vara med på vår resa.", e);
+
+                }} variant="h3" sx={{
+                  fontSize: {
+                    lg: 23,
+                    md: 20,
+                    sm: 18,
+                    xs: 15,
+                  }
+                }} color="secondary" >
+                Vi är ett företag med stor passion för teknisk utveckling och utbildning. Vi tycker att kombinationen är spännande och hoppas att ni vara med på vår resa.
+              </Typography>
+            </div>
           </div>
 
+
           <div className="about_Img">
-            <img
+            <img onMouseLeave={(e) => {
+              e.target.style.border = 'none';
+              // synth.pause();
+              synth.cancel();
+            }}
+              onMouseEnter={(e) => {
+                text_Reader("En karikatyr av Daniel Johanson och Daniel Ny med ett virtuellt verklighetssystem", e);
+
+              }}
               src={require("../../images/Kopia-av-My_Virtual_Classroom_-Daniel2020-11-06_12-51-03.png")}
               alt="Two men! Daniel Johansson and Daniel Ny."
               className="about_Img "
@@ -25,13 +97,23 @@ function AboutUs_Link() {
         <div className="btn_Container">
           <div></div>
           <div>
-            <Link to="/AboutUs">
-              <button className="about_Btn_Page">About Us</button>
+            <Link to="/AboutUs" className="about_btn_Link">
+              <Button
+                onMouseLeave={(e) => {
+                  e.target.style.border = 'none';
+                  // synth.pause();
+                  synth.cancel();
+                }}
+                onMouseEnter={(e) => {
+                  text_Reader("Om oss! Tryck på knappen att läsa om oss", e);
+
+                }} color="secondary" variant="contained" className="about_Btn_Page">
+                <Typography variant="h6">Om oss</Typography> </Button>
             </Link>
           </div>
           <div></div>
         </div>
-      </div>
+      </Paper>
     </>
   );
 }

@@ -12,13 +12,16 @@
   min-width: 300px;
 }
 
+.btn:hover {
+  cursor: url(../../public/HandCursor1.png), auto;
+}
+
 .navbar-container {
-  background-color: rgba(0, 41, 94, 0.7);
   display: grid;
   /* Logo Gap Gap HamMenu*/
   grid-template-columns: 10% 10% 70% 10%;
   align-items: center;
-  height: 80px;
+  height: 70px;
   font-size: 1.2rem;
   min-width: 200px;
 }
@@ -38,6 +41,7 @@
   position: absolute;
   font-size: large;
   top: -1000px;
+  /* Top to down menu*/
   left: 0;
   opacity: 0;
   transition: all 1s ease-out;
@@ -47,7 +51,7 @@
 }
 
 .menu.active {
-  background: rgba(48, 43, 67, 0.822);
+  background: rgba(48, 43, 67, 0.99);
   left: 0;
   top: 0px;
   opacity: 10;
@@ -62,6 +66,7 @@
 
 /*TODO  find an icon or a designed logo*/
 .MVC-Logo {
+  /* Linked to Home page*/
   color: rgb(255, 255, 255);
   justify-self: start;
   cursor: pointer;
@@ -69,14 +74,14 @@
   font-size: 2rem;
   margin-left: 20px;
   transition: all 0.8s ease;
+
 }
 
 
-.MVC-Logo:hover {
+
+.mvcLogo:hover {
   transition: all 0.8s ease;
-  color: rgb(0, 0, 0);
-
-
+  cursor: url(../../public/HandCursor1.png), auto;
 }
 
 .ham_Menu {
@@ -85,19 +90,24 @@
   font-size: 1.8rem;
   justify-self: end;
   /*To keep at the corner of the page*/
-  cursor: pointer;
   transition: all 0.8s ease;
+  cursor: url(../../public/HandCursor1.png), auto;
 }
 
 .ham_Menu:hover {
   transition: all 0.8s ease-out;
   color: rgb(0, 0, 0);
+  cursor: url(../../public/HandCursor1.png), auto;
 }
 
 /* Ham menu icons*/
 .fa-times {
   font-size: 2rem;
   z-index: 900;
+}
+
+.fa-times:hover {
+  cursor: url(../../public/HandCursor1.png), auto;
 }
 
 .fa-times:active {
@@ -110,25 +120,46 @@
   z-index: 1000;
 }
 
+.fa-bars:hover {
+  cursor: url(../../public/HandCursor1.png), auto;
+  background-color: #d6d6d688;
+  transition: all 0.8s ease-out;
+}
+
 .fa-typo3 {
   margin-left: 0.5rem;
   font-size: 1.8rem;
 }
 
 .menu-links {
+  background-color: rgb(209, 181, 103);
+  text-align: center;
+  height: 50px;
+  width: 290px;
   color: rgb(255, 255, 255);
-  width: auto;
-  display: table;
-  text-decoration: none;
-  padding: 10px;
-  font-size: 50px;
+  border-radius: 20px;
+  border: none;
+  cursor: url(../../public/HandCursor1.png), auto;
+  font-size: 45px;
 }
 
-.menu-links:hover {
+.menu-items {
+  font-size: 40px;
+  font-family: sans-serif;
+  display: table;
+  text-decoration: none;
+  padding: 5px;
+  width: 200px;
+  color: white;
+}
+
+.menu-items:hover {
   color: #f7aa04;
-  transition: all 0.8s ease-out;
+  text-shadow: #f7aa04;
+  transition: all 0.5s ease-out;
   opacity: 1;
-  font-size: 55px;
+  cursor: url(../../public/HandCursor1.png), auto;
+
 }
 
 .project_Btn {

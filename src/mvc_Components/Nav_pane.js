@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useRef } from "react";
 import { FaBeer } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
@@ -9,17 +9,39 @@ import styled from "styled-components";
 import ModalAccessibility from "./mvc_pages/Modal_Accessibility";
 import "../mvc_Components/mvc_pages/Modal_Accessibility.css"
 import { GlobalStyle } from "./mvc_pages/GlobalStyle";
-
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
+import { useSpeechSynthesis } from 'react-speech-kit';
 
 function NavPane() {
+  const logoTab = useRef();
+  const menuItem1 = useRef();
+  const menuItem2 = useRef();
+  const menuItem3 = useRef();
+
+  const hamMenu = useRef();
+  React.useEffect(() => {
+    hamMenu.current.focus();
+  }, []);
+
   const [showAccessibility, setShowAccessibility] = useState(false);
   const openAccessibilitySettings = () => {
     setShowAccessibility(prev => !prev) // If it is true, change it to false
   }
 
   const [click, setClick] = useState(false);
+
   const closeMenu = () => setClick(false);
   const handleClick = () => {
+    //menuItem1.current.focus();
+
+
     console.log("Testing...");
     setClick(!click);
   };
@@ -27,7 +49,8 @@ function NavPane() {
   const closeMenu_ = useCallback(e => {
     if (e.key === "Escape" && click) {
       console.log("Escape is pressed")
-      setClick(false)
+      setClick(false);
+
     }
     else
       if (e.key === "Escape" && !click) {
@@ -55,45 +78,98 @@ function NavPane() {
     return () => document.removeEventListener("keydown", menu)
   })
 
-
+  const hamStyle = {
+    backgroundColor: "#fafafa00", // rgba(250, 250, 250, 0)
+    textAlign: "center",
+    height: "50px",
+    width: "100px",
+    color: 'white',
+    borderRadius: "20px",
+    border: "none",
+    cursor: "pointer",
+    fontSize: "30px"
+  }
+  var synth = window.speechSynthesis;
+  const { speak } = useSpeechSynthesis();
+  if (localStorage.getItem("textReaderStatus") === "true") {
+    synth.resume(); // It starts reading 
+  }
+  else {
+    synth.cancel(); // The text reader pauses.
+  }
+  function text_Reader(input_Text, e) {
+    synth.resume();
+    // e.target.style.border = '2px solid rgba(147, 250, 165)';
+    speak({
+      text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+    }
+    )
+  }
   return (
     <>
       <nav className="nav_Pane">
-        <div className="navbar-container">
-          <Link to="/" className="MVC-Logo" onClick={closeMenu}>
-            MVC
-          </Link>
+        <Paper variant="st1" color="primary" className="navbar-container">
+          <Button tabIndex={-1} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
+            <div className="mvcLogo">
+              MVC
+            </div>
+          </Button>
           <div></div>
           <div></div>
-          <div className="ham_Menu" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          <div className="ham_Menu" >
+            <Button onMouseEnter={(e) => {
+              text_Reader("meny!", e);
+            }} onMouseLeave={(e) => {
+              e.target.style.border = 'none';
+              // synth.pause();
+              synth.cancel();
+            }} className="btn" ref={hamMenu} style={hamStyle} onClick={handleClick} >
+              <span className={click ? "fas fa-times" : "fas fa-bars"} />
+            </Button>
           </div>
-        </div>
-        <div className="accessibility_Icon"> <img onClick={openAccessibilitySettings} src={require("../images/accessibility_Icon.png")} /></div>
-        <ModalAccessibility showAccessibility={showAccessibility} setShowAccessibility={setShowAccessibility} />
+        </Paper>
         <GlobalStyle />
-
-
       </nav>
       {/* Menu and links*/}
       <div className="drop-down-menu">
-        <ul className={click ? "menu active" : "menu"}>
-          <li className="menu-items">
-            <Link to="/Projects" className="menu-links" onClick={closeMenu}>
-              <button className="project_Btn">Projects</button>
-            </Link>
-          </li>
-          <li className="menu-items">
-            <Link to="/AboutUs" className="menu-links" onClick={closeMenu}>
-              About us
-            </Link>
-          </li>
-          <li className="menu-items">
-            <Link to="/Contacts" className="menu-links" onClick={closeMenu}>
-              Contacts
-            </Link>
-          </li>
-        </ul>
+        <div className={click ? "menu active" : "menu"}>
+
+          <Button onMouseEnter={(e) => {
+            text_Reader("Projekt! klicka för att läsa mer om våra projekt", e);
+          }} onMouseLeave={(e) => {
+            e.target.style.border = 'none';
+            // synth.pause();
+            synth.cancel();
+          }} ref={menuItem1} component={Link} to="/Projects" onClick={closeMenu} className="menu-links">
+            <h1 className="menu-items"> Projekt </h1>
+          </Button>
+
+
+          <h5 className="menu-items">
+            <Button onMouseEnter={(e) => {
+              text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
+            }} onMouseLeave={(e) => {
+              e.target.style.border = 'none';
+              // synth.pause();
+              synth.cancel();
+            }} ref={menuItem2} component={Link} to="/AboutUs" onClick={closeMenu} className="menu-links">
+              <h1 className="menu-items">Om oss </h1>
+            </Button>
+          </h5>
+
+          <h5 className="menu-items">
+            <Button onMouseEnter={(e) => {
+              text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
+            }} onMouseLeave={(e) => {
+              e.target.style.border = 'none';
+              // synth.pause();
+              synth.cancel();
+            }} ref={menuItem3} component={Link} to="/Contacts" onClick={closeMenu} className="menu-links">
+              <h1 className="menu-items"> Kontakta </h1>
+            </Button>
+          </h5                  >
+
+        </div>
       </div>
     </>
   );

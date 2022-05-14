@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../mvc_Components/MVC_Hero.css";
 import "../App.css";
 import NavPane from "./Nav_pane";
@@ -6,83 +6,99 @@ import "./Nav_pane.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Platform from "./mvc_pages/Platform";
-import video from "../images/video-2.mp4";
+
 import video2 from "../images/video-1.mp4"
+import backgrund from "../images/HeroSmallSize.png"
 import img_Background from "../images/ATC.png"
 import { useSpeechSynthesis } from 'react-speech-kit';
 
-function MVC_Hero() {
+import { PrismCode } from 'react-prism';
+import { Player, ControlBar } from 'video-react';
+
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
+
+
+function MVC_Hero(props) {
+  var synth = window.speechSynthesis;
   const { speak } = useSpeechSynthesis();
+  if (localStorage.getItem("textReaderStatus") === "true") {
+    synth.resume();
+  }
+  else {
+    synth.cancel();
+  }
+
   const [click, setClick] = useState(false);
   const closeMenu = () => setClick(false);
   const handleClick = () => {
-    console.log("Testing...");
-
     setClick(!click);
   };
-  /** It checks the screen size. If the screen is small, it sends an empty 
-   * string to Video as source and the background image in CSS shows.
-   */
-  const screen_Checker = () => {
-    if (window.innerWidth > 768 && window.innerHeight > 450) {
-      console.log("Not a mobile screen")
-      return video;
+  function text_Reader(input_Text, e) {
+    synth.resume();
+    e.target.style.border = '2px solid rgba(147, 250, 165)';
+    speak({
+      text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
     }
-    else if (window.innerHeight < 450) {
-      console.log(window.innerHeight + " Mobile Screen")
-      return "";
-    }
-
+    )
   }
+  const projectBtn = useRef();
+
   return (
     <>
-      <div className="mvc-hero-container">
+      <div className="mvc-hero-container" >
 
-        {/* A video link to have the live backgrond*/}
-        <div className="background_Container_">
-          <video className=".background-video" loop autoPlay muted>
-            <source src={screen_Checker()} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
         <div>
-          <h1 onMouseLeave={(e) => {
-            console.log("Hello dude!");
+          <Typography variant="h1" sx={{
+            fontSize: {
+              lg: 100,
+              md: 70,
+              sm: 50,
+              xs: 30,
+            }
+          }} onMouseLeave={(e) => {
             e.target.style.border = 'none';
+            // synth.pause();
+            synth.cancel();
           }}
-            onClick={(e) => {
-              console.log("Hello dude!");
-              e.target.style.border = '2px solid rgba(147, 250, 165)';
-              speak({
-                text: "My virtual Classroom", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
-              }
-              )
+            onMouseEnter={(e) => {
+              text_Reader("My virtal Classroom", e);
 
-            }} className="title">My Virtual Classroom</h1>
-          <p onMouseLeave={(e) => {
-            console.log("Hello dude!");
+            }} color="secondary" className="title">My Virtual Classroom</Typography>
+
+
+          <Typography variant="h3" onMouseLeave={(e) => {
             e.target.style.border = 'none';
-          }} onClick={(e) => {
-            e.target.style.border = '2px solid rgba(147, 250, 165)';
-            speak({
-              text: ' Vi vill förändra dagens utbildning och bjuder in Sveriges skolor till Utbildning-2.0.'
-            })
+            synth.cancel();
+          }} onMouseEnter={(e) => {
+            text_Reader("En framtid på lika villkor", e);
           }} className="subTitle_">
-            Vi vill förändra dagens utbildning och bjuder in Sveriges skolor
-            till “Utbildning-2.0”.
-          </p>
+            - En framtid på lika villkor
+          </Typography>
 
           <p>{/** Other staffs if needed here */}</p>
-          <Link to="/Contacts">
-            <button className="hero_Btn">Contact us</button>
-          </Link>
+          <div className="hero_Btn_container">
+            <Link tabIndex={-1} to="/Contacts" className="hero_Btn_Link">
+              <Button onMouseEnter={(e) => {
+                text_Reader("Kontakta oss! Tryck på knappen!", e);
+              }}
+                onMouseLeave={(e) => {
+                  e.target.style.border = 'none';
+                  synth.cancel();
+                }}
+                variant="contained" color="secondary" className="hero_Btn"> <Typography variant="h6">Kontakta oss</Typography></Button>
+            </Link>
+          </div>
         </div>
-
-        {/** TODO: Add a direct link to contact page or some other important links  */}
         <div>
-
         </div>
-      </div>
+      </div >
     </>
   );
 }

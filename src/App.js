@@ -1,5 +1,6 @@
 import "./App.css";
 import NavPane from "./mvc_Components/Nav_pane";
+import React, { useRef } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -10,20 +11,606 @@ import MVC_Home from "./mvc_Components/mvc_pages/MVC_Home";
 import MVC_Projects from "./mvc_Components/mvc_pages/MVC_Projects";
 import MVC_AboutUs from "./mvc_Components/mvc_pages/MVC_AboutUs";
 import MVC_Contacts from "./mvc_Components/mvc_pages/MVC_Contacts";
+import baseTheme from "./mvc_Components/mvc_pages/BaseTheme/Styles";
+import { useState, useEffect, useCallback } from "react";
+import { deepmerge } from "@mui/utils";
+import { theme1, theme2, theme3 } from "./mvc_Components/mvc_pages/theme/AccessibilityThemes"
+import video from "./images/video-2.mp4";
+//import VideoPlayer from "./mvc_Components/mvc_pages/videoBackground/VideoPlayer";
 
-function App() {
+import "./mvc_Components/mvc_pages/Modal_Accessibility.css"
+import styled from "styled-components"
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
+import { Player } from "video-react";
+import { MdClose } from "react-icons/md"
+import { style } from "@mui/system";
+
+import Brightness5Icon from '@mui/icons-material/Brightness5';
+import Brightness2Icon from '@mui/icons-material/Brightness2';
+
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import CropFreeIcon from '@mui/icons-material/CropFree';
+import RestartAltSharpIcon from '@mui/icons-material/RestartAltSharp';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
+import Zoom from '@mui/material/Zoom';
+import ContrastIcon from '@mui/icons-material/Contrast';
+import { useSpeechSynthesis } from 'react-speech-kit';
+
+
+const Background = styled.div`
+position:fixed;
+display:flex;
+align-items:center;
+height:100%;
+width:100%;
+left:10px
+border-radius: 10px;
+background-color:#696969c7;
+z-index:4000;
+
+
+
+`
+const Accessibility_Wrapper = styled.div`
+position: fixed;
+width: 450px;
+height: 600px;
+box-shadow: 0 5px 16px rgba(0, 0, 0, .4);
+background: #c4bdbd;
+display: flex;
+flex-direction: row;
+justify-content: center;
+
+z-index: 2;
+border-radius: 20px;
+margin-bottom: 50px;
+bottom: -10px;
+left: 10px;
+
+transition: all 2s ease-out;
+`
+const Accessibility_Window_Content = styled.div`
+position: fixed;
+display: flex;
+flex-direction: column;
+line-height: 1.8;
+color: black;
+left: 80px
+position: absolute;
+border-radius: 20px;
+
+`
+
+
+
+const CloseAccessibilitySettings = styled(MdClose)`
+
+position: absolute;
+top: 10px;
+left: 10px;
+width: 32px;
+height: 32px;
+padding: 0;
+z-index:2;
+color: black;
+background-color: white;
+border-radius: 100px;
+cursor: url(../public/HandCursor1.png), auto;
+
+
+  `;
+
+
+function App(props) {
+  window.onbeforeunload = () => true; // Prevents refresh, user should know that some information won't be saved in local storage.
+  const accessibilityIcon = useRef();
+  const light = useRef();
+  const dark = useRef();
+  const blind = useRef();
+  const cognitive = useRef();
+
+  const normalRight = useRef();
+  const normalLeft = useRef();
+  const bigLeft = useRef();
+  const bigRight = useRef();
+  const backgroundAnimation = useRef();
+  const textReader = useRef();
+
+  const [bkColor, setBkcolor] = useState(true);
+  const [btnLight, setBtnLight] = useState("white");
+  const [btnDark, setBtnDark] = useState("white");
+  const [btnBlind, setBtnBlind] = useState("white");
+  const [btnCognitive, setBtnCognitive] = useState("white");
+  const [btnBackGround, setBtnBackGround] = useState("white");
+  const [theme, setTheme] = useState(baseTheme);
+  const [activeProfile, setActiveProfile] = useState(localStorage.getItem("ActiveProfile"));
+
+  const handleSwitch = (whichTheme) => {
+    const newTheme = deepmerge(theme, whichTheme);
+    setTheme(createTheme(newTheme));
+    // setActiveProfile(localStorage.getItem("ActiveProfile"));
+  };
+  let fullTeme = theme;
+  if (activeProfile === null || activeProfile === "") {
+    setActiveProfile(" Ljus");
+    localStorage.setItem("btnLight", "lightgreen");
+    fullTeme = baseTheme;
+    localStorage.setItem("ActiveProfile", " Ljus")
+  } else
+    if (activeProfile === " Mörkt") {
+      fullTeme = theme1;
+    }
+    else
+      if (activeProfile === " Synskadad") {
+        fullTeme = theme3;
+      }
+
+  React.useEffect(() => {
+    handleSwitch(fullTeme);
+  }, []);
+
+  const accessibilitySetting = useRef();
+  const [mousePointer, setMousePointer] = useState(localStorage.getItem("cursor"));
+  const [showAccessibility, setShowAccessibility] = useState(false);
+  console.log("[--- " + localStorage.getItem("cursor") + " ---]");
+  const openAccessibilitySettings = () => {
+    accessibilityIcon.current.style.display = "none";
+    setMousePointer(localStorage.getItem("cursor"));
+    screen_Checker();
+    if (localStorage.getItem("PlayerModeText") === "AV") {
+      localStorage.setItem("backgroundAnimation", "lightgreen");
+    }
+    console.log("[When you click on acc. --- " + localStorage.getItem("cursor") + " ---]");
+    if (localStorage.getItem("cursor") === null || localStorage.getItem("cursor") === "") {
+      setMousePointer("url(NormalPointer_ToLeft.png),auto");
+      //localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png),auto");
+    }
+
+    if (localStorage.getItem("bigLeft") === null || localStorage.getItem("bigRight") === null ||
+      localStorage.getItem("normalLeft") === null || localStorage.getItem("normalRight") === null) {
+      localStorage.setItem("normalRight", "lightgreen");
+
+    }
+
+    setShowAccessibility(prev => !prev) // If it is true, change it to false
+  }
+
+  const closeAccessibilitySetting = e => {
+    if (accessibilitySetting.current === e.target) {
+      setShowAccessibility(false)
+      accessibilityIcon.current.style.display = "block";
+    }
+  }
+  // To close the accessibility windows using ESC key
+  const escKey = useCallback(e => {
+    if (e.key === "Escape" && showAccessibility) {
+      accessibilityIcon.current.style.display = "block";
+      console.log("Escape is pressed")
+      setShowAccessibility(false);
+
+    }
+    else
+      if (e.key === "Escape" && !showAccessibility) {
+        setShowAccessibility(false)
+        accessibilityIcon.current.style.display = "block";
+      }
+
+  }, [setShowAccessibility], [showAccessibility])
+  useEffect(() => {
+
+    document.addEventListener("keydown", escKey);
+    return () => {
+      document.removeEventListener("keydown", escKey)
+      accessibilityIcon.current.style.display = "block";
+    }
+  })
+
+  const getVideo = useRef(null);
+  const [btnDisable, setBtnDisable] = useState(false)
+
+  let mobileSize = false;
+
+  const screen_Checker = () => {
+    if (window.innerWidth > 768 && window.innerHeight > 450) {
+      console.log("Not a mobile screen");
+      mobileSize = false;
+      return video;
+    }
+    else if (window.innerHeight < 450 || window.innerWidth <= 768) {
+      console.log(window.innerHeight + " Mobile Screen")
+      mobileSize = true;
+      return "";
+    }
+  }
+  console.log(mobileSize)
+  React.useEffect(() => {
+    setBtnDisable(mobileSize)
+  }, []);
+
+  const [playerMode_text, setPlayerMode_Text] = useState(localStorage.getItem("PlayerModeText"));
+  if (playerMode_text === null || playerMode_text === "") {
+    setPlayerMode_Text("AV");
+    localStorage.setItem("PlayerModeText", "AV");
+  }
+  let auto_Player = true;
+  const [autoPlayer, setAutoPlayer] = useState("");
+  const [playerMode, setPlayerMode] = useState(localStorage.getItem("PlayerMode"));
+  // console.log("PlayerMode in localstorage is -------> " + playerMode)
+
+  if (playerMode === "false") {
+    auto_Player = false;
+  }
+  else {
+    auto_Player = true;
+  }
+
+  React.useEffect(() => {
+    setAutoPlayer(auto_Player)
+  }, []);
+  if (playerMode === null || playerMode === "") {
+    setPlayerMode(true);
+    localStorage.setItem("PlayerMode", true)
+  }
+  const playVideo = () => {
+    getVideo.current.play()
+    setPlayerMode(true);
+    setPlayerMode_Text("AV");
+    backgroundAnimation.current.style.backgroundColor = "lightgreen";
+    localStorage.setItem("backgroundAnimation", "lightgreen")
+    localStorage.setItem("PlayerModeText", "AV");
+    localStorage.setItem("PlayerMode", true);
+  };
+
+  const pauseVideo = () => {
+    getVideo.current.pause();
+    setPlayerMode(false)
+    setPlayerMode_Text("PÅ")
+    backgroundAnimation.current.style.backgroundColor = "white";
+    localStorage.setItem("backgroundAnimation", "white")
+    localStorage.setItem("PlayerModeText", "PÅ");
+    localStorage.setItem("PlayerMode", false);
+
+  };
+
+  const togglePlay = () => {
+    setBkcolor(!bkColor);
+    // setPlayerMode(!localStorage.getItem("PlayerMode"))
+    localStorage.setItem("PlayerMode", !playerMode)
+    console.log("Playermode when toggling =======> " + !playerMode)
+    playerMode ? pauseVideo() : playVideo();
+  };
+  const [readerMode, setReaderMode] = useState(localStorage.getItem("textReaderStatus"));
+  localStorage.setItem("textReaderStatus", readerMode);
+  //textReader.current.style.backgroundColor = localStorage.getItem("textReaderColor");
+  var synth = window.speechSynthesis;
+  const { speak } = useSpeechSynthesis();
+  let globalTextReader_Status = false;
+
+  //console.log(localStorage.getItem("textReaderStatus") + "<--------------------")
+  const toggleReaderStatus = () => {
+    setBkcolor(!bkColor);
+    console.log("Reader mode is ---> " + readerMode);
+    setReaderMode(!readerMode);
+    console.log("Reader mode is ---> " + readerMode);
+    localStorage.setItem("textReaderStatus", readerMode)
+    console.log(localStorage.getItem("textReaderStatus") + "<--------------------")
+    // console.log("Playermode when toggling =======> " + !readerMode)
+    readerMode ? pauseReader() : playReader();
+  };
+
+  const playReader = () => {
+    textReader.current.style.backgroundColor = "lightgreen";
+    localStorage.setItem("textReaderColor", "lightgreen");
+    synth.resume();
+    setReaderMode(true);
+
+  };
+
+  const pauseReader = () => {
+    synth.pause();
+    textReader.current.style.backgroundColor = "white";
+    localStorage.setItem("textReaderColor", "white");
+    globalTextReader_Status = false;
+    setReaderMode(false)
+
+  };
+
+  function text_Reader(input_Text, e) {
+    synth.resume();
+    e.target.style.border = '2px solid rgba(147, 250, 165)';
+    speak({
+      text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+    }
+    )
+  }
+
+
+
   return (
-    <Router>
-      {/** Navbar is placed here because it shoud be always on top of all elements in the page */}
-      <NavPane />
-      <Routes>
-        <Route path="/" element={<MVC_Home />} />
-        <Route path="/Projects" element={<MVC_Projects />} />
-        <Route path="/AboutUs" element={<MVC_AboutUs />} />
-        <Route path="/Contacts" element={<MVC_Contacts />} />
-      </Routes>
-    </Router>
+    < div className="App" style={{ cursor: mousePointer }} >
+      <ThemeProvider theme={theme}>
+        <Router >
+          <div className="background_Container_Video">
+            <video className="video" ref={getVideo} loop muted autoPlay={autoPlayer}>
+              <source src={screen_Checker()} />
+            </video>
+          </div>
+
+          {/** Navbar is placed here because it shoud be always on the top of all the elements in the page */}
+          <NavPane />
+          {showAccessibility ? (
+            <Background ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
+              <Accessibility_Wrapper className="Wrapper_Accessibility" showAccessibility={showAccessibility}>
+                <Accessibility_Window_Content>
+                  <div color="primary" className='header'>
+
+                    <Paper variant="stAccessibility" color="" className='modal_Header'>
+
+                      <Typography color="secondary" variant='h5' >Tillgänglighetsjusteringar </Typography>
+                      <button
+                        onClick={() => {
+                          if (!playerMode) {
+                            setPlayerMode_Text("AV");
+                          } handleSwitch((baseTheme));
+                        }} className='reset_Settings_Btn'>Återställ inställningar </button>
+                    </Paper>
+
+                    <div >
+                      <h4 className='accessibility-Settings_Header'>Välj tillgänglighetsprofil</h4>
+                    </div>
+                    <label className='accessibility-active-profile'>aktiverad profil är<span className="accessibility-active-profile_text" >{localStorage.getItem("ActiveProfile")} </span></label>
+                    <Paper variant="btnContainer" className='accessibility_Setting_Btn_Container' >
+                      <div className="btn-arrange">
+
+                        <div className="btn">
+                          <button ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
+                          <label disabled={btnDisable} >Animerad bakgrund</label>
+                        </div>
+                        <div className="btn">
+
+                          <button ref={light} style={{ backgroundColor: localStorage.getItem("btnLight") }} onClick={() => {
+                            {
+                              light.current.style.backgroundColor = 'lightgreen';
+                              dark.current.style.backgroundColor = 'white';
+                              blind.current.style.backgroundColor = 'white';
+
+                              localStorage.setItem("btnCognitive", "white");
+                              localStorage.setItem("btnLight", "lightgreen");
+                              localStorage.setItem("btnBlind", "white");
+                              localStorage.setItem("btnDark", "white");
+                            }
+                            setBtnDark("white");
+                            setBtnBlind("white");
+                            setBtnCognitive("white");
+                            setActiveProfile(" Ljus");
+                            localStorage.setItem("ActiveProfile", " Ljus");
+                            handleSwitch((baseTheme));
+                            localStorage.setItem("Theme", baseTheme);
+                          }} className='accessibility_Setting_Btn'><LightModeIcon /></button>
+                          <label>allmänt tema</label>
+
+                        </div>
+
+
+                        <div className="btn">
+                          <button ref={dark} style={{ backgroundColor: localStorage.getItem("btnDark") }} onClick={() => {
+                            {
+                              light.current.style.backgroundColor = 'white';
+                              dark.current.style.backgroundColor = 'lightgreen';
+                              blind.current.style.backgroundColor = 'white';
+
+                              localStorage.setItem("btnDark", "lightgreen");
+                              localStorage.setItem("btnLight", "white");
+                              localStorage.setItem("btnBlind", "white");
+                              localStorage.setItem("btnCognitive", "white");
+
+                            }
+                            setBtnLight("white");
+                            setBtnBlind("white");
+                            setBtnCognitive("white");
+                            setActiveProfile(" Mörkt");
+                            localStorage.setItem("ActiveProfile", " Mörkt");
+                            handleSwitch(theme1);
+                          }} className='accessibility_Setting_Btn'><DarkModeIcon /></button>
+                          <label>mörk kontrast</label>
+                        </div>
+
+                        <div className="btn">
+                          <button ref={blind} style={{ backgroundColor: localStorage.getItem("btnBlind") }} onClick={() => {
+                            {
+                              light.current.style.backgroundColor = 'white';
+                              dark.current.style.backgroundColor = 'white';
+                              blind.current.style.backgroundColor = 'lightgreen';
+
+                              localStorage.setItem("btnBlind", "lightgreen");
+                              localStorage.setItem("btnCognitive", "white");
+                              localStorage.setItem("btnLight", "white");
+                              localStorage.setItem("btnDark", "white");
+                            }
+                            setBtnLight("white");
+                            setBtnDark("white");
+                            setBtnCognitive("white");
+                            setActiveProfile(" Synskadad");
+                            localStorage.setItem("ActiveProfile", " Synskadad");
+                            handleSwitch(theme3);
+                          }} variant='contained' className='accessibility_Setting_Btn'><ContrastIcon /></button>
+                          <label>Svartvit rubriker och texter</label>
+                        </div>
+
+                        <div className="btn">
+                          <button ref={cognitive} style={{ backgroundColor: localStorage.getItem("btnCognitive") }} onClick={() => {
+                            {
+                              localStorage.setItem("btnCognitive", "lightgreen");
+                              //localStorage.setItem("ActiveProfile", " kognitive");
+                            }
+                            setBtnLight("white");
+                            setBtnDark("white");
+                            setBtnBlind("white");
+                            setBtnCognitive("lightgreen");
+                            setActiveProfile(" kognitive")
+
+                            //localStorage.setItem("ActiveProfile", " kognitive");
+                            handleSwitch(theme2);
+
+                          }} variant='contained' className='accessibility_Setting_Btn'><CropFreeIcon /></button>
+                          <label>kognitiva funktionshinder profil</label>
+                        </div>
+
+                        {/** Cussor settings */}
+
+                        <div className="cursoricons">
+                          <label >Markörinställningar </label>
+                        </div>
+
+                        <div className="btn">
+                          <button disabled={btnDisable} ref={normalRight} style={{ backgroundColor: localStorage.getItem("normalRight") }} onClick={() => {
+                            {
+                              setMousePointer('url(NormalPointer_ToLeft.png),auto');
+                              localStorage.setItem("cursor", 'url(NormalPointer_ToLeft.png),auto');
+
+                              console.log("Mouse pointer is >>>>>>>>>>> " + mousePointer)
+                              normalRight.current.style.backgroundColor = 'lightgreen';
+                              normalLeft.current.style.backgroundColor = 'white';
+                              bigLeft.current.style.backgroundColor = 'white';
+                              bigRight.current.style.backgroundColor = 'white';
+
+                              localStorage.setItem("normalRight", "lightgreen");
+                              localStorage.setItem("normalLeft", "white");
+                              localStorage.setItem("bigLeft", "white");
+                              localStorage.setItem("bigRight", "white");
+                            }
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="NormalPointer_ToLeft.png" /></button>
+                          <label>Normal storlek höger</label>
+                        </div>
+
+                        <div className="btn">
+                          <button disabled={btnDisable} ref={normalLeft} style={{ backgroundColor: localStorage.getItem("normalLeft") }} onClick={() => {
+                            {
+                              setMousePointer('url(normalSizePointer_right.png),auto');
+                              localStorage.setItem("cursor", 'url(normalSizePointer_right.png),auto');
+
+                              console.log("Mouse pointer is >>>>>>>>>>> " + mousePointer + " " + typeof mousePointer)
+                              normalRight.current.style.backgroundColor = 'white';
+                              normalLeft.current.style.backgroundColor = 'lightgreen';
+                              bigLeft.current.style.backgroundColor = 'white';
+                              bigRight.current.style.backgroundColor = 'white';
+
+                              localStorage.setItem("normalRight", "white");
+                              localStorage.setItem("normalLeft", "lightgreen");
+                              localStorage.setItem("bigLeft", "white");
+                              localStorage.setItem("bigRight", "white");
+
+                            }
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="normalSizePointer_right.png" /></button>
+                          <label>Normal storlek vänster</label>
+                        </div>
+
+
+
+                        <div className="btn">
+                          <button disabled={btnDisable} ref={bigRight} style={{ backgroundColor: localStorage.getItem("bigRight") }} onClick={() => {
+                            {
+
+                              setMousePointer('url(toLeftmousePointer.png),auto');
+                              localStorage.setItem("cursor", 'url(toLeftmousePointer.png),auto');
+                              normalRight.current.style.backgroundColor = 'white';
+                              normalLeft.current.style.backgroundColor = 'white';
+                              bigLeft.current.style.backgroundColor = 'white';
+                              bigRight.current.style.backgroundColor = 'lightgreen';
+
+                              localStorage.setItem("normalRight", "white");
+                              localStorage.setItem("normalLeft", "white");
+                              localStorage.setItem("bigLeft", "white");
+                              localStorage.setItem("bigRight", "lightgreen");
+
+
+                            }
+
+
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="toLeft_cursorIcon.png" /></button>
+                          <label>Höger hand</label>
+                        </div>
+
+                        <div className="btn">
+                          <button disabled={btnDisable} ref={bigLeft} style={{ backgroundColor: localStorage.getItem("bigLeft") }} onClick={() => {
+                            {
+
+                              setMousePointer('url(toRightMousePointer.png),auto');
+                              localStorage.setItem("cursor", 'url(toRightMousePointer.png),auto');
+
+                              normalRight.current.style.backgroundColor = 'white';
+                              normalLeft.current.style.backgroundColor = 'white';
+                              bigLeft.current.style.backgroundColor = 'lightgreen';
+                              bigRight.current.style.backgroundColor = 'white';
+
+                              localStorage.setItem("normalRight", "white");
+                              localStorage.setItem("normalLeft", "white");
+                              localStorage.setItem("bigLeft", "lightgreen");
+                              localStorage.setItem("bigRight", "white");
+
+
+
+                            }
+
+
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="toRight_CursorIcon.png" /></button>
+                          <label>Vänster hand</label>
+                        </div>
+
+                        <div className="cursoricons">
+                          <label >Text lässare </label>
+                        </div>
+                        <div className="btn">
+                          <button ref={textReader} style={{ backgroundColor: localStorage.getItem("textReaderColor") }} onClick={() => { toggleReaderStatus() }}
+                            className='accessibility_Setting_Btn'>
+                            <img src="Txtreader1.png" />
+                          </button>
+                          <label >Text läsare PÅ/AV</label>
+                        </div>
+                      </div>
+                    </Paper>
+                  </div>
+                </Accessibility_Window_Content>
+                <CloseAccessibilitySettings className="closeIcon" aria-label='stäng tillgänglighetsinställningarna' onClick={() => setShowAccessibility(prev => !prev)} />
+              </Accessibility_Wrapper>
+            </Background>
+          ) : null}
+          <div onMouseLeave={(e) => {
+            e.target.style.border = 'none';
+            // synth.pause();
+            synth.cancel();
+          }}
+            onMouseEnter={(e) => {
+              text_Reader("Tillgänglighets inställningar", e);
+
+            }} ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => { openAccessibilitySettings(); }} src={require("./images/accessibility_Icon.png")} />   </div>
+
+          <Routes>
+            <Route path="/" element={<MVC_Home textReaderStatus={globalTextReader_Status} />} />
+            <Route path="/Projects" element={<MVC_Projects />} />
+            <Route path="/AboutUs" element={<MVC_AboutUs />} />
+            <Route path="/Contacts" element={<MVC_Contacts />} />
+          </Routes>
+        </Router>
+      </ThemeProvider >
+    </div>
   );
 }
 
 export default App;
+
+
+
+
+

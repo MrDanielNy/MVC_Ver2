@@ -7,7 +7,7 @@
 }
 
 .icon {
-    color: white;
+    color: #ffffff;
     margin-right: 10px;
     font-size: 30px;
 
@@ -19,12 +19,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* top: -90px;*/
+
     height: 100%;
     width: 100%;
+    max-width: 100%;
     min-width: 300px;
     background: url("../../images/fullSize.png") center center/cover no-repeat fixed;
-
+    z-index: 100;
 }
 
 .about_DJ_Container {
@@ -62,13 +63,13 @@
     text-decoration: none;
     cursor: pointer;
     margin-bottom: 50px;
+    z-index: 100;
 }
 
 .DJ_Email:hover {
     color: rgb(255, 255, 255);
-
-
     transition: all .5S ease-in;
+    cursor: url(../../../public/HandCursor1.png), auto;
 }
 
 .DJ_Title_Image {
@@ -116,11 +117,13 @@
     font-weight: bold;
     text-decoration: none;
     cursor: pointer;
+    z-index: 100;
 }
 
 .DN_Email:hover {
     color: rgb(255, 255, 255);
     transition: all .5S ease-in;
+    cursor: url(../../../public/HandCursor1.png), auto;
 }
 
 .about_DN_Container {
@@ -185,11 +188,7 @@
     min-width: 300px;
 }
 
-.our_Story_Text:hover {
-    transform: scale(1.2);
-    transition: all .5s ease-in;
 
-}
 
 @keyframes title_Animation {
     0% {

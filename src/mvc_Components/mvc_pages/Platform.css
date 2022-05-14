@@ -9,6 +9,13 @@
   height: 400px;
   min-width: 300px;
   background-color: rgba(246, 247, 191, 0.9);
+  z-index: 1;
+}
+
+.notVisiblBtn {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+
 }
 
 .platform_Text_Container_ {
@@ -35,16 +42,29 @@
   align-items: center;
   text-justify: kashida;
   text-align: justify;
-  color: rgb(10, 10, 10);
-  padding: 30px;
-  font-size: 23px;
-  font-weight: bold;
+
+  padding: 10px;
+
+
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   line-height: 3rem;
   width: 90%;
   border-radius: 10px;
 }
 
+@media screen and (max-width:1700px) {
+  .platform_Title {
+    font-size: 35px;
+  }
+
+  .platform_Text_ {
+    font-size: 20px;
+  }
+
+  .platform_Container {
+    height: 500px;
+  }
+}
 
 @media screen and (max-width:1450px) {
   .platform_Title {
@@ -55,58 +75,64 @@
     font-size: 20px;
   }
 
-  .platform_Container {}
+  .platform_Container {
+    height: 550px;
+  }
 }
 
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1170px) {
   .platform_Text_ {
     font-size: 15px;
   }
 
   .platform_Container {
-    height: 400px;
+    height: 500px;
   }
 
-  .platform_Text_Container_ {}
+  .platform_Text_Container_ {
+    height: 600px;
+  }
 
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1090px) {
   .platform_Container {
-    height: 500px;
+    height: 700px;
   }
 }
 
 
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
   .platform_Container {
-    height: 500px;
+    height: 750px;
+
 
   }
 
   .platform_Text_Container_ {
-    padding-top: 100px;
+
     height: 430px;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
+
   }
 }
 
 @media screen and (max-width: 650px) {
   .platform_Text_Container_ {
-    padding-top: 50px;
-    height: 430px;
 
+    height: 500px;
+  }
 
-
+  .platform_Text_ {
+    font-size: 12px;
+    line-height: 2rem;
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 560px) {
   .platform_Container {
-    height: 500px;
+    height: 800px;
   }
 
   .platform_Title {
@@ -114,36 +140,48 @@
   }
 
   .platform_Text_Container_ {
-    padding-top: 110px;
+
     height: 430px;
+  }
 
-
+  .platform_Text_ {
+    font-size: 12px;
 
   }
+
 }
 
 @media screen and (max-width: 470px) {
   .platform_Container {
-    height: 600px;
+    height: 850px;
+
+  }
+
+  .platform_Text_Container_ {}
+}
+
+@media screen and (max-width: 420px) {
+  .platform_Container {
+    height: 900px;
   }
 
   .platform_Text_Container_ {
-    padding-top: 200px;
-    height: 500px;
+
+    height: 450px;
 
 
 
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 350px) {
   .platform_Container {
-    height: 700px;
+    height: 1000px;
   }
 
   .platform_Text_Container_ {
-    padding-top: 300px;
-    height: 650px;
+
+    height: 450px;
 
 
 

@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .contact_Container {
   background: url("../../images/digital-circle-circuit-blue-background-futuristic-technology.jpg") center center/cover no-repeat fixed;
   position: relative;
@@ -8,11 +14,13 @@
   align-items: center;
   text-align: center;
   padding: 20px;
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   min-width: 300px;
   max-height: 1080px;
-  max-width: 1920px;
+  max-width: 100%;
+  z-index: 100;
+
 
 
 }
@@ -187,6 +195,7 @@ input {
   background-color: rgb(124, 124, 243);
   color: rgb(255, 255, 255);
   transition: all 1s ease-out;
+  cursor: url(../../../public/HandCursor1.png), auto;
 }
 
 @media screen and (max-width: 650px) {

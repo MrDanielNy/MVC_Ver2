@@ -4,25 +4,28 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgb(0, 0, 48);
+    background-color: #ffffffc9;
     height: 200px;
     width: 450px;
-    border-radius: 5px;
-    color: white;
+    border-radius: 20px;
+    color: #f8d744;
+
 
 
 }
 
 .accessibility_Icon {
     position: fixed;
-    left: 20px;
+    left: 30px;
     top: 100px;
     border-radius: 100px;
-    animation: float 4s ease-in-out infinite;
-    cursor: pointer;
+    /*animation: float 1s ease-in-out infinite;*/
 
+    z-index: ;
 
 }
+
+
 
 .reset_Settings_Btn {
     padding: 0;
@@ -35,12 +38,14 @@
     background: transparent;
     border: 1px rgb(255, 255, 255) solid;
     border-radius: 10px;
+    background-color: #00b1ab;
 
 }
 
 .accessibility-Settings_Header {
-    margin: 10px;
-    color: black;
+    margin: 20px;
+    color: rgb(0, 0, 0);
+    text-align: center;
 }
 
 .settings_Container {
@@ -53,36 +58,81 @@
     overflow-y: scroll;
     scroll-behavior: smooth;
     padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
 }
 
 .accessibility_Setting_Btn_Container {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: flex-start;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 250px;
+    /* border-radius: 4px rgb(255, 255, 255) solid;*/
+    background-color: #0b6c7e;
+    color: white;
+
+}
+
+.btn-arrange {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    width: 100%
+}
+
+.btn {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
 
+.accessibility-active-profile {
+    margin-left: 20px;
+    color: black;
+}
+
+.accessibility-active-profile_text {
+
+    color: rgb(0, 133, 7);
+}
+
 .accessibility_Setting_Btn {
 
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     margin: 10px;
     padding: 2px;
     border: 0;
     background-color: rgb(240, 240, 240);
+    border: 1px rgb(0, 1, 70) solid;
     border-radius: 10px;
+    cursor: url(../../../public/HandCursor1.png), auto;
 }
 
 .accessibility_Setting_Btn:hover {
-    border: 2px rgb(21, 0, 112) solid;
+    border: 1px rgb(255, 255, 255) solid;
+    background-color: cornflowerblue;
+    transition: all .5s ease-in-out;
+    color: rgb(0, 0, 0);
 
 }
 
 .accessibility_Setting_Btn:active {
-    background-color: rgb(0, 65, 119);
+    background-color: rgb(20, 153, 20);
     color: white;
 
+}
+
+.accessibility_Setting_Btn {
+    background-color: rgb(255, 255, 255);
 }
 
 .options {
@@ -105,26 +155,11 @@ h5 {
     transform: scale(.88);
 }
 
-@keyframes float {
-    0% {
-
-        opacity: 0;
-    }
-
-    50% {
-
-        opacity: 1;
-    }
-
-    100% {
-
-        opacity: 0;
-    }
-}
 
 .accessibility_Icon:hover {
     box-shadow: 0px 0px 5px 2px rgb(255, 230, 0, .9);
     transition: all 1s ease;
+    cursor: url(../../../public/HandCursor1.png), auto;
 }
 
 
@@ -138,7 +173,7 @@ h5 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    cursor: pointer;
+
     width: 100px;
     height: 50px;
     background: grey;
@@ -167,4 +202,50 @@ h5 {
 
 .react-switch-label:active .react-switch-button {
     width: 60px;
+}
+
+.Wrapper_Accessibility {
+    animation: Animation 1s 1;
+}
+
+@keyframes Animation {
+    0% {
+        opacity: 0;
+
+        transition: all ease-in;
+    }
+
+
+
+    20% {
+        opacity: 0.3;
+
+        transition: all ease-in;
+    }
+
+    40% {
+        opacity: 0.4;
+
+        transition: all ease-in;
+    }
+
+    60% {
+        opacity: .5;
+
+        transition: all ease-in;
+    }
+
+
+
+    80% {
+        opacity: .8;
+
+        transition: all ease-in;
+    }
+
+    100% {
+        opacity: 1;
+
+        transition: all ease-in;
+    }
 }

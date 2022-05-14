@@ -1,14 +1,110 @@
-.accessibility_Container {
-    position: sticky;
+.App {}
+
+.cursoricons {
+    margin-top: 10px;
     display: flex;
-    flex-direction: row;
+    width: 100%;
     justify-content: center;
-    align-items: center;
-    background-color: darkorchid;
-    height: 300px;
-    width: 30%;
-    left: -500px;
-    bottom: 300px;
+    text-align: center;
+    border-top: 1px rgb(122, 122, 122) dashed;
+    font-size: large;
+
+}
+
+.accessibility_Container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: left;
+    border-radius: 20px;
+    width: 100%;
+
+
     transition: all 2s ease-out;
-    z-index: 1000;
+    z-index: 10000;
+}
+
+.video {
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.background_Container_Video {
+
+    max-width: 100%;
+    width: 100%;
+    min-width: 300px;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    /*background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;*/
+}
+
+#toggle {
+    display: none;
+}
+
+.helpIcon {
+    color: rgb(255, 185, 9);
+
+    height: 95px;
+    width: 95px;
+}
+
+.button {
+    display: inline-block;
+    width: 70px;
+    height: 25px;
+    background-color: #c4c4c444;
+    border-radius: 0px;
+    position: relative;
+
+
+}
+
+.button:hover {
+    cursor: url(../public/HandCursor1.png), auto;
+}
+
+.closeIcon:hover {
+    cursor: url(../public/HandCursor1.png), auto;
+}
+
+.button:after {
+    content: "*";
+    width: 30px;
+    height: 30px;
+    background-color: green;
+    border: 2px solid white;
+    border-radius: 50px;
+    box-shadow: 0 0 5px rgba(255, 255, 0, 0.664);
+    position: absolute;
+    top: -5px;
+    left: 0;
+    display: grid;
+    place-content: center;
+    line-height: 0;
+    transition: background-color 1s;
+    transform: all 4s ease-in;
+}
+
+#toggle:checked+.button::after {
+    content: "0";
+    background-color: darkgray;
+    transform: translate(35px) rotate(360deg);
+}
+
+.backgroundAccessibility {
+    background-color: green;
+    z-index: 3000;
 }

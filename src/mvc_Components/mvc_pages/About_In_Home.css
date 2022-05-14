@@ -6,17 +6,19 @@
 .about {
   position: relative;
 
-  max-width: 1920px;
+  max-width: 100%;
   min-width: 300px;
   margin: 0 auto;
   align-items: center;
   width: 100%;
-  background-color: aliceblue;
+  height: 500px;
+  z-index: 100;
+
+  /* background-color: aliceblue;*/
 }
 
 .about_Container {
   display: flex;
-
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -34,17 +36,22 @@
 .about_Text {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+
+
+
   font-size: 20px;
-  margin: 10px;
+  margin: 50px;
   width: 30%;
   color: rgb(7, 5, 5);
 }
 
+.about_Header {
+  margin-bottom: 20px;
+}
+
 .about_SubText {
-  color: rgb(0, 82, 54);
+  /*color: rgb(0, 82, 54);*/
+
 }
 
 .about_Btn_Page {
@@ -53,12 +60,16 @@
   background: transparent;
   font-size: 1rem;
   font-weight: bold;
-  color: rgb(0, 0, 0);
+
   cursor: pointer;
-  border: 1px black solid;
+
 
   text-align: center;
-  margin: 20px;
+
+}
+
+.about_btn_Link {
+  text-decoration: none;
 }
 
 .btn_Container {
@@ -75,15 +86,21 @@
   background-color: rgb(150, 157, 255);
   color: black;
   transition: all 0.5s ease;
+  cursor: url(../../../public/HandCursor1.png), auto;
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 855px) {
+  .about {
+    height: 700px;
+  }
+
   .btn_Container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin-top: 20px;
   }
 
   .about_Container {
@@ -112,6 +129,10 @@
     width: 250px;
     height: 150px;
     margin: 10px;
+  }
+
+  .about {
+    height: 750px;
   }
 }
 

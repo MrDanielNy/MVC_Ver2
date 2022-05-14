@@ -1,3 +1,9 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -6,9 +12,9 @@
 
   position: relative;
   min-width: 270px;
-  height: 100px;
+  height: 400px;
   background-color: rgb(255, 255, 255);
-
+  z-index: 100;
 }
 
 .contacts_ {
@@ -56,12 +62,24 @@ p {
   align-items: center;
 }
 
+.DJ_Mail:hover {
+  cursor: url(../../../public/HandCursor1.png), auto;
+}
+
 .DN_Mail {
   width: 33%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.DN_Mail:hover {
+  cursor: url(../../../public/HandCursor1.png), auto;
+}
+
+.Mail:hover {
+  cursor: url(../../../public/HandCursor1.png), auto;
 }
 
 .address {

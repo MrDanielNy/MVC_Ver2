@@ -4,6 +4,15 @@ import "./MVC_Projects.css"
 import ProjectMagicalMan from "./Project_Magical_Man";
 import MVC_Contacts from "../mvc_pages/MVC_Contacts"
 
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
+
 const MVC_Projects = (props) => {
 
   const handleKeyDown = (event) => {
@@ -42,15 +51,15 @@ const MVC_Projects = (props) => {
 
         <div className="project_One_Container">
 
-          <div className="project_One">
-            <h1 className="project_One_Title">
+          <Paper className="project_One">
+            <Typography variant="h3" color="secondary" className="project_One_Title">
               Träslöjd i VR
-            </h1>
+            </Typography>
 
-            <p className="project_One_Text">“My Virtual Classroom utvecklar just nu en digital träslöjd i en virtuell värld för elever med funktionsnedsättningar i skolan. Vårt mål är att öka elevernas egna förutsättningar och skapa en mer jämlik lektion, oavsett funktionsvariation. Detta verktyg öppnar upp nya möjligheter för skolan att kunna undervisa träslöjd för fler elever på nya sätt.”
+            <Typography variant="h6" color="secondary" className="project_One_Text">“My Virtual Classroom utvecklar just nu en digital träslöjd i en virtuell värld för elever med funktionsnedsättningar i skolan. Vårt mål är att öka elevernas egna förutsättningar och skapa en mer jämlik lektion, oavsett funktionsvariation. Detta verktyg öppnar upp nya möjligheter för skolan att kunna undervisa träslöjd för fler elever på nya sätt.”
               Se vår film om vår vän Alex.
-            </p>
-          </div>
+            </Typography>
+          </Paper>
           <div >
             <img className="project_One_Image" src={require("../../images/Project.png")} />
           </div>
@@ -59,13 +68,13 @@ const MVC_Projects = (props) => {
 
 
         <div className="project_Two_Container">
-          <div className="project_Two">
-            <h1 className="project_Two_Title">
+          <Paper className="project_Two">
+            <Typography variant="h3" color="secondary" className="project_Two_Title">
               Hangaren
-            </h1>
-            <p className="project_Two_Text">Som ett steg i att visa hur olika delar som Kultur och Teknik kan bli ett fantastiskt projekt så har vi skapat miljö i VR och film i Hangaren, Linköping.  Se resultatet här
-            </p>
-          </div>
+            </Typography>
+            <Typography variant="h6" color="secondary" className="project_Two_Text">Som ett steg i att visa hur olika delar som Kultur och Teknik kan bli ett fantastiskt projekt så har vi skapat miljö i VR och film i Hangaren, Linköping.  Se resultatet här
+            </Typography>
+          </Paper>
           <div >
             <img className="project_Two_Image" src={require("../../images/Project.png")} />
           </div>

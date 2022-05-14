@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../App.css";
 import MVC_Hero from "../MVC_Hero";
 import Boxes from "./Boxes";
@@ -10,19 +10,37 @@ import Contacts_Link from "./Contacts_In_Home";
 import MVC_Partners from "./MVC_Partners";
 import NavPane from "../Nav_pane";
 
+
+import {
+  Button,
+  Paper,
+  Typography,
+  Box,
+  ThemeProvider,
+  createTheme
+} from "@mui/material";
+
+
 /** The main page */
-function MVC_Home() {
+function MVC_Home(props) {
+
+  console.log("║----> " + props.Theme + " ║  ")
   return (
-    <>
-      <MVC_Hero />
+    < >
+
+      <MVC_Hero textReaderStatus={props.textReaderStatus} />
+
       <Platform />
 
+
       <Boxes />
-      {/* Platform is placed in Hero */}
+
       <AboutUs_Link />
 
       <Contacts_Link />
+
       <MVC_Partners />
+
     </>
   );
 }
