@@ -11,29 +11,62 @@ import {
   ThemeProvider,
   createTheme
 } from "@mui/material";
+import { useSpeechSynthesis } from 'react-speech-kit';
 
 function Contacts_Link() {
+  var synth = window.speechSynthesis;
+  const { speak } = useSpeechSynthesis();
+  if (localStorage.getItem("textReaderStatus") === "true") {
+    synth.resume();
+  }
+  else {
+    synth.cancel();
+  }
+  function text_Reader(input_Text, e) {
+    synth.resume();
+    e.target.style.border = '2px solid #000000';
+    speak({
+      text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+    }
+    )
+  }
   return (
     <div className="main_Container">
       <div className="contacts_Container">
 
         <div className="contacts_Title">
-          <Typography variant="h1" sx={{
-            fontSize: {
-              lg: 100,
-              md: 70,
-              sm: 50,
-              xs: 30,
-            }
-          }} >Välkomna att kontakta oss! </Typography>
-          <Typography variant="h3_Contacts" sx={{
-            fontSize: {
-              lg: 23,
-              md: 20,
-              sm: 18,
-              xs: 15,
-            }
-          }} className="subTitle">
+          <Typography onMouseLeave={(e) => {
+            e.target.style.border = 'none';
+            // synth.pause();
+            synth.cancel();
+          }}
+            onMouseEnter={(e) => {
+              text_Reader("Välkomna att kontakta oss!", e);
+
+            }} variant="h1" sx={{
+              fontSize: {
+                lg: 100,
+                md: 70,
+                sm: 50,
+                xs: 30,
+              }
+            }}  >Välkomna att kontakta oss! </Typography>
+          <Typography onMouseLeave={(e) => {
+            e.target.style.border = 'none';
+            // synth.pause();
+            synth.cancel();
+          }}
+            onMouseEnter={(e) => {
+              text_Reader("Vi söker hela tiden efter nya utmaningar, samarbeten och dialoger.", e);
+
+            }} variant="h3_Contacts" sx={{
+              fontSize: {
+                lg: 23,
+                md: 20,
+                sm: 18,
+                xs: 15,
+              }
+            }} className="subTitle">
             Vi söker hela tiden efter nya utmaningar, samarbeten och dialoger.
           </Typography>
         </div>
@@ -41,7 +74,15 @@ function Contacts_Link() {
         <div>
           <Link to="/Contacts" className="about_btn_Link">
             <Button color="secondary" variant="contained" className="btn_Contact">
-              <Typography variant="h6">
+              <Typography onMouseLeave={(e) => {
+                e.target.style.border = 'none';
+                // synth.pause();
+                synth.cancel();
+              }}
+                onMouseEnter={(e) => {
+                  text_Reader("Kontakta oss! Tryck på knappen", e);
+
+                }} variant="h6">
                 Kontakta oss </Typography>
             </Button>
           </Link>

@@ -86,7 +86,7 @@ function MVC_Hero(props) {
           <div className="hero_Btn_container">
             <Link tabIndex={-1} to="/Contacts" className="hero_Btn_Link">
               <Button onMouseEnter={(e) => {
-                text_Reader("Kontakta oss, klicka på knappen!", e);
+                text_Reader("Kontakta oss! Tryck på knappen!", e);
               }}
                 onMouseLeave={(e) => {
                   e.target.style.border = 'none';
