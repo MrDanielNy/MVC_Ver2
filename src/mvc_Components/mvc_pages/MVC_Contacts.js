@@ -185,15 +185,20 @@ function MVC_Contacts() {
       });
   }
 
+
+  function checkState() {
+    if (localStorage.getItem("PlayerMode") === "true") {
+      return true;
+    }
+    else
+      return false;
+  }
+  console.log(typeof checkState() + " The player mode in Contacts is ")
+  console.log(checkState() + " The player mode in Contacts is ")
   return (
     <>
-      <div className="background_Container">
-        {/*} <video className=".background-video" loop autoPlay muted>
-          <source src={video} type="video/mp4" />
-          Your browser does not support the video tag.
-  </video>*/}
-      </div>
-      <div className="contact_Container">
+
+      <div className={checkState() ? "contact_Container" : "contact_Container_calmColor"}>
         <div className="containerAni">
           <h3 className="first_text_">
             Do you want to be involved and create tomorrow's teaching?

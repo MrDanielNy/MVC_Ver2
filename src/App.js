@@ -16,7 +16,7 @@ import { useState, useEffect, useCallback } from "react";
 import { deepmerge } from "@mui/utils";
 import { theme1, theme2, theme3 } from "./mvc_Components/mvc_pages/theme/AccessibilityThemes"
 import video from "./images/video-2.mp4";
-import image1 from "./images/fullSize.png"
+import image1 from "./images/HeroBlackWhite.png"
 //import VideoPlayer from "./mvc_Components/mvc_pages/videoBackground/VideoPlayer";
 
 import "./mvc_Components/mvc_pages/Modal_Accessibility.css"
@@ -269,7 +269,7 @@ function App(props) {
     getVideo.current.play()
     setPlayerMode(true);
     setPlayerMode_Text("AV");
-    backgroundAnimation.current.style.backgroundColor = "lightgreen";
+    backgroundAnimation.current.style.backgroundColor = "";
     localStorage.setItem("backgroundAnimation", "lightgreen")
     localStorage.setItem("PlayerModeText", "AV");
     localStorage.setItem("PlayerMode", true);
@@ -341,11 +341,11 @@ function App(props) {
 
 
   return (
-    < div className="App" style={{ cursor: mousePointer }} >
+    < div  >
       <ThemeProvider theme={theme}>
         <Router >
-          <div className="background_Container_Video">
-            <video className="video" ref={getVideo} loop muted autoPlay={autoPlayer}>
+          <div className="background_Container_Video" >
+            <video className={playerMode ? "video" : "noVideo"} ref={getVideo} loop muted autoPlay={autoPlayer} >
               <source src={screen_Checker()} />
             </video>
           </div>
@@ -378,8 +378,11 @@ function App(props) {
 
                         <div className="btn">
                           <button ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
-                          <label disabled={btnDisable} >Animerad bakgrund</label>
+                          <label disabled={btnDisable} >Mindre färg och blixtar <br /></label>
+
                         </div>
+                        <span className={playerMode ? "btnDescription" : "noDescription"}>Eliminera risken för anfall och hysteri genom att rensa blixtar och minska färger</span>
+
                         <div className="btn">
 
                           <button ref={light} style={{ backgroundColor: localStorage.getItem("btnLight") }} onClick={() => {
@@ -598,16 +601,18 @@ function App(props) {
               text_Reader("Tillgänglighets inställningar", e);
 
             }} ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => { openAccessibilitySettings(); }} src={require("./images/accessibility_Icon.png")} />   </div>
-
-          <Routes>
-            <Route path="/" element={<MVC_Home textReaderStatus={globalTextReader_Status} />} />
-            <Route path="/Projects" element={<MVC_Projects />} />
-            <Route path="/AboutUs" element={<MVC_AboutUs />} />
-            <Route path="/Contacts" element={<MVC_Contacts />} />
-          </Routes>
+          <div className={playerMode ? "App" : "safeApp"} style={{ cursor: mousePointer }} >
+            <Routes>
+              <Route path="/" element={<MVC_Home textReaderStatus={globalTextReader_Status} />} />
+              <Route path="/Projects" element={<MVC_Projects />} />
+              <Route path="/AboutUs" element={<MVC_AboutUs />} />
+              <Route path="/Contacts" element={<MVC_Contacts />} />
+            </Routes>
+          </div>
         </Router>
+
       </ThemeProvider >
-    </div>
+    </div >
   );
 }
 

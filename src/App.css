@@ -1,4 +1,27 @@
-.App {}
+.App {
+    filter: grayscale(0%);
+}
+
+.safeApp {
+    filter: grayscale(80%);
+}
+
+.btnDescription {
+    background-color: rgba(247, 255, 142, 0.274);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    font-size: 12px;
+    width: 330px;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.noDescription {
+    display: none;
+}
 
 .cursoricons {
     margin-top: 10px;
@@ -19,8 +42,6 @@
     align-items: left;
     border-radius: 20px;
     width: 100%;
-
-
     transition: all 2s ease-out;
     z-index: 10000;
 }
@@ -32,6 +53,21 @@
     position: fixed;
     top: 0;
     left: 0;
+
+}
+
+.noVideo {
+
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    filter: grayscale(75%);
+
+
+
 }
 
 .background_Container_Video {
