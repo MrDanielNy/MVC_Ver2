@@ -105,9 +105,16 @@ function NavPane() {
     }
     )
   }
+
+  let player_Mode;
+  if (localStorage.getItem("PlayerMode") === "true") {
+    player_Mode = true;
+  }
+  else
+    player_Mode = false;
   return (
     <>
-      <nav className="nav_Pane">
+      <nav className={player_Mode ? "nav_Pane" : "safeColor_nav_Pane"} >
         <Paper variant="st1" color="primary" className="navbar-container">
           <Button tabIndex={-1} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
             <div className="mvcLogo">

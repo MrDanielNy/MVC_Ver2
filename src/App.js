@@ -268,20 +268,20 @@ function App(props) {
   const playVideo = () => {
     getVideo.current.play()
     setPlayerMode(true);
-    setPlayerMode_Text("AV");
-    backgroundAnimation.current.style.backgroundColor = "";
-    localStorage.setItem("backgroundAnimation", "lightgreen")
-    localStorage.setItem("PlayerModeText", "AV");
+    setPlayerMode_Text("PÅ");
+    backgroundAnimation.current.style.backgroundColor = "white";
+    localStorage.setItem("backgroundAnimation", "white")
+    localStorage.setItem("PlayerModeText", "PÅ");
     localStorage.setItem("PlayerMode", true);
   };
 
   const pauseVideo = () => {
     getVideo.current.pause();
     setPlayerMode(false)
-    setPlayerMode_Text("PÅ")
-    backgroundAnimation.current.style.backgroundColor = "white";
-    localStorage.setItem("backgroundAnimation", "white")
-    localStorage.setItem("PlayerModeText", "PÅ");
+    setPlayerMode_Text("AV")
+    backgroundAnimation.current.style.backgroundColor = "lightgreen";
+    localStorage.setItem("backgroundAnimation", "lightgreen")
+    localStorage.setItem("PlayerModeText", "AV");
     localStorage.setItem("PlayerMode", false);
 
   };
@@ -337,7 +337,12 @@ function App(props) {
     }
     )
   }
-
+  let player_Mode;
+  if (localStorage.getItem("PlayerMode") === "true") {
+    player_Mode = true;
+  }
+  else
+    player_Mode = false;
 
 
   return (
@@ -345,7 +350,7 @@ function App(props) {
       <ThemeProvider theme={theme}>
         <Router >
           <div className="background_Container_Video" >
-            <video className={playerMode ? "video" : "noVideo"} ref={getVideo} loop muted autoPlay={autoPlayer} >
+            <video className={player_Mode ? "video" : "noVideo"} ref={getVideo} loop muted autoPlay={autoPlayer} >
               <source src={screen_Checker()} />
             </video>
           </div>
@@ -379,12 +384,10 @@ function App(props) {
                         <div className="btn">
                           <button ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
                           <label disabled={btnDisable} >Mindre färg och blixtar <br /></label>
-
                         </div>
-                        <span className={playerMode ? "btnDescription" : "noDescription"}>Eliminera risken för anfall och hysteri genom att rensa blixtar och minska färger</span>
+                        <span className={!player_Mode ? "btnDescription" : "noDescription"}>Eliminera risken för anfall och hysteri genom att rensa blixtar och minska färger</span>
 
                         <div className="btn">
-
                           <button ref={light} style={{ backgroundColor: localStorage.getItem("btnLight") }} onClick={() => {
                             {
                               light.current.style.backgroundColor = 'lightgreen';
@@ -601,7 +604,7 @@ function App(props) {
               text_Reader("Tillgänglighets inställningar", e);
 
             }} ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => { openAccessibilitySettings(); }} src={require("./images/accessibility_Icon.png")} />   </div>
-          <div className={playerMode ? "App" : "safeApp"} style={{ cursor: mousePointer }} >
+          <div className={player_Mode ? "App" : "safeApp"} style={{ cursor: mousePointer }} >
             <Routes>
               <Route path="/" element={<MVC_Home textReaderStatus={globalTextReader_Status} />} />
               <Route path="/Projects" element={<MVC_Projects />} />
