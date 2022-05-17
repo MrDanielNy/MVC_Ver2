@@ -10,7 +10,7 @@ import "./MVC_Contacts_Footer.css";
 import { FaBeer, BiMessageDetail, FaRegEnvelope } from "react-icons/fa";
 import { type } from "@testing-library/user-event/dist/type";
 import video from "../../images/video-2.mp4";
-
+import { useSpeechSynthesis } from 'react-speech-kit';
 function MVC_Contacts() {
   const labelName = useRef();
   const labelEmail = useRef();
@@ -20,7 +20,7 @@ function MVC_Contacts() {
   const buttonSend = useRef();
   const email_form = useRef();
   let counter_Validation = 0;
-
+  const { speak } = useSpeechSynthesis();
   const [buttonText, setButtonText] = useState("Send");
 
   const inputName = useRef(null);
@@ -74,6 +74,10 @@ function MVC_Contacts() {
       labelEmail.current.style.color = "red";
       return false;
     } else {
+      speak({
+        text: "Invalid email format!", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+      }
+      )
       labelEmail.current.textContent = "Invalid email format!";
       labelEmail.current.style.color = "red";
     }
@@ -84,7 +88,10 @@ function MVC_Contacts() {
     text_ = removeSpaces(text_);
     if (text_ === "" || text_ === null) {
       console.log("empty ---> " + text_);
-
+      speak({
+        text: "Enter your message please!", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+      }
+      )
       labelText.current.textContent = "Enter your message please!";
       labelText.current.style.color = "red";
       return false;

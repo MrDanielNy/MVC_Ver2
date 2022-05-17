@@ -16,6 +16,7 @@ import { useState, useEffect, useCallback } from "react";
 import { deepmerge } from "@mui/utils";
 import { theme1, theme2, theme3 } from "./mvc_Components/mvc_pages/theme/AccessibilityThemes"
 import video from "./images/video-2.mp4";
+import image1 from "./images/fullSize.png"
 //import VideoPlayer from "./mvc_Components/mvc_pages/videoBackground/VideoPlayer";
 
 import "./mvc_Components/mvc_pages/Modal_Accessibility.css"
@@ -222,7 +223,9 @@ function App(props) {
   let mobileSize = false;
 
   const screen_Checker = () => {
+
     if (window.innerWidth > 768 && window.innerHeight > 450) {
+
       console.log("Not a mobile screen");
       mobileSize = false;
       return video;
