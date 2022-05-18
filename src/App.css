@@ -28,6 +28,17 @@ label {
     display: none;
 }
 
+.Background {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    background-color: #c5c5c577;
+    z-index: 4000;
+}
+
 .cursoricons {
     margin-top: 10px;
     display: flex;

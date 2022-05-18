@@ -367,7 +367,7 @@ function App(props) {
           {/** Navbar is placed here because it shoud be always on the top of all the elements in the page */}
           <NavPane />
           {showAccessibility ? (
-            <Background ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
+            <div aria-hidden="true" className="Background" ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
               <Accessibility_Wrapper className="Wrapper_Accessibility" showAccessibility={showAccessibility}>
                 <Accessibility_Window_Content>
                   <div color="primary" className='header'>
@@ -509,7 +509,7 @@ function App(props) {
                               localStorage.setItem("bigLeft", "white");
                               localStorage.setItem("bigRight", "white");
                             }
-                          }} variant='contained' className='accessibility_Setting_Btn'><img src="NormalPointer_ToLeft.png" /></button>
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="NormalPointer_ToLeft.png" alt="liten storlek höger muspekare" /></button>
                           <label>Normal storlek höger</label>
                         </div>
 
@@ -531,7 +531,7 @@ function App(props) {
                               localStorage.setItem("bigRight", "white");
 
                             }
-                          }} variant='contained' className='accessibility_Setting_Btn'><img src="normalSizePointer_right.png" /></button>
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="normalSizePointer_right.png" alt="liten storlek vänster muspekare" /></button>
                           <label>Normal storlek vänster</label>
                         </div>
 
@@ -557,7 +557,7 @@ function App(props) {
                             }
 
 
-                          }} variant='contained' className='accessibility_Setting_Btn'><img src="toLeft_cursorIcon.png" /></button>
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="toLeft_cursorIcon.png" alt="stor storlek höger muspekare" /></button>
                           <label>Höger hand</label>
                         </div>
 
@@ -583,7 +583,7 @@ function App(props) {
                             }
 
 
-                          }} variant='contained' className='accessibility_Setting_Btn'><img src="toRight_CursorIcon.png" /></button>
+                          }} variant='contained' className='accessibility_Setting_Btn'><img src="toRight_CursorIcon.png" alt="stor storlek vänster muspekare" /></button>
                           <label>Vänster hand</label>
                         </div>
 
@@ -603,7 +603,7 @@ function App(props) {
                 </Accessibility_Window_Content>
                 <CloseAccessibilitySettings className="closeIcon" aria-label='stäng tillgänglighetsinställningarna' onClick={() => setShowAccessibility(prev => !prev)} />
               </Accessibility_Wrapper>
-            </Background>
+            </div>
           ) : null}
           <div onMouseLeave={(e) => {
             e.target.style.border = 'none';

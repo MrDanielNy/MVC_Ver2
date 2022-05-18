@@ -55,7 +55,7 @@ function Boxes() {
           {/** TODO change the content of each card. Fetching from database */}
 
 
-          <MVC_Home_Boxes
+          <MVC_Home_Boxes className
             src={require("../../images/alex-scaled.jpg")}
             text="Skapa lådor, smörkniv, fågelholk eller fritt! Träslöjden låter dig göra momenten samtidigt som du lär dig teorin bakom. Den är anpassad så att så många som möjligt kan göra alla moment själva och när du är klar skriver du ut din skapelse i en 3D skrivare."
             label="Träslöjd"

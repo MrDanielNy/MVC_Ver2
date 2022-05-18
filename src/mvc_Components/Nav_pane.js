@@ -24,10 +24,11 @@ function NavPane() {
   const menuItem1 = useRef();
   const menuItem2 = useRef();
   const menuItem3 = useRef();
+  const navBar = useRef();
 
   const hamMenu = useRef();
   React.useEffect(() => {
-    hamMenu.current.focus();
+    logoTab.current.focus();
   }, []);
 
   const [showAccessibility, setShowAccessibility] = useState(false);
@@ -39,7 +40,7 @@ function NavPane() {
 
   const closeMenu = () => setClick(false);
   const handleClick = () => {
-    //menuItem1.current.focus();
+    menuItem1.current.focus();
 
 
     console.log("Testing...");
@@ -114,17 +115,17 @@ function NavPane() {
     player_Mode = false;
   return (
     <>
-      <nav className={player_Mode ? "nav_Pane" : "safeColor_nav_Pane"} >
-        <Paper variant="st1" color="primary" className="navbar-container">
-          <Button tabIndex={-1} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
-            <div className="mvcLogo">
+      <nav tabIndex={-1} className={player_Mode ? "nav_Pane" : "safeColor_nav_Pane"} >
+        <Paper ref={navBar} aria-label="navigeringsfältet" variant="st1" color="primary" className="navbar-container">
+          <Button tabIndex={1} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
+            <div aria-label="MVC logotyp." className="mvcLogo">
               MVC
             </div>
           </Button>
           <div></div>
           <div></div>
           <div className="ham_Menu" >
-            <Button onMouseEnter={(e) => {
+            <Button aria-label="Meny, länkar till andra sidor." tabIndex={2} onMouseEnter={(e) => {
               text_Reader("meny!", e);
             }} onMouseLeave={(e) => {
               e.target.style.border = 'none';

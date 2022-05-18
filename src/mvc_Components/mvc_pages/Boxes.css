@@ -61,6 +61,8 @@
     position: relative;
     width: 100%;
     padding-top: 50%;
+    font-size: 35px;
+    color: green;
 }
 
 .boxes_Title {

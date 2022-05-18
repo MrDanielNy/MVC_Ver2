@@ -55,7 +55,7 @@ function MVC_Hero(props) {
       <div className="mvc-hero-container" >
 
         <div>
-          <Typography variant="h1" sx={{
+          <Typography tabIndex={2} variant="h1" sx={{
             fontSize: {
               lg: 100,
               md: 70,
@@ -73,7 +73,7 @@ function MVC_Hero(props) {
             }} color="secondary" className="title">My Virtual Classroom</Typography>
 
 
-          <Typography variant="h3" onMouseLeave={(e) => {
+          <Typography tabIndex={3} variant="h3" onMouseLeave={(e) => {
             e.target.style.border = 'none';
             synth.cancel();
           }} onMouseEnter={(e) => {
@@ -84,8 +84,8 @@ function MVC_Hero(props) {
 
           <p>{/** Other staffs if needed here */}</p>
           <div className="hero_Btn_container">
-            <Link tabIndex={-1} to="/Contacts" className="hero_Btn_Link">
-              <Button onMouseEnter={(e) => {
+            <Link tabIndex={4} to="/Contacts" className="hero_Btn_Link">
+              <Button aria-label="Kontakta oss! Tryck på knappen!" onMouseEnter={(e) => {
                 text_Reader("Kontakta oss! Tryck på knappen!", e);
               }}
                 onMouseLeave={(e) => {
