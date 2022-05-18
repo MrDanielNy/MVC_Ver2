@@ -198,7 +198,7 @@ function MVC_Contacts() {
   return (
     <>
 
-      <div className={checkState() ? "contact_Container" : "contact_Container_calmColor"}>
+      <div className={"contact_Container"}>
         <div className="containerAni">
           <h3 className="first_text_">
             Do you want to be involved and create tomorrow's teaching?

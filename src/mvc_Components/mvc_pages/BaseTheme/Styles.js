@@ -26,6 +26,13 @@ const baseTheme = createTheme({
             background: "",
 
         },
+        h3_Boxes: {
+            color: "white",
+            fontSize: 35,
+            border: "none",
+            background: "",
+
+        },
         h3_Contacts: {
             color: "darkblue",
             border: "none",

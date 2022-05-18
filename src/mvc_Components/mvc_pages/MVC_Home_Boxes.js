@@ -55,7 +55,7 @@ function MVC_Home_Boxes(props) {
 
             }} onMouseEnter={(e) => {
               text_Reader(props.text, e);
-            }} variant="h3" sx={{ typography: { sm: 'body1', xs: 'body2' } }} color="secondary" className="Item_Text">{props.text}</Typography>
+            }} variant="h3_Boxes" sx={{ typography: { sm: 'body1', xs: 'body2' } }} className="Item_Text">{props.text}</Typography>
           </Paper>
         </Link>
       </li>

@@ -4,10 +4,11 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: #ffffffc9;
+    background-color: #020136c9;
     height: 200px;
     width: 450px;
-    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
     color: #f8d744;
 
 
@@ -74,7 +75,7 @@
     scroll-behavior: smooth;
     height: 250px;
     /* border-radius: 4px rgb(255, 255, 255) solid;*/
-    background-color: #0b6c7e;
+    background-color: #0b167e;
     color: white;
 
 }

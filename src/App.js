@@ -35,13 +35,13 @@ import { style } from "@mui/system";
 
 import Brightness5Icon from '@mui/icons-material/Brightness5';
 import Brightness2Icon from '@mui/icons-material/Brightness2';
-
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import CropFreeIcon from '@mui/icons-material/CropFree';
 import RestartAltSharpIcon from '@mui/icons-material/RestartAltSharp';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-
+import VisibilityIcon from '@mui/icons-material/Visibility';
 import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import Zoom from '@mui/material/Zoom';
@@ -55,13 +55,9 @@ display:flex;
 align-items:center;
 height:100%;
 width:100%;
-left:10px
-border-radius: 10px;
-background-color:#696969c7;
+
+background-color:#c5c5c577;
 z-index:4000;
-
-
-
 `
 const Accessibility_Wrapper = styled.div`
 position: fixed;
@@ -74,7 +70,7 @@ flex-direction: row;
 justify-content: center;
 
 z-index: 2;
-border-radius: 20px;
+border-radius: 0px;
 margin-bottom: 50px;
 bottom: -10px;
 left: 10px;
@@ -344,6 +340,19 @@ function App(props) {
   else
     player_Mode = false;
 
+  let blind_profile;
+  if (localStorage.getItem("btnBlind") === "lightgreen") {
+    blind_profile = true;
+  }
+  else
+    blind_profile = false;
+
+  let bright_profile;
+  if (localStorage.getItem("ActiveProfile") === " Ljus") {
+    bright_profile = true;
+  }
+  else
+    bright_profile = false;
 
   return (
     < div  >
@@ -363,7 +372,7 @@ function App(props) {
                 <Accessibility_Window_Content>
                   <div color="primary" className='header'>
 
-                    <Paper variant="stAccessibility" color="" className='modal_Header'>
+                    <div variant="stAccessibility" color="" className='modal_Header'>
 
                       <Typography color="secondary" variant='h5' >Tillgänglighetsjusteringar </Typography>
                       <button
@@ -372,13 +381,13 @@ function App(props) {
                             setPlayerMode_Text("AV");
                           } handleSwitch((baseTheme));
                         }} className='reset_Settings_Btn'>Återställ inställningar </button>
-                    </Paper>
+                    </div>
 
                     <div >
                       <h4 className='accessibility-Settings_Header'>Välj tillgänglighetsprofil</h4>
                     </div>
                     <label className='accessibility-active-profile'>aktiverad profil är<span className="accessibility-active-profile_text" >{localStorage.getItem("ActiveProfile")} </span></label>
-                    <Paper variant="btnContainer" className='accessibility_Setting_Btn_Container' >
+                    <div variant="btnContainer" className='accessibility_Setting_Btn_Container' >
                       <div className="btn-arrange">
 
                         <div className="btn">
@@ -410,6 +419,7 @@ function App(props) {
                           <label>allmänt tema</label>
 
                         </div>
+                        <span className={bright_profile ? "btnDescription" : "noDescription"}>Normal profil för personer med normal syn</span>
 
 
                         <div className="btn">
@@ -453,10 +463,10 @@ function App(props) {
                             setActiveProfile(" Synskadad");
                             localStorage.setItem("ActiveProfile", " Synskadad");
                             handleSwitch(theme3);
-                          }} variant='contained' className='accessibility_Setting_Btn'><ContrastIcon /></button>
-                          <label>Svartvit rubriker och texter</label>
+                          }} variant='contained' className='accessibility_Setting_Btn'><VisibilityIcon /></button>
+                          <label>Synskadad profil</label>
                         </div>
-
+                        <span className={blind_profile ? "btnDescription" : "noDescription"}>Tillgänglig för de flesta synnedsättningar som försämrande syn, tunnelseende, grå starr, glaukom och andra</span>
                         <div className="btn">
                           <button ref={cognitive} style={{ backgroundColor: localStorage.getItem("btnCognitive") }} onClick={() => {
                             {
@@ -588,7 +598,7 @@ function App(props) {
                           <label >Text läsare PÅ/AV</label>
                         </div>
                       </div>
-                    </Paper>
+                    </div>
                   </div>
                 </Accessibility_Window_Content>
                 <CloseAccessibilitySettings className="closeIcon" aria-label='stäng tillgänglighetsinställningarna' onClick={() => setShowAccessibility(prev => !prev)} />

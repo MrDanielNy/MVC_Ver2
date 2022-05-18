@@ -17,6 +17,13 @@ export const theme1 = {
       border: "none",
 
     },
+    h3_Boxes: {
+      color: "white",
+      fontSize: 35,
+      border: "none",
+      background: "",
+
+    },
     h3_Contacts: {
       color: "black",
       border: "none",
@@ -105,6 +112,13 @@ export const theme2 = {
 
 
     },
+    h3_Boxes: {
+      color: "white",
+      fontSize: 25,
+      border: "none",
+      background: "",
+
+    },
     h3_Contacts: {
       color: "black",
       border: "2px solid darkblue",
@@ -126,86 +140,115 @@ export const theme3 = {
     h1: {
 
       border: "none",
-      color: "white",
-      background: "#111111",
+      color: "#0f56c2",
+      background: "",
 
     },
     h3: {
       fontSize: 25,
       border: "none",
-      color: "white",
-      background: "#111111",
+      background: "",
+
+    },
+    h3_Boxes: {
+      color: "black",
+      fontSize: 25,
       border: "none",
+      background: "",
 
     },
     h3_Contacts: {
-      color: "black",
+      color: "#3549ff",
       border: "none",
     },
     h6: {
       color: "black",
       fontSize: 20,
-
-
+    },
+    underText: {
+      fontSize: 20,
+      border: "none",
     },
   },
   "palette": {
     "primary": {
-      "main": "#353535"
+      "main": "#0000f5"
     },
     "secondary": {
       "main": "#ffffff"
     }
   },
-  "components": {
-    "MuiButton": {
-      "defaultProps": {
-        "disableRipple": false,
-        "size": "small",
+  shape: {
+    borderRadius: 4
+  },
+  components: {
+
+    MuiButton: {
+
+      defaultProps: {
+
         sx: {
           borderRadius: "10px",
           border: "none",
           color: "black",
-          fontSize: "20",
         }
+
       }
     },
-    "MuiPaper": {
-      "defaultProps": {
-        "elevation": 10
-      },
-      "styleOverrides": {
+    MuiButton: {
+
+
+      root: {
+        border: "none",
+        fontSize: "30",
+        textTransform: "none",
+
+        background: "#ffffff"
+      }
+    },
+    MuiPaper: {
+
+      styleOverrides: {
         st1: {
 
 
-          background: "#111111",
+          background: "#2600ff",
           border: "none",
-          color: "white"
 
         },
         st2: {
 
 
-          background: "#111111",
+          background: "#2d8fff",
           border: "none",
 
         },
         st3: {
 
 
-          background: "#111111",
+          background: "#ffdb39",
+          border: "none",
+
+        },
+        stMain: {
+
+
+          background: "#ffdb38",
           border: "none",
 
         },
         btnContainer: {
-          background: "#111111",
+          background: "#5de7ff",
           border: "none",
-          color: "white",
         },
-        "root": {
-          "background": "#111111",
-          "border": "none",
-        }
+        root: {
+          background: "#060641f5",
+          border: "none",
+        },
+
+      },
+      defaultProps: {
+        elevation: 0
       }
     }
   }

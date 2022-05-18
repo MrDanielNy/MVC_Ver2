@@ -20,32 +20,8 @@
   max-height: 1080px;
   max-width: 100%;
   z-index: 100;
-
-
-
 }
 
-.contact_Container_calmColor {
-  background: url("../../images/HeroBlackWhite.png") center center/cover no-repeat fixed;
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
-  height: 100vh;
-  width: 100%;
-  min-width: 300px;
-  max-height: 1080px;
-  max-width: 100%;
-  z-index: 100;
-
-
-
-
-}
 
 @media screen and (max-height: 600px) {
   .contact_Container {
@@ -67,7 +43,7 @@
 }
 
 .first_text_ {
-  color: rgb(255, 255, 255);
+  color: rgb(30, 255, 0);
   font-size: 35px;
   font-weight: bold;
   letter-spacing: 2px;
