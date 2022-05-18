@@ -36,7 +36,7 @@ function AboutUs_Link() {
       <Paper variant="st1" className="about">
         <div className="about_Container">
           <div className="about_Text">
-            <div className="about_Header">
+            <div tabIndex={14} className="about_Header">
               <Typography
                 onMouseLeave={(e) => {
                   e.target.style.border = 'none';
@@ -44,7 +44,7 @@ function AboutUs_Link() {
                   synth.cancel();
                 }}
                 onMouseEnter={(e) => {
-                  text_Reader("Om oss", e);
+                  text_Reader("Om oss.", e);
 
                 }} sx={{
                   fontSize: {
@@ -55,7 +55,7 @@ function AboutUs_Link() {
                   }
                 }} variant="h1" color="secondary" >Om oss</Typography>
             </div>
-            <div className="about_SubText">
+            <div tabIndex={15} className="about_SubText">
               <Typography onMouseLeave={(e) => {
                 e.target.style.border = 'none';
                 // synth.pause();
@@ -79,26 +79,26 @@ function AboutUs_Link() {
 
 
           <div className="about_Img">
-            <img onMouseLeave={(e) => {
+            <img tabIndex={16} onMouseLeave={(e) => {
               e.target.style.border = 'none';
               // synth.pause();
               synth.cancel();
             }}
               onMouseEnter={(e) => {
-                text_Reader("En karikatyr av Daniel Johanson och Daniel Ny med ett virtuellt verklighetssystem", e);
+                text_Reader("En bild, Daniel Johansson och Daniel Ny står,  virtuellt verklighetssystem.", e);
 
               }}
               src={require("../../images/Kopia-av-My_Virtual_Classroom_-Daniel2020-11-06_12-51-03.png")}
-              alt="Two men! Daniel Johansson and Daniel Ny."
+              alt="En bild, Daniel Johansson och Daniel Ny står,  virtuellt verklighetssystem."
               className="about_Img "
             />
           </div>
         </div>
         <div className="btn_Container">
           <div></div>
-          <div>
+          <div tabIndex={17}>
             <Link to="/AboutUs" className="about_btn_Link">
-              <Button
+              <Button aria-label="Tryck på knappen att läsa om oss"
                 onMouseLeave={(e) => {
                   e.target.style.border = 'none';
                   // synth.pause();

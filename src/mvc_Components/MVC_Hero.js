@@ -84,8 +84,8 @@ function MVC_Hero(props) {
 
           <p>{/** Other staffs if needed here */}</p>
           <div className="hero_Btn_container">
-            <Link tabIndex={4} to="/Contacts" className="hero_Btn_Link">
-              <Button aria-label="Kontakta oss! Tryck på knappen!" onMouseEnter={(e) => {
+            <Link to="/Contacts" className="hero_Btn_Link">
+              <Button tabIndex={4} aria-label="Kontakta oss! Tryck på knappen!" onMouseEnter={(e) => {
                 text_Reader("Kontakta oss! Tryck på knappen!", e);
               }}
                 onMouseLeave={(e) => {

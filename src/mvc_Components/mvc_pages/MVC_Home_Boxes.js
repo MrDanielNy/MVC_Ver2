@@ -45,7 +45,7 @@ function MVC_Home_Boxes(props) {
 
             }} variant="h3" >
             <figure className="Item_Picture" data-category={props.label}>
-              <img src={props.src} alt="Coming soon" className="Item_Img" />
+              <img src={props.src} alt={props.label + "."} className="Item_Img" />
             </figure>
           </Typography>
           <Paper variant="st3" className="Item_Information">

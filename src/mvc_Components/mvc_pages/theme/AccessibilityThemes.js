@@ -19,7 +19,7 @@ export const theme1 = {
     },
     h3_Boxes: {
       color: "white",
-      fontSize: 35,
+      fontSize: 25,
       border: "none",
       background: "",
 
@@ -145,13 +145,14 @@ export const theme3 = {
 
     },
     h3: {
-      fontSize: 25,
+      fontSize: 35,
       border: "none",
       background: "",
+      color: "black",
 
     },
     h3_Boxes: {
-      color: "black",
+      color: "#000000",
       fontSize: 25,
       border: "none",
       background: "",

@@ -28,7 +28,7 @@ const baseTheme = createTheme({
         },
         h3_Boxes: {
             color: "white",
-            fontSize: 35,
+            fontSize: 25,
             border: "none",
             background: "",
 

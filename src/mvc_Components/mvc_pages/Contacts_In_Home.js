@@ -35,7 +35,7 @@ function Contacts_Link() {
       <div className="contacts_Container">
 
         <div className="contacts_Title">
-          <Typography onMouseLeave={(e) => {
+          <Typography tabIndex={18} onMouseLeave={(e) => {
             e.target.style.border = 'none';
             // synth.pause();
             synth.cancel();
@@ -51,7 +51,7 @@ function Contacts_Link() {
                 xs: 30,
               }
             }}  >Välkomna att kontakta oss! </Typography>
-          <Typography onMouseLeave={(e) => {
+          <Typography tabIndex={19} onMouseLeave={(e) => {
             e.target.style.border = 'none';
             // synth.pause();
             synth.cancel();
@@ -73,7 +73,7 @@ function Contacts_Link() {
 
         <div>
           <Link to="/Contacts" className="about_btn_Link">
-            <Button color="secondary" variant="contained" className="btn_Contact">
+            <Button tabIndex={20} color="secondary" variant="contained" className="btn_Contact">
               <Typography onMouseLeave={(e) => {
                 e.target.style.border = 'none';
                 // synth.pause();
@@ -91,15 +91,15 @@ function Contacts_Link() {
 
         <div className="social_Links_Container_">
           <div className="facebook">
-            <img
+            <img tabIndex={21}
               src={require("../../images/facebook.png")}
-              alt=" A link to my virtual classroom's Facebook "
+              alt="Fäicebook-ikon. en länk till my virtual classrooms Fäicebook"
             />
           </div>
           <div className="linkedIn">
-            <img
+            <img tabIndex={22}
               src={require("../../images/linkedIn.png")}
-              alt=" A link to my virtual classroom's LinkedIn "
+              alt=" LinkdIn-ikon. en länk till my virtual classrooms LinkdIn "
             />
           </div>
         </div>
