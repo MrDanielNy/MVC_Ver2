@@ -23,7 +23,7 @@ function MVC_Home_Boxes(props) {
   }
   function text_Reader(input_Text, e) {
     synth.resume();
-    e.target.style.border = '2px solid rgba(147, 250, 165)';
+    e.target.style.border = '4px solid lightgreen';
     speak({
       text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
     }
@@ -55,7 +55,7 @@ function MVC_Home_Boxes(props) {
 
             }} onMouseEnter={(e) => {
               text_Reader(props.text, e);
-            }} variant="h3_Boxes" sx={{ typography: { sm: 'body1', xs: 'body2' } }} className="Item_Text">{props.text}</Typography>
+            }} variant="h3" sx={{ typography: { sm: 'body1', xs: 'body2' } }} className="Item_Text">{props.text}</Typography>
           </Paper>
         </Link>
       </li>

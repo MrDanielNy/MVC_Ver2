@@ -577,25 +577,21 @@ function App(props) {
                               localStorage.setItem("normalLeft", "white");
                               localStorage.setItem("bigLeft", "lightgreen");
                               localStorage.setItem("bigRight", "white");
-
-
-
                             }
-
 
                           }} variant='contained' className='accessibility_Setting_Btn'><img src="toRight_CursorIcon.png" alt="stor storlek vänster muspekare" /></button>
                           <label>Vänster hand</label>
                         </div>
 
                         <div className="cursoricons">
-                          <label >Text lässare </label>
+                          <label >Skärmläsare </label>
                         </div>
                         <div className="btn">
                           <button ref={textReader} style={{ backgroundColor: localStorage.getItem("textReaderColor") }} onClick={() => { toggleReaderStatus() }}
                             className='accessibility_Setting_Btn'>
-                            <img src="Txtreader1.png" />
+                            <img src="txtreader1.png" />
                           </button>
-                          <label >Text läsare PÅ/AV</label>
+                          <label >PÅ | AV</label>
                         </div>
                       </div>
                     </div>

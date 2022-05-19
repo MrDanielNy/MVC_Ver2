@@ -138,6 +138,10 @@
   cursor: url(../../public/HandCursor1.png), auto;
 }
 
+.hero_Btn:focus {
+  background-color: coral;
+}
+
 @media screen and (max-height: 450px) {
   .mvc-hero-container {
 

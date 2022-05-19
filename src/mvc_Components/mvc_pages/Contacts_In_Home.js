@@ -24,7 +24,7 @@ function Contacts_Link() {
   }
   function text_Reader(input_Text, e) {
     synth.resume();
-    e.target.style.border = '2px solid #000000';
+    e.target.style.border = '4px solid lightgreen';
     speak({
       text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
     }
@@ -35,7 +35,7 @@ function Contacts_Link() {
       <div className="contacts_Container">
 
         <div className="contacts_Title">
-          <Typography tabIndex={18} onMouseLeave={(e) => {
+          <Typography tabIndex={0} onMouseLeave={(e) => {
             e.target.style.border = 'none';
             // synth.pause();
             synth.cancel();
@@ -51,7 +51,7 @@ function Contacts_Link() {
                 xs: 30,
               }
             }}  >Välkomna att kontakta oss! </Typography>
-          <Typography tabIndex={19} onMouseLeave={(e) => {
+          <Typography tabIndex={0} onMouseLeave={(e) => {
             e.target.style.border = 'none';
             // synth.pause();
             synth.cancel();
@@ -73,7 +73,7 @@ function Contacts_Link() {
 
         <div>
           <Link to="/Contacts" className="about_btn_Link">
-            <Button tabIndex={20} color="secondary" variant="contained" className="btn_Contact">
+            <Button tabIndex={0} color="secondary" variant="contained" className="btn_Contact">
               <Typography onMouseLeave={(e) => {
                 e.target.style.border = 'none';
                 // synth.pause();
@@ -91,13 +91,13 @@ function Contacts_Link() {
 
         <div className="social_Links_Container_">
           <div className="facebook">
-            <img tabIndex={21}
+            <img tabIndex={0}
               src={require("../../images/facebook.png")}
               alt="Fäicebook-ikon. en länk till my virtual classrooms Fäicebook"
             />
           </div>
           <div className="linkedIn">
-            <img tabIndex={22}
+            <img tabIndex={0}
               src={require("../../images/linkedIn.png")}
               alt=" LinkdIn-ikon. en länk till my virtual classrooms LinkdIn "
             />

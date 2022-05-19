@@ -20,7 +20,7 @@ function Platform() {
   }
   function text_Reader(input_Text, e) {
     synth.resume();
-    e.target.style.border = '2px solid rgba(147, 250, 165)';
+    e.target.style.border = '4px solid lightgreen';
     speak({
       text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
     }
@@ -34,7 +34,7 @@ function Platform() {
 
         <div className="platform_Text_Container_">
 
-          < Typography tabIndex={5} onMouseLeave={(e) => {
+          < Typography tabIndex={0} onMouseLeave={(e) => {
             e.target.style.border = 'none';
             // synth.pause();
             synth.cancel();
@@ -51,7 +51,7 @@ function Platform() {
               }
             }} color="secondary" className="platform_Title" > Vad vi gör</Typography>
 
-          <Typography tabIndex={6} onMouseLeave={(e) => {
+          <Typography tabIndex={0} onMouseLeave={(e) => {
             e.target.style.border = 'none';
             // synth.pause();
             synth.pause();

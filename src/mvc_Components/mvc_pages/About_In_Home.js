@@ -25,7 +25,7 @@ function AboutUs_Link() {
   }
   function text_Reader(input_Text, e) {
     synth.resume();
-    e.target.style.border = '2px solid #f8d744';
+    e.target.style.border = '4px solid lightgreen';
     speak({
       text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
     }
@@ -36,7 +36,7 @@ function AboutUs_Link() {
       <Paper variant="st1" className="about">
         <div className="about_Container">
           <div className="about_Text">
-            <div tabIndex={14} className="about_Header">
+            <div tabIndex={0} className="about_Header">
               <Typography
                 onMouseLeave={(e) => {
                   e.target.style.border = 'none';
@@ -55,7 +55,7 @@ function AboutUs_Link() {
                   }
                 }} variant="h1" color="secondary" >Om oss</Typography>
             </div>
-            <div tabIndex={15} className="about_SubText">
+            <div tabIndex={0} className="about_SubText">
               <Typography onMouseLeave={(e) => {
                 e.target.style.border = 'none';
                 // synth.pause();
@@ -79,7 +79,7 @@ function AboutUs_Link() {
 
 
           <div className="about_Img">
-            <img tabIndex={16} onMouseLeave={(e) => {
+            <img tabIndex={0} onMouseLeave={(e) => {
               e.target.style.border = 'none';
               // synth.pause();
               synth.cancel();
@@ -96,7 +96,7 @@ function AboutUs_Link() {
         </div>
         <div className="btn_Container">
           <div></div>
-          <div tabIndex={17}>
+          <div tabIndex={0}>
             <Link to="/AboutUs" className="about_btn_Link">
               <Button aria-label="Tryck på knappen att läsa om oss"
                 onMouseLeave={(e) => {

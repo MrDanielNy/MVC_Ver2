@@ -9,6 +9,10 @@ export const theme1 = {
       background: "black",
 
     },
+    h2: {
+      background: "black",
+      color: "white",
+    },
     h3: {
       fontSize: 25,
       border: "none",
@@ -102,12 +106,18 @@ export const theme2 = {
   typography: {
     h1: {
 
-      border: "2px solid blue",
+      border: "4px solid lightgreen",
       color: "white",
 
     },
+    h2: {
+      border: "4px solid lightgreen",
+
+      color: "white",
+      fontSize: 25,
+    },
     h3: {
-      border: "2px solid darkblue",
+      border: "4px solid lightgreen",
       fontSize: 25,
 
 
@@ -121,7 +131,7 @@ export const theme2 = {
     },
     h3_Contacts: {
       color: "black",
-      border: "2px solid darkblue",
+      border: "4px solid lightgreen",
     },
     h6: {
       color: "black",
@@ -129,6 +139,14 @@ export const theme2 = {
 
 
     },
+  }, btnContainer: {
+
+    border: "4px solid lightgreen",
+
+  },
+  "root": {
+    "background": "#353535",
+    "border": "none",
   }
 
 
@@ -140,9 +158,12 @@ export const theme3 = {
     h1: {
 
       border: "none",
-      color: "#0f56c2",
-      background: "",
+      color: "white",
+      background: "#5ca3ff"
 
+    },
+    h2: {
+      background: "#5ca3ff",
     },
     h3: {
       fontSize: 35,

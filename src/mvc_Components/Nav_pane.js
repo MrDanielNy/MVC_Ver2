@@ -25,8 +25,8 @@ function NavPane() {
   const menuItem2 = useRef();
   const menuItem3 = useRef();
   const navBar = useRef();
-
   const hamMenu = useRef();
+
   React.useEffect(() => {
     logoTab.current.focus();
   }, []);

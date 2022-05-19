@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import Contacts_Link from "./Contacts_In_Home";
 import "./MVC_Projects.css"
 import ProjectMagicalMan from "./Project_Magical_Man";
@@ -41,12 +41,16 @@ const MVC_Projects = (props) => {
   }, []);
 
 
+  const headerFocus = useRef();
 
+  React.useEffect(() => {
+    headerFocus.current.focus();
+  }, []);
 
   return (
     <>
       <div className="project_Container">
-        <Typography sx={{
+        <Typography ref={headerFocus} tabIndex={11} sx={{
           fontSize: {
             lg: 100,
             md: 70,
@@ -58,11 +62,11 @@ const MVC_Projects = (props) => {
         <div className="project_One_Container">
 
           <Paper variant="st3" className="project_One">
-            <Typography variant="h3" className="project_One_Title">
+            <Typography tabIndex={13} variant="h3" className="project_One_Title">
               Träslöjd i VR
             </Typography>
 
-            <Typography sx={{
+            <Typography tabIndex={14} sx={{
               fontSize: {
                 lg: 23,
                 md: 20,
@@ -74,7 +78,7 @@ const MVC_Projects = (props) => {
             </Typography>
           </Paper>
           <div >
-            <img className="project_One_Image" src={require("../../images/Project.png")} />
+            <img tabIndex={12} className="project_One_Image" src={require("../../images/Project.png")} />
           </div>
 
         </div>
@@ -82,10 +86,10 @@ const MVC_Projects = (props) => {
 
         <div className="project_Two_Container">
           <Paper variant="st3" className="project_Two">
-            <Typography variant="h3" className="project_Two_Title">
+            <Typography tabIndex={16} variant="h3" className="project_Two_Title">
               Hangaren
             </Typography>
-            <Typography sx={{
+            <Typography tabIndex={17} sx={{
               fontSize: {
                 lg: 23,
                 md: 20,
@@ -96,7 +100,7 @@ const MVC_Projects = (props) => {
             </Typography>
           </Paper>
           <div >
-            <img className="project_Two_Image" src={require("../../images/Project.png")} />
+            <img tabIndex={15} className="project_Two_Image" src={require("../../images/Project.png")} />
           </div>
         </div>
       </div>
