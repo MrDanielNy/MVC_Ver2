@@ -12,6 +12,7 @@ import { type } from "@testing-library/user-event/dist/type";
 import video from "../../images/video-2.mp4";
 import { useSpeechSynthesis } from 'react-speech-kit';
 function MVC_Contacts() {
+  const title = useRef();
   const labelName = useRef();
   const labelEmail = useRef();
   const labelText = useRef();
@@ -25,7 +26,7 @@ function MVC_Contacts() {
 
   const inputName = useRef(null);
   useEffect(() => {
-    inputName.current.focus();
+    title.current.focus();
   });
 
   function removeSpaces(string) {
@@ -195,50 +196,52 @@ function MVC_Contacts() {
   }
   console.log(typeof checkState() + " The player mode in Contacts is ")
   console.log(checkState() + " The player mode in Contacts is ")
+
+
   return (
     <>
 
       <div className={"contact_Container"}>
-        <div className="containerAni">
+        <div tabIndex={0} ref={title} className="containerAni">
           <h3 className="first_text_">
-            Do you want to be involved and create tomorrow's teaching?
+            Vill du vara med och skapa morgondagens undervisning?  kontakta oss!
           </h3>
         </div>
         <div>
-          <div className="form_Container">
+          <div tabIndex={0} aria-label="kontaktformulär , Vänligen fyll i ditt namn, e-postadress och ditt meddelande" className="form_Container">
             <form onSubmit={send} id="email-form" ref={email_form}>
               <label className="label" ref={labelName}>
-                Name
+                Namn
               </label>
               <div>
                 <input
                   type="text"
                   name="user_name"
-                  placeholder="Your name"
+                  placeholder="Ditt namn"
                   ref={inputName}
                   onChange={validName}
                 />
               </div>
 
               <label className="label" ref={labelEmail}>
-                Email
+                e-post
               </label>
               <input
                 type="email"
                 name="user_email"
-                placeholder="Your e-mail address "
+                placeholder="Din e-postadress"
                 ref={inputEmail}
                 onChange={emailValidation}
                 title="This field should not be left blank."
               />
 
               <label className="label" ref={labelText}>
-                Message
+                Meddelande
               </label>
               <textarea
                 className="message"
                 name="message"
-                placeholder="Write your message"
+                placeholder="Skriv ditt meddelande"
                 ref={inputText}
                 autoComplete="off"
                 onChange={messageValidation}

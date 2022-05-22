@@ -7,6 +7,7 @@ import {
   Routes,
   Switch,
 } from "react-router-dom";
+import MVC_Hero from "./mvc_Components/MVC_Hero";
 import MVC_Home from "./mvc_Components/mvc_pages/MVC_Home";
 import MVC_Projects from "./mvc_Components/mvc_pages/MVC_Projects";
 import MVC_AboutUs from "./mvc_Components/mvc_pages/MVC_AboutUs";
@@ -109,9 +110,17 @@ cursor: url(../public/HandCursor1.png), auto;
   `;
 
 
+
 function App(props) {
-  window.onbeforeunload = () => true; // Prevents refresh, user should know that some information won't be saved in local storage.
+
+  window.onbeforeunload = () => true;
+
+
+
+
+  // Prevents refresh, user should know that some information won't be saved in local storage.
   const accessibilityIcon = useRef();
+  const resetBtn = useRef();
   const light = useRef();
   const dark = useRef();
   const blind = useRef();
@@ -161,8 +170,13 @@ function App(props) {
   const [mousePointer, setMousePointer] = useState(localStorage.getItem("cursor"));
   const [showAccessibility, setShowAccessibility] = useState(false);
   console.log("[--- " + localStorage.getItem("cursor") + " ---]");
+
   const openAccessibilitySettings = () => {
-    accessibilityIcon.current.style.display = "none";
+    document.getElementById("btnReset").focus();
+    document.getElementById("btnReset").focus();
+
+    document.getElementById("btnReset").style.backgroundColor = "red"
+    //accessibilityIcon.current.style.display = "none";
     setMousePointer(localStorage.getItem("cursor"));
     screen_Checker();
     if (localStorage.getItem("PlayerModeText") === "AV") {
@@ -173,13 +187,10 @@ function App(props) {
       setMousePointer("url(NormalPointer_ToLeft.png),auto");
       //localStorage.setItem("cursor", "url(NormalPointer_ToLeft.png),auto");
     }
-
     if (localStorage.getItem("bigLeft") === null || localStorage.getItem("bigRight") === null ||
       localStorage.getItem("normalLeft") === null || localStorage.getItem("normalRight") === null) {
       localStorage.setItem("normalRight", "lightgreen");
-
     }
-
     setShowAccessibility(prev => !prev) // If it is true, change it to false
   }
 
@@ -195,20 +206,31 @@ function App(props) {
       accessibilityIcon.current.style.display = "block";
       console.log("Escape is pressed")
       setShowAccessibility(false);
-
     }
     else
       if (e.key === "Escape" && !showAccessibility) {
         setShowAccessibility(false)
         accessibilityIcon.current.style.display = "block";
       }
-
   }, [setShowAccessibility], [showAccessibility])
   useEffect(() => {
-
     document.addEventListener("keydown", escKey);
     return () => {
       document.removeEventListener("keydown", escKey)
+      accessibilityIcon.current.style.display = "block";
+    }
+  })
+
+  const accessibility_Keyboard = useCallback(e => {
+    if (e.key === "a" && !showAccessibility) {
+      accessibilityIcon.current.style.display = "none";
+      setShowAccessibility(true);
+    }
+  }, [setShowAccessibility], [showAccessibility])
+  useEffect(() => {
+    document.addEventListener("keydown", accessibility_Keyboard);
+    return () => {
+      document.removeEventListener("keydown", accessibility_Keyboard)
       accessibilityIcon.current.style.display = "block";
     }
   })
@@ -354,6 +376,16 @@ function App(props) {
   else
     bright_profile = false;
 
+
+
+
+
+
+
+
+
+
+
   return (
     < div  >
       <ThemeProvider theme={theme}>
@@ -367,7 +399,7 @@ function App(props) {
           {/** Navbar is placed here because it shoud be always on the top of all the elements in the page */}
           <NavPane />
           {showAccessibility ? (
-            <div aria-hidden="true" className="Background" ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
+            <div id="accessibility" aria-hidden="true" className="Background" ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
               <Accessibility_Wrapper className="Wrapper_Accessibility" showAccessibility={showAccessibility}>
                 <Accessibility_Window_Content>
                   <div color="primary" className='header'>
@@ -375,7 +407,7 @@ function App(props) {
                     <div variant="stAccessibility" color="" className='modal_Header'>
 
                       <Typography color="secondary" variant='h5' >Tillgänglighetsjusteringar </Typography>
-                      <button
+                      <button id="btnReset" ref={resetBtn}
                         onClick={() => {
                           if (!playerMode) {
                             setPlayerMode_Text("AV");
@@ -391,7 +423,7 @@ function App(props) {
                       <div className="btn-arrange">
 
                         <div className="btn">
-                          <button ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
+                          <button id="btnReset" ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
                           <label disabled={btnDisable} >Mindre färg och blixtar <br /></label>
                         </div>
                         <span className={!player_Mode ? "btnDescription" : "noDescription"}>Eliminera risken för anfall och hysteri genom att rensa blixtar och minska färger</span>
@@ -616,6 +648,7 @@ function App(props) {
               <Route path="/Projects" element={<MVC_Projects />} />
               <Route path="/AboutUs" element={<MVC_AboutUs />} />
               <Route path="/Contacts" element={<MVC_Contacts />} />
+
             </Routes>
           </div>
         </Router>

@@ -62,24 +62,28 @@ function MVC_Hero(props) {
     )
   }
   const projectBtn = useRef();
-
+  const mvc = useRef();
+  React.useEffect(() => {
+    mvc.current.focus();
+  }, []);
   return (
     <>
       <div className="mvc-hero-container" >
 
         <div>
-          <Typography aria-label={"My Virtual Classroom"} tabIndex={0} variant="h1" sx={{
+          <Typography ref={mvc} aria-label={"My Virtual Classroom"} tabIndex={0} variant="h1" sx={{
             fontSize: {
               lg: 100,
               md: 70,
               sm: 50,
               xs: 30,
             }
+          }} onFocus={(e) => {
+            text_Reader("My virtal Classroom!", e);
           }} onMouseLeave={(e) => { // To pause the reader temporarily by onMouseLeave
             if (localStorage.getItem("btnCognitive") != "lightgreen") {
               e.target.style.border = 'none';
             }
-
             synth.cancel();
           }}
             onMouseEnter={(e) => { // To read the text by onMouseEnter or continue reading after a pause

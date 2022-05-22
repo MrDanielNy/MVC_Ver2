@@ -18,6 +18,7 @@ import {
   createTheme
 } from "@mui/material";
 import { useSpeechSynthesis } from 'react-speech-kit';
+import { InfoSharp } from "@mui/icons-material";
 
 function NavPane() {
   const logoTab = useRef();
@@ -27,9 +28,10 @@ function NavPane() {
   const navBar = useRef();
   const hamMenu = useRef();
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     logoTab.current.focus();
-  }, []);
+  }, []);*/
+
 
   const [showAccessibility, setShowAccessibility] = useState(false);
   const openAccessibilitySettings = () => {
@@ -41,8 +43,6 @@ function NavPane() {
   const closeMenu = () => setClick(false);
   const handleClick = () => {
     menuItem1.current.focus();
-
-
     console.log("Testing...");
     setClick(!click);
   };
@@ -63,6 +63,23 @@ function NavPane() {
     document.addEventListener("keydown", closeMenu_);
     return () => document.removeEventListener("keydown", closeMenu_)
   })
+
+
+  const openMenu_ = useCallback(e => {
+    if (e.key === "m" || e.key === "M" && !click) {
+
+      setClick(true);
+
+    }
+
+
+  }, [setClick], [click])
+
+  useEffect(() => {
+    document.addEventListener("keydown", openMenu_);
+    return () => document.removeEventListener("keydown", openMenu_)
+  })
+
 
 
 
@@ -113,11 +130,17 @@ function NavPane() {
   }
   else
     player_Mode = false;
+
+
+
+
+
   return (
     <>
       <nav tabIndex={-1} className={player_Mode ? "nav_Pane" : "safeColor_nav_Pane"} >
         <Paper ref={navBar} aria-label="navigeringsfältet" variant="st1" color="primary" className="navbar-container">
-          <Button tabIndex={1} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
+
+          <Button id="logo" tabIndex={0} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
             <div aria-label="MVC logotyp." className="mvcLogo">
               MVC
             </div>
@@ -125,7 +148,10 @@ function NavPane() {
           <div></div>
           <div></div>
           <div className="ham_Menu" >
-            <Button aria-label="Meny, länkar till andra sidor." tabIndex={2} onMouseEnter={(e) => {
+            <Button id="menu" aria-label="Meny, länkar till andra sidor." tabIndex={0} onFocus={(e) => {
+              console.log("Menu is selected!")
+              text_Reader("meny!", e);
+            }} onMouseEnter={(e) => {
               text_Reader("meny!", e);
             }} onMouseLeave={(e) => {
               e.target.style.border = 'none';
