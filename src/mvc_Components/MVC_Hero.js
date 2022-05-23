@@ -63,9 +63,7 @@ function MVC_Hero(props) {
   }
   const projectBtn = useRef();
   const mvc = useRef();
-  React.useEffect(() => {
-    mvc.current.focus();
-  }, []);
+
   return (
     <>
       <div className="mvc-hero-container" >
@@ -106,7 +104,7 @@ function MVC_Hero(props) {
           <p>{/** Other staffs if needed here */}</p>
           <div className="hero_Btn_container">
             <Link to="/Contacts" className="hero_Btn_Link">
-              <Button tabIndex={0} aria-label="Kontakta oss! Tryck på knappen!" onMouseEnter={(e) => {
+              <Button aria-label="Kontakta oss! Tryck på knappen!" onMouseEnter={(e) => {
                 text_Reader("Kontakta oss! Tryck på knappen!", e);
               }}
                 onMouseLeave={(e) => {

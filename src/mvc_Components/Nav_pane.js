@@ -134,6 +134,9 @@ function NavPane() {
 
 
 
+  /*React.useEffect(() => {
+    logoTab.current.focus();
+  }, []);*/
 
   return (
     <>
@@ -141,7 +144,7 @@ function NavPane() {
         <Paper ref={navBar} aria-label="navigeringsfältet" variant="st1" color="primary" className="navbar-container">
 
           <Button id="logo" tabIndex={0} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
-            <div aria-label="MVC logotyp." className="mvcLogo">
+            <div aria-label="My virtual Classrooms logotyp. Välkommen" className="mvcLogo">
               MVC
             </div>
           </Button>

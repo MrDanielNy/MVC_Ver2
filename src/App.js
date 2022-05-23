@@ -1,6 +1,11 @@
 import "./App.css";
 import NavPane from "./mvc_Components/Nav_pane";
+
+
 import React, { useRef } from "react";
+import { useSpeechSynthesis } from 'react-speech-kit';
+
+
 import {
   BrowserRouter as Router,
   Route,
@@ -47,7 +52,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Fade from '@mui/material/Fade';
 import Zoom from '@mui/material/Zoom';
 import ContrastIcon from '@mui/icons-material/Contrast';
-import { useSpeechSynthesis } from 'react-speech-kit';
+
 
 
 const Background = styled.div`
@@ -64,7 +69,7 @@ const Accessibility_Wrapper = styled.div`
 position: fixed;
 width: 450px;
 height: 600px;
-box-shadow: 0 5px 16px rgba(0, 0, 0, .4);
+box-shadow: 0 5px 16px rgb(3, 0, 51);
 background: #c4bdbd;
 display: flex;
 flex-direction: row;
@@ -114,10 +119,6 @@ cursor: url(../public/HandCursor1.png), auto;
 function App(props) {
 
   window.onbeforeunload = () => true;
-
-
-
-
   // Prevents refresh, user should know that some information won't be saved in local storage.
   const accessibilityIcon = useRef();
   const resetBtn = useRef();
@@ -145,7 +146,8 @@ function App(props) {
   const handleSwitch = (whichTheme) => {
     const newTheme = deepmerge(theme, whichTheme);
     setTheme(createTheme(newTheme));
-    // setActiveProfile(localStorage.getItem("ActiveProfile"));
+
+
   };
   let fullTeme = theme;
   if (activeProfile === null || activeProfile === "") {
@@ -172,11 +174,11 @@ function App(props) {
   console.log("[--- " + localStorage.getItem("cursor") + " ---]");
 
   const openAccessibilitySettings = () => {
-    document.getElementById("btnReset").focus();
-    document.getElementById("btnReset").focus();
+    /* document.getElementById("btnReset").focus();
+     document.getElementById("btnReset").focus();*/
 
-    document.getElementById("btnReset").style.backgroundColor = "red"
-    //accessibilityIcon.current.style.display = "none";
+    //document.getElementById("btnReset").style.backgroundColor = "red"
+    accessibilityIcon.current.style.display = "none";
     setMousePointer(localStorage.getItem("cursor"));
     screen_Checker();
     if (localStorage.getItem("PlayerModeText") === "AV") {
@@ -221,7 +223,7 @@ function App(props) {
     }
   })
 
-  const accessibility_Keyboard = useCallback(e => {
+  /*const accessibility_Keyboard = useCallback(e => {
     if (e.key === "a" && !showAccessibility) {
       accessibilityIcon.current.style.display = "none";
       setShowAccessibility(true);
@@ -233,7 +235,7 @@ function App(props) {
       document.removeEventListener("keydown", accessibility_Keyboard)
       accessibilityIcon.current.style.display = "block";
     }
-  })
+  })*/
 
   const getVideo = useRef(null);
   const [btnDisable, setBtnDisable] = useState(false)
@@ -268,6 +270,10 @@ function App(props) {
   const [autoPlayer, setAutoPlayer] = useState("");
   const [playerMode, setPlayerMode] = useState(localStorage.getItem("PlayerMode"));
   // console.log("PlayerMode in localstorage is -------> " + playerMode)
+
+  const [quietProfile, setQuietProfile] = useState(localStorage.getItem("quietProfile"));
+
+
 
   if (playerMode === "false") {
     auto_Player = false;
@@ -357,6 +363,7 @@ function App(props) {
   }
   let player_Mode;
   if (localStorage.getItem("PlayerMode") === "true") {
+
     player_Mode = true;
   }
   else
@@ -406,7 +413,7 @@ function App(props) {
 
                     <div variant="stAccessibility" color="" className='modal_Header'>
 
-                      <Typography color="secondary" variant='h5' >Tillgänglighetsjusteringar </Typography>
+                      <Typography color="secondary" variant='h5' >Tillgänglighetsinställningar </Typography>
                       <button id="btnReset" ref={resetBtn}
                         onClick={() => {
                           if (!playerMode) {
@@ -642,15 +649,16 @@ function App(props) {
               text_Reader("Tillgänglighets inställningar", e);
 
             }} ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => { openAccessibilitySettings(); }} src={require("./images/accessibility_Icon.png")} />   </div>
+
           <div className={player_Mode ? "App" : "safeApp"} style={{ cursor: mousePointer }} >
             <Routes>
               <Route path="/" element={<MVC_Home textReaderStatus={globalTextReader_Status} />} />
               <Route path="/Projects" element={<MVC_Projects />} />
               <Route path="/AboutUs" element={<MVC_AboutUs />} />
               <Route path="/Contacts" element={<MVC_Contacts />} />
-
             </Routes>
           </div>
+
         </Router>
 
       </ThemeProvider >

@@ -34,7 +34,7 @@ function MVC_Home_Boxes(props) {
     <>
       <li className="Item">
 
-        <Link className="Item_Link" to={props.path}>
+        <div className="Item_Link" >
           <Typography onMouseLeave={(e) => {
             e.target.style.border = 'none';
             // synth.pause();
@@ -57,7 +57,7 @@ function MVC_Home_Boxes(props) {
               text_Reader(props.text, e);
             }} variant="h3" sx={{ typography: { sm: 'body1', xs: 'body2' } }} className="Item_Text">{props.text}</Typography>
           </Paper>
-        </Link>
+        </div>
       </li>
     </>
   );
