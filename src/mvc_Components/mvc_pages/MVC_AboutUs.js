@@ -6,7 +6,14 @@ import Contacts_Link from "./Contacts_In_Home";
 import { RiMailLine } from "react-icons/ri";
 import MVC_Contacts from "./MVC_Contacts";
 import Contacts_In_Home from "./Contacts_In_Home"
-
+import {
+    Button,
+    Paper,
+    Typography,
+    Box,
+    ThemeProvider,
+    createTheme
+} from "@mui/material";
 
 const Mailto = ({ email, subject, body, children }) => {
     return (
@@ -35,7 +42,7 @@ function MVC_AboutUs() {
                         <img className="DJ_Image" src={require("../../images/DJ.jpg")} alt="En bild av Daneil Johansson" />
                     </div>
 
-                    <div className="about_DJ">
+                    <Paper className="about_DJ">
                         <div>
                             <p className="our_Story_Text">
                                 “Mina projektidéer utgår från mina erfarenheter som pedagog där jag dagligen jobbar nära elever med och utan olika sorters funktionsvariationer. Jag har alltid försökt att hitta ett sätt att arbeta individanpassat och funderat på hur man med dagens teknik kan öppna nya dörrar för elever som vissa aldrig skulle fått en chans att öppnas.<br /><br />
@@ -58,20 +65,20 @@ function MVC_AboutUs() {
 
 
 
-                    </div>
+                    </Paper>
                 </div>
 
 
                 <div className="about_DN_Container">
 
                     <div className="DN_Title_Image">
-                        <h1 className="title_About_DN">
+                        <Typography variant="h4" className="title_About_DN">
                             Utv.chef och Vice VD Daniel Ny
-                        </h1>
+                        </Typography>
                         <img className="DN_Image" src={require("../../images/DJ.jpg")} />
                     </div>
 
-                    <div className="about_DN">
+                    <Paper className="about_DN">
                         < div >
                             <p className="our_Story_Text"> My Virtual Classroom skapades när Daniel Ny, med bakgrund som spel- och apputvecklare kom in
                                 och delade med sig av sina erfarenheter. My Virtual Classrooms mål just nu är att skapa en digital lösning i en virtuell värld som ett verktyg och hjälpmedel för att lyckas på mer egen hand. Samma läroplan, samma lektion, samma uppgift men i en virtuell träslöjd!
@@ -92,7 +99,7 @@ function MVC_AboutUs() {
 
 
 
-                    </div>
+                    </Paper>
 
                 </div>
 

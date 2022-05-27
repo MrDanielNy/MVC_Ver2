@@ -96,9 +96,9 @@ function AboutUs_Link() {
         </div>
         <div className="btn_Container">
           <div></div>
-          <div tabIndex={0}>
-            <Link to="/AboutUs" className="about_btn_Link">
-              <Button aria-label="Tryck på knappen att läsa om oss"
+          <div >
+            <Link tabIndex={0} to="/AboutUs" className="about_btn_Link">
+              <Button tabIndex={-1} aria-label="Tryck på knappen att läsa om oss"
                 onMouseLeave={(e) => {
                   e.target.style.border = 'none';
                   // synth.pause();

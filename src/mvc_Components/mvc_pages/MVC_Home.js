@@ -22,13 +22,13 @@ import {
 
 
 /** The main page */
-function MVC_Home(props) {
+function MVC_Home() {
 
-  console.log("║----> " + props.Theme + " ║  ")
+
   return (
     < >
 
-      <MVC_Hero textReaderStatus={props.textReaderStatus} />
+      <MVC_Hero />
 
       <Platform />
 

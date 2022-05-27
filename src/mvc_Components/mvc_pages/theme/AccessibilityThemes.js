@@ -3,11 +3,9 @@ import { withTheme } from "styled-components";
 export const theme1 = {
   typography: {
     h1: {
-
       border: "none",
       color: "white",
       background: "black",
-
     },
     h2: {
       background: "black",
@@ -159,11 +157,11 @@ export const theme3 = {
 
       border: "none",
       color: "white",
-      background: "#5ca3ff"
+      background: "blue"
 
     },
     h2: {
-      background: "#5ca3ff",
+      background: "blue",
     },
     h3: {
       fontSize: 35,
@@ -241,7 +239,7 @@ export const theme3 = {
         st2: {
 
 
-          background: "#2d8fff",
+          background: "darkblue",
           border: "none",
 
         },

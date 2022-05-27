@@ -29,7 +29,7 @@ import {
 } from "@mui/material";
 
 
-function MVC_Hero(props) {
+function MVC_Hero() {
 
 
   var synth = window.speechSynthesis; // To achieve the speechSynthesis' internal functions
@@ -64,6 +64,7 @@ function MVC_Hero(props) {
   const projectBtn = useRef();
   const mvc = useRef();
 
+
   return (
     <>
       <div className="mvc-hero-container" >
@@ -90,7 +91,9 @@ function MVC_Hero(props) {
 
 
 
-          <Typography tabIndex={0} variant="h2" onMouseLeave={(e) => {
+          <Typography onFocus={(e) => {
+            text_Reader("En framtid på lika villkor", e);
+          }} tabIndex={0} variant="h2" onMouseLeave={(e) => {
             if (localStorage.getItem("btnCognitive") != "lightgreen") {
               e.target.style.border = 'none';
             }
@@ -103,8 +106,8 @@ function MVC_Hero(props) {
 
           <p>{/** Other staffs if needed here */}</p>
           <div className="hero_Btn_container">
-            <Link to="/Contacts" className="hero_Btn_Link">
-              <Button aria-label="Kontakta oss! Tryck på knappen!" onMouseEnter={(e) => {
+            <Link tabIndex={0} to="/Contacts" className="hero_Btn_Link">
+              <Button tabIndex={-1} aria-label="Kontakta oss! Tryck på knappen!" onMouseEnter={(e) => {
                 text_Reader("Kontakta oss! Tryck på knappen!", e);
               }}
                 onMouseLeave={(e) => {

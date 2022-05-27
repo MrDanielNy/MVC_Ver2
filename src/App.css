@@ -1,3 +1,7 @@
+img:focus {
+    border: 2px yellow solid;
+}
+
 .App {
     filter: grayscale(0%);
 }

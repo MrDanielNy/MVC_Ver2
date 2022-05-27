@@ -11,6 +11,7 @@ import {
   ThemeProvider,
   createTheme
 } from "@mui/material";
+
 import { useSpeechSynthesis } from 'react-speech-kit';
 
 function Contacts_Link() {
@@ -72,8 +73,8 @@ function Contacts_Link() {
         </div>
 
         <div>
-          <Link to="/Contacts" className="about_btn_Link">
-            <Button tabIndex={0} color="secondary" variant="contained" className="btn_Contact">
+          <Link tabIndex={0} to="/Contacts" className="about_btn_Link">
+            <Button tabIndex={-1} color="secondary" variant="contained" className="btn_Contact">
               <Typography onMouseLeave={(e) => {
                 e.target.style.border = 'none';
                 // synth.pause();

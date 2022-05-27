@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useEffect } from "react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import emailjs, { send } from "emailjs-com";
 
 import "./MVC_Contacts.css";
@@ -185,8 +185,25 @@ function MVC_Contacts() {
         }
       });
   }
+  const changeFocus = useCallback(e => {
+    if (e.key === "Escape") {
+      console.log("Escape is pressed")
+      title.current.focus();
 
 
+    }
+
+  }, [])
+  useEffect(() => {
+    document.addEventListener("keydown", changeFocus);
+    return () => document.removeEventListener("keydown", changeFocus)
+  })
+
+  let activElement = document.getElementById('email-form');
+  var isFocused = (document.activeElement === activElement);
+  if (isFocused) {
+    document.removeEventListener();
+  }
   function checkState() {
     if (localStorage.getItem("PlayerMode") === "true") {
       return true;

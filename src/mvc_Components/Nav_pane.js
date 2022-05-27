@@ -19,6 +19,7 @@ import {
 } from "@mui/material";
 import { useSpeechSynthesis } from 'react-speech-kit';
 import { InfoSharp } from "@mui/icons-material";
+import MVC_Home from "./mvc_pages/MVC_Home";
 
 function NavPane() {
   const logoTab = useRef();
@@ -27,6 +28,8 @@ function NavPane() {
   const menuItem3 = useRef();
   const navBar = useRef();
   const hamMenu = useRef();
+
+
 
   /*React.useEffect(() => {
     logoTab.current.focus();
@@ -67,18 +70,15 @@ function NavPane() {
 
   const openMenu_ = useCallback(e => {
     if (e.key === "m" || e.key === "M" && !click) {
-
       setClick(true);
-
     }
 
-
-  }, [setClick], [click])
-
+  }, [setClick], [click]);
   useEffect(() => {
     document.addEventListener("keydown", openMenu_);
     return () => document.removeEventListener("keydown", openMenu_)
-  })
+  });
+
 
 
 

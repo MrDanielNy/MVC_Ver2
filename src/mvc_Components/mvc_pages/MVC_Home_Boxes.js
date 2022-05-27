@@ -57,7 +57,7 @@ function MVC_Home_Boxes(props) {
               text_Reader(props.text, e);
             }} variant="h3" sx={{ typography: { sm: 'body1', xs: 'body2' } }} className="Item_Text">{props.text}</Typography>
           </Paper>
-        </div>
+        </div >
       </li>
     </>
   );

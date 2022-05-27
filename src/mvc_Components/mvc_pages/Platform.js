@@ -30,7 +30,7 @@ function Platform() {
   return (
     <>
 
-      <Paper variant="st2" color="primary" className="platform_Container">
+      <Paper variant="st2" className="platform_Container">
 
         <div className="platform_Text_Container_">
 
