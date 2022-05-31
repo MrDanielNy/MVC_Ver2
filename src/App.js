@@ -209,9 +209,39 @@ function App(props) {
   const handleSwitch = (whichTheme) => {
     const newTheme = deepmerge(theme, whichTheme);
     setTheme(createTheme(newTheme));
-
-
   };
+
+  const resetSettings = () => {
+    light.current.style.backgroundColor = 'lightgreen';
+    dark.current.style.backgroundColor = 'white';
+    blind.current.style.backgroundColor = 'white';
+
+    localStorage.setItem("btnBlind", "white");
+    localStorage.setItem("btnCognitive", "white");
+    localStorage.setItem("btnLight", "lightgreen");
+    localStorage.setItem("btnDark", "white");
+    localStorage.setItem("ActiveProfile", " Ljus");
+    handleSwitch(baseTheme);
+
+
+    setMousePointer('url(NormalPointer_ToLeft.png),auto');
+    localStorage.setItem("cursor", 'url(NormalPointer_ToLeft.png),auto');
+
+    console.log("Mouse pointer is >>>>>>>>>>> " + mousePointer)
+    normalRight.current.style.backgroundColor = 'lightgreen';
+    normalLeft.current.style.backgroundColor = 'white';
+    bigLeft.current.style.backgroundColor = 'white';
+    bigRight.current.style.backgroundColor = 'white';
+
+    localStorage.setItem("normalRight", "lightgreen");
+    localStorage.setItem("normalLeft", "white");
+    localStorage.setItem("bigLeft", "white");
+    localStorage.setItem("bigRight", "white");
+    pauseReader();
+    setPlayerMode(false);
+    playVideo();
+
+  }
   let fullTeme = theme;
   if (activeProfile === null || activeProfile === "") {
     setActiveProfile(" Ljus");
@@ -284,19 +314,6 @@ function App(props) {
     }
   })
 
-  /*const accessibility_Keyboard = useCallback(e => {
-    if (e.key === "a" && !showAccessibility) {
-      accessibilityIcon.current.style.display = "none";
-      setShowAccessibility(true);
-    }
-  }, [setShowAccessibility], [showAccessibility])
-  useEffect(() => {
-    document.addEventListener("keydown", accessibility_Keyboard);
-    return () => {
-      document.removeEventListener("keydown", accessibility_Keyboard)
-      accessibilityIcon.current.style.display = "block";
-    }
-  })*/
 
   const getVideo = useRef(null);
   const [btnDisable, setBtnDisable] = useState(false)
@@ -330,11 +347,7 @@ function App(props) {
   let auto_Player = true;
   const [autoPlayer, setAutoPlayer] = useState("");
   const [playerMode, setPlayerMode] = useState(localStorage.getItem("PlayerMode"));
-  // console.log("PlayerMode in localstorage is -------> " + playerMode)
-
   const [quietProfile, setQuietProfile] = useState(localStorage.getItem("quietProfile"));
-
-
 
   if (playerMode === "false") {
     auto_Player = false;
@@ -373,7 +386,7 @@ function App(props) {
 
   const togglePlay = () => {
     setBkcolor(!bkColor);
-    // setPlayerMode(!localStorage.getItem("PlayerMode"))
+
     localStorage.setItem("PlayerMode", !playerMode)
     console.log("Playermode when toggling =======> " + !playerMode)
     playerMode ? pauseVideo() : playVideo();
@@ -444,16 +457,6 @@ function App(props) {
   else
     bright_profile = false;
 
-
-
-
-
-
-
-
-
-
-
   return (
     < div  >
       <ThemeProvider theme={theme}>
@@ -479,7 +482,9 @@ function App(props) {
                       onClick={() => {
                         if (!playerMode) {
                           setPlayerMode_Text("AV");
-                        } handleSwitch((baseTheme));
+                          setActiveProfile(" Ljus");
+
+                        } resetSettings();
                       }} className='reset_Settings_Btn'>Återställ </button>
                   </div>
 

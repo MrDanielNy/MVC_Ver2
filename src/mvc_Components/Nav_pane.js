@@ -37,9 +37,6 @@ function NavPane() {
 
 
   const [showAccessibility, setShowAccessibility] = useState(false);
-  const openAccessibilitySettings = () => {
-    setShowAccessibility(prev => !prev) // If it is true, change it to false
-  }
 
   const [click, setClick] = useState(false);
 
@@ -67,33 +64,27 @@ function NavPane() {
     return () => document.removeEventListener("keydown", closeMenu_)
   })
 
-
-  const openMenu_ = useCallback(e => {
-    if (e.key === "m" || e.key === "M" && !click) {
-      setClick(true);
-    }
-
-  }, [setClick], [click]);
-  useEffect(() => {
-    document.addEventListener("keydown", openMenu_);
-    return () => document.removeEventListener("keydown", openMenu_)
-  });
-
-
-
-
-
+  // Opening the menu using Ctrl+Alt+M
   const menu = useCallback(e => {
-    if (e.keyCode === 77) {
-      console.log("Escape is pressed")
-      click(true)
+    if (e.ctrlKey && e.altKey && e.code === 'KeyM') {
+      setClick(!click);
+      console.log(click + "Click is ----> ")
     }
-
-
-  }, [setClick], [click])
+  }, [])
   useEffect(() => {
     document.addEventListener("keydown", menu);
     return () => document.removeEventListener("keydown", menu)
+  })
+
+  const menu_Close = useCallback(e => {
+    if (e.keyCode === 77) {
+      console.log("Escape is pressed")
+      setClick(!click)
+    }
+  }, [setClick], [click])
+  useEffect(() => {
+    document.addEventListener("keydown", menu_Close);
+    return () => document.removeEventListener("keydown", menu_Close)
   })
 
   const hamStyle = {
