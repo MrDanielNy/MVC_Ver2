@@ -138,7 +138,6 @@ function App(props) {
 
   const contacts = useCallback(e => {
     if (e.ctrlKey && e.altKey && e.code === 'KeyC') {
-      //if (e.key === "c" || e.key === "C") {
       navigate('/Contacts', { replace: true })
       console.log("H is pressed!")
     }
@@ -150,7 +149,6 @@ function App(props) {
 
   const projects = useCallback(e => {
     if (e.ctrlKey && e.altKey && e.code === 'KeyP') {
-      //if (e.key === "c" || e.key === "C") {
       navigate('/Projects', { replace: true })
       console.log("H is pressed!")
     }
@@ -163,7 +161,6 @@ function App(props) {
 
   const aboutUs = useCallback(e => {
     if (e.ctrlKey && e.altKey && e.code === 'KeyA') {
-      //if (e.key === "c" || e.key === "C") {
       navigate('/AboutUs', { replace: true })
       console.log("H is pressed!")
     }
@@ -173,6 +170,15 @@ function App(props) {
     return () => document.removeEventListener("keydown", aboutUs)
   })
 
+  const accessibility = useCallback(e => {
+    if (e.ctrlKey && e.altKey && e.code === 'KeyT') {
+      openAccessibilitySettings();
+    }
+  }, [])
+  useEffect(() => {
+    document.addEventListener("keydown", accessibility);
+    return () => document.removeEventListener("keydown", accessibility)
+  })
 
 
 
@@ -233,8 +239,6 @@ function App(props) {
   const openAccessibilitySettings = () => {
     /* document.getElementById("btnReset").focus();
      document.getElementById("btnReset").focus();*/
-
-    //document.getElementById("btnReset").style.backgroundColor = "red"
     accessibilityIcon.current.style.display = "none";
     setMousePointer(localStorage.getItem("cursor"));
     screen_Checker();
@@ -476,7 +480,7 @@ function App(props) {
                         if (!playerMode) {
                           setPlayerMode_Text("AV");
                         } handleSwitch((baseTheme));
-                      }} className='reset_Settings_Btn'>Återställ inställningar </button>
+                      }} className='reset_Settings_Btn'>Återställ </button>
                   </div>
 
                   <div >
@@ -684,7 +688,7 @@ function App(props) {
                       </div>
 
                       <div className="cursoricons">
-                        <label >Skärmläsare </label>
+                        <label >Innehållsläsare </label>
                       </div>
                       <div className="btn">
                         <button ref={textReader} style={{ backgroundColor: localStorage.getItem("textReaderColor") }} onClick={() => { toggleReaderStatus() }}

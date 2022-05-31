@@ -30,16 +30,16 @@
 
 .reset_Settings_Btn {
     padding: 0;
-    width: 130px;
+    width: 150px;
     height: 50px;
     margin: 20px;
-    color: rgb(255, 255, 255);
-    font-size: 15px;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
 
     background: transparent;
-    border: 1px rgb(255, 255, 255) solid;
-    border-radius: 10px;
-    background-color: #00b1ab;
+    border: 1px rgb(3, 1, 117) solid;
+    border-radius: 5px;
+    background-color: #ffffff;
 
 }
 
@@ -147,13 +147,13 @@ h5 {
 .reset_Settings_Btn:hover {
     background-color: cornflowerblue;
     transition: all .5s ease;
+    color: white;
 
-    font-weight: bold;
 }
 
 .reset_Settings_Btn:active {
 
-    transform: scale(.88);
+    background-color: rgb(0, 2, 100);
 }
 
 
