@@ -55,6 +55,8 @@ import Fade from '@mui/material/Fade';
 import Zoom from '@mui/material/Zoom';
 import ContrastIcon from '@mui/icons-material/Contrast';
 import { useNavigate } from 'react-router-dom';
+import { CompressOutlined, SettingsApplications } from "@mui/icons-material";
+import { isHostComponent } from "@mui/base";
 
 
 const Background = styled.div`
@@ -189,6 +191,7 @@ function App(props) {
   const dark = useRef();
   const blind = useRef();
   const cognitive = useRef();
+  const mainColorsRef = useRef();
 
   const normalRight = useRef();
   const normalLeft = useRef();
@@ -196,7 +199,13 @@ function App(props) {
   const bigRight = useRef();
   const backgroundAnimation = useRef();
   const textReader = useRef();
-
+  const [colorsMode_Text, setColorsMode_Text] = useState(localStorage.getItem("ColorsModeText"));
+  if (colorsMode_Text === null || colorsMode_Text === "") {
+    setColorsMode_Text("PÅ");
+    //backgroundAnimation.current.style.backgroundColor = "lightgreen";
+    // localStorage.setItem("backgroundAnimation", "lightgreen");
+    localStorage.setItem("ColorModeText", "PÅ");
+  }
   const [bkColor, setBkcolor] = useState(true);
   const [btnLight, setBtnLight] = useState("white");
   const [btnDark, setBtnDark] = useState("white");
@@ -272,9 +281,9 @@ function App(props) {
     accessibilityIcon.current.style.display = "none";
     setMousePointer(localStorage.getItem("cursor"));
     screen_Checker();
-    if (localStorage.getItem("PlayerModeText") === "AV") {
+    /*if (localStorage.getItem("PlayerModeText") === "AV") {
       localStorage.setItem("backgroundAnimation", "lightgreen");
-    }
+    }*/
     console.log("[When you click on acc. --- " + localStorage.getItem("cursor") + " ---]");
     if (localStorage.getItem("cursor") === null || localStorage.getItem("cursor") === "") {
       setMousePointer("url(NormalPointer_ToLeft.png),auto");
@@ -341,14 +350,39 @@ function App(props) {
 
   const [playerMode_text, setPlayerMode_Text] = useState(localStorage.getItem("PlayerModeText"));
   if (playerMode_text === null || playerMode_text === "") {
-    setPlayerMode_Text("AV");
-    localStorage.setItem("PlayerModeText", "AV");
+    setPlayerMode_Text("PÅ");
+    //backgroundAnimation.current.style.backgroundColor = "lightgreen";
+    localStorage.setItem("backgroundAnimation", "lightgreen");
+    localStorage.setItem("PlayerModeText", "PÅ");
   }
   let auto_Player = true;
   const [autoPlayer, setAutoPlayer] = useState("");
   const [playerMode, setPlayerMode] = useState(localStorage.getItem("PlayerMode"));
   const [quietProfile, setQuietProfile] = useState(localStorage.getItem("quietProfile"));
+  const [mainColors, setMainColors] = useState(localStorage.getItem("colorsMode"));
+  let colorState = true;
+  console.log(mainColors + " mainColors in localstorage is -------------------------> " + typeof mainColors)
+  if (mainColors === "true" || mainColors === true) {
+    colorState = true;
+  }
+  else if (mainColors === "false" || mainColors === false) {
+    colorState = false;
+  }
+  if (mainColors === null) {
+    setMainColors(true);
+    localStorage.setItem("colorsMode", true)
+  }
 
+  React.useEffect(() => {
+    setMainColors(colorState);
+    //localStorage.setItem("colorsMode", colorState);
+  }, []);
+
+
+  console.log(mainColors + " ¤¤¤¤¤¤¤¤¤¤¤")
+  // localStorage.setItem("colorsMode", mainColors);
+  console.log(colorState + " colorState in localstorage is -------------------------> " + typeof colorState)
+  console.log(mainColors + " " + typeof localStorage.getItem("colorsMode"))
   if (playerMode === "false") {
     auto_Player = false;
   }
@@ -363,12 +397,18 @@ function App(props) {
     setPlayerMode(true);
     localStorage.setItem("PlayerMode", true)
   }
+
+
+
+
+
   const playVideo = () => {
     getVideo.current.play()
     setPlayerMode(true);
-    setPlayerMode_Text("PÅ");
-    backgroundAnimation.current.style.backgroundColor = "white";
-    localStorage.setItem("backgroundAnimation", "white")
+    setPlayerMode_Text("AV")
+
+    backgroundAnimation.current.style.backgroundColor = "lightgreen";
+    localStorage.setItem("backgroundAnimation", "lightgreen")
     localStorage.setItem("PlayerModeText", "PÅ");
     localStorage.setItem("PlayerMode", true);
   };
@@ -376,21 +416,63 @@ function App(props) {
   const pauseVideo = () => {
     getVideo.current.pause();
     setPlayerMode(false)
-    setPlayerMode_Text("AV")
-    backgroundAnimation.current.style.backgroundColor = "lightgreen";
-    localStorage.setItem("backgroundAnimation", "lightgreen")
+    setPlayerMode_Text("PÅ");
     localStorage.setItem("PlayerModeText", "AV");
+    backgroundAnimation.current.style.backgroundColor = "white";
+    localStorage.setItem("backgroundAnimation", "white")
+
     localStorage.setItem("PlayerMode", false);
 
   };
 
   const togglePlay = () => {
-    setBkcolor(!bkColor);
-
     localStorage.setItem("PlayerMode", !playerMode)
-    console.log("Playermode when toggling =======> " + !playerMode)
     playerMode ? pauseVideo() : playVideo();
   };
+
+
+  if (colorsMode_Text === null || colorsMode_Text === "") {
+    setColorsMode_Text("PÅ");
+    localStorage.setItem("ColorsModeText", "PÅ");
+  }
+
+
+  const toggleColors = () => {
+    localStorage.setItem("colorsMode", !mainColors);
+
+    mainColors ? reducedColors() : normalColors();
+
+  }
+
+
+  const normalColors = () => {
+
+
+
+    setMainColors(true);
+
+    setColorsMode_Text("AV")
+    mainColorsRef.current.style.backgroundColor = "white";
+    localStorage.setItem("mainColors", "white")
+    console.log("Normal")
+    localStorage.setItem("ColorsModeText", "AV");
+    localStorage.setItem("colorsMode", true);
+  };
+
+  const reducedColors = () => {
+
+
+
+    setMainColors(false);
+    setColorsMode_Text("PÅ")
+    mainColorsRef.current.style.backgroundColor = "lightgreen";
+    localStorage.setItem("mainColors", "lightgreen")
+    console.log("Reduced colors")
+    localStorage.setItem("ColorsModeText", "PÅ");
+    localStorage.setItem("colorsMode", false);
+  };
+
+
   const [readerMode, setReaderMode] = useState(localStorage.getItem("textReaderStatus"));
   localStorage.setItem("textReaderStatus", readerMode);
   //textReader.current.style.backgroundColor = localStorage.getItem("textReaderColor");
@@ -456,13 +538,26 @@ function App(props) {
   }
   else
     bright_profile = false;
+  let bk_Btn_txt = ""
+  if (localStorage.getItem("playerMode") === "true") {
+    bk_Btn_txt = true;
+  }
+  else {
+    bk_Btn_txt = false;
+  }
 
+  let colorsMode_;
+  if (localStorage.getItem("colorsMode") === "true") {
+    colorsMode_ = true;
+  }
+  else
+    colorsMode_ = false;
   return (
     < div  >
       <ThemeProvider theme={theme}>
 
         <div className="background_Container_Video" >
-          <video className={player_Mode ? "video" : "noVideo"} ref={getVideo} loop muted autoPlay={autoPlayer} >
+          <video className={mainColors ? "video" : "noVideo"} ref={getVideo} loop muted autoPlay={autoPlayer} >
             <source src={screen_Checker()} />
           </video>
         </div>
@@ -496,10 +591,25 @@ function App(props) {
                     <div className="btn-arrange">
 
                       <div className="btn">
-                        <button id="btnReset" ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable} onClick={() => { togglePlay() }} className='accessibility_Setting_Btn'>{localStorage.getItem("PlayerModeText")}</button>
+                        <button ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable}
+                          onClick={() => { console.log(playerMode + " Mode......" + typeof playerMode); togglePlay() }} className='accessibility_Setting_Btn'>{
+
+                            playerMode ? "AV" : "PÅ"
+                          }</button>
+                        <label disabled={btnDisable} >Animerad bakground
+                          <br /></label>
+                      </div>
+
+
+                      <div className="btn">
+                        <button id="btnReset" ref={mainColorsRef} style={{ backgroundColor: localStorage.getItem("mainColors") }} disabled={btnDisable}
+                          onClick={() => {
+                            toggleColors();
+                            // localStorage.setItem("colorsMode", mainColors)
+                          }} className='accessibility_Setting_Btn'>{localStorage.getItem("ColorsModeText")}</button>
                         <label disabled={btnDisable} >Mindre färg och blixtar <br /></label>
                       </div>
-                      <span className={!player_Mode ? "btnDescription" : "noDescription"}>Eliminera risken för anfall och hysteri genom att rensa blixtar och minska färger</span>
+                      <span className={!mainColors ? "btnDescription" : "noDescription"}>Eliminera risken för anfall och hysteri genom att rensa blixtar och minska färger</span>
 
                       <div className="btn">
                         <button ref={light} style={{ backgroundColor: localStorage.getItem("btnLight") }} onClick={() => {
@@ -524,7 +634,7 @@ function App(props) {
                         <label>allmänt tema</label>
 
                       </div>
-                      <span className={bright_profile ? "btnDescription" : "noDescription"}>Normal profil för personer med normal syn</span>
+
 
 
                       <div className="btn">
@@ -720,7 +830,7 @@ function App(props) {
 
           }} ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => { openAccessibilitySettings(); }} src={require("./images/accessibility_Icon.png")} />   </div>
 
-        <div className={player_Mode ? "App" : "safeApp"} style={{ cursor: mousePointer }} >
+        <div className={colorsMode_ ? "App" : "safeApp"} style={{ cursor: mousePointer }} >
           <Routes>
             <Route path="/" element={<MVC_Home />} />
             <Route path="/Projects" element={<MVC_Projects />} />

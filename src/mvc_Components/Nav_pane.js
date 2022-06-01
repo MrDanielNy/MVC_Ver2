@@ -115,12 +115,12 @@ function NavPane() {
     )
   }
 
-  let player_Mode;
-  if (localStorage.getItem("PlayerMode") === "true") {
-    player_Mode = true;
+  let colorsMode;
+  if (localStorage.getItem("colorsMode") === "true") {
+    colorsMode = true;
   }
   else
-    player_Mode = false;
+    colorsMode = false;
 
 
 
@@ -131,7 +131,7 @@ function NavPane() {
 
   return (
     <>
-      <nav tabIndex={-1} className={player_Mode ? "nav_Pane" : "safeColor_nav_Pane"} >
+      <nav tabIndex={-1} className={colorsMode ? "nav_Pane" : "safeColor_nav_Pane"} >
         <Paper ref={navBar} aria-label="navigeringsfältet" variant="st1" color="primary" className="navbar-container">
 
           <Button id="logo" tabIndex={0} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
