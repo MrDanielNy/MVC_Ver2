@@ -249,6 +249,7 @@ function App(props) {
     pauseReader();
     setPlayerMode(false);
     playVideo();
+    normalColors();
 
   }
   let fullTeme = theme;
@@ -446,8 +447,6 @@ function App(props) {
 
 
   const normalColors = () => {
-
-
 
     setMainColors(true);
 

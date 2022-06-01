@@ -125,9 +125,9 @@ function NavPane() {
 
 
 
-  /*React.useEffect(() => {
+  React.useEffect(() => {
     logoTab.current.focus();
-  }, []);*/
+  }, []);
 
   return (
     <>
