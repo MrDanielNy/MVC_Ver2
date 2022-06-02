@@ -142,11 +142,11 @@ function NavPane() {
           <div></div>
           <div></div>
           <div className="ham_Menu" >
-            <Button id="menu" aria-label="Meny, länkar till andra sidor." tabIndex={0} onFocus={(e) => {
-              console.log("Menu is selected!")
-              text_Reader("meny!", e);
+            <Button id="menu" aria-label="Meny!" tabIndex={0} onFocus={(e) => {
+              console.log("Menu is selected!");
+              text_Reader("Meny!", e);
             }} onMouseEnter={(e) => {
-              text_Reader("meny!", e);
+              text_Reader("Meny, länkar till andra sidor!", e);
             }} onMouseLeave={(e) => {
               e.target.style.border = 'none';
               // synth.pause();
@@ -162,7 +162,9 @@ function NavPane() {
       <div className="drop-down-menu">
         <div className={click ? "menu active" : "menu"}>
 
-          <Button onMouseEnter={(e) => {
+          <Button onFocus={(e) => {
+            text_Reader("Projekt! klicka för att läsa mer om våra projekt", e);
+          }} onMouseEnter={(e) => {
             text_Reader("Projekt! klicka för att läsa mer om våra projekt", e);
           }} onMouseLeave={(e) => {
             e.target.style.border = 'none';
@@ -174,7 +176,9 @@ function NavPane() {
 
 
           <h5 className="menu-items">
-            <Button onMouseEnter={(e) => {
+            <Button onFocus={(e) => {
+              text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
+            }} onMouseEnter={(e) => {
               text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
             }} onMouseLeave={(e) => {
               e.target.style.border = 'none';
@@ -186,7 +190,9 @@ function NavPane() {
           </h5>
 
           <h5 className="menu-items">
-            <Button onMouseEnter={(e) => {
+            <Button onFocus={(e) => {
+              text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
+            }} onMouseEnter={(e) => {
               text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
             }} onMouseLeave={(e) => {
               e.target.style.border = 'none';

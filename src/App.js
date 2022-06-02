@@ -185,6 +185,7 @@ function App(props) {
 
 
   // Prevents refresh, user should know that some information won't be saved in local storage.
+  const settings = useRef();
   const accessibilityIcon = useRef();
   const resetBtn = useRef();
   const light = useRef();
@@ -277,8 +278,10 @@ function App(props) {
   console.log("[--- " + localStorage.getItem("cursor") + " ---]");
 
   const openAccessibilitySettings = () => {
-    /* document.getElementById("btnReset").focus();
-     document.getElementById("btnReset").focus();*/
+    // let element_ = window.document.getElementsByClassName("Accessibility_Wrapper");
+    //element_.click();
+
+
     accessibilityIcon.current.style.display = "none";
     setMousePointer(localStorage.getItem("cursor"));
     screen_Checker();
@@ -561,11 +564,11 @@ function App(props) {
           </video>
         </div>
 
-        {/** Navbar is placed here because it shoud be always on the top of all the elements in the page */}
+        {/** Navbar is placed here because it shoud be always on the top of all the elements in the page   aria-hidden="true"*/}
         <NavPane />
         {showAccessibility ? (
-          <div id="accessibility" aria-hidden="true" className="Background" ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
-            <div className="Accessibility_Wrapper" showAccessibility={showAccessibility}>
+          <div className="Background" ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
+            <div ref={settings} id="accessibility" tabIndex={2} className="Accessibility_Wrapper" showAccessibility={showAccessibility}>
               <Accessibility_Window_Content className="Accessibility_Window_Content">
                 <div color="primary" className='header'>
 
@@ -819,7 +822,7 @@ function App(props) {
             </div>
           </div>
         ) : null}
-        <div onMouseLeave={(e) => {
+        <div tabIndex={1} onMouseLeave={(e) => {
           e.target.style.border = 'none';
           // synth.pause();
           synth.cancel();
@@ -827,7 +830,10 @@ function App(props) {
           onMouseEnter={(e) => {
             text_Reader("Tillgänglighets inställningar", e);
 
-          }} ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => { openAccessibilitySettings(); }} src={require("./images/accessibility_Icon.png")} />   </div>
+          }} ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => {
+
+            openAccessibilitySettings();
+          }} src={require("./images/accessibility_Icon.png")} />   </div>
 
         <div className={colorsMode_ ? "App" : "safeApp"} style={{ cursor: mousePointer }} >
           <Routes>
