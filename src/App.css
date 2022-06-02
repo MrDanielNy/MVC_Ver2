@@ -22,7 +22,7 @@ label {
     align-items: center;
     margin-left: 50px;
     font-size: 15px;
-    width: 330px;
+    width: 70%;
     border-radius: 3px;
     padding: 10px;
     color: rgb(255, 255, 255);
@@ -32,16 +32,7 @@ label {
     display: none;
 }
 
-.Background {
-    position: fixed;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    width: 100%;
 
-    background-color: #c5c5c577;
-    z-index: 4000;
-}
 
 .cursoricons {
     margin-top: 10px;
@@ -163,4 +154,115 @@ label {
 .backgroundAccessibility {
     background-color: green;
     z-index: 3000;
+}
+
+/* Accessibility settings*/
+.Background {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    background-color: #c5c5c577;
+    z-index: 4000;
+}
+
+.Accessibility_Wrapper {
+    position: fixed;
+    width: 450px;
+    height: 600px;
+    box-shadow: 0 5px 16px rgb(3, 0, 51);
+    background: #c5c5c5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    z-index: 2;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    bottom: -10px;
+    left: 10px;
+
+    transition: all 2s ease-out;
+    animation: Animation 1s 1;
+}
+
+.Accessibility_Window_Content {}
+
+
+.modal_Header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #020136c9;
+    height: 200px;
+    width: 450px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    color: #f8d744;
+
+}
+
+.accessibility_Setting_Btn_Container {
+    margin-top: 10px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: flex-start;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 290px;
+    /* border-radius: 4px rgb(255, 255, 255) solid;*/
+    background-color: #0b0422;
+    color: white;
+
+}
+
+.mouse {
+    display: block;
+}
+
+@media screen and (max-width: 475px) {
+    .mouse {
+        display: none;
+    }
+
+    .accessibility_Setting_Btn_Container {
+        width: 350px;
+    }
+
+    .modal_Header {
+        width: 350px;
+    }
+
+    .Accessibility_Wrapper {
+        width: 350px;
+        height: 600px;
+        left: 50px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .accessibility_Setting_Btn_Container {
+        width: 350px;
+    }
+
+    .modal_Header {
+        width: 350px;
+    }
+
+    .Accessibility_Wrapper {
+        width: 350px;
+        height: 600px;
+        left: 5px;
+    }
+
 }

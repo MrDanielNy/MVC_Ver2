@@ -1,20 +1,3 @@
-.modal_Header {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: #020136c9;
-    height: 200px;
-    width: 450px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    color: #f8d744;
-
-
-
-}
-
 .accessibility_Icon {
     position: fixed;
     left: 30px;
@@ -44,7 +27,7 @@
 }
 
 .accessibility-Settings_Header {
-    margin: 20px;
+    margin: 10px;
     color: rgb(0, 0, 0);
     text-align: center;
 }
@@ -63,22 +46,6 @@
     background-color: #ffffff;
 }
 
-.accessibility_Setting_Btn_Container {
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: left;
-    align-items: flex-start;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-    height: 250px;
-    /* border-radius: 4px rgb(255, 255, 255) solid;*/
-    background-color: #2e2550;
-    color: white;
-
-}
 
 .btn-arrange {
     display: flex;
@@ -205,9 +172,7 @@ h5 {
     width: 60px;
 }
 
-.Wrapper_Accessibility {
-    animation: Animation 1s 1;
-}
+.Wrapper_Accessibility {}
 
 @keyframes Animation {
     0% {
