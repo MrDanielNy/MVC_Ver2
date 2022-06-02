@@ -589,7 +589,7 @@ function App(props) {
                   <div variant="btnContainer" className='accessibility_Setting_Btn_Container' >
                     <div className="btn-arrange">
 
-                      <div className="btn">
+                      <div id="bk_Animation_Btn" className="btn">
                         <button ref={backgroundAnimation} style={{ backgroundColor: localStorage.getItem("backgroundAnimation") }} disabled={btnDisable}
                           onClick={() => { console.log(playerMode + " Mode......" + typeof playerMode); togglePlay() }} className='accessibility_Setting_Btn'>{
 
@@ -601,7 +601,7 @@ function App(props) {
 
 
                       <div className="btn">
-                        <button id="btnReset" ref={mainColorsRef} style={{ backgroundColor: localStorage.getItem("mainColors") }} disabled={btnDisable}
+                        <button id="btnReset" ref={mainColorsRef} style={{ backgroundColor: localStorage.getItem("mainColors") }}
                           onClick={() => {
                             toggleColors();
                             // localStorage.setItem("colorsMode", mainColors)
@@ -701,107 +701,107 @@ function App(props) {
                       </div>
 
                       {/** Cussor settings */}
-                      <div className="mouse">
-                        <div className="cursoricons">
-                          <label >Markörinställningar </label>
-                        </div>
 
-                        <div className="btn">
-                          <button disabled={btnDisable} ref={normalRight} style={{ backgroundColor: localStorage.getItem("normalRight") }} onClick={() => {
-                            {
-                              setMousePointer('url(NormalPointer_ToLeft.png),auto');
-                              localStorage.setItem("cursor", 'url(NormalPointer_ToLeft.png),auto');
-
-                              console.log("Mouse pointer is >>>>>>>>>>> " + mousePointer)
-                              normalRight.current.style.backgroundColor = 'lightgreen';
-                              normalLeft.current.style.backgroundColor = 'white';
-                              bigLeft.current.style.backgroundColor = 'white';
-                              bigRight.current.style.backgroundColor = 'white';
-
-                              localStorage.setItem("normalRight", "lightgreen");
-                              localStorage.setItem("normalLeft", "white");
-                              localStorage.setItem("bigLeft", "white");
-                              localStorage.setItem("bigRight", "white");
-                            }
-                          }} variant='contained' className='accessibility_Setting_Btn'><img src="NormalPointer_ToLeft.png" alt="liten storlek höger muspekare" /></button>
-                          <label>Normal storlek höger</label>
-                        </div>
-
-                        <div className="btn">
-                          <button disabled={btnDisable} ref={normalLeft} style={{ backgroundColor: localStorage.getItem("normalLeft") }} onClick={() => {
-                            {
-                              setMousePointer('url(normalSizePointer_right.png),auto');
-                              localStorage.setItem("cursor", 'url(normalSizePointer_right.png),auto');
-
-                              console.log("Mouse pointer is >>>>>>>>>>> " + mousePointer + " " + typeof mousePointer)
-                              normalRight.current.style.backgroundColor = 'white';
-                              normalLeft.current.style.backgroundColor = 'lightgreen';
-                              bigLeft.current.style.backgroundColor = 'white';
-                              bigRight.current.style.backgroundColor = 'white';
-
-                              localStorage.setItem("normalRight", "white");
-                              localStorage.setItem("normalLeft", "lightgreen");
-                              localStorage.setItem("bigLeft", "white");
-                              localStorage.setItem("bigRight", "white");
-
-                            }
-                          }} variant='contained' className='accessibility_Setting_Btn'><img src="normalSizePointer_right.png" alt="liten storlek vänster muspekare" /></button>
-                          <label>Normal storlek vänster</label>
-                        </div>
-
-
-
-                        <div className="btn">
-                          <button disabled={btnDisable} ref={bigRight} style={{ backgroundColor: localStorage.getItem("bigRight") }} onClick={() => {
-                            {
-
-                              setMousePointer('url(toLeftmousePointer.png),auto');
-                              localStorage.setItem("cursor", 'url(toLeftmousePointer.png),auto');
-                              normalRight.current.style.backgroundColor = 'white';
-                              normalLeft.current.style.backgroundColor = 'white';
-                              bigLeft.current.style.backgroundColor = 'white';
-                              bigRight.current.style.backgroundColor = 'lightgreen';
-
-                              localStorage.setItem("normalRight", "white");
-                              localStorage.setItem("normalLeft", "white");
-                              localStorage.setItem("bigLeft", "white");
-                              localStorage.setItem("bigRight", "lightgreen");
-
-
-                            }
-
-
-                          }} variant='contained' className='accessibility_Setting_Btn'><img src="toLeft_cursorIcon.png" alt="stor storlek höger muspekare" /></button>
-                          <label>Höger hand</label>
-                        </div>
-
-                        <div className="btn">
-                          <button disabled={btnDisable} ref={bigLeft} style={{ backgroundColor: localStorage.getItem("bigLeft") }} onClick={() => {
-                            {
-                              // It sets the pointer's url.
-                              setMousePointer('url(toRightMousePointer.png),auto');
-                              // It saves the address of the mouse pointer image in local storage
-                              localStorage.setItem("cursor", 'url(toRightMousePointer.png),auto');
-
-                              // Changing the buttons' background color
-                              normalRight.current.style.backgroundColor = 'white';
-                              normalLeft.current.style.backgroundColor = 'white';
-                              bigLeft.current.style.backgroundColor = 'lightgreen';
-                              bigRight.current.style.backgroundColor = 'white';
-
-                              // Saving the buttons' background color in local storage
-                              localStorage.setItem("normalRight", "white");
-                              localStorage.setItem("normalLeft", "white");
-                              localStorage.setItem("bigLeft", "lightgreen");
-                              localStorage.setItem("bigRight", "white");
-                            }
-
-                          }} variant='contained' className='accessibility_Setting_Btn'><img src="toRight_CursorIcon.png" alt="stor storlek vänster muspekare" />
-                          </button>
-                          <label>Vänster hand</label>
-                        </div>
-                      </div>
                       <div className="cursoricons">
+                        <label >Markörinställningar </label>
+                      </div>
+
+                      <div className="btn_Pointer">
+                        <button disabled={btnDisable} ref={normalRight} style={{ backgroundColor: localStorage.getItem("normalRight") }} onClick={() => {
+                          {
+                            setMousePointer('url(NormalPointer_ToLeft.png),auto');
+                            localStorage.setItem("cursor", 'url(NormalPointer_ToLeft.png),auto');
+
+                            console.log("Mouse pointer is >>>>>>>>>>> " + mousePointer)
+                            normalRight.current.style.backgroundColor = 'lightgreen';
+                            normalLeft.current.style.backgroundColor = 'white';
+                            bigLeft.current.style.backgroundColor = 'white';
+                            bigRight.current.style.backgroundColor = 'white';
+
+                            localStorage.setItem("normalRight", "lightgreen");
+                            localStorage.setItem("normalLeft", "white");
+                            localStorage.setItem("bigLeft", "white");
+                            localStorage.setItem("bigRight", "white");
+                          }
+                        }} variant='contained' className='accessibility_Setting_Btn'><img src="NormalPointer_ToLeft.png" alt="liten storlek höger muspekare" /></button>
+                        <label>Normal storlek höger</label>
+                      </div>
+
+                      <div className="btn_Pointer">
+                        <button disabled={btnDisable} ref={normalLeft} style={{ backgroundColor: localStorage.getItem("normalLeft") }} onClick={() => {
+                          {
+                            setMousePointer('url(normalSizePointer_right.png),auto');
+                            localStorage.setItem("cursor", 'url(normalSizePointer_right.png),auto');
+
+                            console.log("Mouse pointer is >>>>>>>>>>> " + mousePointer + " " + typeof mousePointer)
+                            normalRight.current.style.backgroundColor = 'white';
+                            normalLeft.current.style.backgroundColor = 'lightgreen';
+                            bigLeft.current.style.backgroundColor = 'white';
+                            bigRight.current.style.backgroundColor = 'white';
+
+                            localStorage.setItem("normalRight", "white");
+                            localStorage.setItem("normalLeft", "lightgreen");
+                            localStorage.setItem("bigLeft", "white");
+                            localStorage.setItem("bigRight", "white");
+
+                          }
+                        }} variant='contained' className='accessibility_Setting_Btn'><img src="normalSizePointer_right.png" alt="liten storlek vänster muspekare" /></button>
+                        <label>Normal storlek vänster</label>
+                      </div>
+
+
+
+                      <div className="btn_Pointer">
+                        <button disabled={btnDisable} ref={bigRight} style={{ backgroundColor: localStorage.getItem("bigRight") }} onClick={() => {
+                          {
+
+                            setMousePointer('url(toLeftmousePointer.png),auto');
+                            localStorage.setItem("cursor", 'url(toLeftmousePointer.png),auto');
+                            normalRight.current.style.backgroundColor = 'white';
+                            normalLeft.current.style.backgroundColor = 'white';
+                            bigLeft.current.style.backgroundColor = 'white';
+                            bigRight.current.style.backgroundColor = 'lightgreen';
+
+                            localStorage.setItem("normalRight", "white");
+                            localStorage.setItem("normalLeft", "white");
+                            localStorage.setItem("bigLeft", "white");
+                            localStorage.setItem("bigRight", "lightgreen");
+
+
+                          }
+
+
+                        }} variant='contained' className='accessibility_Setting_Btn'><img src="toLeft_cursorIcon.png" alt="stor storlek höger muspekare" /></button>
+                        <label>Höger hand</label>
+                      </div>
+
+                      <div className="btn_Pointer">
+                        <button disabled={btnDisable} ref={bigLeft} style={{ backgroundColor: localStorage.getItem("bigLeft") }} onClick={() => {
+                          {
+                            // It sets the pointer's url.
+                            setMousePointer('url(toRightMousePointer.png),auto');
+                            // It saves the address of the mouse pointer image in local storage
+                            localStorage.setItem("cursor", 'url(toRightMousePointer.png),auto');
+
+                            // Changing the buttons' background color
+                            normalRight.current.style.backgroundColor = 'white';
+                            normalLeft.current.style.backgroundColor = 'white';
+                            bigLeft.current.style.backgroundColor = 'lightgreen';
+                            bigRight.current.style.backgroundColor = 'white';
+
+                            // Saving the buttons' background color in local storage
+                            localStorage.setItem("normalRight", "white");
+                            localStorage.setItem("normalLeft", "white");
+                            localStorage.setItem("bigLeft", "lightgreen");
+                            localStorage.setItem("bigRight", "white");
+                          }
+
+                        }} variant='contained' className='accessibility_Setting_Btn'><img src="toRight_CursorIcon.png" alt="stor storlek vänster muspekare" />
+                        </button>
+                        <label>Vänster hand</label>
+                      </div>
+
+                      <div className="ContentReader">
                         <label >Innehållsläsare </label>
                       </div>
                       <div className="btn">
