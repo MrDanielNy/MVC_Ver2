@@ -53,8 +53,12 @@ function MVC_Hero() {
     setClick(!click);
   };
   function text_Reader(input_Text, e) {
-    synth.resume(); // To resume the paused voice 
-    e.target.style.border = '4px solid lightgreen'; // To have a border to show focus.
+    synth.resume(); // To resume the paused voice
+    // To have a border to show focus.
+    if (localStorage.getItem("textReaderStatus") === "true") {
+      e.target.style.border = '2px solid yellow';
+    }
+
     // It reads the input_Text
     speak({
       text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
@@ -78,7 +82,9 @@ function MVC_Hero() {
               xs: 30,
             }
           }} onFocus={(e) => {
+            synth.cancel();
             text_Reader("My virtal Classroom!", e);
+            e.target.style.border = 'none';
           }} onMouseLeave={(e) => { // To pause the reader temporarily by onMouseLeave
             if (localStorage.getItem("btnCognitive") != "lightgreen") {
               e.target.style.border = 'none';
@@ -91,8 +97,10 @@ function MVC_Hero() {
 
 
 
-          <Typography onFocus={(e) => {
+          <Typography variant="h2" onFocus={(e) => {
+            synth.cancel();
             text_Reader("En framtid på lika villkor", e);
+            e.target.style.border = 'none';
           }} tabIndex={0} variant="h2" onMouseLeave={(e) => {
             if (localStorage.getItem("btnCognitive") != "lightgreen") {
               e.target.style.border = 'none';
@@ -106,17 +114,24 @@ function MVC_Hero() {
 
           <p>{/** Other staffs if needed here */}</p>
           <div className="hero_Btn_container">
-            <Link tabIndex={0} to="/Contacts" className="hero_Btn_Link">
-              <Button tabIndex={-1} aria-label="Kontakta oss! Tryck på knappen!" onMouseEnter={(e) => {
-                text_Reader("Kontakta oss! Tryck på knappen!", e);
-              }}
+            <Link tabIndex={-1} to="/Contacts" className="hero_Btn_Link">
+              <button tabIndex={0} aria-label="Kontakta oss! Tryck på knappen!"
+                onFocus={(e) => {
+                  synth.cancel();
+                  text_Reader("Kontakta oss! Tryck på knappen!", e);
+                  e.target.style.border = 'none';
+                }}
+                onMouseEnter={(e) => {
+                  text_Reader("Kontakta oss! Tryck på knappen!", e);
+                }}
                 onMouseLeave={(e) => {
                   if (localStorage.getItem("btnCognitive") != "lightgreen") {
                     e.target.style.border = 'none';
                   }
                   synth.cancel();
                 }}
-                variant="contained" color="secondary" className="hero_Btn"> <Typography variant="h6">Kontakta oss</Typography></Button>
+
+                variant="contained" color="secondary" className="hero_Btn"> <Typography tabIndex={-1} variant="h6">KONTAKTA OSS</Typography></button>
             </Link>
           </div>
         </div>

@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.logoMVC {
+  border-radius: 50px;
+}
+
 a.skip-main {
   left: -999px;
   position: absolute;

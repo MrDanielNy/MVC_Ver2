@@ -3,6 +3,23 @@
   margin: 0;
 }
 
+img:focus {
+  outline: #f9fd00 solid 2px;
+  box-shadow: 0px 0px 10px 2px#eeff00;
+  padding: 5px;
+}
+
+.about_Btn_Page:focus {
+  outline: #f9fd00 solid 2px;
+  box-shadow: 0px 0px 10px 2px#eeff00;
+  padding: 5px;
+}
+
+.about_Header_:focus {
+  outline: #f9fd00 solid 2px;
+  box-shadow: 0px 0px 10px 2px#eeff00;
+  padding: 5px;
+}
 
 
 .about {
@@ -35,6 +52,8 @@
   text-align: center;
 }
 
+
+
 .about_Text {
   display: flex;
   flex-direction: column;
@@ -51,8 +70,11 @@
   margin-bottom: 20px;
 }
 
-.about_SubText {
-  /*color: rgb(0, 82, 54);*/
+.about_SubText:focus {
+
+  outline: #f9fd00 solid 2px;
+  box-shadow: 0px 0px 10px 2px#eeff00;
+  padding: 5px;
 
 }
 

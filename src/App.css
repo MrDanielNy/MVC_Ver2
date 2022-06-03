@@ -1,4 +1,12 @@
+*:focus {
+    border: none;
+}
+
 img:focus {
+    outline: #eeff00 solid 5px;
+}
+
+div:focus {
     border: 2px yellow solid;
 }
 

@@ -104,18 +104,18 @@ export const theme2 = {
   typography: {
     h1: {
 
-      border: "4px solid lightgreen",
+      border: "4px solid green",
       color: "white",
 
     },
     h2: {
-      border: "4px solid lightgreen",
+      border: "4px solid green",
 
       color: "white",
       fontSize: 25,
     },
     h3: {
-      border: "4px solid lightgreen",
+      border: "4px solid green",
       fontSize: 25,
 
 
@@ -129,7 +129,7 @@ export const theme2 = {
     },
     h3_Contacts: {
       color: "black",
-      border: "4px solid lightgreen",
+      border: "4px solid green",
     },
     h6: {
       color: "black",
@@ -139,7 +139,7 @@ export const theme2 = {
     },
   }, btnContainer: {
 
-    border: "4px solid lightgreen",
+    border: "4px solid green",
 
   },
   "root": {

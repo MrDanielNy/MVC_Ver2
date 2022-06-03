@@ -25,7 +25,9 @@ function AboutUs_Link() {
   }
   function text_Reader(input_Text, e) {
     synth.resume();
-    e.target.style.border = '4px solid lightgreen';
+    if (localStorage.getItem("textReaderStatus") === "true") {
+      e.target.style.border = '4px solid yellow';
+    }
     speak({
       text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
     }
@@ -36,8 +38,8 @@ function AboutUs_Link() {
       <Paper variant="st1" className="about">
         <div className="about_Container">
           <div className="about_Text">
-            <div tabIndex={0} className="about_Header">
-              <Typography
+            <div className="about_Header">
+              <Typography className="about_Header_" tabIndex={0}
                 onMouseLeave={(e) => {
                   e.target.style.border = 'none';
                   // synth.pause();
@@ -46,7 +48,13 @@ function AboutUs_Link() {
                 onMouseEnter={(e) => {
                   text_Reader("Om oss.", e);
 
-                }} sx={{
+                }}
+                onFocus={(e) => {
+                  synth.cancel();
+                  text_Reader("Om oss.", e);
+                  e.target.style.border = 'none';
+                }}
+                sx={{
                   fontSize: {
                     lg: 100,
                     md: 70,
@@ -55,8 +63,8 @@ function AboutUs_Link() {
                   }
                 }} variant="h1" color="secondary" >Om oss</Typography>
             </div>
-            <div tabIndex={0} className="about_SubText">
-              <Typography onMouseLeave={(e) => {
+            <div >
+              <Typography className="about_SubText" tabIndex={0} onMouseLeave={(e) => {
                 e.target.style.border = 'none';
                 // synth.pause();
                 synth.cancel();
@@ -64,7 +72,14 @@ function AboutUs_Link() {
                 onMouseEnter={(e) => {
                   text_Reader(" Vi är ett företag med stor passion för teknisk utveckling och utbildning. Vi tycker att kombinationen är spännande och hoppas att ni vara med på vår resa.", e);
 
-                }} variant="h3" sx={{
+                }}
+                onFocus={(e) => {
+                  // e.target.style.border = '4px solid yellow';
+                  synth.cancel();
+                  text_Reader("Vi är ett företag med stor passion för teknisk utveckling och utbildning. Vi tycker att kombinationen är spännande och hoppas att ni vara med på vår resa.", e);
+                  e.target.style.border = 'none';
+                }}
+                variant="h3" sx={{
                   fontSize: {
                     lg: 23,
                     md: 20,
@@ -88,6 +103,12 @@ function AboutUs_Link() {
                 text_Reader("En bild, Daniel Johansson och Daniel Ny står,  virtuellt verklighetssystem.", e);
 
               }}
+              onFocus={(e) => {
+                synth.cancel();
+                text_Reader("En bild, Daniel Johansson och Daniel Ny står,  virtuellt verklighetssystem.", e);
+                e.target.style.border = 'none';
+              }}
+
               src={require("../../images/Kopia-av-My_Virtual_Classroom_-Daniel2020-11-06_12-51-03.png")}
               alt="En bild, Daniel Johansson och Daniel Ny står,  virtuellt verklighetssystem."
               className="about_Img "
@@ -97,8 +118,8 @@ function AboutUs_Link() {
         <div className="btn_Container">
           <div></div>
           <div >
-            <Link tabIndex={0} to="/AboutUs" className="about_btn_Link">
-              <Button tabIndex={-1} aria-label="Tryck på knappen att läsa om oss"
+            <Link tabIndex={-1} to="/AboutUs" className="about_btn_Link">
+              <Button tabIndex={0} aria-label="Tryck på knappen att läsa om oss"
                 onMouseLeave={(e) => {
                   e.target.style.border = 'none';
                   // synth.pause();
@@ -107,7 +128,14 @@ function AboutUs_Link() {
                 onMouseEnter={(e) => {
                   text_Reader("Om oss! Tryck på knappen att läsa om oss", e);
 
-                }} color="secondary" variant="contained" className="about_Btn_Page">
+                }}
+                onFocus={(e) => {
+                  synth.cancel();
+                  text_Reader("Om oss! Tryck på knappen att läsa om oss", e);
+                  e.target.style.border = 'none';
+                }}
+
+                color="secondary" variant="contained" className="about_Btn_Page">
                 <Typography variant="h6">Om oss</Typography> </Button>
             </Link>
           </div>
