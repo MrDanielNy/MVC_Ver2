@@ -5,7 +5,7 @@
 }
 
 .contact_Container {
-  background: url("../../images/digital-circle-circuit-blue-background-futuristic-technology.jpg") center center/cover no-repeat fixed;
+  background: url("../../images/contactUs.png   ") center center/cover no-repeat fixed;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -20,10 +20,8 @@
   max-height: 1080px;
   max-width: 100%;
   z-index: 100;
-
-
-
 }
+
 
 @media screen and (max-height: 600px) {
   .contact_Container {
@@ -36,7 +34,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20%;
+  width: 45%;
   margin-right: 100px;
 }
 
@@ -45,14 +43,14 @@
 }
 
 .first_text_ {
-  color: rgb(255, 255, 255);
-  font-size: 35px;
+
+
   font-weight: bold;
   letter-spacing: 2px;
   margin-bottom: 30px;
   background: transparent;
   position: relative;
-  animation: first_text_anim 1s 1;
+  animation: first_text_anim .5s 1;
 }
 
 @media screen and (max-width: 745px) {
@@ -64,14 +62,16 @@
     font-size: 25px;
     margin-bottom: 30px;
     color: white;
+    width: 400px;
   }
 
   .containerAni {
     margin-right: 0;
     width: 100%;
+
   }
 
-  @keyframes first_text_anim {}
+
 }
 
 @media screen and (max-width: 450px) {
@@ -82,7 +82,6 @@
   .first_text_ {
     text-align: center;
     font-weight: bold;
-    font-size: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin-bottom: 30px;
     margin-top: 50px;
@@ -93,37 +92,34 @@
 /* The second text should be displayed at the
 end of the first animation */
 
-/*@keyframes first_text_anim {
+@keyframes first_text_anim {
   0% {
-    color: rgb(255, 174, 0);
-    transition: all ease;
+
+    transform: scale(.1)
   }
+
   10% {
-    letter-spacing: 1px;
-    transition: all ease-out;
+
+    transform: scale(.2)
   }
+
   20% {
-    letter-spacing: 2px;
-    transition: all ease-in;
+
+    transform: scale(.3)
   }
+
   30% {
-    letter-spacing: 3px;
-    transition: all ease-in;
+
+    transform: scale(.4)
   }
+
   40% {
-    letter-spacing: 4px;
-    transition: all ease-in;
+
+    transform: scale(.5)
   }
-  50% {
-    letter-spacing: 5px;
-    transition: all ease-in;
-  }
-  60% {
-    letter-spacing: 4px;
-    transition: all ease-in;
-  }
+
 }
-*/
+
 .form_Container {
   display: flex;
   flex-direction: row;

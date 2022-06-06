@@ -11,6 +11,7 @@ import {
   ThemeProvider,
   createTheme
 } from "@mui/material";
+
 import { useSpeechSynthesis } from 'react-speech-kit';
 
 function Contacts_Link() {
@@ -24,7 +25,9 @@ function Contacts_Link() {
   }
   function text_Reader(input_Text, e) {
     synth.resume();
-    e.target.style.border = '2px solid #000000';
+    if (localStorage.getItem("textReaderStatus") === "true") {
+      e.target.style.border = '4px solid yellow';
+    }
     speak({
       text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
     }
@@ -35,7 +38,7 @@ function Contacts_Link() {
       <div className="contacts_Container">
 
         <div className="contacts_Title">
-          <Typography onMouseLeave={(e) => {
+          <Typography className="contacts_Title_" tabIndex={0} onMouseLeave={(e) => {
             e.target.style.border = 'none';
             // synth.pause();
             synth.cancel();
@@ -43,7 +46,14 @@ function Contacts_Link() {
             onMouseEnter={(e) => {
               text_Reader("Välkomna att kontakta oss!", e);
 
-            }} variant="h1" sx={{
+            }}
+            onFocus={(e) => {
+              synth.cancel();
+              text_Reader("Välkomna att kontakta oss!", e);
+              e.target.style.border = 'none';
+            }}
+
+            variant="h1" sx={{
               fontSize: {
                 lg: 100,
                 md: 70,
@@ -51,7 +61,7 @@ function Contacts_Link() {
                 xs: 30,
               }
             }}  >Välkomna att kontakta oss! </Typography>
-          <Typography onMouseLeave={(e) => {
+          <Typography tabIndex={0} onMouseLeave={(e) => {
             e.target.style.border = 'none';
             // synth.pause();
             synth.cancel();
@@ -59,7 +69,15 @@ function Contacts_Link() {
             onMouseEnter={(e) => {
               text_Reader("Vi söker hela tiden efter nya utmaningar, samarbeten och dialoger.", e);
 
-            }} variant="h3_Contacts" sx={{
+            }}
+
+            onFocus={(e) => {
+              synth.cancel();
+              text_Reader("Vi söker hela tiden efter nya utmaningar, samarbeten och dialoger.", e);
+              e.target.style.border = 'none';
+            }}
+
+            variant="h3_Contacts" sx={{
               fontSize: {
                 lg: 23,
                 md: 20,
@@ -72,34 +90,41 @@ function Contacts_Link() {
         </div>
 
         <div>
-          <Link to="/Contacts" className="about_btn_Link">
-            <Button color="secondary" variant="contained" className="btn_Contact">
-              <Typography onMouseLeave={(e) => {
-                e.target.style.border = 'none';
-                // synth.pause();
-                synth.cancel();
-              }}
-                onMouseEnter={(e) => {
-                  text_Reader("Kontakta oss! Tryck på knappen", e);
+          <Link tabIndex={1} to="/Contacts" className="about_btn_Link">
+            <Button onMouseLeave={(e) => {
+              e.target.style.border = 'none';
+              // synth.pause();
+              synth.cancel();
+            }}
+              onMouseEnter={(e) => {
+                text_Reader("Kontakta oss! Tryck på knappen", e);
 
-                }} variant="h6">
+              }}
+              onFocus={(e) => {
+                synth.cancel();
+                text_Reader("Kontakta oss! Tryck på knappen", e);
+                e.target.style.border = 'none';
+              }}
+              tabIndex={0} color="secondary" variant="contained" className="btn_Contact">
+              <Typography
+                variant="h6">
                 Kontakta oss </Typography>
             </Button>
           </Link>
         </div>
         {/** TODO: Make a link to MVC's social media */}
-
+        {/** Add content reader for social media's icons! */}
         <div className="social_Links_Container_">
           <div className="facebook">
-            <img
+            <img tabIndex={0}
               src={require("../../images/facebook.png")}
-              alt=" A link to my virtual classroom's Facebook "
+              alt="Fäicebook-ikon. en länk till my virtual classrooms Fäicebook"
             />
           </div>
           <div className="linkedIn">
-            <img
+            <img tabIndex={0}
               src={require("../../images/linkedIn.png")}
-              alt=" A link to my virtual classroom's LinkedIn "
+              alt=" LinkdIn-ikon. en länk till my virtual classrooms LinkdIn "
             />
           </div>
         </div>

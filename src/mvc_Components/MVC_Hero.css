@@ -64,6 +64,14 @@
   animation: title_Animation 2s 1;
 }
 
+.title:focus {
+  outline: #f9fd00 solid 2px;
+  box-shadow: 0px 0px 10px 2px#eeff00;
+  padding: 5px;
+}
+
+
+
 @keyframes title_Animation {
   0% {
     opacity: 0;
@@ -108,6 +116,12 @@
   margin-bottom: 20px;
 }
 
+.subTitle_:focus {
+  outline: #f9fd00 solid 2px;
+  box-shadow: 0px 0px 10px 2px#eeff00;
+  padding: 5px;
+}
+
 .hero_Btn_container {
   margin-top: 40px;
 }
@@ -115,14 +129,21 @@
 .hero_Btn {
   width: 200px;
   height: 50px;
-  background: transparent;
-  font-size: 1rem;
+  background-color: white;
+  font-size: 2rem;
   font-weight: bold;
   cursor: pointer;
   margin-top: 20px;
-  border: 2px white double;
+  border: 2px rgb(78, 66, 255) double;
+  border-radius: 5px;
   z-index: 10000;
   color: black;
+}
+
+.hero_Btn:focus {
+  outline: #f9fd00 solid 2px;
+  box-shadow: 0px 0px 10px 2px#eeff00;
+  padding: 5px;
 }
 
 .hero_Btn_Link {
@@ -132,16 +153,18 @@
 
 /* TODO  Change the size of the button using media screen to have accessibility for mobile users */
 .hero_Btn:hover {
-  background-color: white;
-  color: black;
-  transition: all 0.5s ease;
+  background: rgb(120, 141, 255);
+  color: rgb(0, 0, 0);
+  transition: all 0.3s ease;
   cursor: url(../../public/HandCursor1.png), auto;
 }
+
 
 @media screen and (max-height: 450px) {
   .mvc-hero-container {
 
-    /* background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;*/
+    background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;
+
   }
 }
 

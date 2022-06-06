@@ -1,4 +1,50 @@
-.App {}
+*:focus {
+    border: none;
+}
+
+html {
+    max-zoom: 200%;
+}
+
+img:focus {
+    outline: #eeff00 solid 5px;
+}
+
+div:focus {
+    border: 2px yellow solid;
+}
+
+.App {
+    filter: grayscale(0%);
+}
+
+.safeApp {
+    filter: grayscale(75%);
+}
+
+label {
+    color: rgb(255, 255, 255);
+}
+
+.btnDescription {
+    background-color: rgba(247, 255, 142, 0.274);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50px;
+    font-size: 15px;
+    width: 70%;
+    border-radius: 3px;
+    padding: 10px;
+    color: rgb(255, 255, 255);
+}
+
+.noDescription {
+    display: none;
+}
+
+
 
 .cursoricons {
     margin-top: 10px;
@@ -6,9 +52,19 @@
     width: 100%;
     justify-content: center;
     text-align: center;
-    border-top: 1px rgb(122, 122, 122) dashed;
+    border-top: 1px rgb(122, 122, 122) solid;
     font-size: large;
 
+}
+
+.ContentReader {
+    margin-top: 10px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    border-top: 1px rgb(122, 122, 122) solid;
+    font-size: large;
 }
 
 .accessibility_Container {
@@ -19,8 +75,6 @@
     align-items: left;
     border-radius: 20px;
     width: 100%;
-
-
     transition: all 2s ease-out;
     z-index: 10000;
 }
@@ -32,6 +86,21 @@
     position: fixed;
     top: 0;
     left: 0;
+
+}
+
+.noVideo {
+
+    object-fit: cover;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    filter: grayscale(75%);
+
+
+
 }
 
 .background_Container_Video {
@@ -107,4 +176,203 @@
 .backgroundAccessibility {
     background-color: green;
     z-index: 3000;
+}
+
+/* Accessibility settings*/
+.Background {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    background-color: #c5c5c577;
+    z-index: 4000;
+}
+
+.Accessibility_Wrapper {
+    position: fixed;
+    width: 450px;
+    height: 600px;
+    box-shadow: 0 5px 16px rgb(3, 0, 51);
+    background: #c5c5c5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    z-index: 2;
+    border-radius: 10px;
+    margin-bottom: 50px;
+    bottom: -40px;
+    left: 10px;
+
+    transition: all .5s ease-out;
+    animation: Animation .2s 1;
+}
+
+.Accessibility_Window_Content {}
+
+
+.modal_Header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #020136c9;
+    height: 200px;
+    width: 450px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    color: #f8d744;
+
+}
+
+.accessibility_Setting_Btn_Container {
+    margin-top: 10px;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: flex-start;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    height: 290px;
+    /* border-radius: 4px rgb(255, 255, 255) solid;*/
+    background-color: #0b0422;
+    color: white;
+
+}
+
+.reset_Settings_Btn {
+    padding: 0;
+    width: 150px;
+    height: 50px;
+    margin: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+
+    background: transparent;
+    border: 1px rgb(3, 1, 117) solid;
+    border-radius: 5px;
+    background-color: #ffffff;
+
+}
+
+.mouse {
+    display: block;
+}
+
+@media screen and (max-height: 645px) {
+    .reset_Settings_Btn {
+        width: 100px;
+    }
+
+    .accessibility-active-profile {
+        display: none;
+    }
+
+    .accessibility-Settings_Header {
+        display: none;
+
+    }
+
+    .accessibility_Setting_Btn_Container {
+        width: 700px;
+        height: 250px;
+    }
+
+    .modal_Header {
+        width: 700px;
+        height: 120px;
+    }
+
+    .Accessibility_Wrapper {
+        width: 700px;
+        height: 300px;
+        left: 10px;
+        bottom: 35px;
+    }
+
+
+    #bk_Animation_Btn {
+        display: none;
+
+    }
+
+    .btn_Pointer {
+        display: none;
+    }
+
+    .cursoricons {
+        display: none;
+    }
+
+}
+
+
+
+@media screen and (max-width: 768px) {
+    #bk_Animation_Btn {
+        display: none;
+
+    }
+
+    .btn_Pointer {
+        display: none;
+    }
+
+    .cursoricons {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    #bk_Animation_Btn {
+        display: none;
+
+    }
+
+    .btn_Pointer {
+        display: none;
+    }
+
+    .cursoricons {
+        display: none;
+    }
+
+    .accessibility_Setting_Btn_Container {
+        width: 350px;
+    }
+
+    .modal_Header {
+        width: 350px;
+    }
+
+    .Accessibility_Wrapper {
+        width: 350px;
+        height: 600px;
+        left: 50px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .accessibility_Setting_Btn_Container {
+        width: 350px;
+    }
+
+    .modal_Header {
+        width: 350px;
+    }
+
+    .Accessibility_Wrapper {
+        width: 350px;
+        height: 600px;
+        left: 5px;
+    }
+
 }

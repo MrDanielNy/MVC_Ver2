@@ -20,7 +20,9 @@ function Platform() {
   }
   function text_Reader(input_Text, e) {
     synth.resume();
-    e.target.style.border = '2px solid rgba(147, 250, 165)';
+    if (localStorage.getItem("textReaderStatus") === "true") {
+      e.target.style.border = '2px solid yellow';
+    }
     speak({
       text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
     }
@@ -30,19 +32,32 @@ function Platform() {
   return (
     <>
 
-      <Paper variant="st2" color="primary" className="platform_Container">
+      <Paper variant="st2" className="platform_Container">
 
         <div className="platform_Text_Container_">
 
-          < Typography onMouseLeave={(e) => {
-            e.target.style.border = 'none';
+          < Typography tabIndex={0} onMouseLeave={(e) => {
+            if (localStorage.getItem("btnCognitive") != "lightgreen") {
+              e.target.style.border = 'none';
+            }
+
             // synth.pause();
             synth.cancel();
           }}
             onMouseEnter={(e) => {
               text_Reader("Vad vi gör?", e);
 
-            }} variant="h1" sx={{
+            }}
+            onFocus={(e) => {
+              synth.cancel();
+              text_Reader("Vad vi gör?", e);
+              if (localStorage.getItem("btnCognitive") != "lightgreen") {
+                e.target.style.border = 'none';
+              }
+
+            }}
+
+            variant="h1" sx={{
               fontSize: {
                 lg: 100,
                 md: 70,
@@ -50,27 +65,42 @@ function Platform() {
                 xs: 30,
               }
             }} color="secondary" className="platform_Title" > Vad vi gör</Typography>
-          <button className="notVisiblBtn" >
-            <Typography onMouseLeave={(e) => {
+
+          <Typography tabIndex={0} onMouseLeave={(e) => {
+            if (localStorage.getItem("btnCognitive") != "lightgreen") {
               e.target.style.border = 'none';
-              // synth.pause();
-              synth.pause();
+            }
+
+            // synth.pause();
+            synth.pause();
+          }}
+            onMouseEnter={(e) => {
+              text_Reader(" My Virtual Classroom “MVC” är ett initiativ med fokus på att skapa och utveckla nya innovativa verktyg med hjälp av virtuell verklighet. MVC även namnet på den plattform som vi nu utvecklar och ska fyllas med nya möjliga upplevelser inom både utbildning och kultur. Vi har en stark anknytning till skola och ser hur utbildning kan ta tillvara på dagens tekniska utveckling och möjligheter som ett komplement till undervisningen. Men VR som verktyg skapar nya möjligheter att mentalt förflytta sig till helt andra platser och uppleva miljöer som annars inte kunnat upplevas, samt anpassas och skräddarsys till individ för att öka tillgängligheten.", e);
+
             }}
-              onMouseEnter={(e) => {
-                text_Reader(" My Virtual Classroom “MVC” är ett initiativ med fokus på att skapa och utveckla nya innovativa verktyg med hjälp av virtuell verklighet. MVC även namnet på den plattform som vi nu utvecklar och ska fyllas med nya möjliga upplevelser inom både utbildning och kultur. Vi har en stark anknytning till skola och ser hur utbildning kan ta tillvara på dagens tekniska utveckling och möjligheter som ett komplement till undervisningen. Men VR som verktyg skapar nya möjligheter att mentalt förflytta sig till helt andra platser och uppleva miljöer som annars inte kunnat upplevas, samt anpassas och skräddarsys till individ för att öka tillgängligheten.", e);
 
-              }} variant="h3" sx={{
-                fontSize: {
-                  lg: 23,
-                  md: 20,
-                  sm: 18,
-                  xs: 15,
-                }
-              }} color="secondary" className="platform_Text_">
-              {OurPlanText}
+            onFocus={(e) => {
+              synth.cancel();
+              text_Reader("My Virtual Classroom “MVC” är ett initiativ med fokus på att skapa och utveckla nya innovativa verktyg med hjälp av virtuell verklighet. MVC även namnet på den plattform som vi nu utvecklar och ska fyllas med nya möjliga upplevelser inom både utbildning och kultur. Vi har en stark anknytning till skola och ser hur utbildning kan ta tillvara på dagens tekniska utveckling och möjligheter som ett komplement till undervisningen. Men VR som verktyg skapar nya möjligheter att mentalt förflytta sig till helt andra platser och uppleva miljöer som annars inte kunnat upplevas, samt anpassas och skräddarsys till individ för att öka tillgängligheten.", e);
+              if (localStorage.getItem("btnCognitive") != "lightgreen") {
+                e.target.style.border = 'none';
+              }
 
-            </Typography>
-          </button>
+            }}
+
+
+            variant="h3" sx={{
+              fontSize: {
+                lg: 23,
+                md: 20,
+                sm: 18,
+                xs: 15,
+              }
+            }} color="secondary" className="platform_Text_">
+            {OurPlanText}
+
+          </Typography>
+
         </div>
 
       </Paper>

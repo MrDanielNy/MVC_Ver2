@@ -1,6 +1,6 @@
 import React from "react";
 import { useRef, useEffect } from "react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import emailjs, { send } from "emailjs-com";
 
 import "./MVC_Contacts.css";
@@ -11,7 +11,10 @@ import { FaBeer, BiMessageDetail, FaRegEnvelope } from "react-icons/fa";
 import { type } from "@testing-library/user-event/dist/type";
 import video from "../../images/video-2.mp4";
 
+import { Typography } from "@mui/material";
+import { useSpeechSynthesis } from 'react-speech-kit';
 function MVC_Contacts() {
+  const title = useRef();
   const labelName = useRef();
   const labelEmail = useRef();
   const labelText = useRef();
@@ -20,13 +23,33 @@ function MVC_Contacts() {
   const buttonSend = useRef();
   const email_form = useRef();
   let counter_Validation = 0;
-
-  const [buttonText, setButtonText] = useState("Send");
+  const { speak } = useSpeechSynthesis();
+  var synth = window.speechSynthesis; // To achieve the speechSynthesis' internal functions
+  const [buttonText, setButtonText] = useState("Skicka");
 
   const inputName = useRef(null);
-  useEffect(() => {
-    inputName.current.focus();
-  });
+  function text_Reader(input_Text, e) {
+    synth.resume(); // To resume the paused voice
+    // To have a border to show focus.
+    if (localStorage.getItem("textReaderStatus") === "true") {
+      e.target.style.border = '2px solid yellow';
+    }
+
+    // It reads the input_Text
+    speak({
+      text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+    }
+    )
+  }
+
+  if (localStorage.getItem("textReaderStatus") === "true") {
+    synth.resume();
+  }
+  else {
+    synth.cancel();
+    synth.pause();
+  }
+
 
   function removeSpaces(string) {
     return string.split(" ").join("");
@@ -38,11 +61,11 @@ function MVC_Contacts() {
     if (name_ === "" || name_ === null) {
       console.log("empty ---> " + name_);
 
-      labelName.current.textContent = "Enter your name please!";
+      labelName.current.textContent = "Ange ditt namn!";
       labelName.current.style.color = "red";
       return false;
     } else {
-      labelName.current.textContent = "Name";
+      labelName.current.textContent = "Namn";
       labelName.current.style.color = "green";
       console.log("Typing... " + event.target.value);
 
@@ -52,7 +75,7 @@ function MVC_Contacts() {
 
   const emailValidation = (event) => {
     const email_ = event.target.value;
-    console.log("It goes in it");
+
 
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email_)) {
       console.log("ok");
@@ -63,17 +86,21 @@ function MVC_Contacts() {
       setTimeout(() => {
         inputEmail.current.style.backgroundColor = "white";
         labelEmail.current.style.color = "green";
-        labelEmail.current.textContent = "Email";
+        labelEmail.current.textContent = "e-post";
       }, 200);
 
       labelEmail.current.style.color = "white";
       return true;
     } else if (email_ === "" || email_ === null) {
       console.log("invalid!!");
-      labelEmail.current.textContent = "Enter your email please!";
+      labelEmail.current.textContent = "Ange din e-post!";
       labelEmail.current.style.color = "red";
       return false;
     } else {
+      speak({
+        text: "Invalid email format!", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+      }
+      )
       labelEmail.current.textContent = "Invalid email format!";
       labelEmail.current.style.color = "red";
     }
@@ -84,8 +111,11 @@ function MVC_Contacts() {
     text_ = removeSpaces(text_);
     if (text_ === "" || text_ === null) {
       console.log("empty ---> " + text_);
-
-      labelText.current.textContent = "Enter your message please!";
+      speak({
+        text: "Skriv in ditt meddelande tack!", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+      }
+      )
+      labelText.current.textContent = "Skriv in ditt meddelande tack!";
       labelText.current.style.color = "red";
       return false;
     } else {
@@ -110,11 +140,19 @@ function MVC_Contacts() {
     const textValue = removeSpaces(inputText.current.value);
     if (nameValue === "" || nameValue === null) {
       inputName.current.focus();
+      speak({
+        text: "Ange ditt namn!", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+      }
+      )
       labelName.current.style.color = "red";
       return false;
     }
     if (emailValue === "" || emailValue === null) {
       inputEmail.current.focus();
+      speak({
+        text: "Ange din e-post!", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+      }
+      )
       labelEmail.current.style.color = "red";
       return false;
     }
@@ -136,97 +174,136 @@ function MVC_Contacts() {
         "W564JHf9PctY9HRA0"
       )
       .then((res) => {
-        console.log("Limited service!")
+        //console.log("Limited service!")
         //  console.log("Your email is sent successfully");
-        /* setButtonText("Sent");
- 
-         setTimeout(() => {
-           /* document.getElementById("btnsend").disabled = false;
-           btn.textContent = "";*/
-        /* console.log("Your email is sent successfully");
-         setButtonText("Sent");
-       }, 1000);*/
-        formReset();
-      })
-      .catch((err) => {
         if (formValidation()) {
-          console.log("Error " + err);
-          console.log("Your email is sent successfully dfgdfgd");
+          console.log("Error ");
+          console.log("Your email is sent successfully");
           buttonSend.current.style.color = "white";
           buttonSend.current.style.backgroundColor = "green";
-          setButtonText("Sending...");
+          setButtonText("Sändning...");
 
           buttonSend.current.disabled = true;
 
           setTimeout(() => {
             console.log("Your email is sent successfully");
 
-            setButtonText("Sent");
+            setButtonText("Skickas");
             buttonSend.current.disabled = false;
             buttonSend.current.style.color = "black";
             buttonSend.current.style.backgroundColor = "green";
           }, 1000);
           setTimeout(() => {
             console.log("Your email is sent successfully");
-            setButtonText("Send");
+            setButtonText("Skicka");
             buttonSend.current.disabled = false;
-            buttonSend.current.style.color = "black";
-            buttonSend.current.style.backgroundColor = "transparent";
+            buttonSend.current.style.color = "white";
+            buttonSend.current.style.backgroundColor = "#191351";
           }, 2000);
           formReset();
         }
+
+      })
+      .catch((err) => {
+        buttonSend.current.style.backgroundColor = "red";
       });
+  }
+  const changeFocus = useCallback(e => {
+    if (e.key === "Escape") {
+      console.log("Escape is pressed")
+      title.current.focus();
+
+
+    }
+
+  }, [])
+  useEffect(() => {
+    document.addEventListener("keydown", changeFocus);
+    return () => document.removeEventListener("keydown", changeFocus)
+  })
+
+  let activElement = document.getElementById('email-form');
+  var isFocused = (document.activeElement === activElement);
+  if (isFocused) {
+    document.removeEventListener();
+  }
+  function checkState() {
+    if (localStorage.getItem("PlayerMode") === "true") {
+      return true;
+    }
+    else
+      return false;
+  }
+  console.log(typeof checkState() + " The player mode in Contacts is ")
+  console.log(checkState() + " The player mode in Contacts is ")
+  if (localStorage.getItem("textReaderStatus") === "true") {
+    synth.resume();
+  }
+  else {
+    synth.cancel();
   }
 
   return (
     <>
-      <div className="background_Container">
-        {/*} <video className=".background-video" loop autoPlay muted>
-          <source src={video} type="video/mp4" />
-          Your browser does not support the video tag.
-  </video>*/}
-      </div>
-      <div className="contact_Container">
-        <div className="containerAni">
-          <h3 className="first_text_">
-            Do you want to be involved and create tomorrow's teaching?
-          </h3>
+
+      <div className={"contact_Container"}>
+        <div tabIndex={0} ref={title} className="containerAni">
+          <Typography sx={{
+            fontSize: {
+              lg: 35,
+              md: 28,
+              sm: 24,
+              xs: 20,
+            }
+          }}
+
+            variant="h3_Contacts" className="first_text_">
+            Vill du vara med och skapadgfg morgondagens undervisning?  kontakta oss!
+          </Typography>
         </div>
-        <div>
-          <div className="form_Container">
-            <form onSubmit={send} id="email-form" ref={email_form}>
-              <label className="label" ref={labelName}>
-                Name
+        <div >
+          <div
+
+
+            tabIndex={0} aria-label="kontaktformulär , Vänligen fyll i ditt namn, e-postadress och ditt meddelande" className="form_Container">
+            <form
+
+
+              onSubmit={send} id="email-form" ref={email_form}>
+              <label tabIndex={0} aria-label="Namn" className="label" ref={labelName}>
+                Namn
               </label>
               <div>
                 <input
+
+
                   type="text"
                   name="user_name"
-                  placeholder="Your name"
+                  placeholder="Ange ditt namn!"
                   ref={inputName}
                   onChange={validName}
                 />
               </div>
 
-              <label className="label" ref={labelEmail}>
-                Email
+              <label aria-label="e-post" tabIndex={0} className="label" ref={labelEmail}>
+                e-post
               </label>
               <input
                 type="email"
                 name="user_email"
-                placeholder="Your e-mail address "
+                placeholder="Din e-postadress"
                 ref={inputEmail}
                 onChange={emailValidation}
                 title="This field should not be left blank."
               />
 
-              <label className="label" ref={labelText}>
-                Message
+              <label tabIndex={0} aria-label="Meddelande" className="label" ref={labelText}>
+                Meddelande
               </label>
               <textarea
                 className="message"
                 name="message"
-                placeholder="Write your message"
+                placeholder="Skriv ditt meddelande"
                 ref={inputText}
                 autoComplete="off"
                 onChange={messageValidation}

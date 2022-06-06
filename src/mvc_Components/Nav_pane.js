@@ -18,30 +18,31 @@ import {
   createTheme
 } from "@mui/material";
 import { useSpeechSynthesis } from 'react-speech-kit';
+import { InfoSharp } from "@mui/icons-material";
+import MVC_Home from "./mvc_pages/MVC_Home";
 
 function NavPane() {
   const logoTab = useRef();
   const menuItem1 = useRef();
   const menuItem2 = useRef();
   const menuItem3 = useRef();
-
+  const navBar = useRef();
   const hamMenu = useRef();
-  React.useEffect(() => {
-    hamMenu.current.focus();
-  }, []);
+
+
+
+  /*React.useEffect(() => {
+    logoTab.current.focus();
+  }, []);*/
+
 
   const [showAccessibility, setShowAccessibility] = useState(false);
-  const openAccessibilitySettings = () => {
-    setShowAccessibility(prev => !prev) // If it is true, change it to false
-  }
 
   const [click, setClick] = useState(false);
 
   const closeMenu = () => setClick(false);
   const handleClick = () => {
-    //menuItem1.current.focus();
-
-
+    menuItem1.current.focus();
     console.log("Testing...");
     setClick(!click);
   };
@@ -63,19 +64,27 @@ function NavPane() {
     return () => document.removeEventListener("keydown", closeMenu_)
   })
 
-
-
+  // Opening the menu using Ctrl+Alt+M
   const menu = useCallback(e => {
-    if (e.keyCode === 77) {
-      console.log("Escape is pressed")
-      click(true)
+    if (e.ctrlKey && e.altKey && e.code === 'KeyM') {
+      setClick(!click);
+      console.log(click + "Click is ----> ")
     }
-
-
-  }, [setClick], [click])
+  }, [])
   useEffect(() => {
     document.addEventListener("keydown", menu);
     return () => document.removeEventListener("keydown", menu)
+  })
+
+  const menu_Close = useCallback(e => {
+    if (e.keyCode === 77) {
+      console.log("Escape is pressed")
+      setClick(!click)
+    }
+  }, [setClick], [click])
+  useEffect(() => {
+    document.addEventListener("keydown", menu_Close);
+    return () => document.removeEventListener("keydown", menu_Close)
   })
 
   const hamStyle = {
@@ -105,20 +114,40 @@ function NavPane() {
     }
     )
   }
+
+  let colorsMode;
+  if (localStorage.getItem("colorsMode") === "true") {
+    colorsMode = true;
+  }
+  else
+    colorsMode = false;
+
+
+
+
+  React.useEffect(() => {
+    logoTab.current.focus();
+  }, []);
+
   return (
     <>
-      <nav className="nav_Pane">
-        <Paper variant="st1" color="primary" className="navbar-container">
-          <Button tabIndex={-1} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
-            <div className="mvcLogo">
-              MVC
+      <nav tabIndex={-1} className={colorsMode ? "nav_Pane" : "safeColor_nav_Pane"} >
+        <Paper ref={navBar} aria-label="navigeringsfältet" variant="st1" color="primary" className="navbar-container">
+
+          <Button id="logo" tabIndex={0} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
+            <div aria-label="My virtual Classrooms logotyp. Välkommen" className="mvcLogo">
+              {/*<img className="logoMVC" src={require("../images/logoMVCnew.png")} />*/}
+              <span className="logo">MVC</span>
             </div>
           </Button>
           <div></div>
           <div></div>
           <div className="ham_Menu" >
-            <Button onMouseEnter={(e) => {
-              text_Reader("meny!", e);
+            <Button id="menu" aria-label="Meny!" tabIndex={0} onFocus={(e) => {
+              console.log("Menu is selected!");
+              text_Reader("Meny!", e);
+            }} onMouseEnter={(e) => {
+              text_Reader("Meny, länkar till andra sidor!", e);
             }} onMouseLeave={(e) => {
               e.target.style.border = 'none';
               // synth.pause();
@@ -134,7 +163,9 @@ function NavPane() {
       <div className="drop-down-menu">
         <div className={click ? "menu active" : "menu"}>
 
-          <Button onMouseEnter={(e) => {
+          <Button onFocus={(e) => {
+            text_Reader("Projekt! klicka för att läsa mer om våra projekt", e);
+          }} onMouseEnter={(e) => {
             text_Reader("Projekt! klicka för att läsa mer om våra projekt", e);
           }} onMouseLeave={(e) => {
             e.target.style.border = 'none';
@@ -146,7 +177,9 @@ function NavPane() {
 
 
           <h5 className="menu-items">
-            <Button onMouseEnter={(e) => {
+            <Button onFocus={(e) => {
+              text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
+            }} onMouseEnter={(e) => {
               text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
             }} onMouseLeave={(e) => {
               e.target.style.border = 'none';
@@ -158,7 +191,9 @@ function NavPane() {
           </h5>
 
           <h5 className="menu-items">
-            <Button onMouseEnter={(e) => {
+            <Button onFocus={(e) => {
+              text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
+            }} onMouseEnter={(e) => {
               text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
             }} onMouseLeave={(e) => {
               e.target.style.border = 'none';
