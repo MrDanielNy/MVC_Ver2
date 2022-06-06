@@ -33,6 +33,7 @@ export const theme1 = {
     h6: {
       color: "black",
       fontSize: 20,
+      border: "none",
 
 
     },
@@ -104,23 +105,24 @@ export const theme2 = {
   typography: {
     h1: {
 
-      border: "4px solid green",
+      border: "2px solid yellow",
       color: "white",
 
     },
     h2: {
-      border: "4px solid green",
+      border: "2px solid yellow",
 
       color: "white",
       fontSize: 25,
     },
     h3: {
-      border: "4px solid green",
+      border: "2px solid yellow",
       fontSize: 25,
 
 
     },
     h3_Boxes: {
+      border: "2px solid yellow",
       color: "white",
       fontSize: 25,
       border: "none",
@@ -129,9 +131,10 @@ export const theme2 = {
     },
     h3_Contacts: {
       color: "black",
-      border: "4px solid green",
+      border: "2px solid yellow",
     },
     h6: {
+      border: "2px solid yellow",
       color: "black",
       fontSize: 20,
 
@@ -139,7 +142,7 @@ export const theme2 = {
     },
   }, btnContainer: {
 
-    border: "4px solid green",
+    border: "2px solid yellow",
 
   },
   "root": {

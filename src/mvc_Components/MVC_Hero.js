@@ -86,7 +86,7 @@ function MVC_Hero() {
             text_Reader("My virtal Classroom!", e);
             e.target.style.border = 'none';
           }} onMouseLeave={(e) => { // To pause the reader temporarily by onMouseLeave
-            if (localStorage.getItem("btnCognitive") != "lightgreen") {
+            if (localStorage.getItem("btnCognitive") === "white") {
               e.target.style.border = 'none';
             }
             synth.cancel();
@@ -101,8 +101,8 @@ function MVC_Hero() {
             synth.cancel();
             text_Reader("En framtid på lika villkor", e);
             e.target.style.border = 'none';
-          }} tabIndex={0} variant="h2" onMouseLeave={(e) => {
-            if (localStorage.getItem("btnCognitive") != "lightgreen") {
+          }} tabIndex={0} onMouseLeave={(e) => {
+            if (localStorage.getItem("btnCognitive") === "white") {
               e.target.style.border = 'none';
             }
             synth.cancel();
@@ -125,7 +125,7 @@ function MVC_Hero() {
                   text_Reader("Kontakta oss! Tryck på knappen!", e);
                 }}
                 onMouseLeave={(e) => {
-                  if (localStorage.getItem("btnCognitive") != "lightgreen") {
+                  if (localStorage.getItem("btnCognitive") === "white") {
                     e.target.style.border = 'none';
                   }
                   synth.cancel();

@@ -633,7 +633,7 @@ function App(props) {
                           handleSwitch((baseTheme));
                           localStorage.setItem("Theme", baseTheme);
                         }} className='accessibility_Setting_Btn'><LightModeIcon /></button>
-                        <label>allmänt tema</label>
+                        <label>Ljus</label>
 
                       </div>
 
@@ -659,7 +659,7 @@ function App(props) {
                           localStorage.setItem("ActiveProfile", " Mörkt");
                           handleSwitch(theme1);
                         }} className='accessibility_Setting_Btn'><DarkModeIcon /></button>
-                        <label>mörk kontrast</label>
+                        <label>mörk</label>
                       </div>
 
                       <div className="btn">
@@ -688,7 +688,7 @@ function App(props) {
                         <button ref={cognitive} style={{ backgroundColor: localStorage.getItem("btnCognitive") }} onClick={() => {
                           {
                             localStorage.setItem("btnCognitive", "lightgreen");
-                            //localStorage.setItem("ActiveProfile", " kognitive");
+                            localStorage.setItem("ActiveProfile", " kognitive");
                           }
                           setBtnLight("white");
                           setBtnDark("white");

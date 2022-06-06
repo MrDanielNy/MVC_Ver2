@@ -2,6 +2,10 @@
     border: none;
 }
 
+html {
+    max-zoom: 200%;
+}
+
 img:focus {
     outline: #eeff00 solid 5px;
 }
@@ -199,7 +203,7 @@ label {
     z-index: 2;
     border-radius: 10px;
     margin-bottom: 50px;
-    bottom: -10px;
+    bottom: -40px;
     left: 10px;
 
     transition: all .5s ease-out;
@@ -243,17 +247,37 @@ label {
 
 }
 
+.reset_Settings_Btn {
+    padding: 0;
+    width: 150px;
+    height: 50px;
+    margin: 20px;
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+
+    background: transparent;
+    border: 1px rgb(3, 1, 117) solid;
+    border-radius: 5px;
+    background-color: #ffffff;
+
+}
+
 .mouse {
     display: block;
 }
 
 @media screen and (max-height: 645px) {
+    .reset_Settings_Btn {
+        width: 100px;
+    }
+
     .accessibility-active-profile {
         display: none;
     }
 
     .accessibility-Settings_Header {
         display: none;
+
     }
 
     .accessibility_Setting_Btn_Container {
@@ -263,14 +287,14 @@ label {
 
     .modal_Header {
         width: 700px;
-        height: 100px;
+        height: 120px;
     }
 
     .Accessibility_Wrapper {
         width: 700px;
         height: 300px;
         left: 10px;
-        bottom: 15px;
+        bottom: 35px;
     }
 
 
@@ -288,6 +312,8 @@ label {
     }
 
 }
+
+
 
 @media screen and (max-width: 768px) {
     #bk_Animation_Btn {

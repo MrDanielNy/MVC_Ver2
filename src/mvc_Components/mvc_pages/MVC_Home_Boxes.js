@@ -43,7 +43,10 @@ function MVC_Home_Boxes(props) {
             <figure className="Item_Picture" >
 
               <img tabIndex={0} onMouseLeave={(e) => {
-                e.target.style.border = 'none';
+                if (localStorage.getItem("btnCognitive") != "lightgreen") {
+                  e.target.style.border = 'none';
+                }
+
                 // synth.pause();
                 synth.cancel();
               }}
@@ -55,7 +58,10 @@ function MVC_Home_Boxes(props) {
                 onFocus={(e) => {
                   synth.cancel();
                   text_Reader(props.label, e);
-                  e.target.style.border = 'none';
+                  if (localStorage.getItem("btnCognitive") != "lightgreen") {
+                    e.target.style.border = 'none';
+                  }
+
                 }} src={props.src} alt={props.label + "."} className="Item_Img" />
 
             </figure>
@@ -63,7 +69,10 @@ function MVC_Home_Boxes(props) {
           <Paper variant="st3" className="Item_Information">
             <h4 className="label_">{props.label}</h4>
             <Typography tabIndex={0} onMouseLeave={(e) => {
-              e.target.style.border = 'none';
+              if (localStorage.getItem("btnCognitive") != "lightgreen") {
+                e.target.style.border = 'none';
+              }
+
               synth.cancel();
 
             }} onMouseEnter={(e) => {
@@ -73,7 +82,10 @@ function MVC_Home_Boxes(props) {
               onFocus={(e) => {
                 synth.cancel();
                 text_Reader(props.text, e);
-                e.target.style.border = 'none';
+                if (localStorage.getItem("btnCognitive") != "lightgreen") {
+                  e.target.style.border = 'none';
+                }
+
               }}
 
               variant="h3" sx={{ typography: { sm: 'body1', xs: 'body2' } }} className="Item_Text">{props.text}</Typography>

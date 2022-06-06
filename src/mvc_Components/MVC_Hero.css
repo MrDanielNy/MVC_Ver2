@@ -163,7 +163,8 @@
 @media screen and (max-height: 450px) {
   .mvc-hero-container {
 
-    /* background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;*/
+    background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;
+
   }
 }
 

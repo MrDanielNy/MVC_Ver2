@@ -11,6 +11,7 @@ import { FaBeer, BiMessageDetail, FaRegEnvelope } from "react-icons/fa";
 import { type } from "@testing-library/user-event/dist/type";
 import video from "../../images/video-2.mp4";
 import { useSpeechSynthesis } from 'react-speech-kit';
+import { Typography } from "@mui/material";
 function MVC_Contacts() {
   const title = useRef();
   const labelName = useRef();
@@ -220,9 +221,16 @@ function MVC_Contacts() {
 
       <div className={"contact_Container"}>
         <div tabIndex={0} ref={title} className="containerAni">
-          <h3 className="first_text_">
-            Vill du vara med och skapa morgondagens undervisning?  kontakta oss!
-          </h3>
+          <Typography sx={{
+            fontSize: {
+              lg: 35,
+              md: 28,
+              sm: 24,
+              xs: 20,
+            }
+          }} variant="h3_Contacts" className="first_text_">
+            Vill du vara med och skapadgfg morgondagens undervisning?  kontakta oss!
+          </Typography>
         </div>
         <div>
           <div tabIndex={0} aria-label="kontaktformulär , Vänligen fyll i ditt namn, e-postadress och ditt meddelande" className="form_Container">

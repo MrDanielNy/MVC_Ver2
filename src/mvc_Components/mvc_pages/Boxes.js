@@ -45,7 +45,10 @@ function Boxes() {
             xs: 30,
           }
         }} onMouseLeave={(e) => {
-          e.target.style.border = 'none';
+          if (localStorage.getItem("btnCognitive") != "lightgreen") {
+            e.target.style.border = 'none';
+          }
+
           // synth.pause();
           synth.cancel();
         }}

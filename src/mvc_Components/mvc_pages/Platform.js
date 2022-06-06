@@ -37,7 +37,10 @@ function Platform() {
         <div className="platform_Text_Container_">
 
           < Typography tabIndex={0} onMouseLeave={(e) => {
-            e.target.style.border = 'none';
+            if (localStorage.getItem("btnCognitive") != "lightgreen") {
+              e.target.style.border = 'none';
+            }
+
             // synth.pause();
             synth.cancel();
           }}
@@ -48,7 +51,10 @@ function Platform() {
             onFocus={(e) => {
               synth.cancel();
               text_Reader("Vad vi gör?", e);
-              e.target.style.border = 'none';
+              if (localStorage.getItem("btnCognitive") != "lightgreen") {
+                e.target.style.border = 'none';
+              }
+
             }}
 
             variant="h1" sx={{
@@ -61,7 +67,10 @@ function Platform() {
             }} color="secondary" className="platform_Title" > Vad vi gör</Typography>
 
           <Typography tabIndex={0} onMouseLeave={(e) => {
-            e.target.style.border = 'none';
+            if (localStorage.getItem("btnCognitive") != "lightgreen") {
+              e.target.style.border = 'none';
+            }
+
             // synth.pause();
             synth.pause();
           }}
@@ -73,7 +82,10 @@ function Platform() {
             onFocus={(e) => {
               synth.cancel();
               text_Reader("My Virtual Classroom “MVC” är ett initiativ med fokus på att skapa och utveckla nya innovativa verktyg med hjälp av virtuell verklighet. MVC även namnet på den plattform som vi nu utvecklar och ska fyllas med nya möjliga upplevelser inom både utbildning och kultur. Vi har en stark anknytning till skola och ser hur utbildning kan ta tillvara på dagens tekniska utveckling och möjligheter som ett komplement till undervisningen. Men VR som verktyg skapar nya möjligheter att mentalt förflytta sig till helt andra platser och uppleva miljöer som annars inte kunnat upplevas, samt anpassas och skräddarsys till individ för att öka tillgängligheten.", e);
-              e.target.style.border = 'none';
+              if (localStorage.getItem("btnCognitive") != "lightgreen") {
+                e.target.style.border = 'none';
+              }
+
             }}
 
 

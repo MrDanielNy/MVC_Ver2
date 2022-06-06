@@ -136,7 +136,8 @@ function NavPane() {
 
           <Button id="logo" tabIndex={0} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
             <div aria-label="My virtual Classrooms logotyp. Välkommen" className="mvcLogo">
-              <img className="logoMVC" src={require("../images/logoMVCnew.png")} />
+              {/*<img className="logoMVC" src={require("../images/logoMVCnew.png")} />*/}
+              <span className="logo">MVC</span>
             </div>
           </Button>
           <div></div>

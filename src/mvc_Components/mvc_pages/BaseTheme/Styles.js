@@ -35,12 +35,16 @@ const baseTheme = createTheme({
 
         },
         h3_Contacts: {
-            color: "darkblue",
             border: "none",
+            color: "#001433",
+            background: "",
+
+
         },
         h6: {
             color: "black",
             fontSize: 20,
+            border: "none",
 
 
         },
@@ -92,7 +96,7 @@ const baseTheme = createTheme({
                 st1: {
 
 
-                    background: "#190974",
+                    background: "#002c89",
                     border: "none",
 
                 },
