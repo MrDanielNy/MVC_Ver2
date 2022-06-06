@@ -10,8 +10,9 @@ import "./MVC_Contacts_Footer.css";
 import { FaBeer, BiMessageDetail, FaRegEnvelope } from "react-icons/fa";
 import { type } from "@testing-library/user-event/dist/type";
 import video from "../../images/video-2.mp4";
-import { useSpeechSynthesis } from 'react-speech-kit';
+
 import { Typography } from "@mui/material";
+import { useSpeechSynthesis } from 'react-speech-kit';
 function MVC_Contacts() {
   const title = useRef();
   const labelName = useRef();
@@ -23,12 +24,32 @@ function MVC_Contacts() {
   const email_form = useRef();
   let counter_Validation = 0;
   const { speak } = useSpeechSynthesis();
-  const [buttonText, setButtonText] = useState("Send");
+  var synth = window.speechSynthesis; // To achieve the speechSynthesis' internal functions
+  const [buttonText, setButtonText] = useState("Skicka");
 
   const inputName = useRef(null);
-  useEffect(() => {
-    title.current.focus();
-  });
+  function text_Reader(input_Text, e) {
+    synth.resume(); // To resume the paused voice
+    // To have a border to show focus.
+    if (localStorage.getItem("textReaderStatus") === "true") {
+      e.target.style.border = '2px solid yellow';
+    }
+
+    // It reads the input_Text
+    speak({
+      text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+    }
+    )
+  }
+
+  if (localStorage.getItem("textReaderStatus") === "true") {
+    synth.resume();
+  }
+  else {
+    synth.cancel();
+    synth.pause();
+  }
+
 
   function removeSpaces(string) {
     return string.split(" ").join("");
@@ -40,11 +61,11 @@ function MVC_Contacts() {
     if (name_ === "" || name_ === null) {
       console.log("empty ---> " + name_);
 
-      labelName.current.textContent = "Enter your name please!";
+      labelName.current.textContent = "Ange ditt namn!";
       labelName.current.style.color = "red";
       return false;
     } else {
-      labelName.current.textContent = "Name";
+      labelName.current.textContent = "Namn";
       labelName.current.style.color = "green";
       console.log("Typing... " + event.target.value);
 
@@ -54,7 +75,7 @@ function MVC_Contacts() {
 
   const emailValidation = (event) => {
     const email_ = event.target.value;
-    console.log("It goes in it");
+
 
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email_)) {
       console.log("ok");
@@ -65,14 +86,14 @@ function MVC_Contacts() {
       setTimeout(() => {
         inputEmail.current.style.backgroundColor = "white";
         labelEmail.current.style.color = "green";
-        labelEmail.current.textContent = "Email";
+        labelEmail.current.textContent = "e-post";
       }, 200);
 
       labelEmail.current.style.color = "white";
       return true;
     } else if (email_ === "" || email_ === null) {
       console.log("invalid!!");
-      labelEmail.current.textContent = "Enter your email please!";
+      labelEmail.current.textContent = "Ange din e-post!";
       labelEmail.current.style.color = "red";
       return false;
     } else {
@@ -91,10 +112,10 @@ function MVC_Contacts() {
     if (text_ === "" || text_ === null) {
       console.log("empty ---> " + text_);
       speak({
-        text: "Enter your message please!", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+        text: "Skriv in ditt meddelande tack!", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
       }
       )
-      labelText.current.textContent = "Enter your message please!";
+      labelText.current.textContent = "Skriv in ditt meddelande tack!";
       labelText.current.style.color = "red";
       return false;
     } else {
@@ -119,11 +140,19 @@ function MVC_Contacts() {
     const textValue = removeSpaces(inputText.current.value);
     if (nameValue === "" || nameValue === null) {
       inputName.current.focus();
+      speak({
+        text: "Ange ditt namn!", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+      }
+      )
       labelName.current.style.color = "red";
       return false;
     }
     if (emailValue === "" || emailValue === null) {
       inputEmail.current.focus();
+      speak({
+        text: "Ange din e-post!", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
+      }
+      )
       labelEmail.current.style.color = "red";
       return false;
     }
@@ -145,45 +174,38 @@ function MVC_Contacts() {
         "W564JHf9PctY9HRA0"
       )
       .then((res) => {
-        console.log("Limited service!")
+        //console.log("Limited service!")
         //  console.log("Your email is sent successfully");
-        /* setButtonText("Sent");
- 
-         setTimeout(() => {
-           /* document.getElementById("btnsend").disabled = false;
-           btn.textContent = "";*/
-        /* console.log("Your email is sent successfully");
-         setButtonText("Sent");
-       }, 1000);*/
-        formReset();
-      })
-      .catch((err) => {
         if (formValidation()) {
-          console.log("Error " + err);
-          console.log("Your email is sent successfully dfgdfgd");
+          console.log("Error ");
+          console.log("Your email is sent successfully");
           buttonSend.current.style.color = "white";
           buttonSend.current.style.backgroundColor = "green";
-          setButtonText("Sending...");
+          setButtonText("Sändning...");
 
           buttonSend.current.disabled = true;
 
           setTimeout(() => {
             console.log("Your email is sent successfully");
 
-            setButtonText("Sent");
+            setButtonText("Skickas");
             buttonSend.current.disabled = false;
             buttonSend.current.style.color = "black";
             buttonSend.current.style.backgroundColor = "green";
           }, 1000);
           setTimeout(() => {
             console.log("Your email is sent successfully");
-            setButtonText("Send");
+            setButtonText("Skicka");
             buttonSend.current.disabled = false;
-            buttonSend.current.style.color = "black";
-            buttonSend.current.style.backgroundColor = "transparent";
+            buttonSend.current.style.color = "white";
+            buttonSend.current.style.backgroundColor = "#191351";
           }, 2000);
           formReset();
         }
+
+      })
+      .catch((err) => {
+        buttonSend.current.style.backgroundColor = "red";
       });
   }
   const changeFocus = useCallback(e => {
@@ -214,7 +236,12 @@ function MVC_Contacts() {
   }
   console.log(typeof checkState() + " The player mode in Contacts is ")
   console.log(checkState() + " The player mode in Contacts is ")
-
+  if (localStorage.getItem("textReaderStatus") === "true") {
+    synth.resume();
+  }
+  else {
+    synth.cancel();
+  }
 
   return (
     <>
@@ -228,27 +255,37 @@ function MVC_Contacts() {
               sm: 24,
               xs: 20,
             }
-          }} variant="h3_Contacts" className="first_text_">
+          }}
+
+            variant="h3_Contacts" className="first_text_">
             Vill du vara med och skapadgfg morgondagens undervisning?  kontakta oss!
           </Typography>
         </div>
-        <div>
-          <div tabIndex={0} aria-label="kontaktformulär , Vänligen fyll i ditt namn, e-postadress och ditt meddelande" className="form_Container">
-            <form onSubmit={send} id="email-form" ref={email_form}>
-              <label className="label" ref={labelName}>
+        <div >
+          <div
+
+
+            tabIndex={0} aria-label="kontaktformulär , Vänligen fyll i ditt namn, e-postadress och ditt meddelande" className="form_Container">
+            <form
+
+
+              onSubmit={send} id="email-form" ref={email_form}>
+              <label tabIndex={0} aria-label="Namn" className="label" ref={labelName}>
                 Namn
               </label>
               <div>
                 <input
+
+
                   type="text"
                   name="user_name"
-                  placeholder="Ditt namn"
+                  placeholder="Ange ditt namn!"
                   ref={inputName}
                   onChange={validName}
                 />
               </div>
 
-              <label className="label" ref={labelEmail}>
+              <label aria-label="e-post" tabIndex={0} className="label" ref={labelEmail}>
                 e-post
               </label>
               <input
@@ -260,7 +297,7 @@ function MVC_Contacts() {
                 title="This field should not be left blank."
               />
 
-              <label className="label" ref={labelText}>
+              <label tabIndex={0} aria-label="Meddelande" className="label" ref={labelText}>
                 Meddelande
               </label>
               <textarea
