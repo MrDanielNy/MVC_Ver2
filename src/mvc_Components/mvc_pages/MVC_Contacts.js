@@ -11,7 +11,7 @@ import { FaBeer, BiMessageDetail, FaRegEnvelope } from "react-icons/fa";
 import { type } from "@testing-library/user-event/dist/type";
 import video from "../../images/video-2.mp4";
 
-import { Typography } from "@mui/material";
+import { Paper, Typography } from "@mui/material";
 import { useSpeechSynthesis } from 'react-speech-kit';
 function MVC_Contacts() {
   const title = useRef();
@@ -66,7 +66,7 @@ function MVC_Contacts() {
       return false;
     } else {
       labelName.current.textContent = "Namn";
-      labelName.current.style.color = "green";
+      labelName.current.style.color = "lightgreen";
       console.log("Typing... " + event.target.value);
 
       return true;
@@ -85,7 +85,7 @@ function MVC_Contacts() {
 
       setTimeout(() => {
         inputEmail.current.style.backgroundColor = "white";
-        labelEmail.current.style.color = "green";
+        labelEmail.current.style.color = "lightgreen";
         labelEmail.current.textContent = "e-post";
       }, 200);
 
@@ -101,7 +101,7 @@ function MVC_Contacts() {
         text: "Invalid email format!", name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
       }
       )
-      labelEmail.current.textContent = "Invalid email format!";
+      labelEmail.current.textContent = "Ogiltigt e-postformat!";
       labelEmail.current.style.color = "red";
     }
   };
@@ -120,16 +120,16 @@ function MVC_Contacts() {
       return false;
     } else {
       labelText.current.textContent = "Message";
-      labelText.current.style.color = "green";
+      labelText.current.style.color = "lightgreen";
       console.log("Typing... " + event.target.value);
       return true;
     }
   };
   const formReset = () => {
     email_form.current.reset();
-    labelName.current.style.color = "black";
-    labelEmail.current.style.color = "black";
-    labelText.current.style.color = "black";
+    labelName.current.style.color = "white";
+    labelEmail.current.style.color = "white";
+    labelText.current.style.color = "white";
     inputName.current.focus();
     console.log("Form reset")
   };
@@ -179,8 +179,8 @@ function MVC_Contacts() {
         if (formValidation()) {
           console.log("Error ");
           console.log("Your email is sent successfully");
-          buttonSend.current.style.color = "white";
-          buttonSend.current.style.backgroundColor = "green";
+          buttonSend.current.style.color = "green";
+          // buttonSend.current.style.backgroundColor = "green";
           setButtonText("Sändning...");
 
           buttonSend.current.disabled = true;
@@ -190,15 +190,15 @@ function MVC_Contacts() {
 
             setButtonText("Skickas");
             buttonSend.current.disabled = false;
-            buttonSend.current.style.color = "black";
-            buttonSend.current.style.backgroundColor = "green";
+            buttonSend.current.style.color = "green";
+            //buttonSend.current.style.backgroundColor = "green";
           }, 1000);
           setTimeout(() => {
             console.log("Your email is sent successfully");
             setButtonText("Skicka");
             buttonSend.current.disabled = false;
-            buttonSend.current.style.color = "white";
-            buttonSend.current.style.backgroundColor = "#191351";
+            buttonSend.current.style.color = "black";
+            buttonSend.current.style.backgroundColor = "white";
           }, 2000);
           formReset();
         }
@@ -262,17 +262,14 @@ function MVC_Contacts() {
           </Typography>
         </div>
         <div >
-          <div
-
-
-            tabIndex={0} aria-label="kontaktformulär , Vänligen fyll i ditt namn, e-postadress och ditt meddelande" className="form_Container">
+          <Paper variant="contactForm" tabIndex={0} aria-label="kontaktformulär , Vänligen fyll i ditt namn, e-postadress och ditt meddelande" className="form_Container">
             <form
 
 
               onSubmit={send} id="email-form" ref={email_form}>
-              <label tabIndex={0} aria-label="Namn" className="label" ref={labelName}>
+              <Typography variant="label" tabIndex={0} aria-label="Namn" className="label" ref={labelName}>
                 Namn
-              </label>
+              </Typography>
               <div>
                 <input
 
@@ -285,9 +282,9 @@ function MVC_Contacts() {
                 />
               </div>
 
-              <label aria-label="e-post" tabIndex={0} className="label" ref={labelEmail}>
+              <Typography variant="label" aria-label="e-post" tabIndex={0} className="label" ref={labelEmail}>
                 e-post
-              </label>
+              </Typography>
               <input
                 type="email"
                 name="user_email"
@@ -297,9 +294,9 @@ function MVC_Contacts() {
                 title="This field should not be left blank."
               />
 
-              <label tabIndex={0} aria-label="Meddelande" className="label" ref={labelText}>
+              <Typography variant="label" tabIndex={0} aria-label="Meddelande" className="label" ref={labelText}>
                 Meddelande
-              </label>
+              </Typography>
               <textarea
                 className="message"
                 name="message"
@@ -313,7 +310,7 @@ function MVC_Contacts() {
                 {buttonText}
               </button>
             </form>
-          </div>
+          </Paper>
         </div>
       </div>
       <MVC_Contacts_Footer />

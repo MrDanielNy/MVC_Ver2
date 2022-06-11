@@ -2,6 +2,9 @@ import { createTheme } from "@mui/material/styles";
 
 const baseTheme = createTheme({
     typography: {
+        label: {
+            color: "white",
+        },
         h1: {
 
             border: "none",
@@ -75,7 +78,8 @@ const baseTheme = createTheme({
                     borderRadius: "10px",
                     border: "none",
                     color: "black",
-                }
+                },
+
 
             }
         },
@@ -88,16 +92,24 @@ const baseTheme = createTheme({
                 textTransform: "none",
 
                 background: "#ffffff"
-            }
+            },
+
         },
         MuiPaper: {
 
             styleOverrides: {
+                contactForm: {
+                    background: "#24309c",
+                    border: "rgb(250, 247, 247) 2px solid",
+                    color: "white",
+                },
                 st1: {
 
 
                     background: "#002c89",
                     border: "none",
+                    animation: "lowColor 2s",
+
 
                 },
                 st2: {

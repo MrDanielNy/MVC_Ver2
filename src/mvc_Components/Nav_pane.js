@@ -76,16 +76,7 @@ function NavPane() {
     return () => document.removeEventListener("keydown", menu)
   })
 
-  const menu_Close = useCallback(e => {
-    if (e.keyCode === 77) {
-      console.log("Escape is pressed")
-      setClick(!click)
-    }
-  }, [setClick], [click])
-  useEffect(() => {
-    document.addEventListener("keydown", menu_Close);
-    return () => document.removeEventListener("keydown", menu_Close)
-  })
+
 
   const hamStyle = {
     backgroundColor: "#fafafa00", // rgba(250, 250, 250, 0)
@@ -163,7 +154,7 @@ function NavPane() {
       <div className="drop-down-menu">
         <div className={click ? "menu active" : "menu"}>
 
-          <Button onFocus={(e) => {
+          <button onFocus={(e) => {
             text_Reader("Projekt! klicka för att läsa mer om våra projekt", e);
           }} onMouseEnter={(e) => {
             text_Reader("Projekt! klicka för att läsa mer om våra projekt", e);
@@ -171,13 +162,13 @@ function NavPane() {
             e.target.style.border = 'none';
             // synth.pause();
             synth.cancel();
-          }} ref={menuItem1} component={Link} to="/Projects" onClick={closeMenu} className="menu-links">
+          }} ref={menuItem1} component={Link} to="/" onClick={closeMenu} className="menu-links">
             <h1 className="menu-items"> Projekt </h1>
-          </Button>
+          </button>
 
 
           <h5 className="menu-items">
-            <Button onFocus={(e) => {
+            <button onFocus={(e) => {
               text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
             }} onMouseEnter={(e) => {
               text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
@@ -185,13 +176,13 @@ function NavPane() {
               e.target.style.border = 'none';
               // synth.pause();
               synth.cancel();
-            }} ref={menuItem2} component={Link} to="/AboutUs" onClick={closeMenu} className="menu-links">
+            }} ref={menuItem2} component={Link} to="/" onClick={closeMenu} className="menu-links">
               <h1 className="menu-items">Om oss </h1>
-            </Button>
+            </button>
           </h5>
 
           <h5 className="menu-items">
-            <Button onFocus={(e) => {
+            <button onFocus={(e) => {
               text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
             }} onMouseEnter={(e) => {
               text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
@@ -201,7 +192,7 @@ function NavPane() {
               synth.cancel();
             }} ref={menuItem3} component={Link} to="/Contacts" onClick={closeMenu} className="menu-links">
               <h1 className="menu-items"> Kontakta </h1>
-            </Button>
+            </button>
           </h5                  >
 
         </div>

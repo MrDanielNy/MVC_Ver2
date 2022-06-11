@@ -21,7 +21,7 @@
     justify-content: center;
     width: 90%;
     height: 900px;
-    margin: 70px auto;
+    margin: 100px auto;
     z-index: 1;
 }
 
@@ -158,17 +158,21 @@ img:focus {
 
 @media only screen and (max-width: 1700px) {
     .Boxes {
-        height: 1400px;
+        height: 1200px;
     }
 
     .Boxes_Container {
-        height: 1300px;
+        height: 1000px;
     }
 }
 
 @media only screen and (max-width: 1265px) {
     .Boxes {
-        height: 1450px;
+        height: 1350px;
+    }
+
+    .Boxes_Container {
+        height: 1350px;
     }
 
     .Item_Link {
@@ -182,7 +186,11 @@ img:focus {
 
 @media only screen and (max-width: 1105px) {
     .Boxes {
-        height: 1300px;
+        height: 1550px;
+    }
+
+    .Boxes_Container {
+        height: 1550px;
     }
 
     .Item_Link {
@@ -196,11 +204,11 @@ img:focus {
 
 @media only screen and (max-width: 900px) {
     .Boxes {
-        height: 1300px;
+        height: 1850px;
     }
 
     .Boxes_Container {
-        height: 1300px;
+        height: 1850px;
     }
 
     .Item_Link {
@@ -214,15 +222,15 @@ img:focus {
 
 @media only screen and (max-width: 845px) {
     .Boxes {
-        height: 1400px;
+        height: 1700px;
     }
 
     .Boxes_Container {
-        height: 1400px;
+        height: 1700px;
     }
 
     .Item_Link {
-        width: 300px;
+        width: 250px;
     }
 
     .Item_Text {
@@ -232,15 +240,15 @@ img:focus {
 
 @media only screen and (max-width: 722px) {
     .Boxes {
-        height: 1500px;
+        height: 2400px;
     }
 
     .Boxes_Container {
-        height: 1300px;
+        height: 2400px;
     }
 
     .Item_Link {
-        width: 250px;
+        width: 200px;
     }
 
     .Item_Text {
@@ -275,7 +283,7 @@ img:focus {
     }
 
     .Boxes_Container {
-        height: 2200px;
+        height: 2500px;
 
     }
 

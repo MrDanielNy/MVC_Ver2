@@ -2,6 +2,9 @@ import { withTheme } from "styled-components";
 
 export const theme1 = {
   typography: {
+    label: {
+      color: "white",
+    },
     h1: {
       border: "none",
       color: "white",
@@ -27,8 +30,9 @@ export const theme1 = {
 
     },
     h3_Contacts: {
-      color: "black",
+      color: "white",
       border: "none",
+      background: "black",
     },
     h6: {
       color: "black",
@@ -65,6 +69,11 @@ export const theme1 = {
         "elevation": 10
       },
       "styleOverrides": {
+        contactForm: {
+          background: "black",
+          border: "rgb(250, 247, 247) 2px solid",
+          color: "white",
+        },
         st1: {
 
 
@@ -181,7 +190,8 @@ export const theme3 = {
 
     },
     h3_Contacts: {
-      color: "#3549ff",
+      color: "white",
+      background: "#0011ff",
       border: "none",
     },
     h6: {
@@ -232,6 +242,11 @@ export const theme3 = {
     MuiPaper: {
 
       styleOverrides: {
+        contactForm: {
+          background: "#0011ff",
+          border: "rgb(250, 247, 247) 2px solid",
+          color: "white",
+        },
         st1: {
 
 

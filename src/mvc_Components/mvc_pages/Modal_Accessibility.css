@@ -4,11 +4,14 @@
     top: 100px;
     border-radius: 100px;
     /*animation: float 1s ease-in-out infinite;*/
-
+    border: none;
     z-index: 1000;
 
 }
 
+.accessibility_Icon:focus {
+    border: yellow solid 2px;
+}
 
 
 

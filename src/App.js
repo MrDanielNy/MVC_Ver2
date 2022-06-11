@@ -513,7 +513,9 @@ function App(props) {
 
   function text_Reader(input_Text, e) {
     synth.resume();
-    e.target.style.border = '2px solid rgba(147, 250, 165)';
+    if (localStorage.getItem("textReaderStatus") === "true") {
+      e.target.style.border = '2px solid yellow';
+    }
     speak({
       text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
     }
@@ -684,7 +686,7 @@ function App(props) {
                         <label>Synskadad profil</label>
                       </div>
                       <span className={blind_profile ? "btnDescription" : "noDescription"}>Tillgänglig för de flesta synnedsättningar som försämrande syn, tunnelseende, grå starr, glaukom och andra</span>
-                      <div className="btn">
+                      {/* <div className="btn">
                         <button ref={cognitive} style={{ backgroundColor: localStorage.getItem("btnCognitive") }} onClick={() => {
                           {
                             localStorage.setItem("btnCognitive", "lightgreen");
@@ -701,7 +703,7 @@ function App(props) {
 
                         }} variant='contained' className='accessibility_Setting_Btn'><CropFreeIcon /></button>
                         <label>kognitiva funktionshinder profil</label>
-                      </div>
+                      </div>*/}
 
                       {/** Cussor settings */}
 
@@ -822,7 +824,7 @@ function App(props) {
             </div>
           </div>
         ) : null}
-        <div tabIndex={1} onMouseLeave={(e) => {
+        <div tabIndex={0} onMouseLeave={(e) => {
           e.target.style.border = 'none';
           // synth.pause();
           synth.cancel();
@@ -833,7 +835,8 @@ function App(props) {
           }} ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => {
 
             openAccessibilitySettings();
-          }} src={require("./images/accessibility_Icon.png")} />   </div>
+          }} src={require("./images/accessibility_Icon.png")} />
+        </div>
 
         <div className={colorsMode_ ? "App" : "safeApp"} style={{ cursor: mousePointer }} >
           <Routes>

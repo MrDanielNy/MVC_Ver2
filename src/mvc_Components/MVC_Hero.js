@@ -77,9 +77,9 @@ function MVC_Hero() {
           <Typography ref={mvc} aria-label={"My Virtual Classroom"} tabIndex={0} variant="h1" sx={{
             fontSize: {
               lg: 100,
-              md: 70,
-              sm: 50,
-              xs: 30,
+              md: 80,
+              sm: 70,
+              xs: 45,
             }
           }} onFocus={(e) => {
             synth.cancel();
@@ -97,7 +97,14 @@ function MVC_Hero() {
 
 
 
-          <Typography variant="h2" onFocus={(e) => {
+          <Typography variant="h2" sx={{
+            fontSize: {
+              lg: 70,
+              md: 60,
+              sm: 45,
+              xs: 25,
+            }
+          }} onFocus={(e) => {
             synth.cancel();
             text_Reader("En framtid på lika villkor", e);
             e.target.style.border = 'none';

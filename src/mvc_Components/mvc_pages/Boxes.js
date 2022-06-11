@@ -61,7 +61,7 @@ function Boxes() {
             text_Reader("My virtal Classroom!", e);
             e.target.style.border = 'none';
           }}
-          variant="h1" className="boxes_Title" > My Virtual Classroom!</Typography>
+          variant="h1" className="boxes_Title" > Några idéer för vår plattform!</Typography>
         <div className="Items">
           {/** TODO change the content of each card. Fetching from database */}
 

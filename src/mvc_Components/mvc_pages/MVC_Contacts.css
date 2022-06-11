@@ -126,10 +126,10 @@ end of the first animation */
   justify-content: center;
   text-align: left;
   align-items: center;
-  background-color: rgb(210, 228, 252);
+  background-color: #d2e4fc;
   padding: 20px;
   border-radius: 5px;
-  border: rgb(250, 247, 247) 2px solid;
+
   box-shadow: 5px 5px 10px 1px rgb(217, 225, 255);
   height: 400px;
   width: 400px;
@@ -140,7 +140,7 @@ end of the first animation */
 
 
 .label {
-  color: rgb(0, 0, 0);
+
   font-size: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -180,10 +180,10 @@ input {
   height: 40px;
   margin-top: 30px;
   font-size: 20px;
-  background-color: #191351;
+  background-color: #ffffff;
   border-radius: 5px;
-  color: white;
-  border: 1px white solid;
+  color: rgb(0, 0, 0);
+  border: 1px rgb(0, 0, 0) solid;
   cursor: pointer;
 }
 

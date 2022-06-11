@@ -100,17 +100,17 @@ function AboutUs_Link() {
               synth.cancel();
             }}
               onMouseEnter={(e) => {
-                text_Reader("En bild, Daniel Johansson och Daniel Ny står,  virtuellt verklighetssystem.", e);
+                text_Reader("En bild, Daniel Johansson och Daniel Ny", e);
 
               }}
               onFocus={(e) => {
                 synth.cancel();
-                text_Reader("En bild, Daniel Johansson och Daniel Ny står,  virtuellt verklighetssystem.", e);
+                text_Reader("En bild, Daniel Johansson och Daniel Ny", e);
                 e.target.style.border = 'none';
               }}
 
               src={require("../../images/Kopia-av-My_Virtual_Classroom_-Daniel2020-11-06_12-51-03.png")}
-              alt="En bild, Daniel Johansson och Daniel Ny står,  virtuellt verklighetssystem."
+              alt="En bild, Daniel Johansson och Daniel Ny"
               className="about_Img "
             />
           </div>

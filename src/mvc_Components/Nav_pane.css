@@ -49,6 +49,7 @@ a.skip-main:active {
   top: 0px;
   max-width: 100%;
   min-width: 300px;
+  filter: grayscale(0%);
 
 }
 
@@ -58,8 +59,41 @@ a.skip-main:active {
   top: 0px;
   max-width: 100%;
   min-width: 300px;
-  filter: grayscale(75%);
+  filter: grayscale(70%);
+  animation: lowColor 2s;
 }
+
+
+
+@keyframes lowColor {
+  0% {
+    filter: grayscale(0);
+  }
+
+  15% {
+    filter: grayscale(15%);
+  }
+
+  30% {
+    filter: grayscale(30%);
+  }
+
+  45% {
+    filter: grayscale(45%);
+  }
+
+  60% {
+    filter: grayscale(60%);
+  }
+
+  75% {
+    filter: grayscale(75%);
+  }
+
+
+}
+
+
 
 .btn:hover {
   cursor: url(../../public/HandCursor1.png), auto;
@@ -181,7 +215,7 @@ a.skip-main:active {
 }
 
 .menu-links {
-  background-color: rgb(209, 181, 103);
+  background: transparent;
   text-align: center;
   height: 50px;
   width: 290px;
@@ -193,6 +227,7 @@ a.skip-main:active {
 }
 
 .menu-items {
+  background: transparent;
   font-size: 40px;
   font-family: sans-serif;
   display: table;
@@ -209,6 +244,10 @@ a.skip-main:active {
   opacity: 1;
   cursor: url(../../public/HandCursor1.png), auto;
 
+}
+
+.menu-items:focus {
+  border: yellow solid 2px;
 }
 
 .project_Btn {
