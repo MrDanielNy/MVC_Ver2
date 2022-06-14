@@ -566,7 +566,7 @@ function App(props) {
           </video>
         </div>
 
-        {/** Navbar is placed here because it shoud be always on the top of all the elements in the page   aria-hidden="true"*/}
+        {/** Navbar is placed here because it should be always on the top of all the elements in the page   aria-hidden="true"*/}
         <NavPane />
         {showAccessibility ? (
           <div className="Background" ref={accessibilitySetting} onClick={closeAccessibilitySetting} >

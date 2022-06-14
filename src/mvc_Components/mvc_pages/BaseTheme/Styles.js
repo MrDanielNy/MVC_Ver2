@@ -106,7 +106,7 @@ const baseTheme = createTheme({
                 st1: {
 
 
-                    background: "#002c89",
+                    background: "#010979",
                     border: "none",
                     animation: "lowColor 2s",
 

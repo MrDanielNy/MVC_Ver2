@@ -20,7 +20,7 @@ import {
 import { useSpeechSynthesis } from 'react-speech-kit';
 import { InfoSharp } from "@mui/icons-material";
 import MVC_Home from "./mvc_pages/MVC_Home";
-
+import { Cross as Hamburger } from 'hamburger-react'
 function NavPane() {
   const logoTab = useRef();
   const menuItem1 = useRef();
@@ -28,13 +28,6 @@ function NavPane() {
   const menuItem3 = useRef();
   const navBar = useRef();
   const hamMenu = useRef();
-
-
-
-  /*React.useEffect(() => {
-    logoTab.current.focus();
-  }, []);*/
-
 
   const [showAccessibility, setShowAccessibility] = useState(false);
 
@@ -114,8 +107,6 @@ function NavPane() {
     colorsMode = false;
 
 
-
-
   React.useEffect(() => {
     logoTab.current.focus();
   }, []);
@@ -144,7 +135,9 @@ function NavPane() {
               // synth.pause();
               synth.cancel();
             }} className="btn" ref={hamMenu} style={hamStyle} onClick={handleClick} >
-              <span className={click ? "fas fa-times" : "fas fa-bars"} />
+              {/*<span className={click ? "fas fa-times" : "fas fa-bars"} />*/}
+              <Hamburger size={40} toggled={click} toggle={setClick}
+                duration={0.3} hideOutline={false} label="Meny" color="white" />
             </Button>
           </div>
         </Paper>
@@ -163,37 +156,37 @@ function NavPane() {
             // synth.pause();
             synth.cancel();
           }} ref={menuItem1} component={Link} to="/" onClick={closeMenu} className="menu-links">
-            <h1 className="menu-items"> Projekt </h1>
+            <h1 className="menu-items">Projekt</h1>
           </button>
 
 
-          <h5 className="menu-items">
-            <button onFocus={(e) => {
-              text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
-            }} onMouseEnter={(e) => {
-              text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
-            }} onMouseLeave={(e) => {
-              e.target.style.border = 'none';
-              // synth.pause();
-              synth.cancel();
-            }} ref={menuItem2} component={Link} to="/" onClick={closeMenu} className="menu-links">
-              <h1 className="menu-items">Om oss </h1>
-            </button>
-          </h5>
 
-          <h5 className="menu-items">
-            <button onFocus={(e) => {
-              text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
-            }} onMouseEnter={(e) => {
-              text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
-            }} onMouseLeave={(e) => {
-              e.target.style.border = 'none';
-              // synth.pause();
-              synth.cancel();
-            }} ref={menuItem3} component={Link} to="/Contacts" onClick={closeMenu} className="menu-links">
-              <h1 className="menu-items"> Kontakta </h1>
-            </button>
-          </h5                  >
+          <button onFocus={(e) => {
+            text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
+          }} onMouseEnter={(e) => {
+            text_Reader("Om oss: Här finns information om grundarna till My Virtual Classroom.", e);
+          }} onMouseLeave={(e) => {
+            e.target.style.border = 'none';
+            // synth.pause();
+            synth.cancel();
+          }} ref={menuItem2} component={Link} to="/" onClick={closeMenu} className="menu-links">
+            <h1 className="menu-items">Om oss</h1>
+          </button>
+
+
+
+          <button onFocus={(e) => {
+            text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
+          }} onMouseEnter={(e) => {
+            text_Reader("Kontakt: Du är varmt välkommen att höra av dig till oss.", e);
+          }} onMouseLeave={(e) => {
+            e.target.style.border = 'none';
+            // synth.pause();
+            synth.cancel();
+          }} ref={menuItem3} component={Link} to="/Contacts" onClick={closeMenu} className="menu-links">
+            <h1 className="menu-items">Kontakta</h1>
+          </button>
+
 
         </div>
       </div>

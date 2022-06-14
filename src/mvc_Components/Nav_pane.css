@@ -134,17 +134,19 @@ a.skip-main:active {
 }
 
 .menu.active {
-  background: rgba(48, 43, 67, 0.99);
+  background: rgba(39, 26, 88, 0.99);
   left: 0;
   top: 0px;
-  opacity: 10;
+  opacity: 1;
   font-size: x-large;
   transition: all 0.8s ease;
+  display: flex;
   align-items: center;
   list-style-type: none;
   justify-content: center;
   z-index: 900;
   position: fixed;
+  padding: 10px;
 }
 
 /*TODO  find an icon or a designed logo*/
@@ -160,7 +162,12 @@ a.skip-main:active {
 
 }
 
-
+.drop-down-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
 
 .mvcLogo:hover {
   transition: all 0.8s ease;
@@ -220,34 +227,45 @@ a.skip-main:active {
   height: 50px;
   width: 290px;
   color: rgb(255, 255, 255);
-  border-radius: 20px;
+  border-radius: 1px;
   border: none;
   cursor: url(../../public/HandCursor1.png), auto;
   font-size: 45px;
+
+  margin: 10px;
 }
 
 .menu-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
   background: transparent;
   font-size: 40px;
   font-family: sans-serif;
-  display: table;
+
   text-decoration: none;
   padding: 5px;
   width: 200px;
   color: white;
+  padding: 10px;
+  font-family: sans-serif;
 }
 
 .menu-items:hover {
   color: #f7aa04;
   text-shadow: #f7aa04;
-  transition: all 0.5s ease-out;
+  font-size: 45px;
+  transition: all 0.3s ease-in;
   opacity: 1;
   cursor: url(../../public/HandCursor1.png), auto;
 
 }
 
-.menu-items:focus {
-  border: yellow solid 2px;
+button:focus {
+  outline: yellow solid 2px;
+
+
 }
 
 .project_Btn {
