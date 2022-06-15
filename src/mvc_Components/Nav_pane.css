@@ -134,6 +134,9 @@ a.skip-main:active {
 }
 
 .menu.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: rgba(39, 26, 88, 0.99);
   left: 0;
   top: 0px;
@@ -141,9 +144,9 @@ a.skip-main:active {
   font-size: x-large;
   transition: all 0.8s ease;
   display: flex;
-  align-items: center;
+
   list-style-type: none;
-  justify-content: center;
+
   z-index: 900;
   position: fixed;
   padding: 10px;
@@ -224,14 +227,11 @@ a.skip-main:active {
 .menu-links {
   background: transparent;
   text-align: center;
-  height: 50px;
-  width: 290px;
+  height: 70px;
   color: rgb(255, 255, 255);
-  border-radius: 1px;
-  border: none;
   cursor: url(../../public/HandCursor1.png), auto;
   font-size: 45px;
-
+  border: none;
   margin: 10px;
 }
 
