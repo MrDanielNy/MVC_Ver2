@@ -264,7 +264,11 @@ a.skip-main:active {
 
 button:focus {
   outline: yellow solid 2px;
-
+  color: #f7aa04;
+  text-shadow: #f7aa04;
+  font-size: 45px;
+  transition: all 0.7s ease-in;
+  opacity: 1;
 
 }
 

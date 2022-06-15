@@ -339,12 +339,12 @@ function App(props) {
 
       console.log("Not a mobile screen");
       mobileSize = false;
-      return video;
+      return "";
     }
     else if (window.innerHeight < 450 || window.innerWidth <= 768) {
       console.log(window.innerHeight + " Mobile Screen")
-      mobileSize = true;
-      return "";
+      mobileSize = false;
+      return video;
     }
   }
   console.log(mobileSize)

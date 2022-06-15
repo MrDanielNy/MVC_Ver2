@@ -154,7 +154,7 @@ label {
     top: 0;
     bottom: 0;
     z-index: -1;
-    /*background: url("../images/HeroSmallSize.png") center center/cover no-repeat fixed;*/
+    background-image: url("../src/images/alex-scaled.jpg") center center/cover no-repeat fixed;
 }
 
 #toggle {

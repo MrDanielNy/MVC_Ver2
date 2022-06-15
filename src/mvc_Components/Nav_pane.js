@@ -35,7 +35,7 @@ function NavPane() {
 
   const closeMenu = () => setClick(false);
   const handleClick = () => {
-    menuItem1.current.focus();
+    // menuItem1.current.focus();
     console.log("Testing...");
     setClick(!click);
   };
@@ -107,9 +107,9 @@ function NavPane() {
     colorsMode = false;
 
 
-  React.useEffect(() => {
+  /*React.useEffect(() => {
     logoTab.current.focus();
-  }, []);
+  }, []);*/
 
   return (
     <>
