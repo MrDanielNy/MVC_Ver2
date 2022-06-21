@@ -75,7 +75,7 @@ const baseTheme = createTheme({
             defaultProps: {
 
                 sx: {
-                    borderRadius: "10px",
+                    borderRadius: "0px",
                     border: "none",
                     color: "black",
                 },
@@ -106,9 +106,10 @@ const baseTheme = createTheme({
                 st1: {
 
 
-                    background: "#010979",
+                    background: "#010b2bfc",
                     border: "none",
                     animation: "lowColor 2s",
+                    borderRadius: "0px"
 
 
                 },

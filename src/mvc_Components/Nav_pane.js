@@ -92,7 +92,6 @@ function NavPane() {
   }
   function text_Reader(input_Text, e) {
     synth.resume();
-    // e.target.style.border = '2px solid rgba(147, 250, 165)';
     speak({
       text: input_Text, name: "Alva", voiceURI: "com.apple.ttsbundle.Alva-compact", lang: "sv-SE", localService: true, "default": true
     }
@@ -125,7 +124,7 @@ function NavPane() {
           <div></div>
           <div></div>
           <div className="ham_Menu" >
-            <Button id="menu" aria-label="Meny!" tabIndex={0} onFocus={(e) => {
+            <button tabIndex={-1} id="menu" aria-label="Meny!" onFocus={(e) => {
               console.log("Menu is selected!");
               text_Reader("Meny!", e);
             }} onMouseEnter={(e) => {
@@ -136,9 +135,9 @@ function NavPane() {
               synth.cancel();
             }} className="btn" ref={hamMenu} style={hamStyle} onClick={handleClick} >
               {/*<span className={click ? "fas fa-times" : "fas fa-bars"} />*/}
-              <Hamburger size={40} toggled={click} toggle={setClick}
+              <Hamburger tabIndex={-1} className="ham_Menu" size={40} toggled={click} toggle={setClick}
                 duration={0.3} hideOutline={false} label="Meny" color="white" />
-            </Button>
+            </button>
           </div>
         </Paper>
         <GlobalStyle />

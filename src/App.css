@@ -47,7 +47,51 @@ label {
     display: none;
 }
 
+.accessibility_Icon_Container {
+    position: fixed;
+    display: grid;
+    /* Logo Gap Gap HamMenu*/
+    grid-template-columns: 40% 40% 15% 5%;
 
+    height: 50px;
+    font-size: 1.2rem;
+    width: 100%;
+    min-width: 300px;
+    border-radius: 0;
+    z-index: 10000;
+
+}
+
+.accessibility_Help {
+    display: flex;
+    justify-content: center;
+    z-index: 10000;
+    margin-bottom: 10PX;
+    padding: 5px;
+    border-radius: 50px;
+    justify-self: end;
+}
+
+.accessibility_Img {
+    display: flex;
+    justify-content: end;
+    z-index: 10000;
+    margin-bottom: 10PX;
+    padding: 5px;
+    border-radius: 50px;
+    justify-self: end;
+}
+
+.accessibility_Img:focus {}
+
+img:hover {
+    background-color: rgba(245, 245, 220, 0.507);
+}
+
+button {
+    background: transparent;
+    border: none;
+}
 
 .cursoricons {
     margin-top: 10px;

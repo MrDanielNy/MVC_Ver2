@@ -35,7 +35,7 @@ a.skip-main:active {
   overflow: auto;
   margin: 10px 35%;
   padding: 5px;
-  border-radius: 15px;
+  border-radius: 0;
   border: 4px solid yellow;
   text-align: center;
   font-size: 1.2em;
@@ -44,6 +44,7 @@ a.skip-main:active {
 
 
 .nav_Pane {
+  border-radius: 0;
   position: sticky;
   z-index: 999;
   top: 0px;
@@ -106,7 +107,8 @@ a.skip-main:active {
   align-items: center;
   height: 70px;
   font-size: 1.2rem;
-  min-width: 200px;
+  min-width: 300px;
+  border-radius: 0;
 }
 
 .background-img {
@@ -137,7 +139,7 @@ a.skip-main:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgba(39, 26, 88, 0.99);
+  background: #010b2bfc;
   left: 0;
   top: 0px;
   opacity: 1;
@@ -185,6 +187,7 @@ a.skip-main:active {
   /*To keep at the corner of the page*/
   transition: all 0.8s ease;
   cursor: url(../../public/HandCursor1.png), auto;
+  z-index: 1000;
 }
 
 .ham_Menu:hover {
@@ -199,25 +202,8 @@ a.skip-main:active {
   z-index: 900;
 }
 
-.fa-times:hover {
-  cursor: url(../../public/HandCursor1.png), auto;
-}
 
-.fa-times:active {
-  transform: rotate(30deg) translate(-2px, -1px);
-  z-index: 900;
-}
 
-.fa-bars:active {
-  opacity: 0.5;
-  z-index: 1000;
-}
-
-.fa-bars:hover {
-  cursor: url(../../public/HandCursor1.png), auto;
-  background-color: #d6d6d688;
-  transition: all 0.8s ease-out;
-}
 
 .fa-typo3 {
   margin-left: 0.5rem;
@@ -233,6 +219,15 @@ a.skip-main:active {
   font-size: 45px;
   border: none;
   margin: 10px;
+}
+
+.menu-links:focus {
+  outline: yellow solid 2px;
+  color: #f7aa04;
+  text-shadow: #f7aa04;
+  font-size: 45px;
+  transition: all 0.7s ease-in;
+  opacity: 1;
 }
 
 .menu-items {
@@ -262,15 +257,7 @@ a.skip-main:active {
 
 }
 
-button:focus {
-  outline: yellow solid 2px;
-  color: #f7aa04;
-  text-shadow: #f7aa04;
-  font-size: 45px;
-  transition: all 0.7s ease-in;
-  opacity: 1;
 
-}
 
 .project_Btn {
   background-color: transparent;

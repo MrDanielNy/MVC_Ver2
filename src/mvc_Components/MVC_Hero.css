@@ -134,8 +134,8 @@
   font-weight: bold;
   cursor: pointer;
   margin-top: 20px;
-  border: 2px rgb(78, 66, 255) double;
-  border-radius: 5px;
+
+  border-radius: 0px;
   z-index: 10000;
   color: black;
 }

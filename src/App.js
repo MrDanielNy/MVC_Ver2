@@ -339,12 +339,12 @@ function App(props) {
 
       console.log("Not a mobile screen");
       mobileSize = false;
-      return "";
+      return video;
     }
     else if (window.innerHeight < 450 || window.innerWidth <= 768) {
       console.log(window.innerHeight + " Mobile Screen")
-      mobileSize = false;
-      return video;
+      mobileSize = true;
+      return "";
     }
   }
   console.log(mobileSize)
@@ -556,6 +556,21 @@ function App(props) {
   }
   else
     colorsMode_ = false;
+
+  /* const getPosition = () => {
+ 
+     accessibilityIcon.current.offsetTop = 200;
+     const x = accessibilityIcon.current.offsetLeft;
+     console.log("X ----> " + x);
+ 
+     const y = accessibilityIcon.current.offsetTop;
+     console.log("X ----> " + y);
+   };
+ 
+   // Get the position of the red box in the beginning
+   useEffect(() => {
+     getPosition();
+   }, []);*/
   return (
     < div  >
       <ThemeProvider theme={theme}>
@@ -567,7 +582,64 @@ function App(props) {
         </div>
 
         {/** Navbar is placed here because it should be always on the top of all the elements in the page   aria-hidden="true"*/}
+
+
         <NavPane />
+        <Paper aria-label="navigeringsfältet" variant="st1" color="primary" className="accessibility_Icon_Container " onMouseLeave={(e) => {
+
+          e.target.style.border = 'none';
+          // synth.pause();
+          synth.cancel();
+        }}
+          onMouseEnter={(e) => {
+            text_Reader("Tillgänglighets inställningar", e);
+
+          }} >
+          <div></div>
+
+          <div>
+
+          </div>
+
+          <div className="accessibility_Img">
+            <button tabIndex={-1}>
+              <img ref={accessibilityIcon} tabIndex={0}
+
+
+
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    //openAccessibilitySettings();
+                  }
+                }}
+                onClick={() => {
+
+                  //openAccessibilitySettings();
+                }} src={require("./images/Help_1.png")} className="accessibility_Help" />
+            </button>
+
+            <button tabIndex={-1}>
+              <img ref={accessibilityIcon} tabIndex={0}
+
+
+
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    openAccessibilitySettings();
+                  }
+                }}
+                onClick={() => {
+
+                  openAccessibilitySettings();
+                }} src={require("./images/accessibility_2.png")} className="accessibility_Img" />
+            </button>
+            <div></div>
+          </div>
+
+        </Paper>
+
+
+
         {showAccessibility ? (
           <div className="Background" ref={accessibilitySetting} onClick={closeAccessibilitySetting} >
             <div ref={settings} id="accessibility" tabIndex={2} className="Accessibility_Wrapper" showAccessibility={showAccessibility}>
@@ -824,19 +896,7 @@ function App(props) {
             </div>
           </div>
         ) : null}
-        <div tabIndex={0} onMouseLeave={(e) => {
-          e.target.style.border = 'none';
-          // synth.pause();
-          synth.cancel();
-        }}
-          onMouseEnter={(e) => {
-            text_Reader("Tillgänglighets inställningar", e);
 
-          }} ref={accessibilityIcon} className="accessibility_Icon"> <img onClick={() => {
-
-            openAccessibilitySettings();
-          }} src={require("./images/accessibility_Icon.png")} />
-        </div>
 
         <div className={colorsMode_ ? "App" : "safeApp"} style={{ cursor: mousePointer }} >
           <Routes>
