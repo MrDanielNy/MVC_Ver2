@@ -90,7 +90,6 @@ const baseTheme = createTheme({
                 border: "none",
                 fontSize: "30",
                 textTransform: "none",
-
                 background: "#ffffff"
             },
 
@@ -104,46 +103,26 @@ const baseTheme = createTheme({
                     color: "white",
                 },
                 navbar: {
-
-
-
                     background: "#02013b",
                     border: "none",
-                    animation: "lowColor 2s",
                     borderRadius: "0px"
-
-
                 },
                 st1: {
-
-
                     background: "#001a70fc",
                     border: "none",
-                    animation: "lowColor 2s",
                     borderRadius: "0px"
-
-
                 },
                 st2: {
-
-
                     background: "#004391",
                     border: "none",
-
                 },
                 st3: {
-
-
                     background: "#7c6500",
                     border: "none",
-
                 },
                 stMain: {
-
-
                     background: "#7c6500",
                     border: "none",
-
                 },
                 btnContainer: {
                     background: "#0b6c7e",

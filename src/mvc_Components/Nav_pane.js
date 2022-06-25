@@ -122,8 +122,8 @@ function NavPane() {
         <Paper ref={navBar} aria-label="navigeringsfältet" variant="navbar" color="primary" className="navbar-container">
 
           <div aria-label="My virtual Classrooms logotyp. Välkommen" className="MVC-Logo">
-            <button tabIndex={-1} id="logo" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={navigateHome}>
-              <img tabIndex={0} className="MVC-Logo" src={require("../images/logoMvc1.png")} />
+            <button tabIndex={-1} id="logo" ref={logoTab} onClick={navigateHome}>
+              <img tabIndex={0} className="MVC-Logo" src={require("../images/logoMvc2.png")} />
             </button>
             {/* <span className="logo">MVC</span>*/}
           </div>
@@ -131,8 +131,9 @@ function NavPane() {
           <div></div>
           <div></div>
           <div className="ham_Menu" >
-            <button tabIndex={-1} id="menu" aria-label="Meny!" onFocus={(e) => {
+            <button id="menu" aria-label="Meny!" onFocus={(e) => {
               console.log("Menu is selected!");
+
               text_Reader("Meny!", e);
             }} onMouseEnter={(e) => {
               text_Reader("Meny, länkar till andra sidor!", e);
@@ -140,10 +141,10 @@ function NavPane() {
               e.target.style.border = 'none';
               // synth.pause();
               synth.cancel();
-            }} className="btn" ref={hamMenu} style={hamStyle} onClick={handleClick} >
+            }} className="hamMenyBtn" ref={hamMenu} onClick={handleClick} >
               {/*<span className={click ? "fas fa-times" : "fas fa-bars"} />*/}
-              <Hamburger tabIndex={-1} className="ham_Menu" size={40} toggled={click} toggle={setClick}
-                duration={0.3} hideOutline={false} label="Meny" color="white" />
+              <Hamburger tabIndex={0} className="ham_Menu" size={40} toggled={click} toggle={setClick}
+                duration={0.3} hideOutline={true} label="Meny" color="white" />
             </button>
           </div>
         </Paper>

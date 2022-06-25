@@ -94,8 +94,6 @@ a.skip-main:active {
 
 }
 
-
-
 .btn:hover {
   cursor: url(../../public/HandCursor1.png), auto;
 }
@@ -105,7 +103,7 @@ a.skip-main:active {
   /* Logo Gap Gap HamMenu*/
   grid-template-columns: 10% 10% 70% 10%;
   align-items: center;
-  height: 75px;
+  height: 80px;
   font-size: 1.2rem;
   min-width: 300px;
   border-radius: 0;
@@ -152,18 +150,17 @@ a.skip-main:active {
   padding: 10px;
 }
 
-/*TODO  find an icon or a designed logo*/
 .MVC-Logo {
   /* Linked to Home page*/
   color: rgb(255, 255, 255);
   justify-self: center;
   cursor: pointer;
-  text-decoration: none;
-  font-size: 2rem;
-  margin-left: 10px;
+  margin-left: 20px;
   margin-top: 0px;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
+  padding: 0;
 }
+
 
 .drop-down-menu {
   display: flex;
@@ -178,10 +175,12 @@ a.skip-main:active {
   cursor: url(../../public/HandCursor1.png), auto;
 }
 
+.ham_Menu:focus {
+  outline: 2px solid yellow;
+}
+
 .ham_Menu {
-  color: rgb(255, 255, 255);
   margin-right: 20px;
-  font-size: 1.8rem;
   justify-self: end;
   /*To keep at the corner of the page*/
   transition: all 0.8s ease;
@@ -190,23 +189,13 @@ a.skip-main:active {
 }
 
 .ham_Menu:hover {
+  background-color: rgba(255, 255, 255, 0.603);
   transition: all 0.8s ease-out;
-  color: rgb(0, 0, 0);
   cursor: url(../../public/HandCursor1.png), auto;
 }
 
-/* Ham menu icons*/
-.fa-times {
-  font-size: 2rem;
-  z-index: 900;
-}
-
-
-
-
-.fa-typo3 {
-  margin-left: 0.5rem;
-  font-size: 1.8rem;
+button:focus {
+  outline: 2px solid yellow;
 }
 
 .menu-links {
@@ -256,8 +245,6 @@ a.skip-main:active {
 
 }
 
-
-
 .project_Btn {
   background-color: transparent;
   font-size: 50px;
@@ -270,6 +257,14 @@ a.skip-main:active {
   font-size: 55px;
   transition: all 0.8s ease-out;
   opacity: 1;
+}
+
+@media screen and (max-width: 500px) {
+
+  .MVC-Logo {
+    margin-left: 30px;
+  }
+
 }
 
 @media screen and (max-width: 360px) {
