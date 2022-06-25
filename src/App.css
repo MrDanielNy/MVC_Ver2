@@ -6,13 +6,9 @@ html {
     max-zoom: 200%;
 }
 
-img:focus {
-    outline: #eeff00 solid 5px;
-}
 
-div:focus {
-    border: 2px yellow solid;
-}
+
+
 
 .App {
     filter: grayscale(10%);

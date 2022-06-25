@@ -585,7 +585,7 @@ function App(props) {
 
 
         <NavPane />
-        <Paper aria-label="navigeringsfältet" variant="st1" color="primary" className="accessibility_Icon_Container " onMouseLeave={(e) => {
+        <Paper aria-label="navigeringsfältet" variant="navbar" color="primary" className="accessibility_Icon_Container " onMouseLeave={(e) => {
 
           e.target.style.border = 'none';
           // synth.pause();

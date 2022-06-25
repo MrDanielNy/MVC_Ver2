@@ -105,7 +105,7 @@ a.skip-main:active {
   /* Logo Gap Gap HamMenu*/
   grid-template-columns: 10% 10% 70% 10%;
   align-items: center;
-  height: 70px;
+  height: 75px;
   font-size: 1.2rem;
   min-width: 300px;
   border-radius: 0;
@@ -146,9 +146,7 @@ a.skip-main:active {
   font-size: x-large;
   transition: all 0.8s ease;
   display: flex;
-
   list-style-type: none;
-
   z-index: 900;
   position: fixed;
   padding: 10px;
@@ -158,13 +156,13 @@ a.skip-main:active {
 .MVC-Logo {
   /* Linked to Home page*/
   color: rgb(255, 255, 255);
-  justify-self: start;
+  justify-self: center;
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
-  margin-left: 20px;
+  margin-left: 10px;
+  margin-top: 0px;
   transition: all 0.8s ease;
-
 }
 
 .drop-down-menu {
@@ -175,6 +173,7 @@ a.skip-main:active {
 }
 
 .mvcLogo:hover {
+
   transition: all 0.8s ease;
   cursor: url(../../public/HandCursor1.png), auto;
 }
@@ -282,9 +281,6 @@ a.skip-main:active {
     font-size: 30px;
   }
 
-  button:hover {
-    font-size: 35px;
-  }
 
   .menu-links:hover {
     font-size: 35px;

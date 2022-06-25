@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from "react";
 import { FaBeer } from "react-icons/fa";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import "./Nav_pane.css";
@@ -109,18 +109,25 @@ function NavPane() {
   /*React.useEffect(() => {
     logoTab.current.focus();
   }, []);*/
+  const navigate = useNavigate();
 
+  const navigateHome = () => {
+    // navigate to /
+    closeMenu();
+    navigate('/');
+  };
   return (
     <>
       <nav tabIndex={-1} className={colorsMode ? "nav_Pane" : "safeColor_nav_Pane"} >
-        <Paper ref={navBar} aria-label="navigeringsfältet" variant="st1" color="primary" className="navbar-container">
+        <Paper ref={navBar} aria-label="navigeringsfältet" variant="navbar" color="primary" className="navbar-container">
 
-          <Button id="logo" tabIndex={0} className="btn" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={closeMenu}>
-            <div aria-label="My virtual Classrooms logotyp. Välkommen" className="mvcLogo">
-              {/*<img className="logoMVC" src={require("../images/logoMVCnew.png")} />*/}
-              <span className="logo">MVC</span>
-            </div>
-          </Button>
+          <div aria-label="My virtual Classrooms logotyp. Välkommen" className="MVC-Logo">
+            <button tabIndex={-1} id="logo" ref={logoTab} style={hamStyle} component={Link} to="/" onClick={navigateHome}>
+              <img tabIndex={0} className="MVC-Logo" src={require("../images/logoMvc1.png")} />
+            </button>
+            {/* <span className="logo">MVC</span>*/}
+          </div>
+
           <div></div>
           <div></div>
           <div className="ham_Menu" >

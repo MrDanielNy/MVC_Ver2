@@ -103,10 +103,21 @@ const baseTheme = createTheme({
                     border: "rgb(250, 247, 247) 2px solid",
                     color: "white",
                 },
+                navbar: {
+
+
+
+                    background: "#02013b",
+                    border: "none",
+                    animation: "lowColor 2s",
+                    borderRadius: "0px"
+
+
+                },
                 st1: {
 
 
-                    background: "#010b2bfc",
+                    background: "#001a70fc",
                     border: "none",
                     animation: "lowColor 2s",
                     borderRadius: "0px"
